@@ -236,7 +236,7 @@ export const HomePage = () => {
           ></div>
         </div>
       </Carousel>
-      <Flex className="m-10 gap-40" justify="center">
+      <Flex className="m-10 gap-10 flex-wrap" justify="center">
         <img
           style={{ width: "400px", objectFit: "contain" }}
           src="https://dentestore.com/Images/Banner-09.png"
@@ -334,9 +334,9 @@ export const HomePage = () => {
         className={`${styles.reviews} container`}
         style={{ marginBottom: "40px" }}
       >
-        <div className="my-10 flex justify-between items-center h-full gap-20">
+        <div className="my-10 flex justify-center items-center h-full gap-10">
           <h2 className="text-3xl uppercase text-white">Отзывы покупателей</h2>
-          <div className="flex flex-col gap-20">
+          <div className="flex flex-col gap-10">
             {reviews.map((review, index) => (
               <div key={index} className={styles.reviews_one}>
                 <h3>{review.name}</h3>
