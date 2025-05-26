@@ -19,6 +19,7 @@ export const router = createBrowserRouter([
       { path: "/", element: <Navigate to="/products" /> },
       { path: "/home", element: <Pages.HomePage /> },
       { path: "/products", element: <Pages.ProductsPage /> },
+      { path: "/product/:id", element: <Pages.ProductItemPage /> },
     ],
   },
 ]);

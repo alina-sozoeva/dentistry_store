@@ -1,2 +1,3 @@
 export * from "./homePage";
-export * from "./productsPage";
+export * from "./ptoductsPage";
+export * from "./productItemPage";

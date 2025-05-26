@@ -1,0 +1,88 @@
+.card {
+  background-color: white;
+  padding: 0 10px 10px 10px;
+  transition: box-shadow 0.2s ease-in-out;
+  gap: 2px;
+}
+
+.card:hover {
+  box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.11);
+}
+
+.img {
+  height: 150px;
+  object-fit: contain;
+}
+
+.title {
+  color: #676767;
+  line-height: 18px;
+  transition: 0.3s;
+  cursor: pointer;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+  height: calc(1.4em * 2);
+}
+
+.title:hover {
+  color: black;
+}
+
+.price {
+  color: #f05423;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.imageWrapper {
+  position: relative;
+  height: 150px;
+  overflow: hidden;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  z-index: 1;
+  position: relative;
+}
+
+.overlay {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.buttonOverlay {
+  position: absolute;
+  background: #fff;
+  color: #002453;
+  text-align: center;
+  border-radius: 3px;
+  padding: 5px 10px;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 3;
+}
+
+.card:hover .overlay,
+.card:hover .buttonOverlay {
+  opacity: 1;
+}
