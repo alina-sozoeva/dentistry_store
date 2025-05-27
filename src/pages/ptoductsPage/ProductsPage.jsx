@@ -1,8 +1,10 @@
 import { BarsOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Col, Flex, Row, Typography } from "antd";
+import { Button, Checkbox, Col, Flex, Pagination, Row, Typography } from "antd";
 import styles from "./ProductsPage.module.scss";
 import { ProductItem } from "./ui";
 import { CustomButton } from "../../components";
+import { dentalItems } from "../../data";
+import { useState } from "react";
 
 const categories = [
   { key: "1", label: "Зубные щётки" },
@@ -30,72 +32,16 @@ const brands = [
   { key: "10", label: "Colgate" },
 ];
 
-const dentalProducts = [
-  {
-    id: 1,
-    title: "Зубная щётка Curaprox 5460",
-    price: 890,
-    img: "https://example.com/images/curaprox5460.jpg",
-  },
-  {
-    id: 2,
-    title: "Паста Sensodyne Repair & Protect",
-    price: 320,
-    img: "https://example.com/images/sensodyne_repair.jpg",
-  },
-  {
-    id: 3,
-    title: "Ирригатор Waterpik WP-100",
-    price: 7490,
-    img: "https://example.com/images/waterpik_wp100.jpg",
-  },
-  {
-    id: 4,
-    title: "Зубная нить Oral-B Essential Floss",
-    price: 150,
-    img: "https://example.com/images/oralb_floss.jpg",
-  },
-  {
-    id: 5,
-    title: "Ополаскиватель Listerine Total Care",
-    price: 410,
-    img: "https://example.com/images/listerine_total.jpg",
-  },
-  {
-    id: 6,
-    title: "Отбеливающие полоски Crest 3D White",
-    price: 2450,
-    img: "https://example.com/images/crest_3d.jpg",
-  },
-  {
-    id: 7,
-    title: "Гель для чувствительных зубов Elmex",
-    price: 530,
-    img: "https://example.com/images/elmex_sens.jpg",
-  },
-  {
-    id: 8,
-    title: "Детская зубная паста Splat Juicy",
-    price: 180,
-    img: "https://example.com/images/splat_juicy.jpg",
-  },
-  {
-    id: 9,
-    title: "Щётка электрическая Philips Sonicare",
-    price: 8990,
-    img: "https://example.com/images/sonicare.jpg",
-  },
-  {
-    id: 10,
-    title: "Гигиенический набор для путешествий",
-    price: 690,
-    img: "https://example.com/images/travel_kit.jpg",
-  },
-];
-
 export const ProductsPage = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const pageSize = 15;
+
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  const currentItems = dentalItems.slice(startIndex, endIndex);
+
   return (
-    <section className={`${styles.wrap} h-screen`}>
+    <main className={`${styles.wrap} header_h`}>
       <div className="mt-10 container">
         <Flex align="center" justify="space-between">
           <Flex vertical>
@@ -105,64 +51,81 @@ export const ProductsPage = () => {
             <Flex gap={"small"}>
               <BarsOutlined />
               <span>Найдено</span>
-              <span className="font-bold">200 результатов</span>
+              <span className="font-bold">{dentalItems.length} результатов</span>
             </Flex>
           </Flex>
           <Flex>
             <CustomButton>Лучшее товары</CustomButton>
           </Flex>
         </Flex>
-        <Row gutter={16} className="mt-4">
+
+        <Row gutter={16} className="py-6">
           <Col span={4}>
-            <Flex vertical gap={"small"}>
-              <Flex vertical gap={"middle"}>
-                <div
-                  className="bg-white px-3 py-2"
-                  style={{ height: "220px", overflowY: "auto" }}
-                >
-                  <h4 className="text-orange pb-1">Категории</h4>
-                  <Flex vertical gap={"small"}>
-                    {categories.map((item) => (
-                      <Checkbox
-                        key={item.key}
-                        // checked={checked}
-                        // onChange={onChange}
-                      >
-                        {item.label}
-                      </Checkbox>
-                    ))}
-                  </Flex>
-                </div>
-                <div
-                  className="bg-white px-3 py-2"
-                  style={{ height: "220px", overflowY: "auto" }}
-                >
-                  <h4 className="text-orange pb-1">Бренд</h4>
-                  <Flex vertical gap={"small"}>
-                    {brands.map((item) => (
-                      <Checkbox
-                        key={item.key}
-                        // checked={checked}
-                        // onChange={onChange}
-                      >
-                        {item.label}
-                      </Checkbox>
-                    ))}
-                  </Flex>
-                </div>
+            <aside>
+              <Flex vertical gap={"small"}>
+                <Flex vertical gap={"middle"}>
+                  <nav
+                    className="bg-white px-3 py-2"
+                    style={{ height: "220px", overflowY: "auto" }}
+                    aria-label="Категории товаров"
+                  >
+                    <h4 className="text-orange pb-1">Категории</h4>
+                    <Flex vertical gap={"small"}>
+                      {categories.map((item) => (
+                        <Checkbox
+                          key={item.key}
+                          // checked={checked}
+                          // onChange={onChange}
+                        >
+                          {item.label}
+                        </Checkbox>
+                      ))}
+                    </Flex>
+                  </nav>
+                  <nav
+                    className="bg-white px-3 py-2"
+                    style={{ height: "220px", overflowY: "auto" }}
+                    aria-label="Фильтр по брендам"
+                  >
+                    <h4 className="text-orange pb-1">Бренд</h4>
+                    <Flex vertical gap={"small"}>
+                      {brands.map((item) => (
+                        <Checkbox
+                          key={item.key}
+                          // checked={checked}
+                          // onChange={onChange}
+                        >
+                          {item.label}
+                        </Checkbox>
+                      ))}
+                    </Flex>
+                  </nav>
+                </Flex>
               </Flex>
-            </Flex>
+            </aside>
           </Col>
 
-          <Col span={20}>
-            <div className={`${styles.ptoducts}  grid grid-cols-5 gap-4`}>
-              {dentalProducts.map((item) => (
-                <ProductItem key={item.id} item={item} />
-              ))}
-            </div>
+          <Col span={20} className="flex flex-col items-center">
+            <section aria-label="Список товаров">
+              <div className={`${styles.ptoducts} grid grid-cols-5 gap-4`}>
+                {currentItems.map((item) => (
+                  <ProductItem key={item.id} item={item} />
+                ))}
+              </div>
+            </section>
+            <nav aria-label="Пагинация">
+              <Pagination 
+                className="pt-4" 
+                current={currentPage}
+                onChange={setCurrentPage}
+                total={dentalItems.length} 
+                pageSize={pageSize}
+                showSizeChanger={false}
+              />
+            </nav>
           </Col>
         </Row>
       </div>
-    </section>
+    </main>
   );
 };

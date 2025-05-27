@@ -32,7 +32,7 @@ const items = [
 
 export const ProductItemPage = () => {
   return (
-    <section className={`${styles.wrap} py-4`}>
+    <section className={`${styles.wrap} py-4 header_h`}>
       <Flex vertical className="container">
         <Title>О продукте</Title>
         <ProductInfo />
