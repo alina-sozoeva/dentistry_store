@@ -11,17 +11,28 @@
 }
 
 .header {
-  padding: 10px 120px;
+  padding: 20px 50px;
   position: relative;
   width: 100%;
 }
 
 .logo {
   position: absolute;
-  width: 50px;
+  width: 60px;
   top: 2px;
   z-index: 1100;
 }
+
+.search {
+  width: 600px;
+  :global {
+    .ant-input {
+      font-size: 48px !important;
+    }
+  }
+}
+
+
 
 .link {
   position: relative;

@@ -35,7 +35,7 @@ export const Footer = () => {
         <Flex vertical>
           <span>КР, г. Бишкек, </span>
           <span>Октябрьский район,ул.</span>
-          <span> Токомбаева 15а/26</span>
+          <span>улица Куйручук, 81/2</span>
           <span>Подпишитесь на</span>
           <Flex gap={"small"} className={styles.media}>
             <FacebookOutlined />

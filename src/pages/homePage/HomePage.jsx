@@ -127,7 +127,7 @@ export const HomePage = () => {
               <CustomButton>О нас</CustomButton>
             </Flex>
 
-            <Flex className="my-10 gap-10 flex-wrap">
+            <Flex justify="center" className="my-10 gap-10 flex-wrap">
               {whoWeAre.map((item) => (
                 <ServicesCard
                   key={item.key}
@@ -146,8 +146,9 @@ export const HomePage = () => {
         <div className="container">
           <Flex
             wrap="wrap"
+            justify="center"
             className="my-10"
-            style={{ rowGap: "24px", columnGap: "45px" }}
+            style={{ rowGap: "18px", columnGap: "45px" }}
           >
             {categories.map((item) => (
               <CategoryCard

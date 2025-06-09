@@ -5,6 +5,11 @@ export const categories = [
     slug: "anesthesia",
   },
   {
+    key: "models",
+    title: "Обучающие модели и симуляторы",
+    slug: "models",
+  },
+  {
     key: "brands",
     title: "Бренды",
     slug: "brands",
@@ -18,11 +23,6 @@ export const categories = [
     key: "tools",
     title: "Инструменты",
     slug: "tools",
-  },
-  {
-    key: "models",
-    title: "Обучающие модели и симуляторы",
-    slug: "models",
   },
   {
     key: "orthodontics",
@@ -40,14 +40,14 @@ export const categories = [
     slug: "consumables",
   },
   {
-    key: "cadcam",
-    title: "СAD/CAM системы",
-    slug: "cadcam",
-  },
-  {
     key: "sterilization",
     title: "Стерилизационное оборудование и аксессуары",
     slug: "sterilization",
+  },
+  {
+    key: "cadcam",
+    title: "СAD/CAM системы",
+    slug: "cadcam",
   },
   {
     key: "equipment",
