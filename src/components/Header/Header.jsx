@@ -1,105 +1,93 @@
-import { CaretDownOutlined, ShoppingCartOutlined } from "@ant-design/icons";
-import { Button, Col, Dropdown, Flex, Input, Row, Space } from "antd";
-import { Link } from "react-router";
+import {
+  SearchOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
+import { Button, Col, Flex, LinkFlex, Row } from "antd";
+import { Link, useNavigate } from "react-router";
 import styles from "./Header.module.scss";
-
-const items = [
-  {
-    label: (
-      <Button type="primary" className="w-full">
-        Войти
-      </Button>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <div>
-        <span>Новый клиент?</span>{" "}
-        <a href="/" rel="noopener noreferrer">
-          Перейти
-        </a>
-      </div>
-    ),
-    key: "1",
-  },
-];
-
-const items2 = [
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-    key: "0",
-  },
-  {
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-    key: "1",
-  },
-  {
-    type: "divider",
-  },
-  {
-    label: "3rd menu item（disabled）",
-    key: "3",
-    disabled: true,
-  },
-];
+import logo from "../../assets/images/tooth.jpeg";
+import { CustomButton } from "../CustomButton";
+import { useState } from "react";
+import { pathname } from "../../enums";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const [page, setPage] = useState("/");
+
+  const onPage = (nav) => {
+    setPage(nav);
+  };
+
   return (
     <header className={styles.wrap}>
-      <Flex className={styles.header} vertical gap={"large"}>
-        <Row gutter={24} align="middle">
-          <Col span={16}>
-            <Flex align="center" gap={"small"}>
-              {/* <img src="" alt="logo" /> */}
-              <Link
-                to="/home"
-                className="text-white"
-                style={{ whiteSpace: "nowrap" }}
-              >
-                ОсОО «Жаннат-Клиник»
-              </Link>
-              <Input.Search type="text" placeholder="Поиск" />
-            </Flex>
-          </Col>
-          <Col span={8}>
-            <Flex justify="end" gap={"large"} className=" text-white">
-              <Dropdown
-                menu={{ items }}
-                trigger={["click"]}
-                className=" text-white"
-              >
-                <a onClick={(e) => e.preventDefault()}>
-                  <Space>
-                    Ваш аккаунт
-                    <CaretDownOutlined />
-                  </Space>
-                </a>
-              </Dropdown>
-              <Flex gap={"small"}>
-                <ShoppingCartOutlined className="text-2xl" />
-                <span>Cart</span>
-              </Flex>
-            </Flex>
-          </Col>
-        </Row>
-        <Flex gap={"middle"}>
+      <Flex justify="space-between" align="center" className={styles.header}>
+        <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+          <img className={styles.logo} src={logo} alt="logo" />
+        </Link>
+
+        <Flex align="center" gap={"large"}>
+          <Link
+            className={
+              page === pathname.HOME ? styles.active_link : styles.link
+            }
+            to={pathname.HOME}
+            onClick={() => onPage(pathname.HOME)}
+          >
+            Главная
+          </Link>
+          <Link
+            className={
+              page === pathname.ABOUT ? styles.active_link : styles.link
+            }
+            // to={pathname.ABOUT}
+            onClick={() => onPage(pathname.ABOUT)}
+          >
+            О нас
+          </Link>
+          <Link
+            className={
+              page === pathname.PRODUCTS ? styles.active_link : styles.link
+            }
+            to={pathname.PRODUCTS}
+            onClick={() => onPage(pathname.PRODUCTS)}
+          >
+            Магазин
+          </Link>
+          <Link
+            className={
+              page === pathname.CONTACT ? styles.active_link : styles.link
+            }
+            // to={pathname.CONTACT}
+            onClick={() => onPage(pathname.CONTACT)}
+          >
+            Контакты
+          </Link>
+          <Link
+            to={`${pathname.HOME}#about`}
+            className={
+              page === pathname.STUDY ? styles.active_link : styles.link
+            }
+            // to={pathname.CONTACT}
+            onClick={() => onPage(pathname.STUDY)}
+          >
+            Обучение
+          </Link>
+          <CustomButton>Акции</CustomButton>
+        </Flex>
+
+        <Flex gap={"large"}>
+          <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
+            <SearchOutlined />
+          </Link>
+          <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
+            <UserOutlined />
+          </Link>
+          <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
+            <ShoppingCartOutlined />
+          </Link>
+        </Flex>
+        {/* <Flex gap={"middle"}>
           <Dropdown menu={{ items: items2 }} className=" text-white">
             <span
               className="bg-orange text-white px-2 rounded-md"
@@ -125,7 +113,7 @@ export const Header = () => {
           <Link to="" className=" text-white">
             Связаться с нами
           </Link>
-        </Flex>
+        </Flex> */}
       </Flex>
     </header>
   );

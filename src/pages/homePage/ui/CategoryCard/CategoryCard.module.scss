@@ -1,0 +1,65 @@
+.card {
+  position: relative;
+  height: 170px;
+  width: 320px;
+  background-color: white;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.16);
+  border-radius: 35px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 20px;
+  transition: all 0.3s ease;
+
+  h4 {
+    color: #147abc;
+  }
+
+  &:hover {
+    .lottie {
+      opacity: 1;
+    }
+  }
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 23px;
+  color: white;
+  z-index: 1200;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  svg {
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    svg {
+      margin-left: 10px;
+    }
+  }
+}
+
+.lottie_noPlay {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  margin-bottom: -46px;
+  opacity: 1;
+}
+
+.lottie {
+  position: absolute;
+  height: 150px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  margin-bottom: -46px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}

@@ -1,21 +1,36 @@
 .card {
-    width: 350px;
-    border-radius: 10px;
-    font-size: 18px;
-    padding: 0 10px;
-    display: flex;
-    align-items: center;
+  border-radius: 35px;
+  font-size: 16px;
+  width: 260px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.16);
+  text-align: center;
+  gap: 10px;
+
+  svg {
+    padding: 10px;
+    font-size: 60px;
     color: white;
-    justify-content: center;
-    cursor: pointer;
+    background: #157dc3;
+    background: linear-gradient(
+      180deg,
+      rgba(21, 125, 195, 1) 0%,
+      rgba(19, 108, 168, 1) 50%,
+      rgba(11, 66, 107, 1) 100%
+    );
+    border-radius: 50%;
+  }
 
-    svg {
-        font-size: 60px;
-        margin-right: 10px;
-    }
-
+  .title {
+    width: 180px;
+  }
 }
 
 .descrip {
-    font-size: 16px;
+  font-size: 16px;
 }

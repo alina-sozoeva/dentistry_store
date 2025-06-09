@@ -1,15 +1,31 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./HomePage.module.scss";
 import { CustomButton } from "../../components";
-import { Col, Divider, Flex, Row } from "antd";
+import { Col, Divider, Flex, Row, Typography } from "antd";
 import { RatingStars } from "../../ui";
-import { ProductCategoryItem, ServicesCard } from "./ui";
+import { categories, CategoryCard, ServicesCard } from "./ui";
 import { dentalItems } from "../../data";
 import {
-  InboxOutlined,
-  ShoppingCartOutlined,
-  TruckOutlined,
+  FileProtectOutlined,
+  SafetyCertificateOutlined,
+  SwitcherOutlined,
 } from "@ant-design/icons";
+import { useEffect } from "react";
+import { pathname } from "../../enums";
+
+const whoWeAre = [
+  { key: 1, title: "БОЛЕЕ 2000 НАИМЕНОВАНИЙ", icon: <SwitcherOutlined /> },
+  {
+    key: 1,
+    title: "ГАРАНТИЯ ОТ ПОДДЕЛОК",
+    icon: <SafetyCertificateOutlined />,
+  },
+  {
+    key: 1,
+    title: "МЫ ПРЕДОСТАВЛЯЕМ СЕРТИФИКАТ",
+    icon: <FileProtectOutlined />,
+  },
+];
 
 const reviews = [
   {
@@ -31,6 +47,17 @@ const reviews = [
 
 export const HomePage = () => {
   const navigate = useNavigate();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
 
   return (
     <main className="header_h " style={{ backgroundColor: "#f9f9f9" }}>
@@ -82,46 +109,45 @@ export const HomePage = () => {
         </Flex>
       </section>
 
-      <Flex className="m-10 gap-10 flex-wrap" justify="center">
-        <ServicesCard
-          title="Быстра доставка"
-          color="#0071bc"
-          icon={<TruckOutlined />}
-        />
-        <ServicesCard
-          title="Воспользуйтесь бесплатной доставкой"
-          color="#fd4f01"
-          icon={<ShoppingCartOutlined />}
-        />
-        <ServicesCard
-          title="Бесплатный возврат"
-          color="#0071bc"
-          icon={<InboxOutlined />}
-        />
-        <ServicesCard
-          title="Гарантия возврата денег и возмещения"
-          color="#fd4f01"
-        />
-      </Flex>
-      <div className="container">
-        <Flex vertical className="my-10 bg-white">
-          <h2 className="pl-4 pt-4 text-3xl font-bold">Наша продукция</h2>
-          <Divider />
-          <div className="grid grid-cols-5 gap-4 ">
-            {dentalItems.slice(0, 10).map((item) => (
-              <ProductCategoryItem item={item} />
-            ))}
-          </div>
-        </Flex>
+      <section style={{ backgroundColor: "#e8e7e7" }}>
+        <div className="container">
+          <Flex className="py-8" justify="space-between" align="center">
+            <Flex vertical gap={"middle"} style={{ width: "300px" }}>
+              <Typography.Title level={2}>
+                КТО МЫ И ЧТО ПРЕДЛАГАЕМ
+              </Typography.Title>
+              <span>
+                ОсОО "Жаннат-Клиник" предлагает современное оборудование и
+                расходные материалы для стоматологических кабинетов и
+                зуботехнических лабораторий
+              </span>
+              <CustomButton>О нас</CustomButton>
+            </Flex>
 
-        <Flex align="center" justify="center" className="mt-4">
-          <div>
-            <CustomButton onClick={() => navigate("/products")}>
-              Еще продукты
-            </CustomButton>
-          </div>
-        </Flex>
-      </div>
+            <Flex className="my-10 gap-10 flex-wrap">
+              {whoWeAre.map((item) => (
+                <ServicesCard
+                  key={item.key}
+                  icon={item.icon}
+                  title={item.title}
+                />
+              ))}
+            </Flex>
+          </Flex>
+        </div>
+      </section>
+
+      <section className="container"></section>
+
+      <section id="about">
+        <div className="container">
+          <Flex wrap="wrap" className="my-10" style={{rowGap: '24px', columnGap: '45px'}}>
+            {categories.map((item) => (
+                <CategoryCard key={item.key} title={item.title} onClick={() => navigate(pathname.PRODUCTS)}/>
+            ))}
+          </Flex>
+        </div>
+      </section>
 
       <section
         className={`${styles.reviews} container`}

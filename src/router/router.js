@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
 import * as Pages from "../pages";
 import { Footer, Header } from "../components";
+import { pathname } from "../enums";
 
 const Layout = () => {
   return (
@@ -16,10 +17,9 @@ export const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      { path: "/", element: <Navigate to="/products" /> },
-      { path: "/home", element: <Pages.HomePage /> },
-      { path: "/products", element: <Pages.ProductsPage /> },
-      { path: "/product/:id", element: <Pages.ProductItemPage /> },
+      { path: pathname.HOME, element: <Pages.HomePage /> },
+      { path: pathname.PRODUCTS, element: <Pages.ProductsPage /> },
+      { path: pathname.PRODUCTSITEM, element: <Pages.ProductItemPage /> },
     ],
   },
 ]);

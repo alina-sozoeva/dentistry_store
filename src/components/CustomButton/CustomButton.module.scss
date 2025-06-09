@@ -1,18 +1,22 @@
 .btn {
-  color: #002453;
-  background-color: white;
-  border: 1px solid #002453;
-  width: 200px;
-  padding: 7px 16px;
-  font-size: 12px;
+  color: white;
+  background: #0c436c;
+  background: linear-gradient(
+    271deg,
+    rgba(12, 67, 108, 1) 0%,
+    rgba(15, 96, 151, 1) 50%,
+    rgba(20, 122, 188, 1) 100%
+  );
+  padding: 8px 25px;
+  font-size: 13px;
   border-radius: 3px;
   transition: 0.3s;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 10px;
 
   span {
-    text-transform: uppercase;
     font-weight: 700;
   }
 
@@ -23,6 +27,12 @@
 }
 
 .btn:hover {
-  background-color: #002453;
+  background: #0c436c;
+  background: linear-gradient(
+    90deg,
+    rgba(12, 67, 108, 1) 0%,
+    rgba(15, 96, 151, 1) 50%,
+    rgba(20, 122, 188, 1) 100%
+  );
   color: white;
 }
