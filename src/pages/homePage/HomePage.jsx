@@ -47,8 +47,11 @@ const reviews = [
 
 export const HomePage = () => {
   const navigate = useNavigate();
-
   const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     if (location.hash) {
@@ -141,9 +144,18 @@ export const HomePage = () => {
 
       <section id="about">
         <div className="container">
-          <Flex wrap="wrap" className="my-10" style={{rowGap: '24px', columnGap: '45px'}}>
+          <Flex
+            wrap="wrap"
+            className="my-10"
+            style={{ rowGap: "24px", columnGap: "45px" }}
+          >
             {categories.map((item) => (
-                <CategoryCard key={item.key} title={item.title} onClick={() => navigate(pathname.PRODUCTS)}/>
+              <CategoryCard
+                key={item.key}
+                title={item.title}
+                onClick={() => navigate(pathname.PRODUCTS)}
+                slug={item.slug}
+              />
             ))}
           </Flex>
         </div>

@@ -4,7 +4,8 @@ import styles from "./ProductsPage.module.scss";
 import { ProductItem } from "./ui";
 import { CustomButton } from "../../components";
 import { dentalItems } from "../../data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router";
 
 const categories = [
   { key: "1", label: "Зубные щётки" },
@@ -35,6 +36,11 @@ const brands = [
 export const ProductsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;

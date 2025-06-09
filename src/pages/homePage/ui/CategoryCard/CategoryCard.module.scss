@@ -1,7 +1,6 @@
-.card {
+// Common mixins
+@mixin card-base {
   position: relative;
-  height: 170px;
-  width: 320px;
   background-color: white;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.16);
   border-radius: 35px;
@@ -9,6 +8,10 @@
   cursor: pointer;
   padding: 20px;
   transition: all 0.3s ease;
+
+  svg {
+    transition: all 0.3s ease;
+  }
 
   h4 {
     color: #147abc;
@@ -18,48 +21,57 @@
     .lottie {
       opacity: 1;
     }
-  }
-}
 
-.title {
-  position: absolute;
-  bottom: 0;
-  margin-bottom: 23px;
-  color: white;
-  z-index: 1200;
-  text-align: center;
-  transition: all 0.3s ease;
-
-  svg {
-    transition: all 0.3s ease;
-  }
-
-  &:hover {
     svg {
       margin-left: 10px;
     }
   }
 }
 
-.lottie_noPlay {
+@mixin lottie-base {
   position: absolute;
   height: 150px;
   width: 100%;
   bottom: 0;
   left: 0;
-  z-index: 1000;
+  z-index: 900;
   margin-bottom: -46px;
+  transform: scaleY(-1);
+}
+
+.card {
+  @include card-base;
+  height: 180px;
+  width: 320px;
+}
+
+.card_no {
+  @include card-base;
+  height: 180px;
+  width: 680px;
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 70px;
+  color: #053b5f;
+  z-index: 900;
+  text-align: center;
+  transition: all 0.3s ease;
+
+  svg {
+    transition: all 0.3s ease;
+  }
+}
+
+.lottie_noPlay {
+  @include lottie-base;
   opacity: 1;
 }
 
 .lottie {
-  position: absolute;
-  height: 150px;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: 1000;
-  margin-bottom: -46px;
+  @include lottie-base;
   opacity: 0;
   transition: opacity 0.3s ease;
 }

@@ -1,24 +1,36 @@
-import { Flex, Typography } from "antd";
+import { Flex, Typography, Spin } from "antd";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-
 import styles from "./CategoryCard.module.scss";
 import { RightOutlined } from "@ant-design/icons";
 
-export const CategoryCard = ({ key, title, onClick }) => {
+const lottieUrl =
+  "https://lottie.host/03658204-7534-4792-af43-d528386d1b5f/LgI3dL1FCa.lottie";
+
+export const CategoryCard = ({ key, title, onClick, slug }) => {
   return (
-    <Flex className={styles.card} vertical key={key}>
+    <Flex
+      className={
+        slug === "sterilization" || slug === "models"
+          ? styles.card_no
+          : styles.card
+      }
+      vertical
+      key={key}
+      onClick={onClick}
+    >
       <Typography.Title level={4}>{title}</Typography.Title>
+
+      <DotLottieReact s src={lottieUrl} className={styles.lottie_noPlay} />
       <DotLottieReact
-        src="https://lottie.host/2df181db-d7fd-4bd3-948e-6a474e29bc46/509SpSc9pX.lottie"
-        className={styles.lottie_noPlay}
-      />
-      <DotLottieReact
-        src="https://lottie.host/2df181db-d7fd-4bd3-948e-6a474e29bc46/509SpSc9pX.lottie"
+        src={lottieUrl}
         className={styles.lottie}
         autoplay={true}
         loop={true}
       />
-      <span className={styles.title} onClick={onClick}>Смотреть <RightOutlined /></span>
+
+      <span className={styles.title}>
+        Смотреть <RightOutlined />
+      </span>
     </Flex>
   );
 };
