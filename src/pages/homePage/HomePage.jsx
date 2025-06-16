@@ -1,10 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./HomePage.module.scss";
 import { CustomButton } from "../../components";
-import { Col, Divider, Flex, Row, Typography } from "antd";
+import { Col, Flex, Row, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { categories, CategoryCard, ServicesCard } from "./ui";
-import { dentalItems } from "../../data";
 import {
   FileProtectOutlined,
   SafetyCertificateOutlined,

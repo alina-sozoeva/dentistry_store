@@ -24,18 +24,15 @@ export const ProductItem = ({ item }) => {
         <button
           className={styles.buttonOverlay}
           icon={<ShoppingCartOutlined />}
-          onClick={() => setOpenModal(true)}
         >
-          Подробнее
+          В корзину
         </button>
       </div>
 
       <span className={styles.title} onClick={onProduct}>
         {item.title}
       </span>
-      <RatingStars />
-      <span className={styles.price}>{item.price} сом, КР</span>
-      <CustomButton icon={<ShoppingCartOutlined />}>В корзину</CustomButton>
+      <span className={styles.price}>{item.price} сом</span>
       <ProductModal
         open={openModal}
         onCancel={() => setOpenModal(false)}

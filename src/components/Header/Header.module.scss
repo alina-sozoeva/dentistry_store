@@ -4,6 +4,7 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
+  box-shadow: 0 18px 18px 0 rgba(0, 0, 0, 0.1);
 
   svg {
     color: #147abc;
@@ -24,15 +25,42 @@
 }
 
 .search {
-  width: 600px;
   :global {
     .ant-input {
+      color: #147abc;
+      border: none;
+      border-bottom: 2px solid #147abc;
       font-size: 48px !important;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+
+      &::placeholder {
+        color: #147abc;
+        opacity: 0.7;
+      }
+
+      &:hover,
+      &:focus {
+        border-bottom: 2px solid #147abc;
+        box-shadow: none;
+      }
+
+      &:focus {
+        border-bottom: 2px solid #147abc;
+        box-shadow: none;
+      }
+    }
+
+    .ant-input-outlined {
+      &:hover,
+      &:focus {
+        border-bottom: 2px solid #147abc;
+        box-shadow: none;
+      }
     }
   }
 }
-
-
 
 .link {
   position: relative;

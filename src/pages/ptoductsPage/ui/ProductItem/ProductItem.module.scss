@@ -3,7 +3,7 @@
   padding: 0 10px 10px 10px;
   transition: box-shadow 0.2s ease-in-out;
   gap: 2px;
-  height: 300px;
+  height: 250px;
 }
 
 .card:hover {
@@ -34,9 +34,9 @@
 }
 
 .price {
-  color: #f05423;
+  color: #147abc;
   font-size: 18px;
-  text-transform: uppercase;
+
   font-weight: bold;
 }
 
@@ -44,6 +44,7 @@
   position: relative;
   height: 150px;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .img {
@@ -69,15 +70,14 @@
 }
 
 .buttonOverlay {
+  width: 100%;
   position: absolute;
-  background: #fff;
-  color: #002453;
+  background: #147abc;
+  color: white;
   text-align: center;
   border-radius: 3px;
   padding: 5px 10px;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 3;
