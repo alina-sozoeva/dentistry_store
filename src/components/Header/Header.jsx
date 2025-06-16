@@ -115,7 +115,7 @@ export const Header = () => {
         >
           <div className={clsx("container ")}>
             <Flex
-              className={clsx(styles.search, " pt-20")}
+              className={clsx(styles.search, " pt-10")}
               vertical
               align="start"
               gap="small"
@@ -126,7 +126,7 @@ export const Header = () => {
                 onChange={(e) => setSearchValue(e.target.value)}
                 onPressEnter={handleSearch}
               />
-              <span className={clsx("text-md")}>
+              <span className={clsx("text-md")} style={{ color: "#147abc" }}>
                 Чтобы закрыть поиск нажмите ESC
               </span>
             </Flex>

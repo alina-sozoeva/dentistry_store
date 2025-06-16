@@ -11,6 +11,12 @@
   }
 }
 
+:global {
+  .ant-drawer-top > .ant-drawer-content-wrapper {
+    height: 250px !important;
+  }
+}
+
 .header {
   padding: 20px 50px;
   position: relative;
