@@ -1,7 +1,10 @@
 import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
-import { Flex, Row } from "antd";
+import { Flex } from "antd";
 import { Link } from "react-router";
+import logo from "../../assets/images/logo_without_bg_white.jpeg";
 import styles from "./Footer.module.scss";
+import { pathname } from "../../enums";
+import clsx from "clsx";
 
 export const Footer = () => {
   return (
@@ -12,11 +15,16 @@ export const Footer = () => {
         </h3>
       </div>
       <Flex className="container" justify="space-between">
+        <div>
+          <Link to={pathname.HOME}>
+            <img src={logo} alt={logo} className={clsx(styles.logo)} />
+          </Link>
+        </div>
         <Flex vertical>
-          <Link>Главная</Link>
-          <Link>Продукты</Link>
-          <Link>Бренды</Link>
-          <Link>Корзина</Link>
+          <Link to={pathname.HOME}>Главная</Link>
+          <Link to={pathname.PRODUCTS}>Продукты</Link>
+          <Link to={pathname.PRODUCTS}>Бренды</Link>
+          <Link to={pathname.ORDER}>Корзина</Link>
           <Link>Чекаут</Link>
         </Flex>
         <Flex vertical>

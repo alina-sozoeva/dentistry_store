@@ -6,7 +6,7 @@ import {
 import { Drawer, Flex, Input } from "antd";
 import { Link, useNavigate } from "react-router";
 import styles from "./Header.module.scss";
-import logo from "../../assets/images/tooth.jpeg";
+import logo from "../../assets/images/logo_without_bg_blue.jpeg";
 import { CustomButton } from "../CustomButton";
 import { useState } from "react";
 import { pathname } from "../../enums";
