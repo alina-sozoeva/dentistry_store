@@ -1,11 +1,11 @@
 import { BarsOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Col, Flex, Pagination, Row, Typography } from "antd";
-import styles from "./ProductsPage.module.scss";
+import { Checkbox, Col, Flex, Pagination, Row, Typography } from "antd";
 import { ProductItem } from "./ui";
 import { CustomButton } from "../../components";
 import { dentalItems } from "../../data";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import styles from "./ProductsPage.module.scss";
 
 const categories = [
   { key: "1", label: "Зубные щётки" },
@@ -52,12 +52,14 @@ export const ProductsPage = () => {
         <Flex align="center" justify="space-between">
           <Flex vertical>
             <Typography.Title level={2}>
-              Стоматологические инструменты
+              Стоматологическое оборудование
             </Typography.Title>
             <Flex gap={"small"}>
               <BarsOutlined />
               <span>Найдено</span>
-              <span className="font-bold">{dentalItems.length} результатов</span>
+              <span className="font-bold">
+                {dentalItems.length} результатов
+              </span>
             </Flex>
           </Flex>
           <Flex>
@@ -75,16 +77,10 @@ export const ProductsPage = () => {
                     style={{ height: "220px", overflowY: "auto" }}
                     aria-label="Категории товаров"
                   >
-                    <h4 className="text-orange pb-1">Категории</h4>
+                    <h4 className="text-blue pb-1">Категории</h4>
                     <Flex vertical gap={"small"}>
                       {categories.map((item) => (
-                        <Checkbox
-                          key={item.key}
-                          // checked={checked}
-                          // onChange={onChange}
-                        >
-                          {item.label}
-                        </Checkbox>
+                        <Checkbox key={item.key}>{item.label}</Checkbox>
                       ))}
                     </Flex>
                   </nav>
@@ -93,7 +89,7 @@ export const ProductsPage = () => {
                     style={{ height: "220px", overflowY: "auto" }}
                     aria-label="Фильтр по брендам"
                   >
-                    <h4 className="text-orange pb-1">Бренд</h4>
+                    <h4 className="text-blue pb-1">Бренд</h4>
                     <Flex vertical gap={"small"}>
                       {brands.map((item) => (
                         <Checkbox
@@ -120,11 +116,11 @@ export const ProductsPage = () => {
               </div>
             </section>
             <nav aria-label="Пагинация">
-              <Pagination 
-                className="pt-4" 
+              <Pagination
+                className="pt-4"
                 current={currentPage}
                 onChange={setCurrentPage}
-                total={dentalItems.length} 
+                total={dentalItems.length}
                 pageSize={pageSize}
                 showSizeChanger={false}
               />

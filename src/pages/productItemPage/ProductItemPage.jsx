@@ -2,6 +2,9 @@ import { Collapse, Flex, Typography } from "antd";
 import { ProductInfo } from "../../components";
 
 import styles from "./ProductItemPage.module.scss";
+import { useParams } from "react-router";
+import { useMemo } from "react";
+import { dentalItems } from "../../data";
 
 const { Title, Paragraph } = Typography;
 
@@ -31,11 +34,17 @@ const items = [
 ];
 
 export const ProductItemPage = () => {
+  const { id } = useParams();
+
+  const findItem = useMemo(() => {
+    return dentalItems.find((item) => item.id === +id);
+  }, [id]);
+
   return (
     <section className={`${styles.wrap} py-4 header_h`}>
       <Flex vertical className="container">
         <Title>О продукте</Title>
-        <ProductInfo />
+        <ProductInfo item={findItem} />
         <Flex className="container">
           <Flex vertical className="w-full max-w-4xl py-10">
             <Title level={2}>E Connect S — эндомотор с апекс-локатором</Title>

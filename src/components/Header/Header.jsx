@@ -1,16 +1,17 @@
 import {
-  SearchOutlined,
+  MenuOutlined,
+  PhoneFilled,
   ShoppingCartOutlined,
   UserOutlined,
 } from "@ant-design/icons";
 import { Drawer, Flex, Input } from "antd";
 import { Link, useNavigate } from "react-router";
-import styles from "./Header.module.scss";
-import logo from "../../assets/images/logo_without_bg_blue.jpeg";
 import { CustomButton } from "../CustomButton";
 import { useState } from "react";
 import { pathname } from "../../enums";
 import clsx from "clsx";
+import styles from "./Header.module.scss";
+import logo from "../../assets/images/logo_without_bg_blue.png";
 
 export const Header = () => {
   const [search, setSearch] = useState(false);
@@ -18,10 +19,9 @@ export const Header = () => {
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 
-  console.log(searchValue, "searchValue");
-
   const onPage = (nav) => {
     setPage(nav);
+    setSearch(false);
   };
 
   const handleSearch = (e) => {
@@ -34,101 +34,130 @@ export const Header = () => {
 
   return (
     <header className={styles.wrap}>
-      <Flex justify="space-between" align="center" className={styles.header}>
-        <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
-          <img className={styles.logo} src={logo} alt="logo" />
-        </Link>
+      <Flex vertical className={clsx(styles.header)}>
+        <Flex
+          className={clsx("container")}
+          justify="space-between"
+          align="center"
+        >
+          <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+            <img className={styles.logo} src={logo} alt="logo" />
+          </Link>
 
-        <Flex align="center" gap={"large"}>
-          <Link
-            className={
-              page === pathname.HOME ? styles.active_link : styles.link
-            }
-            to={pathname.HOME}
-            onClick={() => onPage(pathname.HOME)}
-          >
-            Главная
-          </Link>
-          <Link
-            className={
-              page === pathname.ABOUT ? styles.active_link : styles.link
-            }
-            // to={pathname.ABOUT}
-            onClick={() => onPage(pathname.ABOUT)}
-          >
-            О нас
-          </Link>
-          <Link
-            className={
-              page === pathname.PRODUCTS ? styles.active_link : styles.link
-            }
-            to={pathname.PRODUCTS}
-            onClick={() => onPage(pathname.PRODUCTS)}
-          >
-            Магазин
-          </Link>
-          <Link
-            className={
-              page === pathname.CONTACT ? styles.active_link : styles.link
-            }
-            // to={pathname.CONTACT}
-            onClick={() => onPage(pathname.CONTACT)}
-          >
-            Контакты
-          </Link>
-          <Link
-            to={`${pathname.HOME}#about`}
-            className={
-              page === pathname.STUDY ? styles.active_link : styles.link
-            }
-            // to={pathname.CONTACT}
-            onClick={() => onPage(pathname.STUDY)}
-          >
-            Обучение
-          </Link>
-          <CustomButton>Акции</CustomButton>
-        </Flex>
+          <Flex className={clsx(styles.search)} align="center" gap="middle">
+            <div onClick={() => setSearch(true)}>
+              <MenuOutlined />
+            </div>
 
-        <Flex gap={"large"} align="center">
-          <div onClick={() => setSearch(true)}>
-            <SearchOutlined
-              className="text-2xl"
-              style={{ whiteSpace: "nowrap" }}
+            <Input
+              value={searchValue}
+              placeholder="Поиск"
+              onChange={(e) => setSearchValue(e.target.value)}
+              onPressEnter={handleSearch}
+              style={{ width: "600px" }}
             />
-          </div>
-          <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
-            <UserOutlined />
-          </Link>
-          <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
-            <ShoppingCartOutlined />
-          </Link>
+          </Flex>
+
+          <Flex gap="small">
+            <PhoneFilled className={clsx("text-3xl font-100")} />
+            <Flex vertical>
+              <span>Контакты:</span>
+              <span>0556 414 444</span>
+            </Flex>
+
+            {/* <span>
+              <WhatsAppOutlined /> 0706 414 444
+            </span> */}
+          </Flex>
+
+          <Flex gap={"large"} align="center">
+            <Link to="" className="text-3xl" style={{ whiteSpace: "nowrap" }}>
+              <UserOutlined />
+            </Link>
+            <Link to="" className="text-3xl" style={{ whiteSpace: "nowrap" }}>
+              <ShoppingCartOutlined />
+            </Link>
+          </Flex>
         </Flex>
       </Flex>
 
       <Flex align="center" justify="center">
         <Drawer
-          placement="top"
+          placement="left"
           closable={false}
           onClose={() => setSearch(false)}
           open={search}
           // key={placement}
+          width={200}
         >
-          <div className={clsx("container ")}>
+          <div className={clsx(styles.header_nav)}>
             <Flex
-              className={clsx(styles.search, " pt-10")}
               vertical
-              align="start"
-              gap="small"
+              className={clsx("mt-10 container")}
+              gap={"large"}
+              justify="start"
             >
-              <Input
-                value={searchValue}
-                placeholder="Поиск"
-                onChange={(e) => setSearchValue(e.target.value)}
-                onPressEnter={handleSearch}
-              />
-              <span className={clsx("text-md")} style={{ color: "#147abc" }}>
-                Чтобы закрыть поиск нажмите ESC
-              </span>
+              <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+                <span
+                  className={
+                    page === pathname.HOME ? styles.active_link : styles.link
+                  }
+                >
+                  Главная
+                </span>
+              </Link>
+              <Link
+                // to={pathname.ABOUT}
+                onClick={() => onPage(pathname.ABOUT)}
+              >
+                <span
+                  className={
+                    page === pathname.ABOUT ? styles.active_link : styles.link
+                  }
+                >
+                  О нас
+                </span>
+              </Link>
+              <Link
+                to={pathname.PRODUCTS}
+                onClick={() => onPage(pathname.PRODUCTS)}
+              >
+                <span
+                  className={
+                    page === pathname.PRODUCTS
+                      ? styles.active_link
+                      : styles.link
+                  }
+                >
+                  Магазин
+                </span>
+              </Link>
+              <Link
+                // to={pathname.CONTACT}
+                onClick={() => onPage(pathname.CONTACT)}
+              >
+                <span
+                  className={
+                    page === pathname.CONTACT ? styles.active_link : styles.link
+                  }
+                >
+                  Контакты
+                </span>
+              </Link>
+              <Link
+                to={`${pathname.HOME}#about`}
+                // to={pathname.CONTACT}
+                onClick={() => onPage(pathname.STUDY)}
+              >
+                <span
+                  className={
+                    page === pathname.STUDY ? styles.active_link : styles.link
+                  }
+                >
+                  Обучение
+                </span>
+              </Link>
+              <CustomButton>Акции</CustomButton>
             </Flex>
           </div>
         </Drawer>

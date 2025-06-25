@@ -3,16 +3,26 @@
   padding: 0 10px 10px 10px;
   transition: box-shadow 0.2s ease-in-out;
   gap: 2px;
-  height: 250px;
 }
 
 .card:hover {
   box-shadow: 0 3px 16px 0 rgba(0, 0, 0, 0.11);
 }
 
+.imageWrapper {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
 .img {
-  height: 150px;
-  object-fit: contain;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+  position: relative;
 }
 
 .title {
@@ -38,22 +48,6 @@
   font-size: 18px;
 
   font-weight: bold;
-}
-
-.imageWrapper {
-  position: relative;
-  height: 150px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  z-index: 1;
-  position: relative;
 }
 
 .overlay {

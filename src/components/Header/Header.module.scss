@@ -18,15 +18,15 @@
 }
 
 .header {
-  padding: 30px 50px;
+  padding: 10px 0 20px 0;
   position: relative;
   width: 100%;
 }
 
 .logo {
   position: absolute;
-  width: 60px;
-  top: 2px;
+  width: 90px;
+  top: 10px;
   z-index: 1100;
 }
 
@@ -36,7 +36,7 @@
       color: #147abc;
       border: none;
       border-bottom: 2px solid #147abc;
-      font-size: 48px !important;
+      font-size: 20px !important;
       background: transparent;
       padding: 0;
       border-radius: 0;
@@ -74,6 +74,7 @@
   line-height: 1.5;
   text-decoration: none;
   transition: color 0.3s ease;
+  display: inline-block;
 
   &::after {
     content: "";
@@ -100,6 +101,7 @@
   color: #147abc !important;
   text-decoration: none;
   cursor: pointer;
+  display: inline-block;
 
   &::after {
     content: "";

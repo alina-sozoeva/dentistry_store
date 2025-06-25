@@ -11,6 +11,7 @@ import {
 } from "@ant-design/icons";
 import { useEffect } from "react";
 import { pathname } from "../../enums";
+import foto from "../../assets/images/сhairs/C Class_unit cart_2.png";
 
 const whoWeAre = [
   { key: 1, title: "БОЛЕЕ 2000 НАИМЕНОВАНИЙ", icon: <SwitcherOutlined /> },
@@ -82,11 +83,7 @@ export const HomePage = () => {
               </Flex>
             </Col>
             <Col span={13}>
-              <img
-                src="https://denttrade.kg/wp-content/uploads/2024/05/chair_sirona.png"
-                alt=""
-                style={{ width: "80%" }}
-              />
+              <img src={foto} alt={foto} />
             </Col>
           </Row>
 

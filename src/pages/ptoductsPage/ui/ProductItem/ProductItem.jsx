@@ -1,12 +1,9 @@
-import { ShoppingCartOutlined, StarFilled } from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Flex } from "antd";
-import foto from "../../../../assets/images/tovar.jpg";
-import { CustomButton } from "../../../../components";
-import styles from "./ProductItem.module.scss";
 import { useState } from "react";
 import { ProductModal } from "../ProductModal";
-import { RatingStars } from "../../../../ui";
 import { useNavigate } from "react-router";
+import styles from "./ProductItem.module.scss";
 
 export const ProductItem = ({ item }) => {
   const navigate = useNavigate();
@@ -19,7 +16,7 @@ export const ProductItem = ({ item }) => {
   return (
     <Flex className={styles.card} vertical>
       <div className={styles.imageWrapper}>
-        <img className={styles.img} src={foto} alt="" />
+        <img className={styles.img} src={item.img[0]} alt={item.img[0]} />
         <div className={styles.overlay} />
         <button
           className={styles.buttonOverlay}
