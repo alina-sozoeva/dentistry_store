@@ -1,9 +1,8 @@
-// Common mixins
 @mixin card-base {
   position: relative;
   background-color: white;
   box-shadow: 0 3px 30px rgba(0, 0, 0, 0.16);
-  border-radius: 35px;
+  border-radius: 14px;
   overflow: hidden;
   cursor: pointer;
   padding: 20px;

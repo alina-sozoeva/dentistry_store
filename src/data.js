@@ -15,7 +15,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Front,
       chairImages.LUVIS_Chair_C_Class_Perspective,
     ],
-    description: "",
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 2,
@@ -31,6 +32,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Front,
       chairImages.LUVIS_Chair_C_Class_Perspective,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 3,
@@ -46,6 +49,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Front,
       chairImages.LUVIS_Chair_C_Class_Perspective,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 4,
@@ -61,6 +66,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Front,
       chairImages.LUVIS_Chair_C_Class_Perspective,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 5,
@@ -76,6 +83,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Front,
       chairImages.LUVIS_Chair_C_Class_Perspective,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 6,
@@ -91,6 +100,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Back,
       chairImages.LUVIS_Chair_C_Class_Perspective,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 7,
@@ -106,6 +117,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Back,
       chairImages.LUVIS_Chair_C_Class_Front,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 8,
@@ -121,6 +134,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Back,
       chairImages.LUVIS_Chair_C_Class_Front,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 9,
@@ -136,6 +151,8 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Back,
       chairImages.LUVIS_Chair_C_Class_Front,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
   {
     id: 10,
@@ -151,5 +168,7 @@ export const dentalItems = [
       chairImages.LUVIS_Chair_C_Class_Back,
       chairImages.LUVIS_Chair_C_Class_Front,
     ],
+    description:
+      " Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae corporis a alias? Aut, inventore? Accusantium recusandae non sed dolores. Atque sequi facere fuga. Recusandae soluta inventore, velit sunt corporis quos.",
   },
 ];

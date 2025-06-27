@@ -1,3 +1,26 @@
+@mixin gradient_bg {
+  border-radius: 20px;
+  background: #0b4672;
+  background: linear-gradient(
+    90deg,
+    rgba(11, 70, 114, 1) 0%,
+    rgba(20, 119, 186, 1) 35%,
+    rgba(127, 184, 220, 1) 100%
+  );
+}
+
+.section_title {
+  color: #053b5f;
+  z-index: 900;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    color: #0072bc;
+  }
+}
+
 .card {
   max-width: 300px;
   height: 200px;
@@ -19,25 +42,51 @@
   }
 }
 
-.title {
-  font-size: 26px;
-  font-weight: 400;
+.about {
+  border-radius: 14px;
+  padding: 15px 60px;
+  background-color: white;
+  gap: 100px;
+  color: #0072bc;
+  font-size: 16px;
+  border: 1px solid #dfebf8;
+
+  svg {
+    font-size: 24px;
+  }
 }
-.descrip {
-  font-size: 14px;
+
+.brands {
+  :global {
+    .slick-track {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
+.brand {
+  width: 100%;
+  padding: 10px;
+  border-radius: 14px;
+  border: 1px solid #e1e4e7;
+  margin-bottom: 5px;
+
+  img {
+    width: 150px;
+    height: 100px;
+    object-fit: cover;
+  }
+}
+
+.best_prise {
+  @include gradient_bg;
+  padding: 32px;
 }
 
 .reviews {
-  border-radius: 20px;
-  background: #0b4672;
-  background: linear-gradient(
-    90deg,
-    rgba(11, 70, 114, 1) 0%,
-    rgba(20, 119, 186, 1) 35%,
-    rgba(127, 184, 220, 1) 100%
-  );
+  @include gradient_bg;
   height: 800px;
-
   div {
     h2 {
       max-width: 400px;

@@ -59,7 +59,7 @@ export const Header = () => {
           </Flex>
 
           <Flex gap="small">
-            <PhoneFilled className={clsx("text-3xl font-100")} />
+            <PhoneFilled className={clsx("text-2xl font-100")} />
             <Flex vertical>
               <span>Контакты:</span>
               <span>0556 414 444</span>
@@ -71,10 +71,15 @@ export const Header = () => {
           </Flex>
 
           <Flex gap={"large"} align="center">
-            <Link to="" className="text-3xl" style={{ whiteSpace: "nowrap" }}>
+            <Link
+              to=""
+              className={clsx("text-2xl flex gap-2 items-center")}
+              style={{ whiteSpace: "nowrap" }}
+            >
               <UserOutlined />
+              <span className="text-sm">login</span>
             </Link>
-            <Link to="" className="text-3xl" style={{ whiteSpace: "nowrap" }}>
+            <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
               <ShoppingCartOutlined />
             </Link>
           </Flex>

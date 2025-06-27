@@ -1,7 +1,7 @@
 import { BarsOutlined } from "@ant-design/icons";
 import { Checkbox, Col, Flex, Pagination, Row, Typography } from "antd";
-import { ProductItem } from "./ui";
-import { CustomButton } from "../../components";
+
+import { CustomButton, ProductItem } from "../../components";
 import { dentalItems } from "../../data";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";

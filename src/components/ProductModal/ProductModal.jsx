@@ -1,5 +1,5 @@
 import { Modal } from "antd";
-import { ProductInfo } from "../../../../components";
+import { ProductInfo } from "../ProductInfo";
 
 export const ProductModal = ({ open, onCancel, item }) => {
   return (
