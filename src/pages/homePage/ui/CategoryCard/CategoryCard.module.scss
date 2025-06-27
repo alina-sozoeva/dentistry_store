@@ -1,8 +1,8 @@
 @mixin card-base {
   position: relative;
   background-color: white;
-  box-shadow: 0 3px 30px rgba(0, 0, 0, 0.16);
-  border-radius: 14px;
+  // box-shadow: 0 3px 30px rgba(0, 0, 0, 0.16);
+  border-radius: 10px;
   overflow: hidden;
   cursor: pointer;
   padding: 20px;
@@ -13,7 +13,7 @@
   }
 
   h4 {
-    color: #147abc;
+    color: #205375;
   }
 
   &:hover {
@@ -54,7 +54,7 @@
   position: absolute;
   bottom: 0;
   margin-bottom: 70px;
-  color: #053b5f;
+  color: #205375;
   z-index: 900;
   text-align: center;
   transition: all 0.3s ease;

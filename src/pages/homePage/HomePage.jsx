@@ -1,31 +1,34 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import styles from "./HomePage.module.scss";
 import { CustomButton, ProductItem } from "../../components";
-import { Carousel, Col, Flex, Row, Typography } from "antd";
+import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
-import { categories, CategoryCard, CustomCarousel } from "./ui";
+import { categories, CustomCarousel } from "./ui";
 import { useEffect } from "react";
-import { pathname } from "../../enums";
-import clsx from "clsx";
 import { dentalItems } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { AiFillSafetyCertificate } from "react-icons/ai";
-import * as brands from "../../assets/images/brendsLogo";
 import { DoubleRightOutlined } from "@ant-design/icons";
+import { PiUserCircleFill } from "react-icons/pi";
+import * as brands from "../../assets/images/brendsLogo";
+import styles from "./HomePage.module.scss";
+import clsx from "clsx";
 
 const reviews = [
   {
+    date: "26.06.2025",
     name: "Иванов Иван",
     description:
       "Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
   },
   {
+    date: "26.06.2025",
     name: "Петрова Анна",
     description:
       "Очень понравился подход доктора, всегда на связи и дает четкие рекомендации. Рекомендую! Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
   },
   {
+    date: "26.06.2025",
     name: "Смирнов Сергей",
     description:
       "Доктор с большой буквы! Очень помог мне с лечением, всё объяснил подробно и доступно. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
@@ -118,35 +121,54 @@ export const HomePage = () => {
               +2000 продуктов
             </span>
           </Flex>
+          <div className={styles.line}></div>
           <Flex align="center" gap="small">
             <FaStar />
             <span className={clsx("uppercase font-normal")}>+100 брендов</span>
           </Flex>
+          <div className={styles.line}></div>
           <Flex align="center" gap="small">
             <FaCheckCircle />
-            <span className={clsx("uppercase font-normal")}>100% оригинал</span>
-          </Flex>
-          <Flex align="center" gap="small">
-            <AiFillSafetyCertificate />
-            <span className={clsx("uppercase font-normal")}>
-              самые лучшие цены
-            </span>
+            <span className={clsx("uppercase font-normal")}>100% качества</span>
           </Flex>
         </Flex>
       </section>
 
-      <section className={clsx("container")}>
-        <Flex vertical gap="small" className={clsx("mb-4")}>
-          <Typography.Title level={2}>Лучшие бренды</Typography.Title>
+      <section className={clsx("container")} id="about">
+        <Flex vertical gap="small" className={clsx("mb-6")}>
+          <Typography.Title level={2} className={clsx("text-center mb-6")}>
+            Поиск по категориям
+          </Typography.Title>
 
           <Carousel
             // autoplay
+            arrows
+            className={clsx(styles.categories, "w-full")}
+            slidesToShow={5}
+          >
+            {categories.map((item) => (
+              <Flex className={clsx("text-center mb-6")}>
+                <div className={clsx(styles.category)} key={item.key}>
+                  <img src={item.img} alt="" />
+                </div>
+                <span className={clsx("font-bold text-xl")}>{item.title}</span>
+              </Flex>
+            ))}
+          </Carousel>
+        </Flex>
+      </section>
+
+      <section className={clsx("container")}>
+        <Flex vertical gap="small" className={clsx("mb-6")}>
+          <Typography.Title level={2}>Лучшие бренды</Typography.Title>
+
+          <Carousel
             arrows
             className={clsx(styles.brands, "w-full")}
             slidesToShow={10}
           >
             {brandsItem.map((item) => (
-              <Flex className={clsx("text-center mb-4")}>
+              <Flex className={clsx("text-center mb-6")}>
                 <div className={clsx(styles.brand)} key={item.key}>
                   <img src={item.img} alt="" />
                 </div>
@@ -171,7 +193,7 @@ export const HomePage = () => {
           </Flex>
 
           <Flex gap="small">
-            {dentalItems.slice(0, 7).map((item) => (
+            {dentalItems.slice(0, 6).map((item) => (
               <ProductItem item={item} />
             ))}
           </Flex>
@@ -191,51 +213,125 @@ export const HomePage = () => {
             </span>
           </Flex>
           <Flex gap="small">
-            {dentalItems.slice(0, 7).map((item) => (
+            {dentalItems.slice(0, 6).map((item) => (
               <ProductItem item={item} />
             ))}
           </Flex>
         </Flex>
       </section>
 
-      <section id="about">
-        <div className="container">
-          <Typography.Title level={2}>Поиск по категориям</Typography.Title>
-
+      <section className={clsx("container ")}>
+        <Flex vertical gap="small" className={clsx("mb-6")}>
           <Flex
-            wrap="wrap"
-            justify="center"
-            className="my-4"
-            style={{ rowGap: "18px", columnGap: "45px" }}
+            align="center"
+            justify="space-between"
+            onClick={() => navigate("/products")}
           >
-            {categories.map((item) => (
-              <CategoryCard
-                key={item.key}
-                title={item.title}
-                onClick={() => navigate(pathname.PRODUCTS)}
-                slug={item.slug}
-              />
+            <Typography.Title level={2}>Рекомендуемые товары</Typography.Title>
+            <span className={clsx(styles.section_title)}>
+              Смотреть все <DoubleRightOutlined />
+            </span>
+          </Flex>
+          <Flex gap="small">
+            {dentalItems.slice(0, 6).map((item) => (
+              <ProductItem item={item} />
             ))}
+          </Flex>
+        </Flex>
+      </section>
+
+      <section className={clsx(styles.reviews, "my-10")}>
+        <div className={clsx("container")}>
+          <Flex vertical justify="center">
+            <h2 className="text-3xl uppercase text-white mb-10">
+              Отзывы покупателей
+            </h2>
+            <Flex gap="small">
+              {reviews.map((review, index) => (
+                <div key={index} className={styles.reviews_one}>
+                  <Flex align="center" justify="space-between">
+                    <Flex align="center" gap="small">
+                      <PiUserCircleFill className={clsx("text-5xl")} />
+                      <Flex vertical>
+                        <span>{review.date}</span>
+                        <h3 className={clsx("font-bold")}>{review.name}</h3>
+                      </Flex>
+                    </Flex>
+
+                    <RatingStars />
+                  </Flex>
+
+                  <p className={clsx("text-base line-clamp-4")}>
+                    {review.description}
+                  </p>
+                </div>
+              ))}
+            </Flex>
           </Flex>
         </div>
       </section>
 
-      <section
-        className={`${styles.reviews} container`}
-        style={{ marginBottom: "40px" }}
-      >
-        <div className="my-10 flex justify-center items-center h-full gap-10">
-          <h2 className="text-3xl uppercase text-white">Отзывы покупателей</h2>
-          <div className="flex flex-col gap-10">
-            {reviews.map((review, index) => (
-              <div key={index} className={styles.reviews_one}>
-                <h3>{review.name}</h3>
-                <RatingStars />
-                <p>{review.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+      <section className={clsx("container")}>
+        <Flex vertical gap="small" className={clsx(styles.edu, "mb-20")}>
+          <Typography.Title level={2} className={clsx("text-center mb-6")}>
+            Обучение
+          </Typography.Title>
+          <Carousel
+            autoplay
+            arrows
+            className={clsx(styles.carousel)}
+            slidesToShow={3}
+          >
+            <Flex vertical>
+              <img
+                src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-4.png?v=1744633500&width=540"
+                alt=""
+              />
+              <h3 className={clsx("font-bold my-4 text-2xl")}>
+                Lorem ipsum dolor sit amet consectetu
+              </h3>
+              <span className={clsx("text-base line-clamp-3 mb-4")}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusamus minus nihil inventore, ipsam omnis itaque vitae esse!
+                Et aspernatur dolorum repellendus cumque vel, ullam, natus optio
+                dolor ratione excepturi voluptas?
+              </span>
+              <CustomButton>Подробнее</CustomButton>
+            </Flex>
+            <Flex vertical>
+              <img
+                src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-5.png?v=1744633508&width=540"
+                alt=""
+              />
+              <h3 className={clsx("font-bold my-4 text-2xl")}>
+                Lorem ipsum dolor sit amet consectetu
+              </h3>
+              <span className={clsx("text-base line-clamp-3 mb-4")}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusamus minus nihil inventore, ipsam omnis itaque vitae esse!
+                Et aspernatur dolorum repellendus cumque vel, ullam, natus optio
+                dolor ratione excepturi voluptas?
+              </span>
+              <CustomButton>Подробнее</CustomButton>
+            </Flex>
+            <Flex vertical>
+              <img
+                src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-4.png?v=1744633500&width=540"
+                alt=""
+              />
+              <h3 className={clsx("font-bold my-4 text-2xl")}>
+                Lorem ipsum dolor sit amet consectetu
+              </h3>
+              <span className={clsx("text-base line-clamp-3 mb-4")}>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Accusamus minus nihil inventore, ipsam omnis itaque vitae esse!
+                Et aspernatur dolorum repellendus cumque vel, ullam, natus optio
+                dolor ratione excepturi voluptas?
+              </span>
+              <CustomButton>Подробнее</CustomButton>
+            </Flex>
+          </Carousel>
+        </Flex>
       </section>
     </main>
   );

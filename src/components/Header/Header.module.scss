@@ -4,7 +4,6 @@
   position: fixed;
   width: 100%;
   z-index: 1000;
-  // box-shadow: 0 18px 18px 0 rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid #dee0e3;
 
   svg {
@@ -19,9 +18,21 @@
 }
 
 .header {
-  padding: 10px 0 20px 0;
+  padding: 12px 0 12px 0;
   position: relative;
   width: 100%;
+  border-bottom: 1px solid #dee0e3;
+
+  svg {
+    font-size: 24px;
+  }
+}
+
+.header_nav {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 12px 0;
 }
 
 .logo {
@@ -35,12 +46,11 @@
   :global {
     .ant-input {
       color: #147abc;
-      border: none;
-      border-bottom: 2px solid #147abc;
-      font-size: 20px !important;
+      border: 1px solid #147abc;
+      font-size: 14px !important;
       background: transparent;
-      padding: 0;
-      border-radius: 0;
+      border-radius: 10px;
+      padding: 10px;
 
       &::placeholder {
         color: #147abc;
@@ -49,12 +59,10 @@
 
       &:hover,
       &:focus {
-        border-bottom: 2px solid #147abc;
         box-shadow: none;
       }
 
       &:focus {
-        border-bottom: 2px solid #147abc;
         box-shadow: none;
       }
     }
@@ -62,7 +70,6 @@
     .ant-input-outlined {
       &:hover,
       &:focus {
-        border-bottom: 2px solid #147abc;
         box-shadow: none;
       }
     }
@@ -76,6 +83,7 @@
   text-decoration: none;
   transition: color 0.3s ease;
   display: inline-block;
+  font-weight: 500;
 
   &::after {
     content: "";

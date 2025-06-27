@@ -41,7 +41,9 @@ export const ProductItem = ({ item }) => {
           </span>
         </Flex>
         <Flex vertical justify="space-between">
-          <h3 className={clsx("text-base  min-h-[3em] font-bold line-clamp-2")}>
+          <h3
+            className={clsx("text-base  min-h-[3em] font-bold line-clamp-2 ")}
+          >
             {item.title}
           </h3>
           <span className={clsx("text-sm line-clamp-2")}>
@@ -53,8 +55,7 @@ export const ProductItem = ({ item }) => {
             <StarFilled style={{ color: "#f05423" }} /> 5.0
           </span>
           <span style={{ color: "#bbc2c8" }}>
-            <MessageFilled />
-            12 отзывов
+            <MessageFilled /> 12 отзывов
           </span>
         </Flex>
         <button className={clsx(styles.btn)}>Добавить в корзину</button>

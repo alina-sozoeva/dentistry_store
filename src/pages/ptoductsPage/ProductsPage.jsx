@@ -109,7 +109,7 @@ export const ProductsPage = () => {
 
           <Col span={20} className="flex flex-col items-center">
             <section aria-label="Список товаров">
-              <div className={`${styles.ptoducts} grid grid-cols-5 gap-4`}>
+              <div className={`${styles.ptoducts} grid grid-cols-5 gap-2`}>
                 {currentItems.map((item) => (
                   <ProductItem key={item.id} item={item} />
                 ))}

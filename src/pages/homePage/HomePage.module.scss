@@ -1,12 +1,6 @@
-@mixin gradient_bg {
-  border-radius: 20px;
-  background: #0b4672;
-  background: linear-gradient(
-    90deg,
-    rgba(11, 70, 114, 1) 0%,
-    rgba(20, 119, 186, 1) 35%,
-    rgba(127, 184, 220, 1) 100%
-  );
+.line {
+  width: 1px;
+  background-color: #dddddd;
 }
 
 .section_title {
@@ -43,11 +37,11 @@
 }
 
 .about {
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 15px 60px;
   background-color: white;
   gap: 100px;
-  color: #0072bc;
+  color: #205375;
   font-size: 16px;
   border: 1px solid #dfebf8;
 
@@ -79,24 +73,48 @@
   }
 }
 
+.categories {
+  :global {
+    .slick-track {
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
+.category {
+  width: 100%;
+  border-radius: 14px;
+  margin-bottom: 5px;
+
+  img {
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
+
 .best_prise {
-  @include gradient_bg;
+  // @include gradient_bg;
   padding: 32px;
 }
 
 .reviews {
-  @include gradient_bg;
-  height: 800px;
+  // @include gradient_bg;
+  background-color: #147abc;
+  height: 400px;
+  display: flex;
+  align-items: center;
   div {
     h2 {
       max-width: 400px;
+      color: white;
     }
   }
 
   .reviews_one {
     max-width: 700px;
     height: 200px;
-    border-radius: 15px;
+    border-radius: 10px;
     background-color: #ffffff;
     background-position: center center;
     border-color: transparent;
@@ -107,5 +125,14 @@
     justify-content: center;
     gap: 20px;
     padding: 40px;
+  }
+}
+
+.edu {
+  :global {
+    .slick-track {
+      display: flex;
+      gap: 20px;
+    }
   }
 }
