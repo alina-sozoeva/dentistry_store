@@ -1,4 +1,5 @@
-export { default as logo_luvis } from "./luvis-logo.jpg";
-export { default as dentsply } from "./dentsply.jpg";
-export { default as septodont } from "./LogoSeptodont.jpg";
-export { default as et_dental } from "./et dental.webp";
+export { default as luvis } from "./luvis_logo.png";
+export { default as graphy } from "./graphy.png";
+export { default as b_and_e } from "./b_and_e_logo.png";
+export { default as ecotorn_logo } from "./ecotorn_logo.png";
+export { default as promis_logo } from "./promis_logo.png";

@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { dentalItems } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
-import { AiFillSafetyCertificate } from "react-icons/ai";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
 import * as brands from "../../assets/images/brendsLogo";
@@ -38,53 +37,38 @@ const reviews = [
 const brandsItem = [
   {
     key: 1,
-    title: " LUVIS Dental ",
-    img: brands.et_dental,
+    title: "Graphy",
+    img: brands.graphy,
+    background: "#f4f3ef",
   },
   {
     key: 2,
-    title: " LUVIS Dental ",
-    img: brands.septodont,
+    title: "Luvis",
+    img: brands.luvis,
+    background: "#232323",
   },
   {
     key: 3,
-    title: " LUVIS Dental ",
-    img: brands.dentsply,
+    title: "EcoTron",
+    img: brands.ecotorn_logo,
+    background: "#f4f3ef",
   },
   {
     key: 4,
-    title: " LUVIS Dental ",
-    img: brands.septodont,
+    title: "Promis",
+    img: brands.promis_logo,
+    background: "#222222",
   },
   {
     key: 5,
-    title: " LUVIS Dental ",
-    img: brands.et_dental,
+    title: "B&E",
+    img: brands.b_and_e,
+    background: "#f4f3ef",
   },
   {
     key: 6,
-    title: " LUVIS Dental ",
-    img: brands.septodont,
-  },
-  {
-    key: 7,
-    title: " LUVIS Dental ",
-    img: brands.dentsply,
-  },
-  {
-    key: 8,
-    title: " LUVIS Dental ",
-    img: brands.et_dental,
-  },
-  {
-    key: 9,
-    title: " LUVIS Dental ",
-    img: brands.septodont,
-  },
-  {
-    key: 10,
-    title: " LUVIS Dental ",
-    img: brands.dentsply,
+    title: "Large V",
+    background: "#232323",
   },
 ];
 
@@ -165,11 +149,19 @@ export const HomePage = () => {
           <Carousel
             arrows
             className={clsx(styles.brands, "w-full")}
-            slidesToShow={10}
+            slidesToShow={5}
           >
             {brandsItem.map((item) => (
               <Flex className={clsx("text-center mb-6")}>
-                <div className={clsx(styles.brand)} key={item.key}>
+                <div
+                  className={clsx(styles.brand)}
+                  key={item.key}
+                  style={{
+                    backgroundColor: item.background
+                      ? item.background
+                      : "#89c9ff",
+                  }}
+                >
                   <img src={item.img} alt="" />
                 </div>
                 <span>{item.title}</span>

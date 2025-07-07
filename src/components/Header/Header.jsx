@@ -80,10 +80,7 @@ export const Header = () => {
               Главная
             </span>
           </Link>
-          <Link
-            // to={pathname.ABOUT}
-            onClick={() => onPage(pathname.ABOUT)}
-          >
+          <Link to={pathname.ABOUT} onClick={() => onPage(pathname.ABOUT)}>
             <span
               className={
                 page === pathname.ABOUT ? styles.active_link : styles.link
