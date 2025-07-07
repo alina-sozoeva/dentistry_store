@@ -3,3 +3,4 @@ export * from "./ptoductsPage";
 export * from "./productItemPage";
 export * from "./WIPPage";
 export * from "./aboutUsPage";
+export * from "./cartPage";

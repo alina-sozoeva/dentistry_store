@@ -1,5 +1,4 @@
 import { Carousel, Col, Divider, Flex, Input, Row } from "antd";
-
 import { RatingStars } from "../../ui";
 import { CustomButton } from "../CustomButton";
 import {
@@ -7,8 +6,6 @@ import {
   ShoppingCartOutlined,
   ShoppingOutlined,
 } from "@ant-design/icons";
-
-import foto from "../../assets/images/tovar.jpg";
 import styles from "./ProductInfo.module.scss";
 import { Link } from "react-router";
 

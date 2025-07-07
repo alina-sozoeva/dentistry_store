@@ -24,20 +24,20 @@ export const Footer = () => {
           <Link to={pathname.HOME}>Главная</Link>
           <Link to={pathname.PRODUCTS}>Продукты</Link>
           <Link to={pathname.PRODUCTS}>Бренды</Link>
-          <Link to={pathname.ORDER}>Корзина</Link>
+          <Link to={pathname.CART}>Корзина</Link>
           <Link>Чекаут</Link>
         </Flex>
         <Flex vertical>
-          <Link>О нас</Link>
-          <Link>Контакты</Link>
+          <Link to={pathname.ABOUT}>О нас</Link>
+          <Link to={pathname.CONTACT}>Контакты</Link>
           <Link>Условия и положения</Link>
           <Link>Политика конфиденциальности</Link>
           <Link>Политика возврата</Link>
         </Flex>
         <Flex vertical>
           <Link>Войти и зарегистрироваться</Link>
-          <Link>Настройки учетной записи</Link>
-          <Link>Мои заказы</Link>
+          <Link to={pathname.PROFILE}>Настройки учетной записи</Link>
+          <Link to={pathname.CART}>Мои заказы</Link>
           <Link>Список пожеланий</Link>
         </Flex>
         <Flex vertical>
@@ -46,8 +46,9 @@ export const Footer = () => {
           <span>улица Куйручук, 81/2</span>
           <span>Подпишитесь на</span>
           <Flex gap={"small"} className={styles.media}>
-            <FacebookOutlined />
-            <InstagramOutlined />
+            <a href="https://www.instagram.com/jdstore.kg/" target="_blank">
+              <InstagramOutlined />
+            </a>
           </Flex>
         </Flex>
       </Flex>

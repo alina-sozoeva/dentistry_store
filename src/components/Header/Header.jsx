@@ -52,13 +52,17 @@ export const Header = () => {
           </Flex>
           <Flex gap={"large"} align="center">
             <Link
-              to=""
+              to={pathname.PROFILE}
               className={clsx("text-2xl flex gap-2 items-center")}
               style={{ whiteSpace: "nowrap" }}
             >
               <UserOutlined />
             </Link>
-            <Link to="" className="text-2xl" style={{ whiteSpace: "nowrap" }}>
+            <Link
+              to={pathname.CART}
+              className="text-2xl"
+              style={{ whiteSpace: "nowrap" }}
+            >
               <ShoppingCartOutlined />
             </Link>
           </Flex>
@@ -101,10 +105,7 @@ export const Header = () => {
               Магазин
             </span>
           </Link>
-          <Link
-            // to={pathname.CONTACT}
-            onClick={() => onPage(pathname.CONTACT)}
-          >
+          <Link to={pathname.CONTACT} onClick={() => onPage(pathname.CONTACT)}>
             <span
               className={
                 page === pathname.CONTACT ? styles.active_link : styles.link
@@ -115,7 +116,6 @@ export const Header = () => {
           </Link>
           <Link
             to={`${pathname.HOME}#about`}
-            // to={pathname.CONTACT}
             onClick={() => onPage(pathname.STUDY)}
           >
             <span

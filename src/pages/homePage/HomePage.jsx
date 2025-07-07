@@ -9,7 +9,8 @@ import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
-import * as brands from "../../assets/images/brendsLogo";
+import { brandsItem, edu } from "./datas";
+
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
 
@@ -31,44 +32,6 @@ const reviews = [
     name: "Смирнов Сергей",
     description:
       "Доктор с большой буквы! Очень помог мне с лечением, всё объяснил подробно и доступно. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
-  },
-];
-
-const brandsItem = [
-  {
-    key: 1,
-    title: "Graphy",
-    img: brands.graphy,
-    background: "#f4f3ef",
-  },
-  {
-    key: 2,
-    title: "Luvis",
-    img: brands.luvis,
-    background: "#232323",
-  },
-  {
-    key: 3,
-    title: "EcoTron",
-    img: brands.ecotorn_logo,
-    background: "#f4f3ef",
-  },
-  {
-    key: 4,
-    title: "Promis",
-    img: brands.promis_logo,
-    background: "#222222",
-  },
-  {
-    key: 5,
-    title: "B&E",
-    img: brands.b_and_e,
-    background: "#f4f3ef",
-  },
-  {
-    key: 6,
-    title: "Large V",
-    background: "#232323",
   },
 ];
 
@@ -118,7 +81,7 @@ export const HomePage = () => {
         </Flex>
       </section>
 
-      <section className={clsx("container")} id="about">
+      <section className={clsx("container")}>
         <Flex vertical gap="small" className={clsx("mb-6")}>
           <Typography.Title level={2} className={clsx("text-center mb-6")}>
             Поиск по категориям
@@ -127,7 +90,7 @@ export const HomePage = () => {
           <Carousel
             // autoplay
             arrows
-            className={clsx(styles.categories, "w-full")}
+            className={clsx(styles.carousel, styles.categories, "w-full")}
             slidesToShow={5}
           >
             {categories.map((item) => (
@@ -148,7 +111,7 @@ export const HomePage = () => {
 
           <Carousel
             arrows
-            className={clsx(styles.brands, "w-full")}
+            className={clsx(styles.carousel, styles.brands, "w-full")}
             slidesToShow={5}
           >
             {brandsItem.map((item) => (
@@ -263,7 +226,7 @@ export const HomePage = () => {
         </div>
       </section>
 
-      <section className={clsx("container")}>
+      <section className={clsx("container")} id="about">
         <Flex vertical gap="small" className={clsx(styles.edu, "mb-20")}>
           <Typography.Title level={2} className={clsx("text-center mb-6")}>
             Обучение
@@ -271,57 +234,28 @@ export const HomePage = () => {
           <Carousel
             autoplay
             arrows
-            className={clsx(styles.carousel)}
+            className={clsx(styles.carousel, styles.edu_car)}
             slidesToShow={3}
           >
-            <Flex vertical>
-              <img
-                src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-4.png?v=1744633500&width=540"
-                alt=""
-              />
-              <h3 className={clsx("font-bold my-4 text-2xl")}>
-                Lorem ipsum dolor sit amet consectetu
-              </h3>
-              <span className={clsx("text-base line-clamp-3 mb-4")}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus minus nihil inventore, ipsam omnis itaque vitae esse!
-                Et aspernatur dolorum repellendus cumque vel, ullam, natus optio
-                dolor ratione excepturi voluptas?
-              </span>
-              <CustomButton>Подробнее</CustomButton>
-            </Flex>
-            <Flex vertical>
-              <img
-                src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-5.png?v=1744633508&width=540"
-                alt=""
-              />
-              <h3 className={clsx("font-bold my-4 text-2xl")}>
-                Lorem ipsum dolor sit amet consectetu
-              </h3>
-              <span className={clsx("text-base line-clamp-3 mb-4")}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus minus nihil inventore, ipsam omnis itaque vitae esse!
-                Et aspernatur dolorum repellendus cumque vel, ullam, natus optio
-                dolor ratione excepturi voluptas?
-              </span>
-              <CustomButton>Подробнее</CustomButton>
-            </Flex>
-            <Flex vertical>
-              <img
-                src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-4.png?v=1744633500&width=540"
-                alt=""
-              />
-              <h3 className={clsx("font-bold my-4 text-2xl")}>
-                Lorem ipsum dolor sit amet consectetu
-              </h3>
-              <span className={clsx("text-base line-clamp-3 mb-4")}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Accusamus minus nihil inventore, ipsam omnis itaque vitae esse!
-                Et aspernatur dolorum repellendus cumque vel, ullam, natus optio
-                dolor ratione excepturi voluptas?
-              </span>
-              <CustomButton>Подробнее</CustomButton>
-            </Flex>
+            {edu.map((item) => (
+              <Flex vertical key={item.key}>
+                <img
+                  src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-4.png?v=1744633500&width=540"
+                  alt=""
+                />
+                <h3
+                  className={clsx(
+                    "font-bold h-[2.5em] leading-[1.2em] overflow-hidden my-4 text-2xl"
+                  )}
+                >
+                  {item.title}
+                </h3>
+                <span className={clsx("text-base line-clamp-3 mb-4")}>
+                  {item.description}
+                </span>
+                <CustomButton>Подробнее</CustomButton>
+              </Flex>
+            ))}
           </Carousel>
         </Flex>
       </section>

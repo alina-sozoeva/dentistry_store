@@ -3,7 +3,8 @@ export const pathname = {
   PRODUCTS: "/products",
   ABOUT: "/about",
   CONTACT: "/contact",
-  ORDER: "/order",
+  CART: "/cart",
   PRODUCTSITEM: "/product/:id",
   STUDY: "/study",
+  PROFILE: "/profile",
 };
