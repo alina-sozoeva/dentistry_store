@@ -1,0 +1,12 @@
+export { default as cadcam } from "./cadcam.jpg";
+export { default as consumables } from "./consumables.jpg";
+export { default as endodontics } from "./endodontics.jpg";
+export { default as lab } from "./lab.jpg";
+export { default as models } from "./models.jpg";
+export { default as orthodontics } from "./orthodontics.jpg";
+export { default as sterilization } from "./sterilization.jpg";
+export { default as surgery } from "./surgery.jpg";
+export { default as therapy } from "./therapy.jpg";
+export { default as anesthesia } from "./anesthesia.jpg";
+export { default as tools } from "./tools.jpg";
+export { default as orthopedics } from "./orthopedics.jpg";

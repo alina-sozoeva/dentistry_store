@@ -19,7 +19,6 @@ export const CategoryCard = ({ key, title, onClick, slug }) => {
       onClick={onClick}
     >
       <Typography.Title level={4}>{title}</Typography.Title>
-
       <DotLottieReact s src={lottieUrl} className={styles.lottie_noPlay} />
       <DotLottieReact
         src={lottieUrl}

@@ -2,14 +2,14 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { CustomButton, ProductItem } from "../../components";
 import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
-import { categories, CustomCarousel } from "./ui";
+import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
 import { dentalItems } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
-import { brandsItem, edu } from "./datas";
+import { brandsItem, categories, edu } from "./datas";
 
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
@@ -228,9 +228,14 @@ export const HomePage = () => {
 
       <section className={clsx("container")} id="about">
         <Flex vertical gap="small" className={clsx(styles.edu, "mb-20")}>
-          <Typography.Title level={2} className={clsx("text-center mb-6")}>
-            Обучение
-          </Typography.Title>
+          <Flex justify="space-between" align="center">
+            <Typography.Title level={2} className={clsx("text-center mb-6")}>
+              Обучение
+            </Typography.Title>
+            <span className={clsx(styles.section_title)}>
+              Узнать больше <DoubleRightOutlined />
+            </span>
+          </Flex>
           <Carousel
             autoplay
             arrows
@@ -239,10 +244,7 @@ export const HomePage = () => {
           >
             {edu.map((item) => (
               <Flex vertical key={item.key}>
-                <img
-                  src="https://qx-medin.myshopify.com/cdn/shop/articles/blog-4.png?v=1744633500&width=540"
-                  alt=""
-                />
+                <img src={item.img} alt={item.img} />
                 <h3
                   className={clsx(
                     "font-bold h-[2.5em] leading-[1.2em] overflow-hidden my-4 text-2xl"
@@ -250,6 +252,14 @@ export const HomePage = () => {
                 >
                   {item.title}
                 </h3>
+                <div className={clsx("text-base")}>
+                  <span className={clsx("font-bold")}>Дата проведения:</span>{" "}
+                  {item.date}
+                </div>
+                <div className={clsx("text-base  mb-4")}>
+                  <span className={clsx("font-bold")}>Место проведения:</span>{" "}
+                  {item.location}
+                </div>
                 <span className={clsx("text-base line-clamp-3 mb-4")}>
                   {item.description}
                 </span>
