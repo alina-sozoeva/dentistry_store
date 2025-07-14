@@ -123,7 +123,8 @@ export const brandsItem = [
   {
     key: 6,
     title: "Large V",
-    background: "#232323",
+    img: brands.lardev_logo,
+    background: "#f4f3ef",
   },
 ];
 
