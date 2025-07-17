@@ -1,0 +1,32 @@
+.wrap_item {
+  background-color: white;
+  border-radius: 14px;
+  padding: 20px;
+
+  :global {
+    .ant-divider {
+      background-color: #dee0e3;
+      margin: 2px 0;
+    }
+  }
+}
+
+.wrap {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+}
+
+.btn {
+  border: 1px solid #205375;
+  color: white;
+  border-radius: 4px;
+  padding: 10px;
+  transition: 0.3s;
+  background-color: #205375;
+
+  &:hover {
+    background-color: white;
+    color: #205375;
+  }
+}

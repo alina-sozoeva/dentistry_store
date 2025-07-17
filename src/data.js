@@ -3,7 +3,7 @@ import * as chairImages from "./assets/images/сhairs";
 export const dentalItems = [
   {
     id: 1,
-    title: "LUVIS DENTAL CHAIRS",
+    nameid: "LUVIS DENTAL CHAIRS",
     price: 890,
     code: "CUR-5460",
     brand: "Curaprox",
@@ -20,7 +20,7 @@ export const dentalItems = [
   },
   {
     id: 2,
-    title: "Паста Sensodyne Repair & Protect",
+    nameid: "Паста Sensodyne Repair & Protect",
     price: 320,
     code: "SEN-RP01",
     brand: "Sensodyne",
@@ -37,7 +37,7 @@ export const dentalItems = [
   },
   {
     id: 3,
-    title: "Ирригатор Waterpik WP-100",
+    nameid: "Ирригатор Waterpik WP-100",
     price: 7490,
     code: "WP-100",
     brand: "Waterpik",
@@ -54,7 +54,7 @@ export const dentalItems = [
   },
   {
     id: 4,
-    title: "Зубная нить Oral-B Essential Floss",
+    nameid: "Зубная нить Oral-B Essential Floss",
     price: 150,
     code: "OB-EF10",
     brand: "Oral-B",
@@ -71,7 +71,7 @@ export const dentalItems = [
   },
   {
     id: 5,
-    title: "Ополаскиватель Listerine Total Care",
+    nameid: "Ополаскиватель Listerine Total Care",
     price: 410,
     code: "LTC-500",
     brand: "Listerine",
@@ -88,7 +88,7 @@ export const dentalItems = [
   },
   {
     id: 6,
-    title: "Полоски Crest 3D White",
+    nameid: "Полоски Crest 3D White",
     price: 2450,
     code: "C3D-WHITE",
     brand: "Crest",
@@ -105,7 +105,7 @@ export const dentalItems = [
   },
   {
     id: 7,
-    title: "Гель Elmex Sensitive",
+    nameid: "Гель Elmex Sensitive",
     price: 530,
     code: "ELM-SENS",
     brand: "Elmex",
@@ -122,7 +122,7 @@ export const dentalItems = [
   },
   {
     id: 8,
-    title: "Детская паста Splat Juicy",
+    nameid: "Детская паста Splat Juicy",
     price: 180,
     code: "SPL-JC",
     brand: "Splat",
@@ -139,7 +139,7 @@ export const dentalItems = [
   },
   {
     id: 9,
-    title: "Электрощётка Philips Sonicare",
+    nameid: "Электрощётка Philips Sonicare",
     price: 8990,
     code: "PH-SNCR",
     brand: "Philips",
@@ -156,7 +156,7 @@ export const dentalItems = [
   },
   {
     id: 10,
-    title: "Набор для путешествий DentalPro",
+    nameid: "Набор для путешествий DentalPro",
     price: 690,
     code: "DTP-KIT",
     brand: "DentalPro",

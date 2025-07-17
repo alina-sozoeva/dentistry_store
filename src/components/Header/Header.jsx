@@ -1,18 +1,13 @@
-import {
-  MenuOutlined,
-  PhoneFilled,
-  ShoppingCartOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import { Drawer, Flex, Input } from "antd";
+import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import { Flex, Input } from "antd";
 import { Link, useNavigate } from "react-router";
-import { CustomButton } from "../CustomButton";
 import { useState } from "react";
 import { pathname } from "../../enums";
-import clsx from "clsx";
+import { TbCategoryFilled } from "react-icons/tb";
+
 import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
-import { TbCategoryFilled } from "react-icons/tb";
+import clsx from "clsx";
 
 export const Header = () => {
   const [search, setSearch] = useState(false);
