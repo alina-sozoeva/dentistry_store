@@ -7,6 +7,7 @@ export const dentalItems = [
     price: 890,
     code: "CUR-5460",
     brand: "Curaprox",
+    quantity: 1,
     img: [
       chairImages.C_Class_unit_cart_2,
       chairImages.C_Class_unit_cart_3,
@@ -24,6 +25,7 @@ export const dentalItems = [
     price: 320,
     code: "SEN-RP01",
     brand: "Sensodyne",
+    quantity: 1,
     img: [
       chairImages.C_Class_unit_cart_3,
       chairImages.C_Class_unit_cart_2,
@@ -41,6 +43,7 @@ export const dentalItems = [
     price: 7490,
     code: "WP-100",
     brand: "Waterpik",
+    quantity: 1,
     img: [
       chairImages.C_Class_unit_cart_후면,
       chairImages.C_Class_unit_cart_2,
@@ -58,6 +61,7 @@ export const dentalItems = [
     price: 150,
     code: "OB-EF10",
     brand: "Oral-B",
+    quantity: 1,
     img: [
       chairImages.C_Class_unit_cart_2,
       chairImages.C_Class_unit_cart_3,
@@ -75,6 +79,7 @@ export const dentalItems = [
     price: 410,
     code: "LTC-500",
     brand: "Listerine",
+    quantity: 1,
     img: [
       chairImages.LUVIS_Chair_C_Class_Back,
       chairImages.C_Class_unit_cart_2,
@@ -92,6 +97,7 @@ export const dentalItems = [
     price: 2450,
     code: "C3D-WHITE",
     brand: "Crest",
+    quantity: 1,
     img: [
       chairImages.LUVIS_Chair_C_Class_Front,
       chairImages.C_Class_unit_cart_2,

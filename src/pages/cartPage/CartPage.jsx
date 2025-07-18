@@ -3,6 +3,7 @@ import { useCartColumns } from "./useCartColumns";
 import { dentalItems } from "../../data";
 import styles from "./CartPage.module.scss";
 import clsx from "clsx";
+import { CartItem } from "./ui";
 
 export const CartPage = () => {
   const { columns } = useCartColumns();
@@ -13,17 +14,18 @@ export const CartPage = () => {
 
         <Flex className={clsx(styles.wrap)}>
           <Flex vertical className={clsx(styles.wrap_item)}>
-            <span className={clsx("text-red-400 ")}>Удалить выбранные</span>
             <Divider />
-
-            <Table
-              dataSource={dentalItems}
-              showHeader={false}
-              columns={columns}
-              scroll={{ x: 800, y: 400 }}
-            />
+            <Flex vertical gap="small">
+              {dentalItems.slice(0, 7).map((item) => (
+                <CartItem key={item.id} item={item} />
+              ))}
+            </Flex>
           </Flex>
-          <Flex vertical className={clsx(styles.wrap_item)} gap="middle">
+          <Flex
+            vertical
+            className={clsx(styles.wrap_item, "h-[350px]")}
+            gap="middle"
+          >
             <button className={clsx(styles.btn)}>Перейти к оформлению</button>
             <Divider />
             <Flex justify="space-between">

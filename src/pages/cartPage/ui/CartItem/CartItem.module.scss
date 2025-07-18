@@ -1,0 +1,25 @@
+.wrap {
+  border: 1px solid #e1e4e6;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.dostavka {
+  color: #1f5375;
+  font-size: 12px;
+  font-weight: 700;
+  svg {
+    color: #1f5375;
+  }
+}
+
+.img {
+  border-radius: 14px;
+  width: 200px;
+  border: 1px solid #e1e4e6;
+
+  img {
+    height: 100px;
+    object-fit: cover;
+  }
+}
