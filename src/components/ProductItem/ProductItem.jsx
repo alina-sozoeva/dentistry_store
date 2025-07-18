@@ -44,7 +44,7 @@ export const ProductItem = ({ item }) => {
           <h3
             className={clsx("text-base  min-h-[3em] font-bold line-clamp-2 ")}
           >
-            {item.title}
+            {item.nameid}
           </h3>
           <span className={clsx("text-sm line-clamp-2")}>
             {item.description}

@@ -7,28 +7,24 @@ import clsx from "clsx";
 export const CartPage = () => {
   const { columns } = useCartColumns();
   return (
-    <main className={clsx("header_h ")} style={{ height: "75vh" }}>
+    <main className={clsx(styles.cart_wrap, "header_h mb-6 screen_page")}>
       <section className={clsx("container")}>
         <Typography.Title level={2}>Корзина</Typography.Title>
 
         <Flex className={clsx(styles.wrap)}>
           <Flex vertical className={clsx(styles.wrap_item)}>
-            <Flex gap="small" className={clsx("mb-4")}>
-              <Checkbox />
-              <span>Выбрать все</span>
-              <span className={clsx("text-red-400 ")}>Удалить выбранные</span>
-            </Flex>
+            <span className={clsx("text-red-400 ")}>Удалить выбранные</span>
             <Divider />
 
             <Table
               dataSource={dentalItems}
               showHeader={false}
               columns={columns}
-              scroll={{ y: 300 }}
+              scroll={{ x: 800, y: 400 }}
             />
           </Flex>
           <Flex vertical className={clsx(styles.wrap_item)} gap="middle">
-            <button className={clsx(styles.btn)}>Перейти к оплате</button>
+            <button className={clsx(styles.btn)}>Перейти к оформлению</button>
             <Divider />
             <Flex justify="space-between">
               <span className={clsx("text-lg font-bold")}>Ваша корзина</span>

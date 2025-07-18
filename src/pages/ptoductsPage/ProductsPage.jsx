@@ -6,6 +6,7 @@ import { dentalItems } from "../../data";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import styles from "./ProductsPage.module.scss";
+import clsx from "clsx";
 
 const categories = [
   { key: "1", label: "Зубные щётки" },
@@ -47,7 +48,7 @@ export const ProductsPage = () => {
   const currentItems = dentalItems.slice(startIndex, endIndex);
 
   return (
-    <main className={`${styles.wrap} header_h`}>
+    <main className={clsx(styles.wrap, "header_h screen_page")}>
       <div className="mt-10 container">
         <Flex align="center" justify="space-between">
           <Flex vertical>

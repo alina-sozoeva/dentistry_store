@@ -53,7 +53,7 @@ export const HomePage = () => {
   }, [location]);
 
   return (
-    <main className="header_h " style={{ backgroundColor: "#f9f9f9" }}>
+    <main className="header_h screen_page" style={{ backgroundColor: "#f9f9f9" }}>
       <section className="container">
         <Flex vertical className={clsx("mb-6")}>
           <CustomCarousel />

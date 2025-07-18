@@ -4,7 +4,7 @@ import styles from "./AboutUsPage.module.scss";
 export const AboutUsPage = () => {
   return (
     <div className={clsx("header_h")}>
-      <div className={clsx(styles.aboutUsPage, "container")}>
+      <div className={clsx(styles.aboutUsPage, "container screen_page")}>
         <h2 className={styles.title}>О компании Jannat Dental Store (JDS)</h2>
         <p className={styles.paragraph}>
           Jannat Dental Store (JDS) — это профессиональный поставщик

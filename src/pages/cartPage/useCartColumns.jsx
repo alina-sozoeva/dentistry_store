@@ -5,12 +5,6 @@ import clsx from "clsx";
 export const useCartColumns = () => {
   const columns = [
     {
-      key: "nameid",
-      dataIndex: "nameid",
-      width: 40,
-      render: () => <Checkbox />,
-    },
-    {
       key: "img",
       dataIndex: "img",
       width: 160,

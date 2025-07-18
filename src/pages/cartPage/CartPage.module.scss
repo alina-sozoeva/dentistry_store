@@ -30,3 +30,15 @@
     color: #205375;
   }
 }
+
+@media (max-width: 1200px) {
+  .wrap {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wrap {
+    grid-template-columns: 1fr;
+  }
+}
