@@ -8,14 +8,14 @@ import { TbCategoryFilled } from "react-icons/tb";
 import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
 import clsx from "clsx";
-import { categories } from "../../data";
+import { useGetCategoryQuery } from "../../store/api/category.api";
 
 export const Header = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState(false);
   const [page, setPage] = useState("/");
   const [searchValue, setSearchValue] = useState("");
-  const [openDrawer, setOpenDrawer] = useState(false);
+  const { data: categories } = useGetCategoryQuery();
 
   const onPage = (nav) => {
     setPage(nav);
@@ -30,9 +30,9 @@ export const Header = () => {
     }
   };
 
-  const mappedCategories = categories.map((item) => ({
-    key: item.key,
-    label: <span onClick={() => navigate("/products")}>{item.title}</span>,
+  const mappedCategories = categories?.map((item) => ({
+    key: item.codeid,
+    label: <span onClick={() => navigate("/products")}>{item.nameid}</span>,
   }));
 
   return (

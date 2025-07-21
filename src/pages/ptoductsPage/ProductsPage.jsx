@@ -2,16 +2,19 @@ import { BarsOutlined } from "@ant-design/icons";
 import { Checkbox, Col, Flex, Pagination, Row, Typography } from "antd";
 
 import { CustomButton, ProductItem } from "../../components";
-import { brandsItem, categories, dentalItems } from "../../data";
+import { brandsItem, categories } from "../../data";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
+import { useGetProductsQuery } from "../../store";
+
 import styles from "./ProductsPage.module.scss";
 import clsx from "clsx";
 
 export const ProductsPage = () => {
-  const [currentPage, setCurrentPage] = useState(1);
   const pageSize = 15;
   const location = useLocation();
+  const { data: products } = useGetProductsQuery({});
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -19,7 +22,7 @@ export const ProductsPage = () => {
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const currentItems = dentalItems.slice(startIndex, endIndex);
+  const currentItems = products?.slice(startIndex, endIndex);
 
   return (
     <main className={clsx(styles.wrap, "header_h screen_page")}>
@@ -32,9 +35,7 @@ export const ProductsPage = () => {
             <Flex gap={"small"}>
               <BarsOutlined />
               <span>Найдено</span>
-              <span className="font-bold">
-                {dentalItems.length} результатов
-              </span>
+              <span className="font-bold">{products?.length} результатов</span>
             </Flex>
           </Flex>
           <Flex>
@@ -85,7 +86,7 @@ export const ProductsPage = () => {
           <Col span={20} className="flex flex-col items-center">
             <section aria-label="Список товаров">
               <div className={`${styles.ptoducts} grid grid-cols-5 gap-2`}>
-                {currentItems.map((item) => (
+                {currentItems?.map((item) => (
                   <ProductItem key={item.id} item={item} />
                 ))}
               </div>
@@ -95,7 +96,7 @@ export const ProductsPage = () => {
                 className="pt-4"
                 current={currentPage}
                 onChange={setCurrentPage}
-                total={dentalItems.length}
+                total={products?.length}
                 pageSize={pageSize}
                 showSizeChanger={false}
               />

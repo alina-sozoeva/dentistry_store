@@ -7,6 +7,8 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import * as chairImages from "../../assets/images/сhairs";
+
 import styles from "./ProductItem.module.scss";
 import clsx from "clsx";
 
@@ -29,7 +31,11 @@ export const ProductItem = ({ item }) => {
       onClick={() => navigate(`/product/${item.id}`)}
     >
       <div className={clsx(styles.img)}>
-        <img className={clsx(styles.ad_img)} src={item.img[0]} alt={item} />
+        <img
+          className={clsx(styles.ad_img)}
+          src={chairImages.C_Class_unit_cart_2}
+          alt={item}
+        />
         <span className={clsx(styles.fav)} onClick={(e) => onFav(e)}>
           {!fav && <HeartOutlined onClick={() => setFav(true)} />}
           {fav && <HeartFilled onClick={() => setFav(false)} />}
@@ -37,11 +43,11 @@ export const ProductItem = ({ item }) => {
       </div>
       <Flex className={clsx(styles.descrip)} vertical gap={"small"}>
         <Flex gap="small" align="center" className={clsx(styles.price)}>
-          <span className={clsx("text-xl whitespace-pre-line")}>
-            {item.price} сом
+          <span className={clsx("text-lg whitespace-pre-line")}>
+            {Number(item.price).toLocaleString()} сом
           </span>
           <span className={clsx("line-through")} style={{ color: "#647180" }}>
-            {item.price} сом
+            {Number(item.price).toLocaleString()} сом
           </span>
         </Flex>
         <Flex vertical justify="space-between">

@@ -4,11 +4,12 @@ import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
-import { brandsItem, categories, dentalItems, edu } from "../../data";
+import { brandsItem, categories, edu } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
+import { useGetProductsQuery, useGetProvidersQuery } from "../../store";
 
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
@@ -37,6 +38,8 @@ const reviews = [
 export const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { data: brends } = useGetProvidersQuery();
+  const { data: products } = useGetProductsQuery({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -150,7 +153,7 @@ export const HomePage = () => {
           </Flex>
 
           <Flex gap="small">
-            {dentalItems.slice(0, 6).map((item) => (
+            {products?.slice(0, 6).map((item) => (
               <ProductItem item={item} />
             ))}
           </Flex>
@@ -170,7 +173,7 @@ export const HomePage = () => {
             </span>
           </Flex>
           <Flex gap="small">
-            {dentalItems.slice(0, 6).map((item) => (
+            {products?.slice(6, 12).map((item) => (
               <ProductItem item={item} />
             ))}
           </Flex>
@@ -190,7 +193,7 @@ export const HomePage = () => {
             </span>
           </Flex>
           <Flex gap="small">
-            {dentalItems.slice(0, 6).map((item) => (
+            {products?.slice(12, 18).map((item) => (
               <ProductItem item={item} />
             ))}
           </Flex>
