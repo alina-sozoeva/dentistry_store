@@ -156,7 +156,7 @@ export const HomePage = () => {
                 <Flex className={clsx("text-center mb-6")} key={item.codeid}>
                   <div
                     className={clsx(styles.brand)}
-                    style={{ backgroundColor: item.background ?? "#89c9ff" }}
+                    style={{ backgroundColor: item.background ?? "#222222" }}
                     onClick={() => onBrandId(item.codeid)}
                   >
                     <img
@@ -301,7 +301,9 @@ export const HomePage = () => {
                 <span className={clsx("text-base line-clamp-3 mb-4")}>
                   {item.description}
                 </span>
-                <CustomButton>Подробнее</CustomButton>
+                <CustomButton onClick={() => navigate(pathname.STUDY)}>
+                  Подробнее
+                </CustomButton>
               </Flex>
             ))}
           </Carousel>
