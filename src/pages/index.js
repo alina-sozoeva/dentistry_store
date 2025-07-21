@@ -6,3 +6,4 @@ export * from "./aboutUsPage";
 export * from "./cartPage";
 export * from "./contactPage";
 export * from "./loginPage";
+export * from "./studyPage";

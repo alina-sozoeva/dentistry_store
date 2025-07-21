@@ -43,16 +43,16 @@ export const ProductInfo = ({ item, isModal = false }) => {
                 <Divider dashed style={{ borderColor: "#bbb" }} />
                 <Flex vertical gap={"small"} justify="center">
                   <span className="text-orange">
-                    <b className="text-black">Цена:</b> 1 995, 00 сом, КР
+                    <b className="text-black">Цена:</b>{" "}
+                    {Number(item?.price).toLocaleString()} сом
                   </span>
                   <Flex>
-                    <span className="bg-orange text-white px-2 rounded-sm">
-                      В наличии
+                    <span className="bg-orange rounded-sm ">
+                      <strong> В наличии: </strong> {item?.quantity}
                     </span>
                   </Flex>
                   <span>
-                    Заработайте <b>399 баллов</b> лояльности при покупке этого
-                    товара.
+                    Получите <b>400 сом</b> скидки при покупке этого товара.
                   </span>
                   <RatingStars />
                 </Flex>

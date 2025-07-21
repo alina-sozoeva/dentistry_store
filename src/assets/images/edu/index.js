@@ -4,3 +4,4 @@ export { default as ok } from "./12_ok.png";
 export { default as fev } from "./17_fev.png";
 export { default as il } from "./19_il.png";
 export { default as fev_f } from "./28_fev.png";
+export { default as ok_19 } from "./19_ok.png";

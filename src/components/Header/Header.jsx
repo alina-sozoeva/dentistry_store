@@ -121,7 +121,7 @@ export const Header = () => {
                   </span>
                 </Link>
                 <Link
-                  to={`${pathname.HOME}#about`}
+                  to={pathname.STUDY}
                   onClick={() => onPage(pathname.STUDY)}
                 >
                   <span
@@ -211,10 +211,7 @@ export const Header = () => {
                 Контакты
               </span>
             </Link>
-            <Link
-              to={`${pathname.HOME}#about`}
-              onClick={() => onPage(pathname.STUDY)}
-            >
+            <Link to={pathname.STUDY} onClick={() => onPage(pathname.STUDY)}>
               <span
                 className={
                   page === pathname.STUDY ? styles.active_link : styles.link

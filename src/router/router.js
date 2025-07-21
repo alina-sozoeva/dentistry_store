@@ -31,6 +31,7 @@ export const router = createBrowserRouter([
       { path: pathname.CART, element: <Pages.CartPage /> },
       { path: pathname.PROFILE, element: <Pages.WIPPage /> },
       { path: pathname.CONTACT, element: <Pages.ContactPage /> },
+      { path: pathname.STUDY, element: <Pages.StudyPage /> },
     ],
   },
 ]);

@@ -1,12 +1,10 @@
-import { Checkbox, Divider, Flex, Table, Typography } from "antd";
-import { useCartColumns } from "./useCartColumns";
-import { dentalItems } from "../../data";
-import styles from "./CartPage.module.scss";
-import clsx from "clsx";
+import { Divider, Flex, Typography } from "antd";
 import { CartItem } from "./ui";
 import { useGetProductsQuery } from "../../store";
 import { useNavigate } from "react-router";
 import { pathname } from "../../enums";
+import styles from "./CartPage.module.scss";
+import clsx from "clsx";
 
 export const CartPage = () => {
   const navigate = useNavigate();

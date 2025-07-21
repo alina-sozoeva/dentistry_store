@@ -91,25 +91,33 @@ export const ProductsPage = () => {
 
   const debouncedSetSearch = useMemo(
     () =>
-      debounce((value) => setObj((prev) => ({ ...prev, search: value })), 400),
-    []
+      debounce((value) => {
+        setObj((prev) => ({ ...prev, search: value }));
+        if (value) {
+          searchParams.set("search", value);
+        } else {
+          searchParams.delete("search");
+        }
+        setSearchParams(searchParams);
+      }, 400),
+    [searchParams, setSearchParams]
   );
-
+  
   const onSearch = (value) => {
     setInputValue(value);
     debouncedSetSearch(value);
-    if (value) {
-      searchParams.set("search", value);
-    } else {
-      searchParams.delete("search");
-    }
-    setSearchParams(searchParams);
   };
 
   const onDeleteSearchParams = () => {
     searchParams.delete("search");
+    searchParams.delete("brend");
+    searchParams.delete("category");
     setSearchParams(searchParams);
     setInputValue("");
+    setSelectedBrand(null);
+    setSelectedCategory(null);
+    setObj((prev) => ({ ...prev, categoryId: undefined }));
+    setObj((prev) => ({ ...prev, brandId: undefined }));
     setObj((prev) => ({ ...prev, search: undefined }));
   };
 
@@ -128,6 +136,8 @@ export const ProductsPage = () => {
       setObj((prev) => ({ ...prev, search }));
     }
   }, [numericCategory, numericBrend, search, location.pathname]);
+
+  console.log(products?.length, "products?.length");
 
   return (
     <main className={clsx(styles.wrap, "mt-28 screen_page")}>
