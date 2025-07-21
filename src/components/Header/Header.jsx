@@ -1,5 +1,5 @@
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
-import { Flex, Input } from "antd";
+import { Drawer, Dropdown, Flex, Input, Space } from "antd";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
 import { pathname } from "../../enums";
@@ -8,12 +8,14 @@ import { TbCategoryFilled } from "react-icons/tb";
 import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
 import clsx from "clsx";
+import { categories } from "../../data";
 
 export const Header = () => {
+  const navigate = useNavigate();
   const [search, setSearch] = useState(false);
   const [page, setPage] = useState("/");
   const [searchValue, setSearchValue] = useState("");
-  const navigate = useNavigate();
+  const [openDrawer, setOpenDrawer] = useState(false);
 
   const onPage = (nav) => {
     setPage(nav);
@@ -27,6 +29,11 @@ export const Header = () => {
       setSearch(false);
     }
   };
+
+  const mappedCategories = categories.map((item) => ({
+    key: item.key,
+    label: <span onClick={() => navigate("/products")}>{item.title}</span>,
+  }));
 
   return (
     <header className={styles.wrap}>
@@ -47,18 +54,21 @@ export const Header = () => {
           </Flex>
           <Flex gap={"large"} align="center">
             <Link
-              to={pathname.PROFILE}
+              to={pathname.LOGIN}
               className={clsx("text-2xl flex gap-2 items-center")}
               style={{ whiteSpace: "nowrap" }}
             >
-              <UserOutlined />
+              <UserOutlined /> <span className={clsx("text-base")}>Login</span>
             </Link>
             <Link
               to={pathname.CART}
               className="text-2xl"
               style={{ whiteSpace: "nowrap" }}
             >
-              <ShoppingCartOutlined />
+              <div className={clsx(styles.cart)}>
+                <div className={clsx(styles.cart_count)}>5</div>
+                <ShoppingCartOutlined />
+              </div>
             </Link>
           </Flex>
         </Flex>
@@ -67,8 +77,12 @@ export const Header = () => {
       <div className={clsx("container")}>
         <div className={clsx(styles.header_nav)}>
           <Flex align="center" gap="small">
-            <TbCategoryFilled />
-            <span>Категории</span>
+            <Dropdown menu={{ items: mappedCategories }} trigger={["click"]}>
+              <Space>
+                <TbCategoryFilled />
+                Категории
+              </Space>
+            </Dropdown>
           </Flex>
           <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
             <span

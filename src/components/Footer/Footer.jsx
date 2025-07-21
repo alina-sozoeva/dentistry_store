@@ -1,4 +1,8 @@
-import { FacebookOutlined, InstagramOutlined } from "@ant-design/icons";
+import {
+  FacebookOutlined,
+  InstagramOutlined,
+  WhatsAppOutlined,
+} from "@ant-design/icons";
 import { Flex } from "antd";
 import { Link } from "react-router";
 import logo from "../../assets/images/logo_without_bg_white.jpeg";
@@ -48,6 +52,12 @@ export const Footer = () => {
           <Flex gap={"small"} className={styles.media}>
             <a href="https://www.instagram.com/jdstore.kg/" target="_blank">
               <InstagramOutlined />
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=996706414444&text&type=phone_number&app_absent=0"
+              target="_blank"
+            >
+              <WhatsAppOutlined />
             </a>
           </Flex>
         </Flex>

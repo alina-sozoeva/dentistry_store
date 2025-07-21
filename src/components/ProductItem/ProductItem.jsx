@@ -18,6 +18,10 @@ export const ProductItem = ({ item }) => {
     e.stopPropagation();
   };
 
+  const onCart = (e) => {
+    e.stopPropagation();
+  };
+
   return (
     <Flex
       className={clsx(styles.card)}
@@ -58,7 +62,9 @@ export const ProductItem = ({ item }) => {
             <MessageFilled /> 12 отзывов
           </span>
         </Flex>
-        <button className={clsx(styles.btn)}>Добавить в корзину</button>
+        <button className={clsx(styles.btn)} onClick={(e) => onCart(e)}>
+          Добавить в корзину
+        </button>
         <Flex gap={"small"}></Flex>
       </Flex>
     </Flex>

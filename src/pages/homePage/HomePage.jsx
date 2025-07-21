@@ -4,12 +4,11 @@ import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
-import { dentalItems } from "../../data";
+import { brandsItem, categories, dentalItems, edu } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
-import { brandsItem, categories, edu } from "./datas";
 
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
@@ -53,7 +52,10 @@ export const HomePage = () => {
   }, [location]);
 
   return (
-    <main className="header_h screen_page" style={{ backgroundColor: "#f9f9f9" }}>
+    <main
+      className="header_h screen_page"
+      style={{ backgroundColor: "#f9f9f9" }}
+    >
       <section className="container">
         <Flex vertical className={clsx("mb-6")}>
           <CustomCarousel />

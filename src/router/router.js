@@ -5,19 +5,22 @@ import { pathname } from "../enums";
 
 const Layout = () => {
   return (
-    <div style={{
-      minHeight: "100vh",
-      display: "flex",
-      flexDirection: "column"
-    }}>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <Header />
-      <Outlet  />
+      <Outlet />
       <Footer />
     </div>
   );
 };
 
 export const router = createBrowserRouter([
+  { path: pathname.LOGIN, element: <Pages.LoginPage /> },
   {
     element: <Layout />,
     children: [
@@ -27,7 +30,7 @@ export const router = createBrowserRouter([
       { path: pathname.ABOUT, element: <Pages.AboutUsPage /> },
       { path: pathname.CART, element: <Pages.CartPage /> },
       { path: pathname.PROFILE, element: <Pages.WIPPage /> },
-      { path: pathname.CONTACT, element: <Pages.WIPPage /> },
+      { path: pathname.CONTACT, element: <Pages.ContactPage /> },
     ],
   },
 ]);
