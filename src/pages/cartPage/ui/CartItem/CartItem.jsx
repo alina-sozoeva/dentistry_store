@@ -1,8 +1,9 @@
 import { Flex, Input } from "antd";
-import styles from "./CartItem.module.scss";
-import clsx from "clsx";
 import { CloseOutlined, TruckOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import * as chairImages from "../../../../assets/images/сhairs";
+import styles from "./CartItem.module.scss";
+import clsx from "clsx";
 
 export const CartItem = ({ item }) => {
   const [count, setCount] = useState(1);
@@ -14,7 +15,7 @@ export const CartItem = ({ item }) => {
   return (
     <Flex gap="small" className={clsx(styles.wrap)}>
       <div className={styles.img}>
-        <img src={item.img[0]} alt={item.img[0]} />
+        <img src={chairImages.C_Class_unit_cart_2} alt="" />
       </div>
       <Flex vertical justify="space-between" className={clsx("w-full py-2")}>
         <Flex className={clsx("mb-2")} justify="space-between">

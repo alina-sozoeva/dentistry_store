@@ -4,7 +4,7 @@ export const pathname = {
   ABOUT: "/about",
   CONTACT: "/contact",
   CART: "/cart",
-  PRODUCTSITEM: "/product/:id",
+  PRODUCTSITEM: "/product/:codeid",
   STUDY: "/study",
   PROFILE: "/profile",
   LOGIN: "/login",

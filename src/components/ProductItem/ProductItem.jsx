@@ -28,7 +28,7 @@ export const ProductItem = ({ item }) => {
     <Flex
       className={clsx(styles.card)}
       vertical
-      onClick={() => navigate(`/product/${item.id}`)}
+      onClick={() => navigate(`/product/${item.codeid}`)}
     >
       <div className={clsx(styles.img)}>
         <img
@@ -43,21 +43,21 @@ export const ProductItem = ({ item }) => {
       </div>
       <Flex className={clsx(styles.descrip)} vertical gap={"small"}>
         <Flex gap="small" align="center" className={clsx(styles.price)}>
-          <span className={clsx("text-lg whitespace-pre-line")}>
-            {Number(item.price).toLocaleString()} сом
+          <span className={clsx("text-md whitespace-pre-line")}>
+            {Number(item?.price).toLocaleString()} сом
           </span>
           <span className={clsx("line-through")} style={{ color: "#647180" }}>
-            {Number(item.price).toLocaleString()} сом
+            {Number(item?.price).toLocaleString()} сом
           </span>
         </Flex>
         <Flex vertical justify="space-between">
           <h3
             className={clsx("text-base  min-h-[3em] font-bold line-clamp-2 ")}
           >
-            {item.nameid}
+            {item?.nameid}
           </h3>
           <span className={clsx("text-sm line-clamp-2")}>
-            {item.description}
+            {item?.description}
           </span>
         </Flex>
         <Flex gap="small">

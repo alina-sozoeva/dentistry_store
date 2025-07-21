@@ -182,7 +182,7 @@ export const dentalItems = [
   },
 ];
 
-export const categories = [
+export const categoriesLocal = [
   {
     key: "anesthesia",
     title: "Анестезия",

@@ -4,12 +4,20 @@ import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
-import { brandsItem, categories, edu } from "../../data";
+import { edu } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
-import { useGetProductsQuery, useGetProvidersQuery } from "../../store";
+import {
+  useGetCategoryQuery,
+  useGetProductsQuery,
+  useGetProvidersQuery,
+} from "../../store";
+import { pathname } from "../../enums";
+import * as brends_foto from "../../assets/images/brendsLogo";
+import * as cat_foto from "../../assets/images/categories";
+import { categoriesLocal, brandsItem } from "../../data";
 
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
@@ -39,20 +47,26 @@ export const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { data: brends } = useGetProvidersQuery();
+  const { data: categories } = useGetCategoryQuery();
   const { data: products } = useGetProductsQuery({});
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [location.pathname]);
-
-  useEffect(() => {
     if (location.hash) {
       const el = document.querySelector(location.hash);
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
       }
     }
-  }, [location]);
+  }, [location, location.pathname]);
+
+  const onBrandId = (codeid) => {
+    navigate({ pathname: pathname.PRODUCTS, search: `?brend=${codeid}` });
+  };
+
+  const onCategoryId = (codeid) => {
+    navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
+  };
 
   return (
     <main
@@ -93,19 +107,33 @@ export const HomePage = () => {
           </Typography.Title>
 
           <Carousel
-            // autoplay
             arrows
             className={clsx(styles.carousel, styles.categories, "w-full")}
             slidesToShow={5}
           >
-            {categories.map((item) => (
-              <Flex className={clsx("text-center mb-6")}>
-                <div className={clsx(styles.category)} key={item.key}>
-                  <img src={item.img} alt="" />
-                </div>
-                <span className={clsx("font-bold text-xl")}>{item.title}</span>
-              </Flex>
-            ))}
+            {categories?.map((item) => {
+              const localCat = categoriesLocal.find(
+                (cat) => cat.title === item.nameid
+              );
+
+              return (
+                <Flex
+                  className={clsx("text-center mb-6 cursor-pointer")}
+                  onClick={() => onCategoryId(item.codeid)}
+                  key={item.codeid}
+                >
+                  <div className={clsx(styles.category)}>
+                    <img
+                      src={localCat ? localCat.img : cat_foto.consumables}
+                      alt={item.nameid}
+                    />
+                  </div>
+                  <span className={clsx("font-bold text-xl")}>
+                    {item.nameid}
+                  </span>
+                </Flex>
+              );
+            })}
           </Carousel>
         </Flex>
       </section>
@@ -119,22 +147,27 @@ export const HomePage = () => {
             className={clsx(styles.carousel, styles.brands, "w-full")}
             slidesToShow={5}
           >
-            {brandsItem.map((item) => (
-              <Flex className={clsx("text-center mb-6")}>
-                <div
-                  className={clsx(styles.brand)}
-                  key={item.key}
-                  style={{
-                    backgroundColor: item.background
-                      ? item.background
-                      : "#89c9ff",
-                  }}
-                >
-                  <img src={item.img} alt="" />
-                </div>
-                <span>{item.title}</span>
-              </Flex>
-            ))}
+            {brends?.map((item) => {
+              const localBrand = brandsItem.find(
+                (brand) => brand.title === item.nameid
+              );
+
+              return (
+                <Flex className={clsx("text-center mb-6")} key={item.codeid}>
+                  <div
+                    className={clsx(styles.brand)}
+                    style={{ backgroundColor: item.background ?? "#89c9ff" }}
+                    onClick={() => onBrandId(item.codeid)}
+                  >
+                    <img
+                      src={localBrand ? localBrand.img : brends_foto.luvis}
+                      alt={item.nameid}
+                    />
+                  </div>
+                  <span>{item.nameid}</span>
+                </Flex>
+              );
+            })}
           </Carousel>
         </Flex>
       </section>

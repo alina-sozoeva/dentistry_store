@@ -8,9 +8,10 @@ import {
 } from "@ant-design/icons";
 import styles from "./ProductInfo.module.scss";
 import { Link } from "react-router";
+import * as chairImages from "../../assets/images/сhairs";
 
 export const ProductInfo = ({ item, isModal = false }) => {
-  console.log(item.img, "img");
+  console.log(item, "item");
 
   return (
     <section>
@@ -19,9 +20,10 @@ export const ProductInfo = ({ item, isModal = false }) => {
           <Row gutter={24}>
             <Col span={12}>
               <Carousel arrows autoplay>
-                {item?.img.map((i) => (
+                {/* {item?.img.map((i) => (
                   <img className={styles.img} src={i} alt="product foto" />
-                ))}
+                ))} */}
+                <img src={chairImages.C_Class_unit_cart_2} alt="" />
               </Carousel>
             </Col>
             <Col span={12}>
@@ -29,14 +31,14 @@ export const ProductInfo = ({ item, isModal = false }) => {
                 <Flex vertical gap={"small"}>
                   {!isModal ? (
                     <span>
-                      <b>E CONNECT S (Endo Motor)</b>
+                      <b>{item?.nameid}</b>
                     </span>
                   ) : (
                     <Link>
                       <b>E CONNECT S (Endo Motor)</b>
                     </Link>
                   )}
-                  <span>Eighteeth</span>
+                  <span>{item?.nameid}</span>
                 </Flex>
                 <Divider dashed style={{ borderColor: "#bbb" }} />
                 <Flex vertical gap={"small"} justify="center">
@@ -63,7 +65,7 @@ export const ProductInfo = ({ item, isModal = false }) => {
                     Производитель: Чанчжоуская Восемнадцатая Медицинская
                     Технологическая Компания, ООО
                   </span>
-                  <span>Возвратный: Нет</span>{" "}
+                  <span>Возвратный: Нет</span>
                   <span>
                     Доступно в: ОАЭ, Катар, Оман, ЛИВИЯ, Ливан, Кувейт,
                     Саудовская Аравия, Иордания, ИРАК, Египет, Бахрейн, Другая

@@ -4,9 +4,13 @@ import { dentalItems } from "../../data";
 import styles from "./CartPage.module.scss";
 import clsx from "clsx";
 import { CartItem } from "./ui";
+import { useGetProductsQuery } from "../../store";
+import { useNavigate } from "react-router";
+import { pathname } from "../../enums";
 
 export const CartPage = () => {
-  const { columns } = useCartColumns();
+  const navigate = useNavigate();
+  const { data: products } = useGetProductsQuery({});
   return (
     <main className={clsx(styles.cart_wrap, "header_h mb-6 screen_page")}>
       <section className={clsx("container")}>
@@ -16,7 +20,7 @@ export const CartPage = () => {
           <Flex vertical className={clsx(styles.wrap_item)}>
             <Divider />
             <Flex vertical gap="small">
-              {dentalItems.slice(0, 7).map((item) => (
+              {products?.slice(0, 7).map((item) => (
                 <CartItem key={item.id} item={item} />
               ))}
             </Flex>
@@ -26,7 +30,12 @@ export const CartPage = () => {
             className={clsx(styles.wrap_item, "h-[350px]")}
             gap="middle"
           >
-            <button className={clsx(styles.btn)}>Перейти к оформлению</button>
+            <button
+              className={clsx(styles.btn)}
+              onClick={() => navigate(pathname.LOGIN)}
+            >
+              Перейти к оформлению
+            </button>
             <Divider />
             <Flex justify="space-between">
               <span className={clsx("text-lg font-bold")}>Ваша корзина</span>

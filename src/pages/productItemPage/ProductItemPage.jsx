@@ -5,6 +5,7 @@ import styles from "./ProductItemPage.module.scss";
 import { useParams } from "react-router";
 import { useMemo } from "react";
 import { dentalItems } from "../../data";
+import { useGetProductsQuery } from "../../store";
 
 const { Title, Paragraph } = Typography;
 
@@ -34,11 +35,16 @@ const items = [
 ];
 
 export const ProductItemPage = () => {
-  const { id } = useParams();
+  const { codeid } = useParams();
+  const { data: products } = useGetProductsQuery({});
 
   const findItem = useMemo(() => {
-    return dentalItems.find((item) => item.id === +id);
-  }, [id]);
+    return products?.find((item) => +item.codeid === +codeid);
+  }, [codeid]);
+
+  console.log(findItem, "findItem");
+
+  console.log(codeid);
 
   return (
     <section className={`${styles.wrap} py-4 header_h`}>
