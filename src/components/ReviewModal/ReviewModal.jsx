@@ -1,7 +1,7 @@
 import { Flex, Form, Input, Modal, Typography } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { StarFilled } from "@ant-design/icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./ReviewModal.module.scss";
 import clsx from "clsx";
 import { useCartStore, useReviewStore } from "../../store";
@@ -31,6 +31,14 @@ export const ReviewModal = ({ open, onCancel }) => {
     form.resetFields();
     onCancel();
   };
+
+  useEffect(() => {
+    if (user) {
+      form.setFieldsValue({
+        nameid: user?.login,
+      });
+    }
+  }, [user]);
 
   return (
     <Modal centered open={open} onCancel={onCancel} width={400} footer={false}>
