@@ -163,6 +163,11 @@ export const Header = () => {
                     Обучение
                   </span>
                 </Link>
+                {user && (
+                  <CustomButton onClick={() => setOpen(true)}>
+                    Оставить отзыв
+                  </CustomButton>
+                )}
               </div>
             </div>
           )}

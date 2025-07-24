@@ -1,0 +1,13 @@
+.star {
+  color: #ccc;
+  font-size: 28px;
+  transition: color 0.3s ease;
+
+  svg {
+    font-size: 18px;
+  }
+
+  &.active {
+    color: gold;
+  }
+}

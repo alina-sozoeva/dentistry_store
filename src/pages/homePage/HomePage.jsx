@@ -4,7 +4,7 @@ import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
-import { edu, } from "../../data";
+import { edu } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
@@ -22,6 +22,7 @@ import { categoriesLocal, brandsItem } from "../../data";
 
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
+import dayjs from "dayjs";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -237,7 +238,7 @@ export const HomePage = () => {
                         <h3 className={clsx("font-bold")}>{review.nameid}</h3>
                       </Flex>
                     </Flex>
-                    <RatingStars />
+                    <RatingStars value={review.raiting} readOnly />
                   </Flex>
                   <p className={clsx("text-base line-clamp-4")}>
                     {review.comment}

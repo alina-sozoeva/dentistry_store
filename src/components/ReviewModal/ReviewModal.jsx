@@ -6,23 +6,16 @@ import styles from "./ReviewModal.module.scss";
 import clsx from "clsx";
 import { useCartStore, useReviewStore } from "../../store";
 import { v1 as uuidv1 } from "uuid";
+import dayjs from "dayjs";
+import { RatingStars } from "../../ui";
 
 export const ReviewModal = ({ open, onCancel }) => {
   const [form] = useForm();
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
   const { addReviews } = useReviewStore();
   const { user } = useCartStore();
 
-  const handleClick = (i) => {
-    setSelectedIndex(i);
-    form.setFieldValue("rating", i + 1);
-  };
-
   const onClose = () => {
     form.resetFields();
-    setHoveredIndex(null);
-    setSelectedIndex(null);
     onCancel();
   };
 
@@ -31,13 +24,11 @@ export const ReviewModal = ({ open, onCancel }) => {
       guid: uuidv1(),
       nameid: user?.login,
       comment: values.comment,
-      date: "23.09.2023",
-      rating: values.rating,
+      date: dayjs().format("DD.MM.YYYY"),
+      raiting: values.raiting,
     };
     addReviews(newReviews);
     form.resetFields();
-    setHoveredIndex(null);
-    setSelectedIndex(null);
     onCancel();
   };
 
@@ -48,7 +39,7 @@ export const ReviewModal = ({ open, onCancel }) => {
       </Typography.Title>
       <Form layout="vertical" form={form} onFinish={onFinish}>
         <Form.Item
-          name="rating"
+          name="raiting"
           rules={[
             {
               required: true,
@@ -57,34 +48,10 @@ export const ReviewModal = ({ open, onCancel }) => {
           ]}
         >
           <Flex gap="middle" justify="center" className={styles.stars}>
-            <Flex className={clsx(styles.starGroup, "gap-[15px]")}>
-              {Array.from({ length: 5 }).map((_, i) => {
-                const isActive =
-                  selectedIndex !== null
-                    ? i <= selectedIndex
-                    : hoveredIndex !== null && i <= hoveredIndex;
-
-                return (
-                  <StarFilled
-                    key={i}
-                    className={clsx(styles.star, {
-                      [styles.active]: isActive,
-                    })}
-                    onMouseEnter={() => {
-                      if (selectedIndex === null) setHoveredIndex(i);
-                    }}
-                    onMouseLeave={() => {
-                      if (selectedIndex === null) setHoveredIndex(null);
-                    }}
-                    onClick={() => handleClick(i)}
-                    style={{
-                      transitionDelay: `${i * 50}ms`,
-                      cursor: "pointer",
-                    }}
-                  />
-                );
-              })}
-            </Flex>
+            <RatingStars
+              value={form.getFieldValue("raiting")}
+              onChange={(val) => form.setFieldValue("raiting", val)}
+            />
             -<span>Ваша оценка</span>
           </Flex>
         </Form.Item>
