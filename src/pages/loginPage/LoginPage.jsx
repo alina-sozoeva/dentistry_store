@@ -5,12 +5,31 @@ import { ArrowLeftOutlined } from "@ant-design/icons";
 import styles from "./LoginPage.module.scss";
 import fon from "../../assets/images/bg_forest.jpg";
 import clsx from "clsx";
+import { useCartStore } from "../../store";
+import { users } from "../../data";
+import { toast } from "react-toastify";
+import { pathname } from "../../enums";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const [form] = useForm();
+  const { user, setUser } = useCartStore();
 
-  const onFinish = async (values) => {};
+  const onFinish = async (values) => {
+    const findUser = users.find(
+      (item) =>
+        item.login === values.login && +item.password === +values.password
+    );
+
+    if (!findUser) {
+      return toast.error("Неверный пароль или логин! Попробуйте заново");
+    } else {
+      setUser(findUser);
+    }
+
+    form.resetFields();
+    navigate(pathname.HOME);
+  };
 
   return (
     <section className={clsx(styles.wrap, "h-screen h-full")}>
@@ -54,19 +73,12 @@ export const LoginPage = () => {
               },
             ]}
           >
-            <Input type="password" placeholder="Введите логин" />
+            <Input.Password placeholder="Введите логин" />
           </Form.Item>
 
-          <Button type="" htmlType="submit" className={clsx("w-full")}>
+          <Button type="primary" htmlType="submit" className={clsx("w-full")}>
             Войти
           </Button>
-
-          {/* <Flex justify="center" gap="small" className={clsx("mt-2")}>
-            <span className={clsx("text-white")}>Нет аккаунта?</span>{" "}
-            <Link to="/register" className={clsx("text-green")}>
-              Зарегистрироваться
-            </Link>
-          </Flex> */}
         </Form>
       </div>
     </section>

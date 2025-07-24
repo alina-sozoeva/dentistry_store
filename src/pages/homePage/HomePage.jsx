@@ -4,7 +4,7 @@ import { Carousel, Flex, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
-import { edu } from "../../data";
+import { edu, } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
@@ -13,6 +13,7 @@ import {
   useGetCategoryQuery,
   useGetProductsQuery,
   useGetProvidersQuery,
+  useReviewStore,
 } from "../../store";
 import { pathname } from "../../enums";
 import * as brends_foto from "../../assets/images/brendsLogo";
@@ -22,33 +23,15 @@ import { categoriesLocal, brandsItem } from "../../data";
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
 
-const reviews = [
-  {
-    date: "26.06.2025",
-    name: "Иванов Иван",
-    description:
-      "Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
-  },
-  {
-    date: "26.06.2025",
-    name: "Петрова Анна",
-    description:
-      "Очень понравился подход доктора, всегда на связи и дает четкие рекомендации. Рекомендую! Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
-  },
-  {
-    date: "26.06.2025",
-    name: "Смирнов Сергей",
-    description:
-      "Доктор с большой буквы! Очень помог мне с лечением, всё объяснил подробно и доступно. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
-  },
-];
-
 export const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { data: brends } = useGetProvidersQuery();
   const { data: categories } = useGetCategoryQuery();
   const { data: products } = useGetProductsQuery({});
+  const { reviews } = useReviewStore();
+
+  console.log(reviews, "reviews");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -172,7 +155,7 @@ export const HomePage = () => {
         </Flex>
       </section>
 
-      <section className={clsx("container ")}>
+      <section className={clsx("container")}>
         <Flex vertical gap="small" className={clsx("mb-6")}>
           <Flex
             align="center"
@@ -239,27 +222,29 @@ export const HomePage = () => {
             <h2 className="text-3xl uppercase text-white mb-10">
               Отзывы покупателей
             </h2>
-            <Flex gap="small">
-              {reviews.map((review, index) => (
+            <Carousel
+              arrows
+              className={clsx(styles.carousel, styles.categories, "w-full")}
+              slidesToShow={3}
+            >
+              {reviews?.map((review, index) => (
                 <div key={index} className={styles.reviews_one}>
                   <Flex align="center" justify="space-between">
                     <Flex align="center" gap="small">
                       <PiUserCircleFill className={clsx("text-5xl")} />
                       <Flex vertical>
                         <span>{review.date}</span>
-                        <h3 className={clsx("font-bold")}>{review.name}</h3>
+                        <h3 className={clsx("font-bold")}>{review.nameid}</h3>
                       </Flex>
                     </Flex>
-
                     <RatingStars />
                   </Flex>
-
                   <p className={clsx("text-base line-clamp-4")}>
-                    {review.description}
+                    {review.comment}
                   </p>
                 </div>
               ))}
-            </Flex>
+            </Carousel>
           </Flex>
         </div>
       </section>
@@ -280,7 +265,7 @@ export const HomePage = () => {
             className={clsx(styles.carousel, styles.edu_car)}
             slidesToShow={3}
           >
-            {edu.map((item) => (
+            {edu.slice(0, 3).map((item) => (
               <Flex vertical key={item.key}>
                 <img src={item.img} alt={item.img} />
                 <h3

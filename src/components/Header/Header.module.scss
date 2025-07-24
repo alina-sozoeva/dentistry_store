@@ -31,18 +31,21 @@
 .header_nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 60px;
   padding: 12px 0;
 }
 
 .logo {
-  position: absolute;
+  // position: absolute;
   width: 90px;
   top: 10px;
   z-index: 1100;
 }
 
 .search {
+  display: flex;
+  align-items: center;
   :global {
     .ant-input {
       color: #147abc;
@@ -75,6 +78,10 @@
     }
   }
 }
+
+// .search_input {
+//   width: 90rem;
+// }
 
 .link {
   position: relative;
@@ -141,4 +148,37 @@
     border-radius: 50%;
     color: white;
   }
+}
+
+@media (max-width: 1400px) {
+  .search_input {
+    // width: 54rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .search_input {
+    // width: 42rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .search_input {
+    // width: 34rem;
+  }
+}
+
+@media (max-width: 880px) {
+  .search_input {
+    // width: 28rem;
+  }
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 400px) {
+}
+
+@media (max-width: 320px) {
 }

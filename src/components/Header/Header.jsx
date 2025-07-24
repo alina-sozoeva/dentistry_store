@@ -1,4 +1,9 @@
-import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
+import {
+  CaretDownOutlined,
+  LogoutOutlined,
+  ShoppingCartOutlined,
+  UserOutlined,
+} from "@ant-design/icons";
 import { Dropdown, Flex, Input, Space } from "antd";
 import { Link, useNavigate } from "react-router";
 import { useState } from "react";
@@ -9,6 +14,9 @@ import { useLocation } from "react-router";
 import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
 import clsx from "clsx";
+import { useCartStore } from "../../store";
+import { CustomButton } from "../CustomButton";
+import { ReviewModal } from "../ReviewModal";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -16,6 +24,8 @@ export const Header = () => {
   const [page, setPage] = useState("/");
   const [searchValue, setSearchValue] = useState("");
   const { data: categories } = useGetCategoryQuery();
+  const { user, removeUser } = useCartStore();
+  const [open, setOpen] = useState(false);
 
   const onPage = (nav) => {
     setPage(nav);
@@ -37,24 +47,45 @@ export const Header = () => {
     label: <span onClick={() => onCategoyId(item.codeid)}>{item.nameid}</span>,
   }));
 
-  console.log(location.pathname);
+  const items = [
+    {
+      label: <p>{user?.login}</p>,
+      key: "0",
+    },
+
+    {
+      type: "divider",
+    },
+    {
+      label: (
+        <Space onClick={() => removeUser()}>
+          Выйти <LogoutOutlined rotate={270} />
+        </Space>
+      ),
+      key: "3",
+    },
+  ];
 
   return (
     <header className={styles.wrap}>
       <Flex vertical className={clsx(styles.header)}>
-        <Flex className={clsx("px-20")} justify="space-between" align="center">
+        <Flex className={clsx("px-20")} gap="small" align="center">
           <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
             <img className={styles.logo} src={logo} alt="logo" />
           </Link>
 
           {location.pathname !== "/products" ? (
-            <Flex className={clsx(styles.search)} align="center" gap="middle">
+            <Flex
+              className={clsx(styles.search, "container")}
+              align="center"
+              gap="middle"
+            >
               <Input
                 value={searchValue}
                 placeholder="Поиск по более 2000 стамотолошических товаров"
                 onChange={(e) => setSearchValue(e.target.value)}
                 onPressEnter={handleSearch}
-                style={{ width: "56rem" }}
+                className={clsx(styles.search_input)}
               />
             </Flex>
           ) : (
@@ -137,13 +168,30 @@ export const Header = () => {
           )}
 
           <Flex gap={"large"} align="center" className={clsx("h-[50px]")}>
-            <Link
-              to={pathname.LOGIN}
-              className={clsx("text-2xl flex gap-2 items-center")}
-              style={{ whiteSpace: "nowrap" }}
-            >
-              <UserOutlined /> <span className={clsx("text-base")}>Login</span>
-            </Link>
+            {user ? (
+              <Flex>
+                <Dropdown menu={{ items }} trigger={["click"]}>
+                  <div onClick={(e) => e.preventDefault()}>
+                    <Space>
+                      <Flex vertical gap={4}>
+                        <p className={clsx(styles.user_info)}>{user?.login}</p>
+                      </Flex>
+                      <CaretDownOutlined />
+                    </Space>
+                  </div>
+                </Dropdown>
+              </Flex>
+            ) : (
+              <Link
+                to={pathname.LOGIN}
+                className={clsx("text-2xl flex gap-2 items-center")}
+                style={{ whiteSpace: "nowrap" }}
+              >
+                <UserOutlined />{" "}
+                <span className={clsx("text-base")}>Login</span>
+              </Link>
+            )}
+
             <Link
               to={pathname.CART}
               className="text-2xl"
@@ -220,9 +268,15 @@ export const Header = () => {
                 Обучение
               </span>
             </Link>
+            {user && (
+              <CustomButton onClick={() => setOpen(true)}>
+                Оставить отзыв
+              </CustomButton>
+            )}
           </div>
         </div>
       )}
+      <ReviewModal open={open} onCancel={() => setOpen(false)} />
     </header>
   );
 };
