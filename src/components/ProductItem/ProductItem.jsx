@@ -46,7 +46,10 @@ export const ProductItem = ({ item }) => {
           <span className={clsx("text-md whitespace-pre-line")}>
             {Number(item?.price).toLocaleString()} сом
           </span>
-          <span className={clsx("line-through")} style={{ color: "#647180" }}>
+          <span
+            className={clsx("text-sm line-through line-clamp-2")}
+            style={{ color: "#647180" }}
+          >
             {Number(item?.price).toLocaleString()} сом
           </span>
         </Flex>
