@@ -4,7 +4,7 @@ import { StarFilled } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import styles from "./ReviewModal.module.scss";
 import clsx from "clsx";
-import { useCartStore, useReviewStore } from "../../store";
+import { useReviewStore, useUserStore } from "../../store";
 import { v1 as uuidv1 } from "uuid";
 import dayjs from "dayjs";
 import { RatingStars } from "../../ui";
@@ -12,7 +12,7 @@ import { RatingStars } from "../../ui";
 export const ReviewModal = ({ open, onCancel }) => {
   const [form] = useForm();
   const { addReviews } = useReviewStore();
-  const { user } = useCartStore();
+  const { user } = useUserStore();
 
   const onClose = () => {
     form.resetFields();

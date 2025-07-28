@@ -1,14 +1,21 @@
-import { Divider, Flex, Typography } from "antd";
+import { Divider, Empty, Flex, Typography } from "antd";
 import { CartItem } from "./ui";
-import { useGetProductsQuery } from "../../store";
+import { useCartStore } from "../../store";
 import { useNavigate } from "react-router";
 import { pathname } from "../../enums";
 import styles from "./CartPage.module.scss";
 import clsx from "clsx";
+import { useMemo } from "react";
+import { CustomButton } from "../../components";
 
 export const CartPage = () => {
   const navigate = useNavigate();
-  const { data: products } = useGetProductsQuery({});
+  const { cart } = useCartStore();
+
+  const summa = useMemo(() => {
+    return cart.reduce((acc, item) => (acc = acc + item.price * item.count), 0);
+  }, [cart]);
+
   return (
     <main className={clsx(styles.cart_wrap, "header_h mb-6 screen_page")}>
       <section className={clsx("container")}>
@@ -17,11 +24,27 @@ export const CartPage = () => {
         <Flex className={clsx(styles.wrap)}>
           <Flex vertical className={clsx(styles.wrap_item)}>
             <Divider />
-            <Flex vertical gap="small">
-              {products?.slice(0, 7).map((item) => (
-                <CartItem key={item.id} item={item} />
-              ))}
-            </Flex>
+            {cart.length === 0 ? (
+              <Empty
+                description={
+                  <Flex vertical align="center" justify="center" gap="small">
+                    <span>Ваша корзина пока пуста</span>
+                    <button
+                      className={clsx(styles.btn)}
+                      onClick={() => navigate(pathname.PRODUCTS)}
+                    >
+                      Посмотреть товары
+                    </button>
+                  </Flex>
+                }
+              />
+            ) : (
+              <Flex vertical gap="small">
+                {cart?.slice(0, 7).map((item) => (
+                  <CartItem key={item.id} item={item} />
+                ))}
+              </Flex>
+            )}
           </Flex>
           <Flex
             vertical
@@ -37,22 +60,26 @@ export const CartPage = () => {
             <Divider />
             <Flex justify="space-between">
               <span className={clsx("text-lg font-bold")}>Ваша корзина</span>
-              <span>2 товара</span>
+              <span>{cart.length} товара</span>
             </Flex>
             <Flex justify="space-between">
-              <span>Товары (2)</span>
-              <span className={clsx("font-bold text-sm")}>1 200, 00 сом</span>
+              <span>Товары ({cart.length})</span>
+              <span className={clsx("font-bold text-sm")}>
+                {summa.toLocaleString()} сом
+              </span>
             </Flex>
             <Flex justify="space-between">
               <span>Скидка</span>
               <span className={clsx("font-bold text-red-400 text-sm")}>
-                -700 сом
+                0 сом
               </span>
             </Flex>
             <Divider />
             <Flex justify="space-between">
               <span className={clsx("text-lg font-bold")}>Общая стоимость</span>
-              <span className={clsx("text-lg font-bold")}>1 200, 00 сом</span>
+              <span className={clsx("text-lg font-bold")}>
+                {summa.toLocaleString()} сом
+              </span>
             </Flex>
           </Flex>
         </Flex>

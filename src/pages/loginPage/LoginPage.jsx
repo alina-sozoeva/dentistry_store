@@ -1,19 +1,19 @@
 import { useForm } from "antd/es/form/Form";
-import { Button, Flex, Form, Input, Switch, Typography } from "antd";
+import { Button, Form, Input, Typography } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import styles from "./LoginPage.module.scss";
-import fon from "../../assets/images/bg_forest.jpg";
-import clsx from "clsx";
-import { useCartStore } from "../../store";
 import { users } from "../../data";
 import { toast } from "react-toastify";
 import { pathname } from "../../enums";
+import { useUserStore } from "../../store";
+import styles from "./LoginPage.module.scss";
+import fon from "../../assets/images/bg_forest.jpg";
+import clsx from "clsx";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
   const [form] = useForm();
-  const { user, setUser } = useCartStore();
+  const { user, setUser } = useUserStore();
 
   const onFinish = async (values) => {
     const findUser = users.find(

@@ -7,5 +7,6 @@ export const pathname = {
   PRODUCTSITEM: "/product/:codeid",
   STUDY: "/study",
   PROFILE: "/profile",
+  FAVORITES: "/favorites",
   LOGIN: "/login",
 };

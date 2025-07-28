@@ -4,12 +4,35 @@ import { useState } from "react";
 import * as chairImages from "../../../../assets/images/сhairs";
 import styles from "./CartItem.module.scss";
 import clsx from "clsx";
+import { useCartStore } from "../../../../store";
 
 export const CartItem = ({ item }) => {
   const [count, setCount] = useState(1);
+  const { removeFromCart } = useCartStore();
+  const { addToCart, deleteCount } = useCartStore();
 
   const onChange = (e) => {
     setCount(e.target.value);
+  };
+
+  const removeItem = () => {
+    removeFromCart(item.codeid);
+  };
+
+  const ButtonMinus = () => {
+    return (
+      <span className={clsx(styles.btn)} onClick={() => deleteCount(item)}>
+        -
+      </span>
+    );
+  };
+
+  const ButtonPlus = () => {
+    return (
+      <span className={clsx(styles.btn)} onClick={() => addToCart(item)}>
+        +
+      </span>
+    );
   };
 
   return (
@@ -20,7 +43,7 @@ export const CartItem = ({ item }) => {
       <Flex vertical justify="space-between" className={clsx("w-full py-2")}>
         <Flex className={clsx("mb-2")} justify="space-between">
           <span>{item.nameid}</span>
-          <CloseOutlined />
+          <CloseOutlined onClick={() => removeItem()} />
         </Flex>
         <span className={clsx(styles.dostavka)}>
           <TruckOutlined /> Быстрая доставка
@@ -40,7 +63,10 @@ export const CartItem = ({ item }) => {
             </span>
           </Flex>
           <Input
-            value={count}
+            addonBefore={<ButtonMinus />}
+            addonAfter={<ButtonPlus />}
+            defaultValue="mysite"
+            value={item.count}
             className={clsx("w-[100px] text-center")}
             onChange={onChange}
           />

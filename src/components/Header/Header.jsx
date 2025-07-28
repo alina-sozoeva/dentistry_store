@@ -1,5 +1,6 @@
 import {
   CaretDownOutlined,
+  HeartOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
   UserOutlined,
@@ -14,9 +15,10 @@ import { useLocation } from "react-router";
 import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
 import clsx from "clsx";
-import { useCartStore } from "../../store";
+
 import { CustomButton } from "../CustomButton";
 import { ReviewModal } from "../ReviewModal";
+import { useCartStore, useUserStore } from "../../store";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -24,8 +26,9 @@ export const Header = () => {
   const [page, setPage] = useState("/");
   const [searchValue, setSearchValue] = useState("");
   const { data: categories } = useGetCategoryQuery();
-  const { user, removeUser } = useCartStore();
+  const { user, removeUser } = useUserStore();
   const [open, setOpen] = useState(false);
+  const { cart } = useCartStore();
 
   const onPage = (nav) => {
     setPage(nav);
@@ -52,7 +55,6 @@ export const Header = () => {
       label: <p>{user?.login}</p>,
       key: "0",
     },
-
     {
       type: "divider",
     },
@@ -189,23 +191,36 @@ export const Header = () => {
             ) : (
               <Link
                 to={pathname.LOGIN}
-                className={clsx("text-2xl flex gap-2 items-center")}
+                className={clsx("text-2xl flex flex-col gap-2 items-center")}
                 style={{ whiteSpace: "nowrap" }}
               >
-                <UserOutlined />{" "}
-                <span className={clsx("text-base")}>Login</span>
+                <UserOutlined />
+                <span>Логин</span>
               </Link>
             )}
-
             <Link
-              to={pathname.CART}
-              className="text-2xl"
+              to={pathname.FAVORITES}
+              className="text-2xl flex flex-col items-center"
               style={{ whiteSpace: "nowrap" }}
             >
               <div className={clsx(styles.cart)}>
                 <div className={clsx(styles.cart_count)}>5</div>
+                <HeartOutlined />
+              </div>
+              <span>Избранное</span>
+            </Link>
+            <Link
+              to={pathname.CART}
+              className="text-2xl flex flex-col items-center"
+              style={{ whiteSpace: "nowrap" }}
+            >
+              <div className={clsx(styles.cart)}>
+                {cart.length !== 0 && (
+                  <div className={clsx(styles.cart_count)}>{cart.length}</div>
+                )}
                 <ShoppingCartOutlined />
               </div>
+              <span>Корзина</span>
             </Link>
           </Flex>
         </Flex>

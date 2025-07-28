@@ -11,10 +11,13 @@ import * as chairImages from "../../assets/images/сhairs";
 
 import styles from "./ProductItem.module.scss";
 import clsx from "clsx";
+import { useCartStore, useFavoritesStore } from "../../store";
 
 export const ProductItem = ({ item }) => {
   const navigate = useNavigate();
   const [fav, setFav] = useState(false);
+  const { addToCart } = useCartStore();
+  const { addToFavorites } = useFavoritesStore();
 
   const onFav = (e) => {
     e.stopPropagation();
@@ -22,6 +25,12 @@ export const ProductItem = ({ item }) => {
 
   const onCart = (e) => {
     e.stopPropagation();
+    addToCart(item);
+  };
+
+  const onFavorites = () => {
+    setFav(true);
+    addToFavorites(item);
   };
 
   return (
@@ -37,7 +46,7 @@ export const ProductItem = ({ item }) => {
           alt={item}
         />
         <span className={clsx(styles.fav)} onClick={(e) => onFav(e)}>
-          {!fav && <HeartOutlined onClick={() => setFav(true)} />}
+          {!fav && <HeartOutlined onClick={() => onFavorites()} />}
           {fav && <HeartFilled onClick={() => setFav(false)} />}
         </span>
       </div>

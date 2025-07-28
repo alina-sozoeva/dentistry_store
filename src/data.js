@@ -278,13 +278,13 @@ export const brandsItem = [
   },
   {
     key: 2,
-    title: "Luvis",
+    title: "Dentis",
     img: brands.luvis,
     background: "#232323",
   },
   {
     key: 3,
-    title: "EcoTron",
+    title: "Ecotron",
     img: brands.ecotorn_logo,
     background: "#f4f3ef",
   },
@@ -296,14 +296,8 @@ export const brandsItem = [
   },
   {
     key: 5,
-    title: "B&E",
-    img: brands.b_and_e,
-    background: "#f4f3ef",
-  },
-  {
-    key: 6,
-    title: "Large V",
-    img: brands.lardev_logo,
+    title: "Charming dent",
+    img: brands.charming_dent,
     background: "#f4f3ef",
   },
 ];

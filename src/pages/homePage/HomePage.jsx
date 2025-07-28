@@ -10,6 +10,7 @@ import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
 import {
+  useCartStore,
   useGetCategoryQuery,
   useGetProductsQuery,
   useGetProvidersQuery,
@@ -31,8 +32,7 @@ export const HomePage = () => {
   const { data: categories } = useGetCategoryQuery();
   const { data: products } = useGetProductsQuery({});
   const { reviews } = useReviewStore();
-
-  console.log(reviews, "reviews");
+  const { addToCart } = useCartStore();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -50,6 +50,10 @@ export const HomePage = () => {
 
   const onCategoryId = (codeid) => {
     navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
+  };
+
+  const addCart = (item) => {
+    addToCart(item);
   };
 
   return (
@@ -140,7 +144,7 @@ export const HomePage = () => {
                 <Flex className={clsx("text-center mb-6")} key={item.codeid}>
                   <div
                     className={clsx(styles.brand)}
-                    style={{ backgroundColor: item.background ?? "#222222" }}
+                    style={{ backgroundColor: localBrand.background }}
                     onClick={() => onBrandId(item.codeid)}
                   >
                     <img

@@ -8,8 +8,10 @@ if (!localStorage.getItem("reviews")) {
 export const useReviewStore = create((set, get) => ({
   reviews: JSON.parse(localStorage.getItem("reviews")),
   addReviews: (newReview) => {
-    const update = [...get().reviews, newReview];
-    localStorage.setItem("reviews", JSON.stringify(update));
-    set({ reviews: update });
+    set((state) => {
+      const update = [...state.reviews, newReview];
+      localStorage.setItem("reviews", JSON.stringify(update));
+      return { reviews: update };
+    });
   },
 }));

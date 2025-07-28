@@ -7,3 +7,4 @@ export * from "./cartPage";
 export * from "./contactPage";
 export * from "./loginPage";
 export * from "./studyPage";
+export * from "./favoritesPage";
