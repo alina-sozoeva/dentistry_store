@@ -18,7 +18,7 @@ import clsx from "clsx";
 
 import { CustomButton } from "../CustomButton";
 import { ReviewModal } from "../ReviewModal";
-import { useCartStore, useUserStore } from "../../store";
+import { useCartStore, useFavoritesStore, useUserStore } from "../../store";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -29,6 +29,7 @@ export const Header = () => {
   const { user, removeUser } = useUserStore();
   const [open, setOpen] = useState(false);
   const { cart } = useCartStore();
+  const { favorites } = useFavoritesStore();
 
   const onPage = (nav) => {
     setPage(nav);
@@ -72,7 +73,11 @@ export const Header = () => {
     <header className={styles.wrap}>
       <Flex vertical className={clsx(styles.header)}>
         <Flex className={clsx("px-20")} gap="small" align="center">
-          <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+          <Link
+            className={clsx("w-[220px]")}
+            to={pathname.HOME}
+            onClick={() => onPage(pathname.HOME)}
+          >
             <img className={styles.logo} src={logo} alt="logo" />
           </Link>
 
@@ -204,7 +209,11 @@ export const Header = () => {
               style={{ whiteSpace: "nowrap" }}
             >
               <div className={clsx(styles.cart)}>
-                <div className={clsx(styles.cart_count)}>5</div>
+                {favorites?.length !== 0 && (
+                  <div className={clsx(styles.cart_count)}>
+                    {favorites?.length}
+                  </div>
+                )}
                 <HeartOutlined />
               </div>
               <span>Избранное</span>

@@ -6,7 +6,6 @@ import { pathname } from "../../enums";
 import styles from "./CartPage.module.scss";
 import clsx from "clsx";
 import { useMemo } from "react";
-import { CustomButton } from "../../components";
 
 export const CartPage = () => {
   const navigate = useNavigate();

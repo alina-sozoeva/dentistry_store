@@ -1,10 +1,10 @@
-import { Divider, Empty, Flex, Typography } from "antd";
+import { Empty, Flex, Typography } from "antd";
 import { useFavoritesStore } from "../../store";
 import { useNavigate } from "react-router";
 import { pathname } from "../../enums";
+import { ProductItem } from "../../components";
 import styles from "./FavoritesPage.module.scss";
 import clsx from "clsx";
-import { ProductItem } from "../../components";
 
 export const FavoritesPage = () => {
   const navigate = useNavigate();
@@ -16,13 +16,13 @@ export const FavoritesPage = () => {
         <Typography.Title level={2}>Избранные</Typography.Title>
 
         <Flex className={clsx(styles.wrap)}>
-          <Flex vertical className={clsx(styles.wrap_item)}>
-            <Divider />
-            {favorites?.length === 0 ? (
+          {favorites?.length === 0 ? (
+            <Flex align="center" justify="center" className={clsx("w-full")}>
               <Empty
+                className={clsx("")}
                 description={
                   <Flex vertical align="center" justify="center" gap="small">
-                    <span>Ваша корзина пока пуста</span>
+                    <span>У вас пока нет изранных</span>
                     <button
                       className={clsx(styles.btn)}
                       onClick={() => navigate(pathname.PRODUCTS)}
@@ -32,14 +32,14 @@ export const FavoritesPage = () => {
                   </Flex>
                 }
               />
-            ) : (
-              <Flex vertical gap="small">
-                {favorites?.map((item) => (
-                  <ProductItem key={item.id} item={item} />
-                ))}
-              </Flex>
-            )}
-          </Flex>
+            </Flex>
+          ) : (
+            <div className={clsx("grid grid-cols-5 gap-2")}>
+              {favorites?.map((item) => (
+                <ProductItem key={item.id} item={item} />
+              ))}
+            </div>
+          )}
         </Flex>
       </section>
     </main>

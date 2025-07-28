@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { create } from "zustand";
 
 export const useCartStore = create((set, get) => ({
@@ -6,10 +7,16 @@ export const useCartStore = create((set, get) => ({
     set((state) => {
       const countItem = state.cart.find((pro) => pro.codeid === item.codeid);
       let updateObj;
+
       if (countItem) {
-        updateObj = state.cart.map((pro) =>
-          pro.codeid === item.codeid ? { ...pro, count: pro.count + 1 } : pro
-        );
+        if (countItem.count < item.quantity) {
+          updateObj = state.cart.map((pro) =>
+            pro.codeid === item.codeid ? { ...pro, count: pro.count + 1 } : pro
+          );
+        } else {
+          updateObj = state.cart;
+          toast.error("Товара не осталось!");
+        }
       } else {
         updateObj = [...state.cart, { ...item, count: 1 }];
       }
@@ -24,7 +31,9 @@ export const useCartStore = create((set, get) => ({
       let updateObj;
       if (countItem) {
         updateObj = state.cart.map((pro) =>
-          pro.codeid === item.codeid ? { ...pro, count: pro.count - 1 } : pro
+          pro.codeid === item.codeid
+            ? { ...pro, count: Math.max(pro.count - 1, 1) }
+            : pro
         );
       } else {
         updateObj = [...state.cart, { ...item, count: 1 }];

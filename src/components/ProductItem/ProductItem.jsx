@@ -15,9 +15,9 @@ import { useCartStore, useFavoritesStore } from "../../store";
 
 export const ProductItem = ({ item }) => {
   const navigate = useNavigate();
-  const [fav, setFav] = useState(false);
   const { addToCart } = useCartStore();
-  const { addToFavorites } = useFavoritesStore();
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoritesStore();
 
   const onFav = (e) => {
     e.stopPropagation();
@@ -29,9 +29,14 @@ export const ProductItem = ({ item }) => {
   };
 
   const onFavorites = () => {
-    setFav(true);
     addToFavorites(item);
   };
+
+  const removeFavorites = () => {
+    removeFromFavorites(item.codeid);
+  };
+
+  const findFav = favorites.find((fav) => fav.codeid === item.codeid);
 
   return (
     <Flex
@@ -46,8 +51,8 @@ export const ProductItem = ({ item }) => {
           alt={item}
         />
         <span className={clsx(styles.fav)} onClick={(e) => onFav(e)}>
-          {!fav && <HeartOutlined onClick={() => onFavorites()} />}
-          {fav && <HeartFilled onClick={() => setFav(false)} />}
+          {!findFav && <HeartOutlined onClick={() => onFavorites()} />}
+          {findFav && <HeartFilled onClick={() => removeFavorites()} />}
         </span>
       </div>
       <Flex className={clsx(styles.descrip)} vertical gap={"small"}>
