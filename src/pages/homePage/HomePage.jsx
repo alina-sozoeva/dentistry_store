@@ -173,7 +173,7 @@ export const HomePage = () => {
             </span>
           </Flex>
 
-          <Flex gap="small">
+          <Flex gap="small" className={clsx(styles.products)}>
             {products?.slice(0, 6).map((item) => (
               <ProductItem item={item} />
             ))}
@@ -193,7 +193,7 @@ export const HomePage = () => {
               Смотреть все <DoubleRightOutlined />
             </span>
           </Flex>
-          <Flex gap="small">
+          <Flex gap="small" className={clsx(styles.products)}>
             {products?.slice(6, 12).map((item) => (
               <ProductItem item={item} />
             ))}
@@ -213,7 +213,7 @@ export const HomePage = () => {
               Смотреть все <DoubleRightOutlined />
             </span>
           </Flex>
-          <Flex gap="small">
+          <Flex gap="small" className={clsx(styles.products)}>
             {products?.slice(12, 18).map((item) => (
               <ProductItem item={item} />
             ))}
