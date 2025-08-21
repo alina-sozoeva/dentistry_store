@@ -1,0 +1,38 @@
+:global {
+  .ant-modal-root,
+  .ant-modal-mask {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+}
+
+.modal {
+  :global {
+    .ant-modal,
+    .ant-modal-content {
+      background-color: transparent !important;
+      box-shadow: none;
+    }
+
+    .ant-modal-root,
+    .ant-modal-mask {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    .ant-modal,
+    .ant-modal-close {
+      color: white;
+      bottom: 20px;
+      top: 0;
+      padding-bottom: 20px;
+
+      svg {
+        font-size: 20px;
+      }
+
+      &:hover {
+        color: white;
+        background-color: transparent;
+      }
+    }
+  }
+}

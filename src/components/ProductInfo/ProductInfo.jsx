@@ -5,13 +5,19 @@ import {
   FilePdfOutlined,
   ShoppingCartOutlined,
   ShoppingOutlined,
+  StarOutlined,
 } from "@ant-design/icons";
 import styles from "./ProductInfo.module.scss";
 import { Link } from "react-router";
-import * as chairImages from "../../assets/images/сhairs";
+import no_foto from "../../assets/images/no_image.png";
+import { useCartStore, useFavoritesStore } from "../../store";
 
 export const ProductInfo = ({ item, isModal = false }) => {
-  console.log(item, "item");
+  const { addToCart } = useCartStore();
+
+  const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
+
+  const { addToFavorites } = useFavoritesStore();
 
   return (
     <section>
@@ -20,10 +26,14 @@ export const ProductInfo = ({ item, isModal = false }) => {
           <Row gutter={24}>
             <Col span={12}>
               <Carousel arrows autoplay>
-                {/* {item?.img.map((i) => (
-                  <img className={styles.img} src={i} alt="product foto" />
-                ))} */}
-                <img src={chairImages.C_Class_unit_cart_2} alt="" />
+                <img
+                  src={
+                    imgParse !== null
+                      ? `${process.env.REACT_APP_URL}/${imgParse?.path}`
+                      : no_foto
+                  }
+                  alt=""
+                />
               </Carousel>
             </Col>
             <Col span={12}>
@@ -79,11 +89,17 @@ export const ProductInfo = ({ item, isModal = false }) => {
           <Flex vertical gap={"middle"} className={styles.btns}>
             <CustomButton icon={<FilePdfOutlined />}>Брошюра</CustomButton>
             <Input type="number" defaultValue={1} placeholder="Количество" />
-            <CustomButton icon={<ShoppingCartOutlined />}>
+            <CustomButton
+              onClick={() => addToCart(item)}
+              icon={<ShoppingCartOutlined />}
+            >
               В корзину
             </CustomButton>
-            <CustomButton icon={<ShoppingOutlined />}>
-              Купить сейчас
+            <CustomButton
+              icon={<StarOutlined />}
+              onClick={() => addToFavorites(item)}
+            >
+              Добавить в избранное
             </CustomButton>
           </Flex>
         </Flex>

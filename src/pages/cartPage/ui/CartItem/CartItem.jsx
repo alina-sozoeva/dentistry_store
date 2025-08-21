@@ -1,15 +1,16 @@
 import { Flex, Input } from "antd";
 import { CloseOutlined, TruckOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import * as chairImages from "../../../../assets/images/сhairs";
 import styles from "./CartItem.module.scss";
 import clsx from "clsx";
 import { useCartStore } from "../../../../store";
+import no_foto from "../../../../assets/images/no_image.png";
 
 export const CartItem = ({ item }) => {
   const [count, setCount] = useState(1);
   const { removeFromCart } = useCartStore();
   const { addToCart, deleteCount } = useCartStore();
+  const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
 
   const onChange = (e) => {
     setCount(e.target.value);
@@ -38,7 +39,15 @@ export const CartItem = ({ item }) => {
   return (
     <Flex gap="small" className={clsx(styles.wrap)}>
       <div className={styles.img}>
-        <img src={chairImages.C_Class_unit_cart_2} alt="" />
+        {/* <img src={chairImages.C_Class_unit_cart_2} alt="" /> */}
+        <img
+          src={
+            imgParse !== null
+              ? `${process.env.REACT_APP_URL}/${imgParse?.path}`
+              : no_foto
+          }
+          alt=""
+        />
       </div>
       <Flex vertical justify="space-between" className={clsx("w-full py-2")}>
         <Flex className={clsx("mb-2")} justify="space-between">

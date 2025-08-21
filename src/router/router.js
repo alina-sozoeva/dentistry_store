@@ -33,6 +33,7 @@ export const router = createBrowserRouter([
       { path: pathname.CONTACT, element: <Pages.ContactPage /> },
       { path: pathname.STUDY, element: <Pages.StudyPage /> },
       { path: pathname.FAVORITES, element: <Pages.FavoritesPage /> },
+      { path: pathname.ALLTION, element: <Pages.AlltionPage /> },
     ],
   },
 ]);

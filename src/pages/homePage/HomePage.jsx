@@ -52,6 +52,8 @@ export const HomePage = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
   };
 
+  const dopBrends = [...(brends || []), { codeid: 8, nameid: "ALLTION" }];
+
   const addCart = (item) => {
     addToCart(item);
   };
@@ -135,7 +137,7 @@ export const HomePage = () => {
             className={clsx(styles.carousel, styles.brands, "w-full")}
             slidesToShow={5}
           >
-            {brends?.map((item) => {
+            {dopBrends?.map((item) => {
               const localBrand = brandsItem.find(
                 (brand) => brand.title === item.nameid
               );
@@ -145,7 +147,11 @@ export const HomePage = () => {
                   <div
                     className={clsx(styles.brand)}
                     style={{ backgroundColor: localBrand.background }}
-                    onClick={() => onBrandId(item.codeid)}
+                    onClick={
+                      item.codeid === 8
+                        ? () => navigate(pathname.ALLTION)
+                        : () => onBrandId(item.codeid)
+                    }
                   >
                     <img
                       src={localBrand ? localBrand.img : brends_foto.luvis}

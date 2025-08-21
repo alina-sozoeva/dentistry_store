@@ -7,11 +7,10 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import * as chairImages from "../../assets/images/сhairs";
-
+import { useCartStore, useFavoritesStore } from "../../store";
+import no_foto from "../../assets/images/no_image.png";
 import styles from "./ProductItem.module.scss";
 import clsx from "clsx";
-import { useCartStore, useFavoritesStore } from "../../store";
 
 export const ProductItem = ({ item }) => {
   const navigate = useNavigate();
@@ -38,6 +37,8 @@ export const ProductItem = ({ item }) => {
 
   const findFav = favorites.find((fav) => fav.codeid === item.codeid);
 
+  const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
+
   return (
     <Flex
       className={clsx(styles.card)}
@@ -47,7 +48,11 @@ export const ProductItem = ({ item }) => {
       <div className={clsx(styles.img)}>
         <img
           className={clsx(styles.ad_img)}
-          src={chairImages.C_Class_unit_cart_2}
+          src={
+            imgParse !== null
+              ? `${process.env.REACT_APP_URL}/${imgParse?.path}`
+              : no_foto
+          }
           alt={item}
         />
         <span className={clsx(styles.fav)} onClick={(e) => onFav(e)}>

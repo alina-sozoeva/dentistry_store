@@ -8,3 +8,4 @@ export * from "./contactPage";
 export * from "./loginPage";
 export * from "./studyPage";
 export * from "./favoritesPage";
+export * from "./alltionPage";
