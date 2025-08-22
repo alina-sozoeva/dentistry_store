@@ -1,13 +1,15 @@
 import { Col, Flex, Row } from "antd";
 import { useState } from "react";
-import { VideoModal } from "./ui";
+import { ModelsCard, VideoModal } from "./ui";
 
 import fon_alltion from "../../assets/images/fon_alltion.jpg";
 import play from "../../assets/images/play.svg";
 import yrs from "../../assets/images/30yrs_banner-scaled.webp";
+import models_fon from "../../assets/images/alltion/fon_models.jpg";
 
 import styles from "./AlltionPage.module.scss";
 import clsx from "clsx";
+import { models } from "../../data";
 
 export const AlltionPage = () => {
   const [open, setOpen] = useState(false);
@@ -57,6 +59,20 @@ export const AlltionPage = () => {
               </p>
             </Flex>
           </Col>
+        </Row>
+        <div className={clsx(styles.models, "mt-12")}>
+          <img src={models_fon} alt={models_fon} />
+          <div className={clsx(styles.models_info)}>
+            <p>Стоматологические микроскопы</p>
+          </div>
+        </div>
+
+        <Row gutter={24} className={clsx(styles.models, "mи-12")}>
+          {models.map((item) => (
+            <Col span={12} className={clsx("mt-4")}>
+              <ModelsCard item={item} />
+            </Col>
+          ))}
         </Row>
       </section>
       <VideoModal open={open} onCancel={() => setOpen(false)} />

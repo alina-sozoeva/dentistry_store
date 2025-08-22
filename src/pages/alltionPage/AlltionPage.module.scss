@@ -1,9 +1,15 @@
-.yrs {
+.yrs,
+.models {
   margin-bottom: 40px;
   position: relative;
+
+  img {
+    border-radius: 40px;
+  }
 }
 
-.yrs_info {
+.yrs_info,
+.models_info {
   position: absolute;
   bottom: 10px;
   left: 40px;

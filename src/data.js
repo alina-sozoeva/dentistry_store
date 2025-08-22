@@ -1,6 +1,7 @@
 import * as brands from "./assets/images/brendsLogo";
 import * as cat_foto from "./assets/images/categories";
 import * as edu_foto from "./assets/images/edu";
+import * as models_img from "./assets/images/alltion";
 
 export const categoriesLocal = [
   {
@@ -209,5 +210,36 @@ export const reviews = [
     raiting: 5,
     comment:
       "Доктор с большой буквы! Очень помог мне с лечением, всё объяснил подробно и доступно. Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.Отличный врач, помог мне справиться с болезнью. Очень внимателен и профессионален.",
+  },
+];
+
+export const models = [
+  {
+    key: 1,
+    name: "ANGEL",
+    descrip: "Создан для тех, кто выбирает максимум",
+    price: 42000,
+    img: models_img.angel_netest,
+  },
+  {
+    key: 2,
+    name: "AM-5000",
+    descrip: "Больше возможностей для профессионалов",
+    price: 17850,
+    img: models_img.five_netest,
+  },
+  {
+    key: 3,
+    name: "AM-2000 PLUS",
+    descrip: "Оптимальный баланс технологий и стоимости",
+    price: 15700,
+    img: models_img.two_plus_netest,
+  },
+  {
+    key: 4,
+    name: "AM-2000",
+    descrip: "Надежный старт для работы с увеличением",
+    price: 12100,
+    img: models_img.two_netest,
   },
 ];

@@ -1,0 +1,24 @@
+.card {
+  position: relative;
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  width: 100%;
+  height: 500px;
+}
+
+.fon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+.item_img {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  img {
+    width: 600px;
+  }
+}
