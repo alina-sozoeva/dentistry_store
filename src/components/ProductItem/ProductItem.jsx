@@ -65,12 +65,12 @@ export const ProductItem = ({ item }) => {
           <span className={clsx("text-md whitespace-pre-line")}>
             {Number(item?.price).toLocaleString()} сом
           </span>
-          <span
+          {/* <span
             className={clsx("text-sm line-through line-clamp-2")}
             style={{ color: "#647180" }}
           >
             {Number(item?.price).toLocaleString()} сом
-          </span>
+          </span> */}
         </Flex>
         <Flex vertical justify="space-between">
           <h3

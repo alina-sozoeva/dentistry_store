@@ -4,7 +4,6 @@ import { CustomButton } from "../CustomButton";
 import {
   FilePdfOutlined,
   ShoppingCartOutlined,
-  ShoppingOutlined,
   StarOutlined,
 } from "@ant-design/icons";
 import styles from "./ProductInfo.module.scss";

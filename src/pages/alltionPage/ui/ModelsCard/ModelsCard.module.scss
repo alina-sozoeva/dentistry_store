@@ -1,16 +1,71 @@
+@mixin series_general {
+  font-size: 32px;
+  font-weight: 200;
+}
+
+.series_name {
+  @include series_general;
+}
+
+.series {
+  @include series_general;
+  color: #2d42b7;
+}
+
+.descrip,
+.price {
+  font-size: 18px;
+  width: 300px;
+  font-weight: 200;
+}
+
 .card {
   position: relative;
   background-color: white;
   border-radius: 20px;
-  padding: 20px;
+  padding: 20px 30px;
   width: 100%;
   height: 500px;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.6s;
+
+  &:hover {
+    padding: 45px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
+    .fon {
+      left: 25px;
+    }
+
+    .btn {
+      background-color: #192671;
+
+      svg {
+        transform: rotate(0) !important;
+      }
+    }
+  }
+}
+
+.btn {
+  background-color: #2d42b7;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  transition: 0.5s;
+
+  svg {
+    font-size: 24px;
+    transition: 0.5s;
+  }
 }
 
 .fon {
   position: absolute;
   left: 0;
   bottom: 0;
+  transition: 0.5s;
 }
 
 .item_img {
@@ -19,6 +74,6 @@
   bottom: 0;
 
   img {
-    width: 600px;
+    width: 550px;
   }
 }
