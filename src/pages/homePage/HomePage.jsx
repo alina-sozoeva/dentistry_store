@@ -146,7 +146,7 @@ export const HomePage = () => {
                 <Flex className={clsx("text-center mb-6")} key={item.codeid}>
                   <div
                     className={clsx(styles.brand)}
-                    style={{ backgroundColor: localBrand.background }}
+                    style={{ backgroundColor: localBrand?.background }}
                     onClick={
                       item.codeid === 8
                         ? () => navigate(pathname.ALLTION)

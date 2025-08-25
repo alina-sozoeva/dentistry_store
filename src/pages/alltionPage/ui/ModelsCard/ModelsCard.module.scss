@@ -9,7 +9,7 @@
 
 .series {
   @include series_general;
-  color: #2d42b7;
+  color: #147abc;
 }
 
 .descrip,
@@ -39,7 +39,7 @@
     }
 
     .btn {
-      background-color: #192671;
+      background-color: #0f6390;
 
       svg {
         transform: rotate(0) !important;
@@ -49,7 +49,7 @@
 }
 
 .btn {
-  background-color: #2d42b7;
+  background-color: #147abc;
   color: white;
   padding: 15px;
   border-radius: 50%;
