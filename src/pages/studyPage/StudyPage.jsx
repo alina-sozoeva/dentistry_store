@@ -1,8 +1,9 @@
 import { DatePicker, Flex, Input, Typography } from "antd";
-import styles from "./StudyPage.module.scss";
-import clsx from "clsx";
 import { StudyItem } from "./ui";
 import { edu } from "../../data";
+
+import styles from "./StudyPage.module.scss";
+import clsx from "clsx";
 
 export const StudyPage = () => {
   return (

@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import styles from "./AboutUsPage.module.scss";
+import { Flex } from "antd";
 
 export const AboutUsPage = () => {
   return (
@@ -23,17 +24,37 @@ export const AboutUsPage = () => {
 
         <ul className={styles.list}>
           <li>
-            <b>Южная Корея - Graphy Inc.</b> - (3D-элайнеры с памятью формы),
-            Dentis (стоматологические установки), EcoTron (цифровая диагностика
-            и рентген-оборудование), RAYiOS (интраоральный 3D-сканер) ;
+            <b>Южная Корея:</b>
           </li>
-          <li>
+          <Flex vertical className={clsx("pb-2")}>
+            <span className={clsx("pl-6")}>
+              - <b>Graphy Inc.</b> (3D-элайнеры с памятью формы),
+            </span>
+            <span className={clsx("pl-6")}>
+              - <b>Dentis</b> (стоматологические установки),
+            </span>
+            <span className={clsx("pl-6")}>
+              - <b>EcoTron</b> (цифровая диагностика и рентген-оборудование),
+            </span>
+            <span className={clsx("pl-6")}>
+              - <b>RAYiOS</b> (интраоральный 3D-сканер) ;
+            </span>
+          </Flex>
+
+          <li className={clsx("pb-2")}>
             <b>Италия - Promis</b> — (средства гигиены полости рта).
           </li>
           <li>
-            <b>Китай - Alltion</b> (микроскопы) , <b>Large V</b>{" "}
-            (конусно-лучевая компьютерная томография).
+            <b>Китай:</b>
           </li>
+          <Flex vertical>
+            <span className={clsx("pl-6")}>
+              - <b>Alltion</b> (микроскопы),
+            </span>
+            <span className={clsx("pl-6")}>
+              - <b>Large V</b> (конусно-лучевая компьютерная томография).
+            </span>
+          </Flex>
         </ul>
         <p className={styles.paragraph}>
           Широкий ассортимент JDS охватывает все ключевые направления:
