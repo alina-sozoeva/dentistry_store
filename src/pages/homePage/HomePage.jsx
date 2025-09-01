@@ -17,7 +17,7 @@ import {
   useReviewStore,
 } from "../../store";
 import { pathname } from "../../enums";
-import * as brends_foto from "../../assets/images/brendsLogo";
+import brends_no_foto from "../../assets/images/no_image.png";
 import * as cat_foto from "../../assets/images/categories";
 import { categoriesLocal, brandsItem } from "../../data";
 
@@ -164,13 +164,13 @@ export const HomePage = () => {
                       className={clsx(styles.brand)}
                       style={{ backgroundColor: localBrand?.background }}
                       onClick={
-                        item.codeid === 8
-                          ? () => navigate(pathname.ALLTION)
-                          : () => onBrandId(item.codeid)
+                        !localBrand?.path
+                          ? () => onBrandId(item.codeid)
+                          : () => navigate(localBrand?.path)
                       }
                     >
                       <img
-                        src={localBrand ? localBrand.img : brends_foto.luvis}
+                        src={localBrand ? localBrand.img : brends_no_foto}
                         alt={item.nameid}
                       />
                     </div>

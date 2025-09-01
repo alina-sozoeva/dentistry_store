@@ -170,6 +170,15 @@ export const Header = () => {
                     Обучение
                   </span>
                 </Link>
+                <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+                  <span
+                    className={
+                      page === pathname.STUDY ? styles.active_link : styles.link
+                    }
+                  >
+                    Элайнеры
+                  </span>
+                </Link>
                 {user && (
                   <CustomButton onClick={() => setOpen(true)}>
                     Оставить отзыв
@@ -295,6 +304,15 @@ export const Header = () => {
                 }
               >
                 Обучение
+              </span>
+            </Link>
+            <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+              <span
+                className={
+                  page === pathname.STUDY ? styles.active_link : styles.link
+                }
+              >
+                Элайнеры
               </span>
             </Link>
             {user && (

@@ -96,24 +96,28 @@ export const brandsItem = [
     title: "Graphy",
     img: brands.graphy,
     background: "#f4f3ef",
+    path: "/graphy",
   },
   {
     key: 2,
     title: "Dentis",
     img: brands.luvis,
     background: "#232323",
+    path: "/dentis",
   },
   {
     key: 3,
     title: "Ecotron",
     img: brands.ecotorn_logo,
     background: "#f4f3ef",
+    path: "/ecotron",
   },
   {
     key: 4,
     title: "Promis",
     img: brands.promis_logo,
     background: "#222222",
+    path: "/promis",
   },
   {
     key: 5,
@@ -123,8 +127,8 @@ export const brandsItem = [
   },
   {
     key: 6,
-    title: "Charming dent",
-    img: brands.charming_dent,
+    title: "Foshan Tanture Medical Equipment \t",
+    img: brands.foshan_tanture_logo,
     background: "#f4f3ef",
   },
   {
@@ -132,6 +136,7 @@ export const brandsItem = [
     title: "ALLTION",
     img: brands.alltion,
     background: "#f4f3ef",
+    path: "/alltion",
   },
 ];
 

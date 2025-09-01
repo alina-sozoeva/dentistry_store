@@ -34,6 +34,10 @@ export const router = createBrowserRouter([
       { path: pathname.STUDY, element: <Pages.StudyPage /> },
       { path: pathname.FAVORITES, element: <Pages.FavoritesPage /> },
       { path: pathname.ALLTION, element: <Pages.AlltionPage /> },
+      { path: pathname.ECOTRON, element: <Pages.EcotronPage /> },
+      { path: pathname.GRAPHY, element: <Pages.GraphyPage /> },
+      { path: pathname.PROMIS, element: <Pages.PromisPage /> },
+      { path: pathname.DENTIS, element: <Pages.DentisPage /> },
     ],
   },
 ]);

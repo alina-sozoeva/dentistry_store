@@ -9,5 +9,9 @@ export const pathname = {
   PROFILE: "/profile",
   FAVORITES: "/favorites",
   LOGIN: "/login",
-  ALLTION: "/about-alltion",
+  ALLTION: "/alltion",
+  ECOTRON: "/ecotron",
+  GRAPHY: "/graphy",
+  DENTIS: "/dentis",
+  PROMIS: "/promis",
 };

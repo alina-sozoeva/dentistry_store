@@ -9,3 +9,7 @@ export * from "./loginPage";
 export * from "./studyPage";
 export * from "./favoritesPage";
 export * from "./alltionPage";
+export * from "./ecotronPage";
+export * from "./graphyPage";
+export * from "./dentisPage";
+export * from "./promisPage";
