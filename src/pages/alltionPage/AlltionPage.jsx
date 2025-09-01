@@ -1,6 +1,6 @@
 import { Col, Flex, Row } from "antd";
 import { useState } from "react";
-import { ModelsCard, VideoModal } from "./ui";
+import { VideoModal } from "./ui";
 
 import fon_alltion from "../../assets/images/fon_alltion.jpg";
 import play from "../../assets/images/play.svg";
@@ -10,6 +10,7 @@ import models_fon from "../../assets/images/alltion/fon_models.jpg";
 import styles from "./AlltionPage.module.scss";
 import clsx from "clsx";
 import { models } from "../../data";
+import { ModelsCard } from "../../components";
 
 export const AlltionPage = () => {
   const [open, setOpen] = useState(false);

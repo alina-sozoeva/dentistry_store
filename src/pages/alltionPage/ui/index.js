@@ -1,2 +1,1 @@
 export * from "./VideoModal";
-export * from "./ModelsCard";

@@ -1,5 +1,5 @@
 import { Flex } from "antd";
-import fon from "../../../../assets/images/alltion/eq_card_bg.svg";
+import fon from "../../assets/images/alltion/eq_card_bg.svg";
 import styles from "./ModelsCard.module.scss";
 import clsx from "clsx";
 import { ArrowRightOutlined } from "@ant-design/icons";

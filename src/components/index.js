@@ -6,3 +6,4 @@ export * from "./ProductItem";
 export * from "./ProductModal";
 export * from "./Map2GIS";
 export * from "./ReviewModal";
+export * from "./ModelsCard";

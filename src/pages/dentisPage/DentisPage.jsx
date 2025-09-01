@@ -3,7 +3,9 @@ import { useNavigate } from "react-router";
 
 import clsx from "clsx";
 import styles from "./DentisPage.module.scss";
-import { Flex } from "antd";
+import { Col, Flex, Row } from "antd";
+import { models } from "../../data";
+import { ModelsCard } from "../../components";
 
 export const DentisPage = () => {
   const navigate = useNavigate();
@@ -45,6 +47,16 @@ export const DentisPage = () => {
           Установки Dentis помогают повысить эффективность работы и создать
           современную атмосферу в стоматологическом кабинете.
         </p>
+        <span>
+          <b>Продукция</b>
+        </span>
+        <Row gutter={24} className={clsx(styles.models, "mb-12")}>
+          {models.map((item) => (
+            <Col span={12} className={clsx("mt-4")}>
+              <ModelsCard item={item} />
+            </Col>
+          ))}
+        </Row>
         <Flex align="center" justify="center">
           <p className={clsx(styles.more)} onClick={() => onBrandId()}>
             <b>Узнайте больше о продукции Dentis</b>

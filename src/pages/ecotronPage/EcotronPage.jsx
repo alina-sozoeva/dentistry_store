@@ -77,6 +77,9 @@ export const EcotronPage = () => {
           в использовании и соответствует самым высоким требованиям современных
           клиник.
         </p>
+        <span>
+          <b>Продукция</b>
+        </span>
         <Flex align="center" justify="center">
           <p className={clsx(styles.more)} onClick={() => onBrandId()}>
             <b>Узнайте больше о продукции Ecotron</b>
