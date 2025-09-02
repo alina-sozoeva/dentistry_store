@@ -1,12 +1,16 @@
-import { Flex } from "antd";
+import { Col, Flex, Row } from "antd";
 import { pathname } from "../../enums";
 import { useNavigate } from "react-router";
 
 import clsx from "clsx";
 import styles from "./EcotronPage.module.scss";
+import { ModelsCard } from "../../components";
+import { useGetProductsQuery } from "../../store";
 
 export const EcotronPage = () => {
   const navigate = useNavigate();
+
+  const { data: products } = useGetProductsQuery({ code_sp_provider: 6 });
 
   const onBrandId = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?brend=${6}` });
@@ -80,6 +84,13 @@ export const EcotronPage = () => {
         <span>
           <b>Продукция</b>
         </span>
+        <Row gutter={24} className={clsx(styles.models, "mb-12")}>
+          {products?.slice(0, 3).map((item) => (
+            <Col span={12} className={clsx("mt-4")}>
+              <ModelsCard item={item} />
+            </Col>
+          ))}
+        </Row>
         <Flex align="center" justify="center">
           <p className={clsx(styles.more)} onClick={() => onBrandId()}>
             <b>Узнайте больше о продукции Ecotron</b>

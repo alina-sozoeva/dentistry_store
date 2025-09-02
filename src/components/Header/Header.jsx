@@ -80,114 +80,20 @@ export const Header = () => {
           >
             <img className={styles.logo} src={logo} alt="logo" />
           </Link>
-
-          {location.pathname !== "/products" ? (
-            <Flex
-              className={clsx(styles.search, "container")}
-              align="center"
-              gap="middle"
-            >
-              <Input
-                value={searchValue}
-                placeholder="Поиск по более 2000 стамотолошических товаров"
-                onChange={(e) => setSearchValue(e.target.value)}
-                onPressEnter={handleSearch}
-                className={clsx(styles.search_input)}
-              />
-            </Flex>
-          ) : (
-            <div className={clsx("container")}>
-              <div className={clsx(styles.header_nav)}>
-                <Flex align="center" gap="small">
-                  <Dropdown
-                    menu={{ items: mappedCategories }}
-                    trigger={["click"]}
-                  >
-                    <Space>
-                      <TbCategoryFilled />
-                      Категории
-                    </Space>
-                  </Dropdown>
-                </Flex>
-                <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
-                  <span
-                    className={
-                      page === pathname.HOME ? styles.active_link : styles.link
-                    }
-                  >
-                    Главная
-                  </span>
-                </Link>
-                <Link
-                  to={pathname.ABOUT}
-                  onClick={() => onPage(pathname.ABOUT)}
-                >
-                  <span
-                    className={
-                      page === pathname.ABOUT ? styles.active_link : styles.link
-                    }
-                  >
-                    О нас
-                  </span>
-                </Link>
-                <Link
-                  to={pathname.PRODUCTS}
-                  onClick={() => onPage(pathname.PRODUCTS)}
-                >
-                  <span
-                    className={
-                      page === pathname.PRODUCTS
-                        ? styles.active_link
-                        : styles.link
-                    }
-                  >
-                    Магазин
-                  </span>
-                </Link>
-                <Link
-                  to={pathname.CONTACT}
-                  onClick={() => onPage(pathname.CONTACT)}
-                >
-                  <span
-                    className={
-                      page === pathname.CONTACT
-                        ? styles.active_link
-                        : styles.link
-                    }
-                  >
-                    Контакты
-                  </span>
-                </Link>
-                <Link
-                  to={pathname.STUDY}
-                  onClick={() => onPage(pathname.STUDY)}
-                >
-                  <span
-                    className={
-                      page === pathname.STUDY ? styles.active_link : styles.link
-                    }
-                  >
-                    Обучение
-                  </span>
-                </Link>
-                <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
-                  <span
-                    className={
-                      page === pathname.STUDY ? styles.active_link : styles.link
-                    }
-                  >
-                    Элайнеры
-                  </span>
-                </Link>
-                {user && (
-                  <CustomButton onClick={() => setOpen(true)}>
-                    Оставить отзыв
-                  </CustomButton>
-                )}
-              </div>
-            </div>
-          )}
-
+          <Flex
+            className={clsx(styles.search, "container")}
+            align="center"
+            gap="middle"
+          >
+            <Input
+              value={searchValue}
+              placeholder="Поиск по более 2000 стамотолошических товаров"
+              onChange={(e) => setSearchValue(e.target.value)}
+              onPressEnter={handleSearch}
+              className={clsx(styles.search_input)}
+            />
+          </Flex>
+          \
           <Flex gap={"large"} align="center" className={clsx("h-[50px]")}>
             {user ? (
               <Flex>
@@ -244,85 +150,82 @@ export const Header = () => {
         </Flex>
       </Flex>
 
-      {location.pathname !== "/products" && (
-        <div className={clsx("container")}>
-          <div className={clsx(styles.header_nav)}>
-            <Flex align="center" gap="small">
-              <Dropdown menu={{ items: mappedCategories }} trigger={["click"]}>
-                <Space>
-                  <TbCategoryFilled />
-                  Категории
-                </Space>
-              </Dropdown>
-            </Flex>
-            <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
-              <span
-                className={
-                  page === pathname.HOME ? styles.active_link : styles.link
-                }
-              >
-                Главная
-              </span>
-            </Link>
-            <Link to={pathname.ABOUT} onClick={() => onPage(pathname.ABOUT)}>
-              <span
-                className={
-                  page === pathname.ABOUT ? styles.active_link : styles.link
-                }
-              >
-                О нас
-              </span>
-            </Link>
-            <Link
-              to={pathname.PRODUCTS}
-              onClick={() => onPage(pathname.PRODUCTS)}
+      {/* {location.pathname !== "/products" && ( */}
+      <div className={clsx("container")}>
+        <div className={clsx(styles.header_nav)}>
+          <Flex align="center" gap="small">
+            <Dropdown menu={{ items: mappedCategories }} trigger={["click"]}>
+              <Space>
+                <TbCategoryFilled />
+                Категории
+              </Space>
+            </Dropdown>
+          </Flex>
+          <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+            <span
+              className={
+                page === pathname.HOME ? styles.active_link : styles.link
+              }
             >
-              <span
-                className={
-                  page === pathname.PRODUCTS ? styles.active_link : styles.link
-                }
-              >
-                Магазин
-              </span>
-            </Link>
-            <Link
-              to={pathname.CONTACT}
-              onClick={() => onPage(pathname.CONTACT)}
+              Главная
+            </span>
+          </Link>
+          <Link to={pathname.ABOUT} onClick={() => onPage(pathname.ABOUT)}>
+            <span
+              className={
+                page === pathname.ABOUT ? styles.active_link : styles.link
+              }
             >
-              <span
-                className={
-                  page === pathname.CONTACT ? styles.active_link : styles.link
-                }
-              >
-                Контакты
-              </span>
-            </Link>
-            <Link to={pathname.STUDY} onClick={() => onPage(pathname.STUDY)}>
-              <span
-                className={
-                  page === pathname.STUDY ? styles.active_link : styles.link
-                }
-              >
-                Обучение
-              </span>
-            </Link>
-            <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
-              <span
-                className={
-                  page === pathname.STUDY ? styles.active_link : styles.link
-                }
-              >
-                Элайнеры
-              </span>
-            </Link>
-            {user && (
-              <CustomButton onClick={() => setOpen(true)}>
-                Оставить отзыв
-              </CustomButton>
-            )}
-          </div>
+              О нас
+            </span>
+          </Link>
+          <Link
+            to={pathname.PRODUCTS}
+            onClick={() => onPage(pathname.PRODUCTS)}
+          >
+            <span
+              className={
+                page === pathname.PRODUCTS ? styles.active_link : styles.link
+              }
+            >
+              Магазин
+            </span>
+          </Link>
+          <Link to={pathname.CONTACT} onClick={() => onPage(pathname.CONTACT)}>
+            <span
+              className={
+                page === pathname.CONTACT ? styles.active_link : styles.link
+              }
+            >
+              Контакты
+            </span>
+          </Link>
+          <Link to={pathname.STUDY} onClick={() => onPage(pathname.STUDY)}>
+            <span
+              className={
+                page === pathname.STUDY ? styles.active_link : styles.link
+              }
+            >
+              Обучение
+            </span>
+          </Link>
+          <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+            <span
+              className={
+                page === pathname.STUDY ? styles.active_link : styles.link
+              }
+            >
+              Элайнеры
+            </span>
+          </Link>
+          {user && (
+            <CustomButton onClick={() => setOpen(true)}>
+              Оставить отзыв
+            </CustomButton>
+          )}
         </div>
-      )}
+      </div>
+      {/* )} */}
       <ReviewModal open={open} onCancel={() => setOpen(false)} />
     </header>
   );

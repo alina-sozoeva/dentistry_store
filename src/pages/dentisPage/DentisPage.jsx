@@ -6,13 +6,17 @@ import styles from "./DentisPage.module.scss";
 import { Col, Flex, Row } from "antd";
 import { models } from "../../data";
 import { ModelsCard } from "../../components";
+import { useGetProductsQuery } from "../../store";
 
 export const DentisPage = () => {
   const navigate = useNavigate();
+  const { data: products } = useGetProductsQuery({ code_sp_provider: 5 });
 
   const onBrandId = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?brend=${5}` });
   };
+
+  console.log(products, "products");
 
   return (
     <div className={clsx("header_h mt-6 screen_page")}>
@@ -51,7 +55,7 @@ export const DentisPage = () => {
           <b>Продукция</b>
         </span>
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>
-          {models.map((item) => (
+          {products?.slice(0, 3).map((item) => (
             <Col span={12} className={clsx("mt-4")}>
               <ModelsCard item={item} />
             </Col>

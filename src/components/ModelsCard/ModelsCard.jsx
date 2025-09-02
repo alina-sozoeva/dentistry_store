@@ -1,10 +1,17 @@
 import { Flex } from "antd";
-import fon from "../../assets/images/alltion/eq_card_bg.svg";
-import styles from "./ModelsCard.module.scss";
-import clsx from "clsx";
 import { ArrowRightOutlined } from "@ant-design/icons";
 
+import fon from ".././../assets/images/eq_card_bg.svg";
+import no_foto from "../../assets/images/no_image.png";
+
+import styles from "./ModelsCard.module.scss";
+import clsx from "clsx";
+import { useLocation } from "react-router";
+
 export const ModelsCard = ({ item }) => {
+  const location = useLocation();
+  const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
+
   return (
     <div className={clsx(styles.card)}>
       <Flex
@@ -15,11 +22,17 @@ export const ModelsCard = ({ item }) => {
       >
         <Flex vertical gap="middle">
           <Flex vertical>
-            <span className={clsx(styles.series_name)}>Серия</span>
-            <span className={clsx(styles.series)}>{item.name}</span>
+            {location.pathname === "alltion" && (
+              <span className={clsx(styles.series_name)}>Серия</span>
+            )}
+            <span className={clsx(styles.series)}>{item.nameid}</span>
           </Flex>
-          <span className={clsx(styles.descrip)}>{item.descrip}</span>
-          <span className={clsx(styles.price)}>от {item.price} $</span>
+          <span className={clsx(styles.descrip)}>
+            {item.nameid_sp_product_category}
+          </span>
+          <span className={clsx(styles.price)}>
+            от {Number(item.price).toLocaleString()} $
+          </span>
         </Flex>
         <button className={clsx(styles.btn)}>
           <ArrowRightOutlined rotate={-20} />
@@ -30,7 +43,18 @@ export const ModelsCard = ({ item }) => {
         <img src={fon} alt={fon} />
       </div>
       <div className={clsx(styles.item_img)}>
-        <img src={item.img} alt={item.img} />
+        {item.img ? (
+          <img src={item.img} alt={item.img} />
+        ) : (
+          <img
+            src={
+              imgParse !== null
+                ? `${process.env.REACT_APP_URL}/${imgParse?.path}`
+                : no_foto
+            }
+            alt={item.img}
+          />
+        )}
       </div>
     </div>
   );

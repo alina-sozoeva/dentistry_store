@@ -1,11 +1,17 @@
 import { pathname } from "../../enums";
 import { useNavigate } from "react-router";
 
+import * as graphy from "../../assets/images/graphy";
+
 import clsx from "clsx";
 import styles from "./GraphyPage.module.scss";
+import { Col, Row } from "antd";
+import { ModelsCard } from "../../components";
+import { useGetProductsQuery } from "../../store";
 
 export const GraphyPage = () => {
   const navigate = useNavigate();
+  const { data: products } = useGetProductsQuery({ code_sp_provider: 4 });
 
   const onBrandId = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?brend=${4}` });
@@ -17,6 +23,7 @@ export const GraphyPage = () => {
         <h2 className={styles.title}>
           Graphy — 3D-печать с памятью формы: революция в ортодонтии
         </h2>
+
         <p className={styles.paragraph}>
           <b>Graphy Inc.</b> южнокорейская компания из Сеула, лидер в разработке
           инновационных материалов для 3D-печати в стоматологии. Компания стала
@@ -96,6 +103,13 @@ export const GraphyPage = () => {
           </span>{" "}
           и узнайте, как инновации меняют стоматологию уже сегодня.
         </p>
+        <Row gutter={24} className={clsx(styles.models, "mb-12")}>
+          {products?.slice(0, 3).map((item) => (
+            <Col span={12} className={clsx("mt-4")}>
+              <ModelsCard item={item} />
+            </Col>
+          ))}
+        </Row>
       </div>
     </div>
   );
