@@ -10,7 +10,7 @@ import {
   Typography,
 } from "antd";
 
-import { CustomButton } from "../../components";
+import { CustomButton } from "../../common";
 import { useParams } from "react-router";
 import { useMemo } from "react";
 import {
@@ -72,10 +72,8 @@ export const ProductItemPage = () => {
 
   const splitCommet = findItem?.comment.split(/(?<=\.)\s+/);
 
-  console.log(splitCommet, "splitCommet");
-
   return (
-    <section className={`${styles.wrap} py-4 header_h`}>
+    <section className={`${styles.wrap} py-4 `}>
       <Spin spinning={isLoading || isFetching}>
         <Flex vertical className="container">
           <Title>О продукте</Title>

@@ -1,7 +1,9 @@
-import { createBrowserRouter, Navigate, Outlet } from "react-router-dom";
+import { createBrowserRouter, Outlet } from "react-router-dom";
 import * as Pages from "../pages";
-import { Footer, Header } from "../components";
+
 import { pathname } from "../enums";
+import { Footer, Header } from "../common";
+import clsx from "clsx";
 
 const Layout = () => {
   return (
@@ -13,7 +15,9 @@ const Layout = () => {
       }}
     >
       <Header />
-      <Outlet />
+      <div className={clsx("header_h screen_page")}>
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );
@@ -38,6 +42,7 @@ export const router = createBrowserRouter([
       { path: pathname.GRAPHY, element: <Pages.GraphyPage /> },
       { path: pathname.PROMIS, element: <Pages.PromisPage /> },
       { path: pathname.DENTIS, element: <Pages.DentisPage /> },
+      { path: pathname.AM2000PLUS, element: <Pages.Am2000Plus /> },
     ],
   },
 ]);

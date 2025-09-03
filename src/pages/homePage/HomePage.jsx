@@ -1,8 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { CustomButton, ProductItem } from "../../components";
+import { CustomButton, ProductItem } from "../../common";
 import { Carousel, Flex, Spin, Typography } from "antd";
 import { RatingStars } from "../../ui";
-import { CustomCarousel } from "./ui";
 import { useEffect } from "react";
 import { edu } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
@@ -24,6 +23,7 @@ import { categoriesLocal, brandsItem } from "../../data";
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
 import dayjs from "dayjs";
+import { CustomCarousel } from "../../components";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -71,10 +71,7 @@ export const HomePage = () => {
         alignItems: "center",
       }}
     >
-      <main
-        className="header_h screen_page"
-        style={{ backgroundColor: "#f9f9f9" }}
-      >
+      <main style={{ backgroundColor: "#f9f9f9" }}>
         <section className="container">
           <Flex vertical className={clsx("mb-6")}>
             <CustomCarousel />

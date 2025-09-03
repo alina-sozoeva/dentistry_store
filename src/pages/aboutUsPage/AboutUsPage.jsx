@@ -4,8 +4,8 @@ import { Flex } from "antd";
 
 export const AboutUsPage = () => {
   return (
-    <div className={clsx("header_h mt-6")}>
-      <div className={clsx(styles.aboutUsPage, "container screen_page ")}>
+    <div className={clsx(" mt-6")}>
+      <div className={clsx(styles.aboutUsPage, "container  ")}>
         <h2 className={styles.title}>О нас</h2>
         <p className={styles.paragraph}>
           <b>Jannat Dental Store (JDS)</b> — профессиональный поставщик

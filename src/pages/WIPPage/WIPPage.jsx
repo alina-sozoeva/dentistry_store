@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const WIPPage = () => {
   return (
     <Result
-      className={clsx("header_h")}
+      className={clsx("")}
       style={{ height: "75vh" }}
       status="403"
       title="В разработке"

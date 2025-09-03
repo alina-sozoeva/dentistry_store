@@ -11,7 +11,7 @@ export const FavoritesPage = () => {
   const { favorites } = useFavoritesStore();
 
   return (
-    <main className={clsx(styles.cart_wrap, "header_h mb-6 screen_page")}>
+    <main className={clsx(styles.cart_wrap, "mb-6 ")}>
       <section className={clsx("container")}>
         <Typography.Title level={2}>Избранные</Typography.Title>
 

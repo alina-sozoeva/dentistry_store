@@ -1,11 +1,11 @@
 import { Divider, Empty, Flex, Typography } from "antd";
-import { CartItem } from "./ui";
 import { useCartStore } from "../../store";
 import { useNavigate } from "react-router";
 import { pathname } from "../../enums";
 import styles from "./CartPage.module.scss";
 import clsx from "clsx";
 import { useMemo } from "react";
+import { CartItem } from "../../components";
 
 export const CartPage = () => {
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ export const CartPage = () => {
   }, [cart]);
 
   return (
-    <main className={clsx(styles.cart_wrap, "header_h mb-6 screen_page")}>
+    <main className={clsx(styles.cart_wrap, "mb-6")}>
       <section className={clsx("container")}>
         <Typography.Title level={2}>Корзина</Typography.Title>
 

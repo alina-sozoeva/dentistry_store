@@ -1,3 +1,4 @@
+import { pathname } from "./enums";
 import * as brands from "./assets/images/brendsLogo";
 import * as cat_foto from "./assets/images/categories";
 import * as edu_foto from "./assets/images/edu";
@@ -96,28 +97,28 @@ export const brandsItem = [
     title: "Graphy",
     img: brands.graphy,
     background: "#f4f3ef",
-    path: "/graphy",
+    path: pathname.GRAPHY,
   },
   {
     key: 2,
     title: "Dentis",
     img: brands.luvis,
     background: "#232323",
-    path: "/dentis",
+    path: pathname.DENTIS,
   },
   {
     key: 3,
     title: "Ecotron",
     img: brands.ecotorn_logo,
     background: "#f4f3ef",
-    path: "/ecotron",
+    path: pathname.DENTIS,
   },
   {
     key: 4,
     title: "Promis",
     img: brands.promis_logo,
     background: "#222222",
-    path: "/promis",
+    path: pathname.PROMIS,
   },
   {
     key: 5,
@@ -136,7 +137,7 @@ export const brandsItem = [
     title: "ALLTION",
     img: brands.alltion,
     background: "#f4f3ef",
-    path: "/alltion",
+    path: pathname.ALLTION,
   },
 ];
 
@@ -157,7 +158,7 @@ export const edu = [
       "Четырёхдневный практический курс для ортодонтов, где вы получите системный подход к диагностике и планированию лечения, основанный на реальной клинической практике. На курсе вы научитесь: определять ключевые параметры на диагностических моделях, составлять свой протокол оценки ТРГ (ёмкий, информативный, без лишнего), понимать стадии роста зубочелюстной системы и учитывать их в плане лечения, принимать клинически обоснованные решения об удалении или сохранении зубов, выявлять показания к скелетному расширению, оценивать состояние ВНЧС по данным КЛКТ, устанавливать наличие и характер асимметрий.",
     date: "16–19 октября 2025 г.",
     location: "г. Бишкек, Park Hotel",
-    img: edu_foto.ok_19,
+    img: edu_foto.ap,
   },
 ];
 
@@ -226,5 +227,6 @@ export const models = [
     nameid_sp_product_category: "Надежный старт для работы с увеличением",
     price: 12100,
     img: models_img.two_netest,
+    path: pathname.AM2000PLUS,
   },
 ];

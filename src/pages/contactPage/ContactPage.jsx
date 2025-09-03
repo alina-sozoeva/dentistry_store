@@ -1,11 +1,11 @@
 import { Typography } from "antd";
 import styles from "./ContactPage.module.scss";
 import clsx from "clsx";
-import { Map2GIS } from "../../components";
+import { Map2GIS } from "../../common";
 
 export const ContactPage = () => {
   return (
-    <section className={clsx(styles.main, "header_h container")}>
+    <section className={clsx(styles.main, " container")}>
       <div className={clsx(styles.info)}>
         <Typography.Title level={2}>Контакты</Typography.Title>
         <p> г. Бишкек, улица Куйручук, 81/2</p>

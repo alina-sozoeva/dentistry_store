@@ -12,7 +12,7 @@ import {
   Typography,
 } from "antd";
 
-import { CustomButton, ProductItem } from "../../components";
+import { CustomButton, ProductItem } from "../../common";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 import {
@@ -144,7 +144,7 @@ export const ProductsPage = () => {
   console.log(products?.length, "products?.length");
 
   return (
-    <main className={clsx(styles.wrap, "mt-28 screen_page")}>
+    <main className={clsx(styles.wrap, "")}>
       <Spin spinning={isLoading || isFetching}>
         <div className="mt-10 container">
           <Flex align="center" justify="space-between">
@@ -159,10 +159,6 @@ export const ProductsPage = () => {
                   {products?.length} результатов
                 </span>
               </Flex>
-            </Flex>
-
-            <Flex>
-              <CustomButton>Лучшее товары</CustomButton>
             </Flex>
           </Flex>
 

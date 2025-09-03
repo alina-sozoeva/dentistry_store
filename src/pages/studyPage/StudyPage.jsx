@@ -1,13 +1,13 @@
 import { DatePicker, Flex, Input, Typography } from "antd";
-import { StudyItem } from "./ui";
 import { edu } from "../../data";
 
 import styles from "./StudyPage.module.scss";
 import clsx from "clsx";
+import { StudyItem } from "../../components";
 
 export const StudyPage = () => {
   return (
-    <main className={clsx(styles.main, "header_h")}>
+    <main className={clsx(styles.main, "")}>
       <section className={clsx("container")}>
         <Typography.Title level={2}>Обучение</Typography.Title>
         <Flex gap="middle">
