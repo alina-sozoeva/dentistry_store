@@ -111,7 +111,7 @@ export const brandsItem = [
     title: "Ecotron",
     img: brands.ecotorn_logo,
     background: "#f4f3ef",
-    path: pathname.DENTIS,
+    path: pathname.ECOTRON,
   },
   {
     key: 4,
@@ -220,6 +220,7 @@ export const models = [
     nameid_sp_product_category: "Оптимальный баланс технологий и стоимости",
     price: 15700,
     img: models_img.two_plus_netest,
+    path: pathname.AM2000PLUS,
   },
   {
     codeid: 4,
@@ -227,6 +228,6 @@ export const models = [
     nameid_sp_product_category: "Надежный старт для работы с увеличением",
     price: 12100,
     img: models_img.two_netest,
-    path: pathname.AM2000PLUS,
+    path: pathname.AM2000,
   },
 ];

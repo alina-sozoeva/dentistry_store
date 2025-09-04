@@ -1,0 +1,32 @@
+.img {
+  border-radius: 20px;
+}
+
+.title {
+  font-size: var(--spacing-large);
+  font-weight: 200;
+
+  span {
+    font-weight: 200;
+    font-size: var(--spacing-large);
+    color: var(--primary-color);
+  }
+}
+
+.subtitle {
+  font-size: var(--font-size-base);
+  font-weight: 200;
+}
+
+.descrip {
+  font-size: var(--font-size-lg);
+  font-weight: 200;
+}
+
+.img {
+  display: flex;
+  justify-content: end;
+  img {
+    width: 80%;
+  }
+}

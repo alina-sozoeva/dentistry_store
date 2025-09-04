@@ -6,11 +6,12 @@ import play from "../../../assets/images/play.svg";
 import yrs from "../../../assets/images/30yrs_banner-scaled.webp";
 import models_fon from "../../../assets/images/alltion/fon_models.jpg";
 
+import { models } from "../../../data";
+import { VideoModal } from "../../../components";
+import { ModelsCard } from "../../../common";
+
 import styles from "./AlltionPage.module.scss";
 import clsx from "clsx";
-import { models } from "../../../data";
-import { ModelsCard } from "../../../common";
-import { VideoModal } from "../../../components";
 
 export const AlltionPage = () => {
   const [open, setOpen] = useState(false);

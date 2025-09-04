@@ -1,0 +1,57 @@
+@mixin genefal_title {
+  font-size: var(--font-size-38);
+  font-weight: 200;
+}
+
+.wrap {
+  min-height: 350px;
+  overflow: hidden;
+}
+
+.subtitle {
+  @include genefal_title;
+}
+
+.title {
+  @include genefal_title;
+  color: var(--primary-color);
+}
+
+.descrip {
+  font-size: var(--font-size-sm);
+  font-weight: 200;
+  color: var(--grey-color);
+}
+
+.price {
+  font-size: var(--font-size-sm);
+  font-weight: 200;
+}
+
+.bg_img {
+  width: 60%;
+  top: -30%;
+  right: 0;
+  position: absolute;
+}
+
+.item_img {
+  width: 50%;
+  top: -60%;
+  right: 10%;
+  position: absolute;
+}
+
+@media (max-width: 1200px) {
+  .bg_img {
+    width: 70%;
+    top: -10%;
+    right: -20%;
+  }
+
+  .item_img {
+    width: 60%;
+    top: -55%;
+    right: 0;
+  }
+}

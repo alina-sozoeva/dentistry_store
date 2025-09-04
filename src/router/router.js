@@ -43,6 +43,7 @@ export const router = createBrowserRouter([
       { path: pathname.PROMIS, element: <Pages.PromisPage /> },
       { path: pathname.DENTIS, element: <Pages.DentisPage /> },
       { path: pathname.AM2000PLUS, element: <Pages.Am2000Plus /> },
+      { path: pathname.AM2000, element: <Pages.Am2000 /> },
     ],
   },
 ]);

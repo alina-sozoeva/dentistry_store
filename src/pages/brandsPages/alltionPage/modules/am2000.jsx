@@ -10,16 +10,16 @@ import clsx from "clsx";
 
 const modelInfo = {
   subtitle: "Серия",
-  title: "AM-2000 PLUS",
-  description: "Оптимальный баланс технологий и стоимости",
-  price: 15700,
+  title: "AM-2000",
+  description: "Надежный старт для работы с увеличением",
+  price: 12100,
   img_info: am_2000_plus_img.info,
   img_white: am_2000_plus_img.white,
   img_black: am_2000_plus_img.black,
   img_optic: am_2000_plus_img.optic,
 };
 
-export const Am2000Plus = () => {
+export const Am2000 = () => {
   return (
     <main>
       <section className={clsx("container")}>

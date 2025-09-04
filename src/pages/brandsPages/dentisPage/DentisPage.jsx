@@ -3,10 +3,10 @@ import { Col, Flex, Row } from "antd";
 
 import { useGetProductsQuery } from "../../../store";
 import { pathname } from "../../../enums";
-import { ModelsCard } from "../../../common";
 
 import clsx from "clsx";
 import styles from "./DentisPage.module.scss";
+import { ModelsCard } from "../../../common";
 
 export const DentisPage = () => {
   const navigate = useNavigate();
@@ -15,8 +15,6 @@ export const DentisPage = () => {
   const onBrandId = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?brend=${5}` });
   };
-
-  console.log(products, "products");
 
   return (
     <div className={clsx(" mt-6 ")}>

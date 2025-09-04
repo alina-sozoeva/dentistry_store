@@ -23,7 +23,7 @@ export const ModelsCard = ({ item }) => {
       >
         <Flex vertical gap="middle">
           <Flex vertical>
-            {location.pathname === "alltion" && (
+            {location.pathname === "brands/alltion" && (
               <span className={clsx(styles.series_name)}>Серия</span>
             )}
             <span className={clsx(styles.series)}>{item.nameid}</span>

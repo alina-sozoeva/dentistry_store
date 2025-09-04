@@ -6,3 +6,4 @@ export * from "./graphy";
 export * from "./dentis";
 export * from "./ecotron";
 export * from "./promis";
+export * from "./am2000Plus";

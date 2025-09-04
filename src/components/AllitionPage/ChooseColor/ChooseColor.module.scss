@@ -1,0 +1,99 @@
+@mixin btn_gen {
+  width: 300px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  z-index: 12;
+
+  button {
+    border-radius: 12px;
+    width: 35px;
+    height: 35px;
+  }
+
+  span {
+    font-size: var(--font-size-sm);
+    font-weight: 200;
+  }
+}
+
+.wrap {
+  min-height: 430px;
+  overflow: hidden;
+}
+
+.title {
+  font-size: var(--spacing-large);
+  font-weight: 200;
+  width: 50%;
+  line-height: 1.2;
+}
+
+.descrip {
+  font-size: var(--font-size-sm);
+  font-weight: 200;
+  color: var(--grey-color);
+}
+
+.white_btn {
+  @include btn_gen;
+
+  button {
+    border: 1px solid var(--grey-color);
+  }
+}
+
+.white_btn_active {
+  @include btn_gen;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+
+  button {
+    border: 1px solid var(--primary-color);
+  }
+}
+
+.black_btn {
+  @include btn_gen;
+
+  button {
+    border: 1px solid var(--black-color);
+    background-color: var(--black-color);
+  }
+}
+
+.black_btn_active {
+  @include btn_gen;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+
+  button {
+    border: 1px solid var(--black-color);
+    background-color: var(--black-color);
+  }
+}
+
+.bg_img {
+  width: 60%;
+  top: -30%;
+  right: 0;
+  position: absolute;
+  z-index: 2;
+}
+
+.item_img {
+  width: 40%;
+  top: 0;
+  right: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+@media (max-width: 1200px) {
+  .item_img {
+    width: 40%;
+    top: 0;
+    right: 0;
+  }
+}
