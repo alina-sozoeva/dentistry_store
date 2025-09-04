@@ -273,7 +273,7 @@ export const HomePage = () => {
         </section>
 
         <section className={clsx("container")} id="about">
-          <Flex vertical gap="small" className={clsx(styles.edu, "mb-20")}>
+          <Flex vertical gap="small" className={clsx(styles.edu, "mb-28")}>
             <Flex justify="space-between" align="center">
               <Typography.Title level={2} className={clsx("text-center mb-6")}>
                 Обучение

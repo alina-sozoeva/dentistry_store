@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 export const PremiumOptics = ({ img }) => {
   return (
-    <Flex className={clsx(styles.wrap, "mb-20")}>
+    <Flex className={clsx(styles.wrap, "mb-28")}>
       <Row gutter={24} align="middle">
         <Col span={12}>
           <Flex vertical className={clsx("gap-[30px]")}>

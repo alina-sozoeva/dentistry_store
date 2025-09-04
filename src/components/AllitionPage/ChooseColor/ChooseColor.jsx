@@ -12,7 +12,7 @@ export const ChooseColor = ({ item }) => {
   return (
     <Flex
       justify="space-between"
-      className={clsx(styles.wrap, "gen_wrap mb-20")}
+      className={clsx(styles.wrap, "gen_wrap mb-28")}
     >
       <Flex vertical justify="space-between" className={clsx("gap-[50px]")}>
         <Flex vertical gap="small">

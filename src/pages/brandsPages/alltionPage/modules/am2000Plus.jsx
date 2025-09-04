@@ -4,6 +4,7 @@ import {
   ModelInfo,
   PremiumOptics,
   StepIncrease,
+  VarioLens,
 } from "../../../../components";
 
 import { pathname } from "../../../../enums";
@@ -24,7 +25,10 @@ const modelInfo = {
   img_white: am_2000_plus_img.bel_2000_plus,
   img_black: am_2000_plus_img.black_2000_plus,
   img_optic: am_2000_plus_img.optic_2000_plus,
+  img_v: am_2000_plus_img.v_2000_plus,
 };
+const v_text =
+  "Регулировка фокусного расстояния (198-455 мм) в зависимости от  антропометрических данных оператора. Микроскоп с вариообъективом сохраняет здоровье врача, исключая травмы шейных и поясничных отделов.";
 
 export const Am2000Plus = () => {
   return (
@@ -41,6 +45,7 @@ export const Am2000Plus = () => {
         <PremiumOptics img={modelInfo.img_optic} />
         <StepIncrease step={5} title={"5-ступенчатое"} arr={fiveStep} />
         <Diaphragm />
+        <VarioLens item={modelInfo} v_text={v_text} />
       </section>
     </main>
   );

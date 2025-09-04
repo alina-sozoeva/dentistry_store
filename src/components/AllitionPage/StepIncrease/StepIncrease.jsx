@@ -13,7 +13,7 @@ export const StepIncrease = ({ arr, title }) => {
   );
 
   return (
-    <Flex vertical className={clsx(styles.wrap, "mb-20")}>
+    <Flex vertical className={clsx(styles.wrap, "mb-28")}>
       <p className={clsx(styles.title)}>
         <span>{title}</span> увеличение
       </p>

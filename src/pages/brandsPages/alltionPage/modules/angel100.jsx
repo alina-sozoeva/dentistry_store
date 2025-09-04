@@ -1,4 +1,10 @@
-import { Diaphragm, ModelInfo, PremiumOptics } from "../../../../components";
+import {
+  Diaphragm,
+  ModelInfo,
+  PremiumOptics,
+  Smooth,
+  VarioLens,
+} from "../../../../components";
 
 import { pathname } from "../../../../enums";
 import { CustomBreadcrumb } from "../../../../common";
@@ -15,7 +21,11 @@ const modelInfo = {
   price: 42000,
   img_info: angel_1000.angel_info,
   img_optic: angel_1000.linzy_krupno,
+  img_v: angel_1000.v_100,
 };
+
+const v_text =
+  "Регулировка фокусного расстояния (198-455 мм) в зависимости от  антропометрических данных оператора. Микроскоп с вариообъективом сохраняет здоровье врача, исключая травмы шейных и поясничных отделов.";
 
 export const Angel100 = () => {
   return (
@@ -29,7 +39,9 @@ export const Angel100 = () => {
 
         <ModelInfo item={modelInfo} />
         <PremiumOptics img={modelInfo.img_optic} />
+        <Smooth />
         <Diaphragm />
+        <VarioLens item={modelInfo} v_text={v_text} />
       </section>
     </main>
   );

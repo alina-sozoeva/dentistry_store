@@ -1,0 +1,26 @@
+.wrap {
+  gap: 40px;
+  align-items: center;
+}
+
+.img {
+  border-radius: 24px;
+}
+
+.title {
+  font-size: var(--spacing-large);
+  font-weight: 200;
+  color: var(--primary-color);
+  line-height: 1;
+
+  span {
+    font-weight: 200;
+    font-size: var(--spacing-large);
+    color: var(--black-color);
+  }
+}
+
+.descrip {
+  font-size: var(--font-size-base);
+  font-weight: 200;
+}

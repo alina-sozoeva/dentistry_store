@@ -9,7 +9,7 @@ export const ModelInfo = ({ item }) => {
   return (
     <Flex
       justify="space-between"
-      className={clsx(styles.wrap, "gen_wrap mb-20")}
+      className={clsx(styles.wrap, "gen_wrap mb-28")}
     >
       <Flex vertical className={clsx("gap-[50px]")}>
         <Flex vertical>

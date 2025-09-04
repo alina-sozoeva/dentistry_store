@@ -8,7 +8,7 @@ import clsx from "clsx";
 
 export const Diaphragm = () => {
   return (
-    <Row gutter={24} align="middle" className={clsx(styles.wrap, "mb-20")}>
+    <Row gutter={24} align="middle" className={clsx(styles.wrap, "mb-28")}>
       <Col span={8}>
         <img src={gen.diafragm1} alt={gen.diafragm1} />
       </Col>

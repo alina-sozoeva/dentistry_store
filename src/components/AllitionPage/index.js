@@ -4,3 +4,5 @@ export * from "./ChooseColor";
 export * from "./PremiumOptics";
 export * from "./StepIncrease";
 export * from "./Diaphragm";
+export * from "./Smooth";
+export * from "./VarioLens";
