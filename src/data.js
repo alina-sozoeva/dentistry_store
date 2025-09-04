@@ -181,7 +181,6 @@ export const reviews = [
   },
   {
     guid: "2",
-
     date: "26.06.2025",
     nameid: "Петрова Анна",
     raiting: 5,
@@ -190,7 +189,6 @@ export const reviews = [
   },
   {
     guid: "3",
-
     date: "26.06.2025",
     nameid: "Смирнов Сергей",
     raiting: 5,

@@ -1,0 +1,17 @@
+.wrap {
+  padding: 40px;
+  background-color: var(--white-color);
+
+  span {
+    font-size: var(--font-size-sm);
+  }
+}
+
+.btn {
+  font-size: var(--font-size-sm);
+  color: var(--white-color);
+
+  svg {
+    color: var(--white-color);
+  }
+}

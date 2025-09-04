@@ -6,3 +6,4 @@ export * from "./StepIncrease";
 export * from "./Diaphragm";
 export * from "./Smooth";
 export * from "./VarioLens";
+export * from "./FileItem";
