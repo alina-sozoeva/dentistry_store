@@ -4,8 +4,6 @@ import { Col, Row } from "antd";
 import { ModelsCard } from "../../../common";
 import { useGetProductsQuery } from "../../../store";
 
-import * as graphy from "../../../assets/images/graphy";
-
 import clsx from "clsx";
 import styles from "./GraphyPage.module.scss";
 

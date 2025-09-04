@@ -16,4 +16,7 @@ export const pathname = {
   PROMIS: "/brands/promis",
   AM2000PLUS: "/brands/alltion/am-2000-plus",
   AM2000: "/brands/alltion/am-2000",
+  AM5000: "/brands/alltion/am-5000",
+  ANGEL100: "/brands/alltion/angel-100",
+  ANGEL100PRO: "/brands/alltion/angel-100-pro",
 };

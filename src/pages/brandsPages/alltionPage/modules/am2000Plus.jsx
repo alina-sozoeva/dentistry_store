@@ -1,7 +1,14 @@
-import { ChooseColor, ModelInfo, PremiumOptics } from "../../../../components";
+import {
+  ChooseColor,
+  Diaphragm,
+  ModelInfo,
+  PremiumOptics,
+  StepIncrease,
+} from "../../../../components";
 
 import { pathname } from "../../../../enums";
 import { CustomBreadcrumb } from "../../../../common";
+import { fiveStep } from "../../../../stepData";
 
 import * as am_2000_plus_img from "../../../../assets/images/am2000Plus";
 
@@ -13,10 +20,10 @@ const modelInfo = {
   title: "AM-2000 PLUS",
   description: "Оптимальный баланс технологий и стоимости",
   price: 15700,
-  img_info: am_2000_plus_img.info,
-  img_white: am_2000_plus_img.white,
-  img_black: am_2000_plus_img.black,
-  img_optic: am_2000_plus_img.optic,
+  img_info: am_2000_plus_img.info_2000_plus,
+  img_white: am_2000_plus_img.bel_2000_plus,
+  img_black: am_2000_plus_img.black_2000_plus,
+  img_optic: am_2000_plus_img.optic_2000_plus,
 };
 
 export const Am2000Plus = () => {
@@ -32,6 +39,8 @@ export const Am2000Plus = () => {
         <ModelInfo item={modelInfo} />
         <ChooseColor item={modelInfo} />
         <PremiumOptics img={modelInfo.img_optic} />
+        <StepIncrease step={5} title={"5-ступенчатое"} arr={fiveStep} />
+        <Diaphragm />
       </section>
     </main>
   );

@@ -1,0 +1,50 @@
+@mixin btn {
+  position: absolute;
+  background-color: var(--white-color);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    font-size: 24px;
+  }
+}
+
+.wrap {
+  background-color: var(--white-color);
+}
+
+.info {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: var(--spacing-large);
+  font-weight: 200;
+  margin-bottom: 10px;
+}
+
+.descrip {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--grey-color);
+  font-weight: 200;
+}
+
+.btn_left {
+  @include btn;
+  left: -15%;
+}
+
+.btn_rigth {
+  @include btn;
+  right: -15%;
+}

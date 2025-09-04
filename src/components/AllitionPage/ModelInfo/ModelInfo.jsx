@@ -17,9 +17,9 @@ export const ModelInfo = ({ item }) => {
           <span className={clsx(styles.title)}>{item?.title}</span>
           <span className={clsx(styles.descrip)}>{item?.description}</span>
         </Flex>
-        <span className={clsx(styles.price)}>
+        {/* <span className={clsx(styles.price)}>
           от {Number(item?.price).toLocaleString()} $
-        </span>
+        </span> */}
       </Flex>
       <div className={clsx(styles.bg_img)}>
         <img src={bg_img} alt={bg_img} />

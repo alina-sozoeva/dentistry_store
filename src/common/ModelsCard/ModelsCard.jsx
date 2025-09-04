@@ -31,9 +31,9 @@ export const ModelsCard = ({ item }) => {
           <span className={clsx(styles.descrip)}>
             {item.nameid_sp_product_category}
           </span>
-          <span className={clsx(styles.price)}>
+          {/* <span className={clsx(styles.price)}>
             от {Number(item.price).toLocaleString()} $
-          </span>
+          </span> */}
         </Flex>
         <button className={clsx(styles.btn)}>
           <ArrowRightOutlined rotate={-20} />
