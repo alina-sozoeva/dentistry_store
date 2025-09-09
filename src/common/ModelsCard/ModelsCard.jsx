@@ -8,13 +8,18 @@ import no_foto from "../../assets/images/no_image.png";
 import styles from "./ModelsCard.module.scss";
 import clsx from "clsx";
 
-export const ModelsCard = ({ item }) => {
+export const ModelsCard = ({ item, onClick }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
 
+  const onClickItem = () => {
+    navigate(item.path);
+    onClick();
+  };
+
   return (
-    <div className={clsx(styles.card)} onClick={() => navigate(item.path)}>
+    <div className={clsx(styles.card)} onClick={onClickItem}>
       <Flex
         vertical
         justify="space-between"

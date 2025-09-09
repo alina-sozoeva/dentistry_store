@@ -101,13 +101,13 @@ export const GraphyPage = () => {
           </span>{" "}
           и узнайте, как инновации меняют стоматологию уже сегодня.
         </p>
-        {/* <Row gutter={24} className={clsx(styles.models, "mb-12")}>
-          {products?.slice(0, 3).map((item) => (
+        <Row gutter={24} className={clsx(styles.models, "mb-12")}>
+          {products?.products?.slice(0, 8).map((item) => (
             <Col span={12} className={clsx("mt-4")}>
-              <ModelsCard item={item} />
+              <ModelsCard item={item} onClick={() => onBrandId()} />
             </Col>
           ))}
-        </Row> */}
+        </Row>
       </div>
     </div>
   );

@@ -10,7 +10,7 @@ import {
   Typography,
 } from "antd";
 
-import { CustomButton } from "../../common";
+import { CustomBreadcrumb, CustomButton } from "../../common";
 import { useParams } from "react-router";
 import { useMemo } from "react";
 import {
@@ -22,12 +22,9 @@ import { RatingStars } from "../../ui";
 
 import no_foto from "../../assets/images/no_image.png";
 import styles from "./ProductItemPage.module.scss";
-import {
-  FilePdfOutlined,
-  ShoppingCartOutlined,
-  StarOutlined,
-} from "@ant-design/icons";
+import { ShoppingCartOutlined, StarOutlined } from "@ant-design/icons";
 import clsx from "clsx";
+import { pathname } from "../../enums";
 
 const { Title, Paragraph } = Typography;
 
@@ -63,7 +60,7 @@ export const ProductItemPage = () => {
   const { addToCart } = useCartStore();
 
   const findItem = useMemo(() => {
-    return products?.find((item) => +item.codeid === +codeid);
+    return products?.products?.find((item) => +item.codeid === +codeid);
   }, [codeid, products]);
 
   const imgParse = (img) => {
@@ -76,6 +73,11 @@ export const ProductItemPage = () => {
     <section className={`${styles.wrap} py-4 `}>
       <Spin spinning={isLoading || isFetching}>
         <Flex vertical className="container">
+          <CustomBreadcrumb
+            midPath={pathname.PRODUCTS}
+            midTitle={"Стоматологическое оборудование"}
+            lastTitle={findItem?.nameid}
+          />
           <Title>О продукте</Title>
           <Flex vertical className={styles.card}>
             <Flex gap={"large"}>
@@ -120,28 +122,20 @@ export const ProductItemPage = () => {
                       <span>
                         <b>Категория:</b> {findItem?.nameid_sp_product_category}{" "}
                       </span>
-                      <RatingStars />
+                      <RatingStars value={5} />
                     </Flex>
                     <Divider dashed style={{ borderColor: "#bbb" }} />
-                    <Flex vertical className={styles.product_info}>
-                      <span>
-                        <b>Артикул:</b> 3419-ЭКОНП
-                      </span>
-                      <span>
-                        <b>Код</b>: ЭКОНП
-                      </span>
-                      <span></span>
-                      <span>
-                        <b>Производитель:</b> Чанчжоуская Восемнадцатая
-                        Медицинская Технологическая Компания, ООО
-                      </span>
-                    </Flex>
                   </Flex>
                 </Col>
               </Row>
 
               <Flex vertical gap={"middle"} className={styles.btns}>
-                <CustomButton icon={<FilePdfOutlined />}>Брошюра</CustomButton>
+                <CustomButton
+                  icon={<StarOutlined />}
+                  onClick={() => addToFavorites(findItem)}
+                >
+                  Добавить в избранное
+                </CustomButton>
                 <Input
                   type="number"
                   defaultValue={1}
@@ -152,12 +146,6 @@ export const ProductItemPage = () => {
                   icon={<ShoppingCartOutlined />}
                 >
                   В корзину
-                </CustomButton>
-                <CustomButton
-                  icon={<StarOutlined />}
-                  onClick={() => addToFavorites(findItem)}
-                >
-                  Добавить в избранное
                 </CustomButton>
               </Flex>
             </Flex>

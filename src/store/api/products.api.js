@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const categories = ["боры", "файлы", "gutta", "absorbent"];
+
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fetchBaseQuery({ baseUrl: process.env.REACT_APP_MAIN_URL }),
@@ -27,6 +29,25 @@ export const productsApi = createApi({
           nameid,
         },
       }),
+      transformResponse: (response) => {
+        const categorized = {};
+
+        categories.forEach((cat) => {
+          categorized[cat] = response.filter((item) =>
+            item.nameid.toLowerCase().includes(cat)
+          );
+        });
+
+        const products = response.filter(
+          (item) =>
+            !categories.some((cat) => item.nameid.toLowerCase().includes(cat))
+        );
+
+        return {
+          products,
+          ...categorized,
+        };
+      },
       providesTags: ["ProductsList"],
     }),
   }),

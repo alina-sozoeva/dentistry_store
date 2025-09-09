@@ -120,24 +120,30 @@ export const brandsItem = [
     background: "#222222",
     path: pathname.PROMIS,
   },
-  {
-    key: 5,
-    title: "Charming dent",
-    img: brands.charming_dent,
-    background: "#f4f3ef",
-  },
-  {
-    key: 6,
-    title: "Foshan Tanture Medical Equipment \t",
-    img: brands.foshan_tanture_logo,
-    background: "#f4f3ef",
-  },
+  // {
+  //   key: 5,
+  //   title: "Charming dent",
+  //   img: brands.charming_dent,
+  //   background: "#f4f3ef",
+  // },
+  // {
+  //   key: 6,
+  //   title: "Foshan Tanture Medical Equipment \t",
+  //   img: brands.foshan_tanture_logo,
+  //   background: "#f4f3ef",
+  // },
   {
     key: 7,
-    title: "ALLTION",
+    title: "Alltion",
     img: brands.alltion,
     background: "#f4f3ef",
     path: pathname.ALLTION,
+  },
+  {
+    key: 8,
+    title: "LargeV",
+    img: brands.largev,
+    background: "#f4f3ef",
   },
 ];
 

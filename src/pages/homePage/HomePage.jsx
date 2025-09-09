@@ -55,7 +55,19 @@ export const HomePage = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
   };
 
-  const dopBrends = [...(brends || []), { codeid: 8, nameid: "ALLTION" }];
+  const filteredBrends = brends?.filter(
+    (item) =>
+      item.codeid === 5 ||
+      item.codeid === 6 ||
+      item.codeid === 4 ||
+      item.codeid === 3 ||
+      item.codeid === 10
+  );
+
+  const dopBrends = [
+    ...(filteredBrends || []),
+    { codeid: 2, nameid: "LargeV" },
+  ];
 
   const addCart = (item) => {
     addToCart(item);
@@ -192,7 +204,7 @@ export const HomePage = () => {
             </Flex>
 
             <Flex gap="small" className={clsx(styles.products)}>
-              {products?.slice(0, 6).map((item) => (
+              {products?.products?.slice(0, 6)?.map((item) => (
                 <ProductItem item={item} />
               ))}
             </Flex>
@@ -211,7 +223,7 @@ export const HomePage = () => {
               </span>
             </Flex>
             <Flex gap="small" className={clsx(styles.products)}>
-              {products?.slice(6, 12).map((item) => (
+              {products?.products?.slice(6, 12)?.map((item) => (
                 <ProductItem item={item} />
               ))}
             </Flex>
@@ -232,7 +244,7 @@ export const HomePage = () => {
               </span>
             </Flex>
             <Flex gap="small" className={clsx(styles.products)}>
-              {products?.slice(12, 18).map((item) => (
+              {products?.products?.slice(12, 18).map((item) => (
                 <ProductItem item={item} />
               ))}
             </Flex>

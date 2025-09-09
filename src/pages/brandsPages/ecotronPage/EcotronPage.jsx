@@ -82,16 +82,16 @@ export const EcotronPage = () => {
           в использовании и соответствует самым высоким требованиям современных
           клиник.
         </p>
-        {/* <span>
+        <span>
           <b>Продукция</b>
         </span>
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>
-          {products?.slice(0, 3).map((item) => (
+          {products?.products?.slice(0, 3).map((item) => (
             <Col span={12} className={clsx("mt-4")}>
-              <ModelsCard item={item} />
+              <ModelsCard item={item} onClick={() => onBrandId()} />
             </Col>
           ))}
-        </Row> */}
+        </Row>
         <Flex align="center" justify="center">
           <p className={clsx(styles.more)} onClick={() => onBrandId()}>
             <b>Узнайте больше о продукции Ecotron</b>

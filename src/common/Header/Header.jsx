@@ -38,7 +38,7 @@ export const Header = () => {
 
   const handleSearch = (e) => {
     if (e.key === "Enter") {
-      navigate(`products?search=${searchValue}`);
+      navigate(`products?.products?search=${searchValue}`);
       setSearchValue("");
     }
   };

@@ -7,3 +7,4 @@ export { default as lardev_logo } from "./lardev_logo.svg";
 export { default as charming_dent } from "./charming_dent.png";
 export { default as alltion } from "./alltion.svg";
 export { default as foshan_tanture_logo } from "./foshan_tanture_logo.png";
+export { default as largev } from "./largev.svg";

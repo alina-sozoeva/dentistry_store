@@ -1,13 +1,16 @@
-import { Flex } from "antd";
+import { Col, Flex, Row } from "antd";
 
 import { pathname } from "../../../enums";
 import { useNavigate } from "react-router";
 
 import clsx from "clsx";
 import styles from "./PromisPage.module.scss";
+import { ModelsCard } from "../../../common";
+import { useGetProductsQuery } from "../../../store";
 
 export const PromisPage = () => {
   const navigate = useNavigate();
+  const { data: products } = useGetProductsQuery({ code_sp_provider: 3 });
 
   const onBrandId = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?brend=${3}` });
@@ -97,10 +100,17 @@ export const PromisPage = () => {
         <p>
           <span className={clsx(styles.more)} onClick={() => onBrandId()}>
             В каталоге JDS
-          </span>{" "}
+          </span>
           вы найдете полный ассортимент promis — от зубных щёток до завершённых
           наборов ухода, уже оценённых и рекомендованных стоматологами.
         </p>
+        <Row gutter={24} className={clsx(styles.models, "mb-12")}>
+          {products?.products?.slice(0, 8).map((item) => (
+            <Col span={12} className={clsx("mt-4")}>
+              <ModelsCard item={item} onClick={() => onBrandId()} />
+            </Col>
+          ))}
+        </Row>
       </div>
     </div>
   );

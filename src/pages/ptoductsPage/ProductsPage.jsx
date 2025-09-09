@@ -63,7 +63,7 @@ export const ProductsPage = () => {
 
   const startIndex = (currentPage - 1) * pageSize;
   const endIndex = startIndex + pageSize;
-  const currentItems = products?.slice(startIndex, endIndex);
+  const currentItems = products?.products?.slice(startIndex, endIndex);
 
   const onChangeCategory = (value) => {
     if (selectedCategory === value) {
@@ -141,7 +141,23 @@ export const ProductsPage = () => {
     }
   }, [numericCategory, numericBrend, search, location.pathname]);
 
-  console.log(products?.length, "products?.length");
+  const [searchValue, setSearchValue] = useState("");
+
+  const filteredCategories = useMemo(() => {
+    if (!searchValue) return products?.categories || [];
+    return products?.categories?.filter((cat) =>
+      cat.name.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [products, searchValue]);
+
+  const filteredProducts = useMemo(() => {
+    if (!searchValue) return products?.otherProducts || [];
+    return products?.otherProducts?.filter((p) =>
+      p.nameid.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  }, [products, searchValue]);
+
+  console.log(products, "products");
 
   return (
     <main className={clsx(styles.wrap, "")}>
@@ -156,7 +172,7 @@ export const ProductsPage = () => {
                 <BarsOutlined />
                 <span>Найдено</span>
                 <span className="font-bold">
-                  {products?.length} результатов
+                  {products?.products?.length} результатов
                 </span>
               </Flex>
             </Flex>
@@ -217,7 +233,7 @@ export const ProductsPage = () => {
                 value={inputValue}
                 onChange={(e) => onSearch(e.target.value)}
               />
-              {products?.length === 0 ? (
+              {products?.products?.length === 0 ? (
                 <Flex align="center">
                   <Empty
                     description={<Typography.Text>Нет данных</Typography.Text>}
@@ -244,7 +260,7 @@ export const ProductsPage = () => {
                       className="pt-4"
                       current={currentPage}
                       onChange={setCurrentPage}
-                      total={products?.length}
+                      total={products?.products?.length}
                       pageSize={pageSize}
                       showSizeChanger={false}
                     />

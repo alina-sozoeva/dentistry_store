@@ -53,7 +53,7 @@ export const DentisPage = () => {
           <b>Продукция</b>
         </span>
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>
-          {products?.slice(0, 3).map((item) => (
+          {products?.products?.slice(0, 3).map((item) => (
             <Col span={12} className={clsx("mt-4")}>
               <ModelsCard item={item} />
             </Col>

@@ -1,11 +1,18 @@
-import { createBrowserRouter, Outlet } from "react-router-dom";
+import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
 import * as Pages from "../pages";
 
 import { pathname } from "../enums";
 import { Footer, Header } from "../common";
 import clsx from "clsx";
+import { useEffect } from "react";
 
 const Layout = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div
       style={{
