@@ -1,11 +1,9 @@
 import {
   Carousel,
-  Col,
   Collapse,
   Divider,
   Flex,
   Input,
-  Row,
   Spin,
   Typography,
 } from "antd";
@@ -69,6 +67,8 @@ export const ProductItemPage = () => {
 
   const splitCommet = findItem?.comment.split(/(?<=\.)\s+/);
 
+  console.log(splitCommet, "splitCommet");
+
   return (
     <section className={`${styles.wrap} py-4 `}>
       <Spin spinning={isLoading || isFetching}>
@@ -81,53 +81,54 @@ export const ProductItemPage = () => {
           <Title>О продукте</Title>
           <Flex vertical className={styles.card}>
             <Flex gap={"large"}>
-              <Row gutter={24}>
-                <Col span={12}>
-                  {findItem?.files?.length ? (
-                    <Carousel arrows autoplay className={clsx(styles.carousel)}>
-                      {findItem?.files?.map((item) => (
+              <div className={clsx(styles.carousel_wrpa)}>
+                {findItem?.files?.length !== 0 ? (
+                  <Carousel arrows autoplay className={clsx(styles.carousel)}>
+                    {findItem?.files?.map((item) => (
+                      <div className={clsx(styles.carousel_item)}>
                         <img
                           src={`${process.env.REACT_APP_URL}/${
                             imgParse(item.file).path
                           }`}
                           alt=""
                         />
-                      ))}
-                    </Carousel>
-                  ) : (
-                    <Carousel>
-                      <img src={no_foto} alt={no_foto} />
-                    </Carousel>
-                  )}
-                </Col>
-                <Col span={12}>
-                  <Flex vertical className={styles.about_product}>
-                    <Flex vertical gap={"small"}>
-                      <span>
-                        <b>{findItem?.nameid}</b>
-                      </span>
-                    </Flex>
-                    <Divider dashed style={{ borderColor: "#bbb" }} />
-                    <Flex vertical gap={"small"} justify="center">
-                      <span className="text-orange">
-                        <b className="text-black">Цена:</b>{" "}
-                        {Number(findItem?.price).toLocaleString()} сом
-                      </span>
-                      <Flex>
-                        <span className="bg-orange rounded-sm ">
-                          <strong> В наличии: </strong> {findItem?.quantity}{" "}
-                          {findItem?.nameid_sp_units}
-                        </span>
-                      </Flex>
-                      <span>
-                        <b>Категория:</b> {findItem?.nameid_sp_product_category}{" "}
-                      </span>
-                      <RatingStars value={5} />
-                    </Flex>
-                    <Divider dashed style={{ borderColor: "#bbb" }} />
+                      </div>
+                    ))}
+                  </Carousel>
+                ) : (
+                  <Carousel>
+                    <div className={clsx(styles.carousel_item)}>
+                      <img src={no_foto} alt="no_foto" />
+                    </div>
+                  </Carousel>
+                )}
+              </div>
+
+              <Flex vertical className={styles.about_product}>
+                <Flex vertical gap={"small"}>
+                  <span>
+                    <b>{findItem?.nameid}</b>
+                  </span>
+                </Flex>
+                <Divider dashed style={{ borderColor: "#bbb" }} />
+                <Flex vertical gap={"small"} justify="center">
+                  <span className="text-orange">
+                    <b className="text-black">Цена:</b>{" "}
+                    {Number(findItem?.price).toLocaleString()} сом
+                  </span>
+                  <Flex>
+                    <span className="bg-orange rounded-sm ">
+                      <strong> В наличии: </strong> {findItem?.quantity}{" "}
+                      {findItem?.nameid_sp_units}
+                    </span>
                   </Flex>
-                </Col>
-              </Row>
+                  <span>
+                    <b>Категория:</b> {findItem?.nameid_sp_product_category}{" "}
+                  </span>
+                  <RatingStars value={5} />
+                </Flex>
+                <Divider dashed style={{ borderColor: "#bbb" }} />
+              </Flex>
 
               <Flex vertical gap={"middle"} className={styles.btns}>
                 <CustomButton
@@ -155,7 +156,12 @@ export const ProductItemPage = () => {
               <Title level={2}>{findItem?.nameid}</Title>
 
               <Paragraph>
-                <strong>Описание:</strong> {splitCommet}
+                <strong>Описание:</strong>
+                <Flex vertical>
+                  {splitCommet?.map((item) => (
+                    <span>{item}</span>
+                  ))}
+                </Flex>
               </Paragraph>
             </Flex>
           </Flex>

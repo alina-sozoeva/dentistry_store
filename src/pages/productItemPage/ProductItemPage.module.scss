@@ -1,3 +1,8 @@
+.carousel_wrpa {
+  width: 500px;
+  border-radius: 20px;
+}
+
 .carousel {
   :global {
     .slick-arrow,
@@ -22,12 +27,20 @@
       color: #0072bc;
     }
   }
-
-  img {
-    height: 500px;
-    object-fit: cover;
-  }
 }
 
-.carousel_left {
+.carousel_item {
+  width: 500px;
+  height: 500px;
+}
+
+.carousel_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.about_product {
+  max-width: 400px;
 }

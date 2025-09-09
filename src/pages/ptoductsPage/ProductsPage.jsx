@@ -141,24 +141,6 @@ export const ProductsPage = () => {
     }
   }, [numericCategory, numericBrend, search, location.pathname]);
 
-  const [searchValue, setSearchValue] = useState("");
-
-  const filteredCategories = useMemo(() => {
-    if (!searchValue) return products?.categories || [];
-    return products?.categories?.filter((cat) =>
-      cat.name.toLowerCase().includes(searchValue.toLowerCase())
-    );
-  }, [products, searchValue]);
-
-  const filteredProducts = useMemo(() => {
-    if (!searchValue) return products?.otherProducts || [];
-    return products?.otherProducts?.filter((p) =>
-      p.nameid.toLowerCase().includes(searchValue.toLowerCase())
-    );
-  }, [products, searchValue]);
-
-  console.log(products, "products");
-
   return (
     <main className={clsx(styles.wrap, "")}>
       <Spin spinning={isLoading || isFetching}>
@@ -184,12 +166,16 @@ export const ProductsPage = () => {
                 <Flex vertical gap={"small"}>
                   <Flex vertical gap={"middle"}>
                     <nav
-                      className="bg-white px-3 py-2"
-                      style={{ height: "220px", overflowY: "auto" }}
+                      className="bg-white px-3 py-2 relative"
                       aria-label="Категории товаров"
                     >
-                      <h4 className="text-blue pb-1">Категории</h4>
-                      <Flex vertical gap={"small"}>
+                      <h4 className="text-blue pb-1 sticky ">Категории</h4>
+                      <Flex
+                        vertical
+                        gap={"small"}
+                        className="h-[230px]"
+                        style={{ overflowY: "auto" }}
+                      >
                         {categories?.map((item) => (
                           <Checkbox
                             key={item.codeid}
@@ -203,12 +189,16 @@ export const ProductsPage = () => {
                       </Flex>
                     </nav>
                     <nav
-                      className="bg-white px-3 py-2"
-                      style={{ height: "220px", overflowY: "auto" }}
+                      className="bg-white px-3 py-2 relative"
                       aria-label="Фильтр по брендам"
                     >
-                      <h4 className="text-blue pb-1">Бренд</h4>
-                      <Flex vertical gap={"small"}>
+                      <h4 className="text-blue pb-1 sticky">Бренд</h4>
+                      <Flex
+                        vertical
+                        className="h-[230px]"
+                        gap={"small"}
+                        style={{ overflowY: "auto" }}
+                      >
                         {brands?.map((item) => (
                           <Checkbox
                             key={item.codeid}

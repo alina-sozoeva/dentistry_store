@@ -15,7 +15,7 @@ export const ModelsCard = ({ item, onClick }) => {
 
   const onClickItem = () => {
     navigate(item.path);
-    onClick();
+    onClick?.();
   };
 
   return (
