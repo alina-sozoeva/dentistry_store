@@ -166,7 +166,7 @@ export const ProductItemPage = () => {
             {filterCategory.length > 0 && (
               <>
                 <Divider dashed style={{ borderColor: "#bbb" }} />
-                <Title level={4}>Другие модели</Title>
+                <Title level={4}>Модель</Title>
                 <div className={styles.relatedWrapper}>
                   {filterCategory.map((item) => (
                     <div
