@@ -33,21 +33,33 @@ export const productsApi = createApi({
         const categorized = {};
 
         categories.forEach((cat) => {
-          categorized[cat] = response.filter((item) =>
-            item.nameid.toLowerCase().includes(cat)
-          );
+          categorized[cat] = [];
         });
 
-        const products = response.filter(
-          (item) =>
-            !categories.some((cat) => item.nameid.toLowerCase().includes(cat))
-        );
+        const products = response.map((item) => {
+          const lowerName = item.nameid.toLowerCase();
+          const foundCategory = categories.find((cat) =>
+            lowerName.includes(cat)
+          );
+
+          const productWithCategory = {
+            ...item,
+            category: foundCategory || "other",
+          };
+
+          if (foundCategory) {
+            categorized[foundCategory].push(productWithCategory);
+          }
+
+          return productWithCategory;
+        });
 
         return {
           products,
           ...categorized,
         };
       },
+
       providesTags: ["ProductsList"],
     }),
   }),

@@ -245,3 +245,33 @@ export const models = [
     path: pathname.AM5000,
   },
 ];
+
+export const arrProd = [
+  {
+    guid: "1",
+    codeid: "",
+    quantity: "",
+    price: "",
+    nameid: "боры",
+    nameid_sp_units: "шт",
+    nameid_sp_product_category: "Расходные материалы",
+  },
+  {
+    guid: "2",
+    codeid: "",
+    quantity: "",
+    price: "",
+    nameid: "файлы",
+    nameid_sp_units: "шт",
+    nameid_sp_product_category: "Эндодонтия",
+  },
+  {
+    guid: "2",
+    codeid: "",
+    quantity: "",
+    price: "",
+    nameid: "Absorbent",
+    nameid_sp_units: "шт",
+    nameid_sp_product_category: "Эндодонтия",
+  },
+];

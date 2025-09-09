@@ -110,11 +110,8 @@ export const PromisPage = () => {
           </p>
         </div>
 
-        <div className={clsx(styles.prod, "mt-12")}>
-          <img src={fon} alt="fon" />
-          <div className={clsx(styles.prod_info)}>
-            <p>Продукция Promis</p>
-          </div>
+        <div className={clsx(styles.prod_info)}>
+          <p onClick={() => onBrandId()}>Продукция Promis</p>
         </div>
 
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>

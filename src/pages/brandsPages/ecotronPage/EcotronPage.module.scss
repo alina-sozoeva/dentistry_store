@@ -5,14 +5,13 @@
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.07);
   font-family: "Segoe UI", "Arial", sans-serif;
   color: #222;
-  margin-bottom: 40px;
 }
 
 .title {
-  font-size: 2.2rem;
-  font-weight: 700;
   margin-bottom: 24px;
   text-align: center;
+  font-size: 2.2rem;
+  font-weight: 200;
   color: #147abc;
 }
 
@@ -47,33 +46,27 @@
   }
 }
 
-.prod {
-  margin-bottom: 40px;
-  position: relative;
-  width: 100%;
+// .prod {
+//   margin-bottom: 40px;
+//   position: relative;
+//   width: 100%;
 
-  img {
-    border-radius: 40px;
-    height: 320px;
-    width: 100%;
-    object-fit: cover;
-  }
-}
+//   img {
+//     border-radius: 40px;
+//     height: 320px;
+//     width: 100%;
+//     object-fit: cover;
+//   }
+// }
 
 .prod_info {
-  position: absolute;
-  bottom: 10px;
-  left: 40px;
+  padding: 20px;
+  border-radius: 20px;
 
   p {
-    font-size: 72px;
-    color: white;
+    font-size: 2.2rem;
     font-weight: 200;
-  }
-
-  span {
-    font-size: 20px;
-    font-weight: 200;
-    color: #a1a1a1;
+    color: #147abc;
+    cursor: pointer;
   }
 }

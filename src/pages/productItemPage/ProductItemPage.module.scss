@@ -44,3 +44,35 @@
 .about_product {
   max-width: 400px;
 }
+
+.relatedWrapper {
+  display: flex;
+  overflow-x: auto;
+  gap: 16px;
+  padding: 16px 0;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.relatedItem {
+  min-width: 120px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  span {
+    text-align: center;
+    font-size: 12px;
+  }
+}

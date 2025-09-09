@@ -90,11 +90,8 @@ export const EcotronPage = () => {
           </p>
         </div>
 
-        <div className={clsx(styles.prod, "mt-12")}>
-          <img src={fon} alt="fon" />
-          <div className={clsx(styles.prod_info)}>
-            <p>Продукция Ecotron</p>
-          </div>
+        <div className={clsx(styles.prod_info)}>
+          <p onClick={() => onBrandId()}>Продукция Ecotron</p>
         </div>
 
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>

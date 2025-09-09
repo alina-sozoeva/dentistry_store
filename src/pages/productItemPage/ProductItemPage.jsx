@@ -9,7 +9,7 @@ import {
 } from "antd";
 
 import { CustomBreadcrumb, CustomButton } from "../../common";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useMemo } from "react";
 import {
   useCartStore,
@@ -53,6 +53,9 @@ const items = [
 
 export const ProductItemPage = () => {
   const { codeid } = useParams();
+  const { category } = useParams();
+  const navigate = useNavigate();
+
   const { data: products, isLoading, isFetching } = useGetProductsQuery({});
   const { addToFavorites } = useFavoritesStore();
   const { addToCart } = useCartStore();
@@ -61,13 +64,22 @@ export const ProductItemPage = () => {
     return products?.products?.find((item) => +item.codeid === +codeid);
   }, [codeid, products]);
 
+  const filterCategory = useMemo(() => {
+    if (!products || !findItem) return [];
+
+    return products.products.filter(
+      (item) =>
+        item.category === findItem.category &&
+        item.category !== "other" &&
+        +item.codeid !== +codeid
+    );
+  }, [codeid, findItem, products]);
+
   const imgParse = (img) => {
     return JSON.parse(img);
   };
 
   const splitCommet = findItem?.comment.split(/(?<=\.)\s+/);
-
-  console.log(splitCommet, "splitCommet");
 
   return (
     <section className={`${styles.wrap} py-4 `}>
@@ -150,7 +162,42 @@ export const ProductItemPage = () => {
                 </CustomButton>
               </Flex>
             </Flex>
+
+            {filterCategory.length > 0 && (
+              <>
+                <Divider dashed style={{ borderColor: "#bbb" }} />
+                <Title level={4}>Другие модели</Title>
+                <div className={styles.relatedWrapper}>
+                  {filterCategory.map((item) => (
+                    <div
+                      key={item.codeid}
+                      className={styles.relatedItem}
+                      onClick={() =>
+                        navigate(
+                          item.category && item.category !== "other"
+                            ? `/product/${item.category}/${item.codeid}`
+                            : `/product/${item.codeid}`
+                        )
+                      }
+                    >
+                      <img
+                        src={
+                          item.files?.length
+                            ? `${process.env.REACT_APP_URL}/${
+                                JSON.parse(item.files[0].file).path
+                              }`
+                            : no_foto
+                        }
+                        alt={item.nameid}
+                      />
+                      <span>{item.nameid}</span>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
           </Flex>
+
           <Flex className="container">
             <Flex vertical className="w-full max-w-4xl py-10">
               <Title level={2}>{findItem?.nameid}</Title>
@@ -165,12 +212,12 @@ export const ProductItemPage = () => {
               </Paragraph>
             </Flex>
           </Flex>
-          <Collapse
+          {/* <Collapse
             items={items}
             bordered={false}
             defaultActiveKey={[]}
             className="mb-4"
-          />
+          /> */}
         </Flex>
       </Spin>
     </section>

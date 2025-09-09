@@ -38,7 +38,7 @@ export const ProductItem = ({ item }) => {
     <Flex
       className={clsx(styles.card)}
       vertical
-      onClick={() => navigate(`/product/${item.codeid}`)}
+      onClick={() => navigate(`/product/${item.category}/${item.codeid}`)}
     >
       <div className={clsx(styles.img)}>
         <img

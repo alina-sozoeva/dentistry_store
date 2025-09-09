@@ -65,6 +65,8 @@ export const ProductsPage = () => {
   const endIndex = startIndex + pageSize;
   const currentItems = products?.products?.slice(startIndex, endIndex);
 
+  console.log(products, "products");
+
   const onChangeCategory = (value) => {
     if (selectedCategory === value) {
       setSelectedCategory(null);

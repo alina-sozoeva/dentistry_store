@@ -107,11 +107,8 @@ export const GraphyPage = () => {
           </p>
         </div>
 
-        <div className={clsx(styles.prod, "mt-12")}>
-          <img src={fon} alt="fon" />
-          <div className={clsx(styles.prod_info)}>
-            <p>Продукция Graphy</p>
-          </div>
+        <div className={clsx(styles.prod_info)}>
+          <p onClick={() => onBrandId()}>Продукция Graphy</p>
         </div>
 
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>
