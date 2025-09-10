@@ -5,6 +5,7 @@ export const pathname = {
   CONTACT: "/contact",
   CART: "/cart",
   PRODUCTSITEM: "/product/:category/:codeid",
+  PRODUCTSITEMCAT: "/product/:category",
   STUDY: "/study",
   PROFILE: "/profile",
   FAVORITES: "/favorites",

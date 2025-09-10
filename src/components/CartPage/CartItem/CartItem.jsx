@@ -18,7 +18,7 @@ export const CartItem = ({ item }) => {
   };
 
   const removeItem = () => {
-    removeFromCart(item.codeid);
+    removeFromCart(item?.codeid);
   };
 
   const ButtonMinus = () => {
@@ -52,7 +52,7 @@ export const CartItem = ({ item }) => {
       </div>
       <Flex vertical justify="space-between" className={clsx("w-full py-2")}>
         <Flex className={clsx("mb-2")} justify="space-between">
-          <span>{item.nameid}</span>
+          <span>{item?.nameid}</span>
           <CloseOutlined onClick={() => removeItem()} />
         </Flex>
         <span className={clsx(styles.dostavka)}>
@@ -66,10 +66,10 @@ export const CartItem = ({ item }) => {
         >
           <Flex gap="large" align="center">
             <span className={clsx("line-through")} style={{ color: "#647180" }}>
-              {item.price.toLocaleString()} сом
+              {item?.price?.toLocaleString()} сом
             </span>
             <span className={clsx("text-xl whitespace-pre-line")}>
-              {item.price.toLocaleString()} сом
+              {item?.price?.toLocaleString()} сом
             </span>
           </Flex>
           <Input

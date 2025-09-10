@@ -34,15 +34,15 @@ export const ProductItem = ({ item, currentPage }) => {
 
   const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
 
-  console.log(currentPage, "currentPage");
-
   return (
     <Flex
       className={clsx(styles.card)}
       vertical
       onClick={() =>
         navigate(
-          `/product/${item.category}/${item.codeid}?page=${currentPage || ""}`
+          item.category && item.category !== "other"
+            ? `/product/${item?.category}?codeid=${item?.codeid}&page=${currentPage}`
+            : `/product/${item?.category}/${item?.codeid}?page=${currentPage}`
         )
       }
     >

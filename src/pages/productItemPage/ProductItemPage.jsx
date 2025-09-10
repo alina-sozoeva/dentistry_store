@@ -1,12 +1,4 @@
-import {
-  Carousel,
-  Collapse,
-  Divider,
-  Flex,
-  Input,
-  Spin,
-  Typography,
-} from "antd";
+import { Carousel, Divider, Flex, Input, Spin, Typography } from "antd";
 
 import { CustomBreadcrumb, CustomButton } from "../../common";
 import { useNavigate, useParams, useSearchParams } from "react-router";
@@ -17,12 +9,12 @@ import {
   useGetProductsQuery,
 } from "../../store";
 import { RatingStars } from "../../ui";
+import { ShoppingCartOutlined, StarOutlined } from "@ant-design/icons";
+import { pathname } from "../../enums";
 
 import no_foto from "../../assets/images/no_image.png";
 import styles from "./ProductItemPage.module.scss";
-import { ShoppingCartOutlined, StarOutlined } from "@ant-design/icons";
 import clsx from "clsx";
-import { pathname } from "../../enums";
 
 const { Title, Paragraph } = Typography;
 
@@ -52,9 +44,12 @@ const items = [
 ];
 
 export const ProductItemPage = () => {
-  const { codeid } = useParams();
+  const { codeid: codeidUr } = useParams();
+  const { category } = useParams();
+
   const [searchParams] = useSearchParams();
   const page = Number(searchParams.get("page")) || 1;
+  const codeid = Number(searchParams.get("codeid"));
 
   const navigate = useNavigate();
 
@@ -63,19 +58,22 @@ export const ProductItemPage = () => {
   const { addToCart } = useCartStore();
 
   const findItem = useMemo(() => {
-    return products?.products?.find((item) => +item.codeid === +codeid);
-  }, [codeid, products]);
+    if (category !== "other") {
+      return products?.[category]?.find((item) => +item.codeid === +codeid);
+    }
+    return products?.products?.find((item) => +item.codeid === +codeidUr);
+  }, [codeidUr, products, category, codeid]);
 
   const filterCategory = useMemo(() => {
     if (!products || !findItem) return [];
 
-    return products.products.filter(
+    return products?.[category]?.filter(
       (item) =>
         item.category === findItem.category &&
         item.category !== "other" &&
         +item.codeid !== +codeid
     );
-  }, [codeid, findItem, products]);
+  }, [codeid, findItem, products, category]);
 
   const imgParse = (img) => {
     return JSON.parse(img);
@@ -118,86 +116,89 @@ export const ProductItemPage = () => {
                 )}
               </div>
 
-              <Flex vertical className={styles.about_product}>
-                <Flex vertical gap={"small"}>
-                  <span>
-                    <b>{findItem?.nameid}</b>
-                  </span>
-                </Flex>
-                <Divider dashed style={{ borderColor: "#bbb" }} />
-                <Flex vertical gap={"small"} justify="center">
-                  <span className="text-orange">
-                    <b className="text-black">Цена:</b>{" "}
-                    {Number(findItem?.price).toLocaleString()} сом
-                  </span>
-                  <Flex>
-                    <span className="bg-orange rounded-sm ">
-                      <strong> В наличии: </strong> {findItem?.quantity}{" "}
-                      {findItem?.nameid_sp_units}
-                    </span>
+              <Flex vertical>
+                <Flex gap="middle" justify="space-between">
+                  <Flex vertical className={styles.about_product}>
+                    <Flex vertical gap={"small"}>
+                      <span>
+                        <b>{findItem?.nameid}</b>
+                      </span>
+                    </Flex>
+                    <Divider dashed style={{ borderColor: "#bbb" }} />
+                    <Flex vertical gap={"small"} justify="center">
+                      <span className="text-orange">
+                        <b className="text-black">Цена:</b>{" "}
+                        {Number(findItem?.price).toLocaleString()} сом
+                      </span>
+                      <Flex>
+                        <span className="bg-orange rounded-sm ">
+                          <strong> В наличии: </strong> {findItem?.quantity}{" "}
+                          {findItem?.nameid_sp_units}
+                        </span>
+                      </Flex>
+                      <span>
+                        <b>Категория:</b> {findItem?.nameid_sp_product_category}{" "}
+                      </span>
+                      <RatingStars value={5} />
+                    </Flex>
+                    <Divider dashed style={{ borderColor: "#bbb" }} />
                   </Flex>
-                  <span>
-                    <b>Категория:</b> {findItem?.nameid_sp_product_category}{" "}
-                  </span>
-                  <RatingStars value={5} />
-                </Flex>
-                <Divider dashed style={{ borderColor: "#bbb" }} />
-              </Flex>
 
-              <Flex vertical gap={"middle"} className={styles.btns}>
-                <CustomButton
-                  icon={<StarOutlined />}
-                  onClick={() => addToFavorites(findItem)}
-                >
-                  Добавить в избранное
-                </CustomButton>
-                <Input
-                  type="number"
-                  defaultValue={1}
-                  placeholder="Количество"
-                />
-                <CustomButton
-                  onClick={() => addToCart(findItem)}
-                  icon={<ShoppingCartOutlined />}
-                >
-                  В корзину
-                </CustomButton>
+                  <Flex vertical gap={"middle"} className={styles.btns}>
+                    <CustomButton
+                      icon={<StarOutlined />}
+                      onClick={() => addToFavorites(findItem)}
+                    >
+                      Добавить в избранное
+                    </CustomButton>
+                    <Input
+                      type="number"
+                      defaultValue={1}
+                      placeholder="Количество"
+                    />
+                    <CustomButton
+                      onClick={() => addToCart(findItem)}
+                      icon={<ShoppingCartOutlined />}
+                    >
+                      В корзину
+                    </CustomButton>
+                  </Flex>
+                </Flex>
+                <Flex vertical style={{ maxWidth: "500px" }}>
+                  {filterCategory?.length !== 0 && (
+                    <>
+                      <Title level={4}>Модели {category}</Title>
+                      <div className={styles.relatedWrapper}>
+                        {filterCategory?.map((item) => {
+                          console.log(
+                            item?.category === "absorbent",
+                            "item.category"
+                          );
+
+                          return (
+                            <div
+                              key={item.codeid}
+                              className={styles.relatedItem}
+                              onClick={() =>
+                                navigate(
+                                  `/product/${item?.category}?codeid=${item?.codeid}&page=${page}`
+                                )
+                              }
+                            >
+                              <span>
+                                {item.nameid
+                                  .replace(new RegExp(category, "gi"), "")
+                                  .trim()}
+                              </span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </>
+                  )}
+                </Flex>
               </Flex>
             </Flex>
-
-            {filterCategory.length > 0 && (
-              <>
-                <Divider dashed style={{ borderColor: "#bbb" }} />
-                <Title level={4}>Модель</Title>
-                <div className={styles.relatedWrapper}>
-                  {filterCategory.map((item) => (
-                    <div
-                      key={item.codeid}
-                      className={styles.relatedItem}
-                      onClick={() =>
-                        navigate(
-                          item.category && item.category !== "other"
-                            ? `/product/${item.category}/${item.codeid}`
-                            : `/product/${item.codeid}`
-                        )
-                      }
-                    >
-                      <img
-                        src={
-                          item.files?.length
-                            ? `${process.env.REACT_APP_URL}/${
-                                JSON.parse(item.files[0].file).path
-                              }`
-                            : no_foto
-                        }
-                        alt={item.nameid}
-                      />
-                      <span>{item.nameid}</span>
-                    </div>
-                  ))}
-                </div>
-              </>
-            )}
           </Flex>
 
           <Flex className="container">

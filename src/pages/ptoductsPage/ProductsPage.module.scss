@@ -1,3 +1,15 @@
+.wrap {
+  aside {
+    position: sticky;
+    top: 140px;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+  }
+}
+
 .ptoducts {
-  max-height: 1200px;
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }

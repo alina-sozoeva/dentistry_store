@@ -1,6 +1,19 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const categories = ["боры", "файлы", "gutta", "absorbent"];
+const categories = [
+  "боры",
+  "H-файлы",
+  "K-файлы",
+  "Reamers-файлы",
+  "Spreaders-файлы",
+  "Машинные",
+  "Gutta percha points 02",
+  "Gutta percha points 04",
+  "Absorbent paper points 02",
+  "Absorbent paper points 04",
+];
+
+const normalizeName = (str) => str.replace(/Н/g, "H").toLowerCase();
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -37,9 +50,8 @@ export const productsApi = createApi({
         });
 
         const products = response.map((item) => {
-          const lowerName = item.nameid.toLowerCase();
           const foundCategory = categories.find((cat) =>
-            lowerName.includes(cat)
+            normalizeName(item.nameid).includes(normalizeName(cat))
           );
 
           const productWithCategory = {
@@ -54,8 +66,19 @@ export const productsApi = createApi({
           return productWithCategory;
         });
 
+        const oneFromEach = categories
+          .map((cat) => categorized[cat][0])
+          .filter(Boolean);
+
+        const filteredProducts = products.filter(
+          (item) =>
+            !categories.some(
+              (cat) => normalizeName(item.category) === normalizeName(cat)
+            )
+        );
+
         return {
-          products,
+          products: [...filteredProducts, ...oneFromEach],
           ...categorized,
         };
       },

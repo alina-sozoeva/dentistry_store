@@ -23,7 +23,7 @@ export const CartPage = () => {
         <Flex className={clsx(styles.wrap)}>
           <Flex vertical className={clsx(styles.wrap_item)}>
             <Divider />
-            {cart.length === 0 ? (
+            {cart?.length === 0 ? (
               <Empty
                 description={
                   <Flex vertical align="center" justify="center" gap="small">
@@ -64,7 +64,7 @@ export const CartPage = () => {
             <Flex justify="space-between">
               <span>Товары ({cart.length})</span>
               <span className={clsx("font-bold text-sm")}>
-                {summa.toLocaleString()} сом
+                {summa?.toLocaleString()} сом
               </span>
             </Flex>
             <Flex justify="space-between">

@@ -12,7 +12,8 @@
   border: 2px solid #eeeff1;
   border-radius: 16px;
   height: 100%;
-  width: 100%;
+  width: 230px;
+  min-width: 200px;
   transition: 0.3s;
   background-color: white;
 
@@ -42,7 +43,7 @@
     justify-content: center;
 
     svg {
-      color: #147abc;
+      color: #205375;
       font-size: 20px;
     }
   }

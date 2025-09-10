@@ -12,7 +12,7 @@ import {
   Typography,
 } from "antd";
 
-import { CustomButton, ProductItem } from "../../common";
+import { ProductItem } from "../../common";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 import {
@@ -23,10 +23,9 @@ import {
 
 import styles from "./ProductsPage.module.scss";
 import clsx from "clsx";
-import debounce from "lodash.debounce";
 
 export const ProductsPage = () => {
-  const pageSize = 15;
+  const pageSize = 20;
   const location = useLocation();
 
   const { data: brands } = useGetProvidersQuery();
@@ -102,34 +101,15 @@ export const ProductsPage = () => {
     setSearchParams(newSearchParams);
   };
 
-  const debouncedSetSearch = useMemo(
-    () =>
-      debounce((value) => {
-        setObj((prev) => ({ ...prev, search: value }));
-        if (value) {
-          searchParams.set("search", value);
-        } else {
-          searchParams.delete("search");
-        }
-        setSearchParams(searchParams);
-      }, 400),
-    [searchParams, setSearchParams]
-  );
-
   const onSearch = (value) => {
     setCurrentPage(1);
     setInputValue(value);
-
+    setObj((prev) => ({ ...prev, search: value }));
     const newSearchParams = new URLSearchParams(searchParams.toString());
-    if (value) {
-      newSearchParams.set("search", value);
-    } else {
-      newSearchParams.delete("search");
-    }
+    if (value) newSearchParams.set("search", value);
+    else newSearchParams.delete("search");
     newSearchParams.set("page", "1");
     setSearchParams(newSearchParams);
-
-    debouncedSetSearch(value);
   };
 
   const onDeleteSearchParams = () => {
@@ -147,6 +127,7 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
     if (numericCategory) {
       setSelectedCategory(numericCategory);
       setObj((prev) => ({ ...prev, categoryId: numericCategory || undefined }));
@@ -155,10 +136,11 @@ export const ProductsPage = () => {
       setSelectedBrand(numericBrend);
       setObj((prev) => ({ ...prev, brandId: numericBrend || undefined }));
     }
-    if (search) {
+    if (search !== null && search !== inputValue) {
       setInputValue(search);
       setObj((prev) => ({ ...prev, search }));
     }
+
     const pageFromUrl = Number(searchParams.get("page")) || 1;
     setCurrentPage(pageFromUrl);
   }, [numericCategory, numericBrend, search, location.pathname, searchParams]);
@@ -168,6 +150,8 @@ export const ProductsPage = () => {
     searchParams.set("page", String(page));
     setSearchParams(searchParams);
   };
+
+  console.log(products, "products");
 
   return (
     <main className={clsx(styles.wrap, "")}>
@@ -190,11 +174,11 @@ export const ProductsPage = () => {
 
           <Row gutter={16} className="py-6">
             <Col span={4}>
-              <aside>
+              <aside className={clsx("")}>
                 <Flex vertical gap={"small"}>
                   <Flex vertical gap={"middle"}>
                     <nav
-                      className="bg-white px-3 py-2 relative"
+                      className="bg-white px-3 py-2 relative max-w-[220px]"
                       aria-label="Категории товаров"
                     >
                       <h4 className="text-blue pb-1 sticky ">Категории</h4>
@@ -217,7 +201,7 @@ export const ProductsPage = () => {
                       </Flex>
                     </nav>
                     <nav
-                      className="bg-white px-3 py-2 relative"
+                      className="bg-white px-3 py-2 relative max-w-[220px]"
                       aria-label="Фильтр по брендам"
                     >
                       <h4 className="text-blue pb-1 sticky">Бренд</h4>
@@ -244,7 +228,7 @@ export const ProductsPage = () => {
               </aside>
             </Col>
 
-            <Col span={20} className="flex flex-col items-center">
+            <Col span={20} className="flex flex-col ">
               <Input
                 placeholder="Поиск по наименованию товара"
                 className={clsx("mb-4")}
@@ -252,7 +236,10 @@ export const ProductsPage = () => {
                 onChange={(e) => onSearch(e.target.value)}
               />
               {products?.products?.length === 0 ? (
-                <Flex align="center">
+                <Flex
+                  align="center"
+                  className={clsx("flex items-center justify-center")}
+                >
                   <Empty
                     description={<Typography.Text>Нет данных</Typography.Text>}
                   >
@@ -263,10 +250,8 @@ export const ProductsPage = () => {
                 </Flex>
               ) : (
                 <>
-                  <section aria-label="Список товаров">
-                    <div
-                      className={`${styles.ptoducts} grid grid-cols-5 gap-2`}
-                    >
+                  <section>
+                    <div className={`${styles.ptoducts}`}>
                       {currentItems?.map((item) => (
                         <ProductItem
                           key={item.codeid}
@@ -277,7 +262,10 @@ export const ProductsPage = () => {
                     </div>
                   </section>
 
-                  <nav aria-label="Пагинация">
+                  <nav
+                    aria-label="Пагинация"
+                    className={clsx("flex items-center justify-center")}
+                  >
                     <Pagination
                       className="pt-4"
                       current={currentPage}

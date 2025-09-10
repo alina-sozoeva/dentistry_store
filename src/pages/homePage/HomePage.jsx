@@ -191,45 +191,6 @@ export const HomePage = () => {
           </Flex>
         </section>
 
-        <section className={clsx("container")}>
-          <Flex vertical gap="small" className={clsx("mb-6")}>
-            <Flex align="center" justify="space-between">
-              <Typography.Title level={2}>Товары месяца</Typography.Title>
-              <span
-                onClick={() => navigate("/products")}
-                className={clsx(styles.section_title)}
-              >
-                Смотреть все <DoubleRightOutlined />
-              </span>
-            </Flex>
-
-            <Flex gap="small" className={clsx(styles.products)}>
-              {products?.products?.slice(0, 6)?.map((item) => (
-                <ProductItem item={item} />
-              ))}
-            </Flex>
-          </Flex>
-        </section>
-
-        <section className={clsx("container ")}>
-          <Flex vertical gap="small" className={clsx("mb-6")}>
-            <Flex align="center" justify="space-between">
-              <Typography.Title level={2}>Популярные товары</Typography.Title>
-              <span
-                onClick={() => navigate("/products")}
-                className={clsx(styles.section_title)}
-              >
-                Смотреть все <DoubleRightOutlined />
-              </span>
-            </Flex>
-            <Flex gap="small" className={clsx(styles.products)}>
-              {products?.products?.slice(6, 12)?.map((item) => (
-                <ProductItem item={item} />
-              ))}
-            </Flex>
-          </Flex>
-        </section>
-
         <section className={clsx("container ")}>
           <Flex vertical gap="small" className={clsx("mb-6")}>
             <Flex align="center" justify="space-between">
@@ -243,8 +204,8 @@ export const HomePage = () => {
                 Смотреть все <DoubleRightOutlined />
               </span>
             </Flex>
-            <Flex gap="small" className={clsx(styles.products)}>
-              {products?.products?.slice(12, 18).map((item) => (
+            <Flex wrap="wrap" gap="small" className={clsx(styles.products)}>
+              {products?.products?.slice(12, 30).map((item) => (
                 <ProductItem item={item} />
               ))}
             </Flex>

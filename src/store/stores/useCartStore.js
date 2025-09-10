@@ -4,6 +4,11 @@ import { create } from "zustand";
 export const useCartStore = create((set, get) => ({
   cart: JSON.parse(localStorage.getItem("cart")) || [],
   addToCart: (item) => {
+    if (item.quantity === 0) {
+      toast.error("Товара нет в наличии!");
+      return;
+    }
+
     set((state) => {
       const countItem = state.cart.find((pro) => pro.codeid === item.codeid);
       let updateObj;
@@ -25,6 +30,7 @@ export const useCartStore = create((set, get) => ({
       return { cart: updateObj };
     });
   },
+
   deleteCount: (item) => {
     set((state) => {
       const countItem = state.cart.find((pro) => pro.codeid === item.codeid);
