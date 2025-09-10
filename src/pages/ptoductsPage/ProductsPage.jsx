@@ -66,34 +66,40 @@ export const ProductsPage = () => {
   const endIndex = startIndex + pageSize;
   const currentItems = products?.products?.slice(startIndex, endIndex);
 
-  console.log(products, "products");
-
   const onChangeCategory = (value) => {
+    setCurrentPage(1);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
     if (selectedCategory === value) {
       setSelectedCategory(null);
       setObj((prev) => ({ ...prev, categoryId: undefined }));
-      searchParams.delete("category");
-      setSearchParams(searchParams);
+      newSearchParams.delete("category");
     } else {
       setSelectedCategory(value);
       setObj((prev) => ({ ...prev, categoryId: value }));
-      searchParams.set("category", value);
-      setSearchParams(searchParams);
+      newSearchParams.set("category", value);
     }
+
+    newSearchParams.set("page", "1");
+    setSearchParams(newSearchParams);
   };
 
   const onChangeBrand = (value) => {
+    setCurrentPage(1);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
     if (selectedBrand === value) {
       setSelectedBrand(null);
       setObj((prev) => ({ ...prev, brandId: undefined }));
-      searchParams.delete("brend");
-      setSearchParams(searchParams);
+      newSearchParams.delete("brend");
     } else {
       setSelectedBrand(value);
       setObj((prev) => ({ ...prev, brandId: value }));
-      searchParams.set("brend", value);
-      setSearchParams(searchParams);
+      newSearchParams.set("brend", value);
     }
+
+    newSearchParams.set("page", "1");
+    setSearchParams(newSearchParams);
   };
 
   const debouncedSetSearch = useMemo(
@@ -111,7 +117,18 @@ export const ProductsPage = () => {
   );
 
   const onSearch = (value) => {
+    setCurrentPage(1);
     setInputValue(value);
+
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+    if (value) {
+      newSearchParams.set("search", value);
+    } else {
+      newSearchParams.delete("search");
+    }
+    newSearchParams.set("page", "1");
+    setSearchParams(newSearchParams);
+
     debouncedSetSearch(value);
   };
 
