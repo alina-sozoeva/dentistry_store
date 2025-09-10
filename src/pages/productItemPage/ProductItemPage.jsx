@@ -81,6 +81,8 @@ export const ProductItemPage = () => {
 
   const splitCommet = findItem?.comment.split(/(?<=\.)\s+/);
 
+  console.log(filterCategory?.length);
+
   return (
     <section className={`${styles.wrap} py-4 `}>
       <Spin spinning={isLoading || isFetching}>
@@ -165,7 +167,7 @@ export const ProductItemPage = () => {
                   </Flex>
                 </Flex>
                 <Flex vertical style={{ maxWidth: "500px" }}>
-                  {filterCategory?.length !== 0 && (
+                  {filterCategory?.length && (
                     <>
                       <Title level={4}>Модели {category}</Title>
                       <div className={styles.relatedWrapper}>

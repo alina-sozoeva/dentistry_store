@@ -151,6 +151,15 @@ export const ProductsPage = () => {
     setSearchParams(searchParams);
   };
 
+  const filteredBrends = brands?.filter(
+    (item) =>
+      item.codeid === 5 ||
+      item.codeid === 6 ||
+      item.codeid === 4 ||
+      item.codeid === 3 ||
+      item.codeid === 10
+  );
+
   console.log(products, "products");
 
   return (
@@ -207,11 +216,11 @@ export const ProductsPage = () => {
                       <h4 className="text-blue pb-1 sticky">Бренд</h4>
                       <Flex
                         vertical
-                        className="h-[230px]"
+                        className="h-[150px]"
                         gap={"small"}
                         style={{ overflowY: "auto" }}
                       >
-                        {brands?.map((item) => (
+                        {filteredBrends?.map((item) => (
                           <Checkbox
                             key={item.codeid}
                             value={item.codeid}

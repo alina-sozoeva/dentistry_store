@@ -62,7 +62,16 @@ export const DentisPage = () => {
         <Row gutter={24} className={clsx(styles.models, "mb-12")}>
           {products?.products?.slice(0, 3).map((item) => (
             <Col span={12} className={clsx("mt-4")}>
-              <ModelsCard item={item} onClick={() => onBrandId()} />
+              <ModelsCard
+                item={item}
+                onClick={() =>
+                  navigate(
+                    item.category && item.category !== "other"
+                      ? `/product/${item?.category}?codeid=${item?.codeid}`
+                      : `/product/${item?.category}/${item?.codeid}`
+                  )
+                }
+              />
             </Col>
           ))}
         </Row>
