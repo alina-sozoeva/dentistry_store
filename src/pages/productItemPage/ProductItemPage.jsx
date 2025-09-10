@@ -9,7 +9,7 @@ import {
 } from "antd";
 
 import { CustomBreadcrumb, CustomButton } from "../../common";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams, useSearchParams } from "react-router";
 import { useMemo } from "react";
 import {
   useCartStore,
@@ -53,7 +53,9 @@ const items = [
 
 export const ProductItemPage = () => {
   const { codeid } = useParams();
-  const { category } = useParams();
+  const [searchParams] = useSearchParams();
+  const page = Number(searchParams.get("page")) || 1;
+
   const navigate = useNavigate();
 
   const { data: products, isLoading, isFetching } = useGetProductsQuery({});
@@ -86,7 +88,7 @@ export const ProductItemPage = () => {
       <Spin spinning={isLoading || isFetching}>
         <Flex vertical className="container">
           <CustomBreadcrumb
-            midPath={pathname.PRODUCTS}
+            midPath={`${pathname.PRODUCTS}?page=${page}`}
             midTitle={"Стоматологическое оборудование"}
             lastTitle={findItem?.nameid}
           />

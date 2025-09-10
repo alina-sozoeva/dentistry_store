@@ -36,8 +36,9 @@ export const ProductsPage = () => {
   const category = searchParams.get("category");
   const search = searchParams.get("search");
   const brend = searchParams.get("brend");
+  const pageFromUrl = Number(searchParams.get("page")) || 1;
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(pageFromUrl);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [inputValue, setInputValue] = useState(search || "");
@@ -141,7 +142,15 @@ export const ProductsPage = () => {
       setInputValue(search);
       setObj((prev) => ({ ...prev, search }));
     }
-  }, [numericCategory, numericBrend, search, location.pathname]);
+    const pageFromUrl = Number(searchParams.get("page")) || 1;
+    setCurrentPage(pageFromUrl);
+  }, [numericCategory, numericBrend, search, location.pathname, searchParams]);
+
+  const onPageChange = (page) => {
+    setCurrentPage(page);
+    searchParams.set("page", String(page));
+    setSearchParams(searchParams);
+  };
 
   return (
     <main className={clsx(styles.wrap, "")}>
@@ -242,7 +251,11 @@ export const ProductsPage = () => {
                       className={`${styles.ptoducts} grid grid-cols-5 gap-2`}
                     >
                       {currentItems?.map((item) => (
-                        <ProductItem key={item.codeid} item={item} />
+                        <ProductItem
+                          key={item.codeid}
+                          item={item}
+                          currentPage={currentPage}
+                        />
                       ))}
                     </div>
                   </section>
@@ -251,7 +264,7 @@ export const ProductsPage = () => {
                     <Pagination
                       className="pt-4"
                       current={currentPage}
-                      onChange={setCurrentPage}
+                      onChange={onPageChange}
                       total={products?.products?.length}
                       pageSize={pageSize}
                       showSizeChanger={false}

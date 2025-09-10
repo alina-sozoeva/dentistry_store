@@ -7,7 +7,7 @@ import no_foto from "../../assets/images/no_image.png";
 import styles from "./ProductItem.module.scss";
 import clsx from "clsx";
 
-export const ProductItem = ({ item }) => {
+export const ProductItem = ({ item, currentPage }) => {
   const navigate = useNavigate();
   const { addToCart } = useCartStore();
   const { favorites, addToFavorites, removeFromFavorites } =
@@ -34,11 +34,17 @@ export const ProductItem = ({ item }) => {
 
   const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
 
+  console.log(currentPage, "currentPage");
+
   return (
     <Flex
       className={clsx(styles.card)}
       vertical
-      onClick={() => navigate(`/product/${item.category}/${item.codeid}`)}
+      onClick={() =>
+        navigate(
+          `/product/${item.category}/${item.codeid}?page=${currentPage || ""}`
+        )
+      }
     >
       <div className={clsx(styles.img)}>
         <img
