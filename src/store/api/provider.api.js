@@ -10,6 +10,16 @@ export const providersApi = createApi({
         url: "/get_sp_provider",
         method: "GET",
       }),
+      transformResponse: (response) => {
+        return response.filter(
+          (item) =>
+            item.codeid === 5 ||
+            item.codeid === 6 ||
+            item.codeid === 4 ||
+            item.codeid === 3 ||
+            item.codeid === 10
+        );
+      },
       providesTags: ["ProvidersList"],
     }),
   }),

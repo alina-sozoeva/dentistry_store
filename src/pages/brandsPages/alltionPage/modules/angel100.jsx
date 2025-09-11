@@ -16,12 +16,15 @@ import styles from "../AlltionPage.module.scss";
 import clsx from "clsx";
 import { models } from "../../../../data";
 import { Carousel } from "antd";
+import { useNavigate } from "react-router";
 
 const modelInfo = {
+  codeid: 348,
   subtitle: "ALLTION",
   title: "ANGEL 100",
   description: "Создан для тех, кто выбирает максимум",
   price: 42000,
+  category: "other",
   img_info: angel_1000.angel_info,
   img_optic: angel_1000.linzy_krupno,
   img_v: angel_1000.v_100,
@@ -36,6 +39,7 @@ const fadeUp = {
 };
 
 export const Angel100 = () => {
+  const navigate = useNavigate();
   const filtered = models.filter((item) => item.codeid !== 1);
 
   return (
@@ -120,6 +124,17 @@ export const Angel100 = () => {
                 variants={fadeUp}
               >
                 <ModelsCard item={item} />
+                <div className={clsx(styles.buy)}>
+                  <span
+                    onClick={() =>
+                      navigate(
+                        `/product/${modelInfo?.category}/${modelInfo?.codeid}`
+                      )
+                    }
+                  >
+                    Купить {item.nameid}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </Carousel>

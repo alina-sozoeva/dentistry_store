@@ -117,3 +117,24 @@
     font-weight: 200;
   }
 }
+
+.buy {
+  color: #0072bc;
+  display: flex;
+  justify-content: end;
+  border: 1px solid #0072bc;
+  justify-content: center;
+  margin: 15px;
+  border-radius: 10px;
+  transition: 0.3s;
+  cursor: pointer;
+
+  span {
+    padding: 10px 15px;
+    text-transform: uppercase;
+  }
+  &:hover {
+    color: white;
+    background-color: #0072bc;
+  }
+}

@@ -81,7 +81,7 @@ export const ProductItemPage = () => {
 
   const splitCommet = findItem?.comment.split(/(?<=\.)\s+/);
 
-  console.log(filterCategory?.length);
+  console.log(findItem, "348");
 
   return (
     <section className={`${styles.wrap} py-4 `}>

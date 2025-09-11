@@ -4,8 +4,12 @@ import bg_img from "../../../assets/images/eq_card_bg.svg";
 
 import clsx from "clsx";
 import styles from "./ModelInfo.module.scss";
+import { CustomButton } from "../../../common";
+import { useNavigate } from "react-router";
 
 export const ModelInfo = ({ item }) => {
+  const navigate = useNavigate();
+
   return (
     <Flex
       justify="space-between"
@@ -20,6 +24,11 @@ export const ModelInfo = ({ item }) => {
         {/* <span className={clsx(styles.price)}>
           от {Number(item?.price).toLocaleString()} $
         </span> */}
+        <CustomButton
+          onClick={() => navigate(`/product/${item?.category}/${item?.codeid}`)}
+        >
+          Купить
+        </CustomButton>
       </Flex>
       <div className={clsx(styles.bg_img)}>
         <img src={bg_img} alt={bg_img} />

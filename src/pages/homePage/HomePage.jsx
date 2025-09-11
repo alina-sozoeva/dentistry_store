@@ -28,7 +28,7 @@ import { CustomCarousel } from "../../components";
 export const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { data: brends, isLoading: isLoadingBrends } = useGetProvidersQuery();
+  const { data: brands, isLoading: isLoadingBrends } = useGetProvidersQuery();
   const { data: categories, isLoading: isLoadingCategories } =
     useGetCategoryQuery();
   const { data: products, isLoading: isLoadingProducts } = useGetProductsQuery(
@@ -48,26 +48,14 @@ export const HomePage = () => {
   }, [location, location.pathname]);
 
   const onBrandId = (codeid) => {
-    navigate({ pathname: pathname.PRODUCTS, search: `?brend=${codeid}` });
+    navigate({ pathname: pathname.PRODUCTS, search: `?brand=${codeid}` });
   };
 
   const onCategoryId = (codeid) => {
     navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
   };
 
-  const filteredBrends = brends?.filter(
-    (item) =>
-      item.codeid === 5 ||
-      item.codeid === 6 ||
-      item.codeid === 4 ||
-      item.codeid === 3 ||
-      item.codeid === 10
-  );
-
-  const dopBrends = [
-    ...(filteredBrends || []),
-    { codeid: 2, nameid: "LargeV" },
-  ];
+  const dopBrends = [...(brands || []), { codeid: 2, nameid: "LargeV" }];
 
   const addCart = (item) => {
     addToCart(item);

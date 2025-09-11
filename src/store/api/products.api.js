@@ -6,7 +6,6 @@ const categories = [
   "K-файлы",
   "Reamers-файлы",
   "Spreaders-файлы",
-  "Машинные",
   "Gutta percha points 02",
   "Gutta percha points 04",
   "Absorbent paper points 02",
@@ -67,7 +66,15 @@ export const productsApi = createApi({
         });
 
         const oneFromEach = categories
-          .map((cat) => categorized[cat][0])
+          .map((cat) => {
+            const firstItem = categorized[cat][0];
+            if (!firstItem) return null;
+
+            return {
+              ...firstItem,
+              nameid: cat,
+            };
+          })
           .filter(Boolean);
 
         const filteredProducts = products.filter(

@@ -15,7 +15,13 @@ import { useLocation } from "react-router";
 
 import { CustomButton } from "../CustomButton";
 import { ReviewModal } from "../ReviewModal";
-import { useCartStore, useFavoritesStore, useUserStore } from "../../store";
+import {
+  useCartStore,
+  useFavoritesStore,
+  useGetProvidersQuery,
+  useUserStore,
+} from "../../store";
+import { FaTags } from "react-icons/fa6";
 
 import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
@@ -27,6 +33,7 @@ export const Header = () => {
   const [page, setPage] = useState("/");
   const [searchValue, setSearchValue] = useState("");
   const { data: categories } = useGetCategoryQuery();
+  const { data: brands } = useGetProvidersQuery({});
   const { user, removeUser } = useUserStore();
   const [open, setOpen] = useState(false);
   const { cart } = useCartStore();
@@ -43,13 +50,42 @@ export const Header = () => {
     }
   };
 
-  const onCategoyId = (codeid) => {
-    navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
+  const onCategoyId = (categoryСodeid) => {
+    navigate({
+      pathname: pathname.PRODUCTS,
+      search: `?category=${categoryСodeid}`,
+    });
+  };
+
+  const onBrandId = (brandСodeid) => {
+    navigate({
+      pathname: pathname.PRODUCTS,
+      search: `?brand=${brandСodeid}`,
+    });
   };
 
   const mappedCategories = categories?.map((item) => ({
     key: item.codeid,
-    label: <span onClick={() => onCategoyId(item.codeid)}>{item.nameid}</span>,
+    label: (
+      <span
+        onClick={() => onCategoyId(item.codeid)}
+        className={clsx("cursor-pointer")}
+      >
+        {item.nameid}
+      </span>
+    ),
+  }));
+
+  const mappedBrands = brands?.map((item) => ({
+    key: item.codeid,
+    label: (
+      <span
+        onClick={() => onBrandId(item.codeid)}
+        className={clsx("cursor-pointer")}
+      >
+        {item.nameid}
+      </span>
+    ),
   }));
 
   const items = [
@@ -96,7 +132,7 @@ export const Header = () => {
           </Flex>
 
           <Flex gap={"large"} align="center" className={clsx("h-[50px]")}>
-            {user ? (
+            {/* {user ? (
               <Flex>
                 <Dropdown menu={{ items }} trigger={["click"]}>
                   <div onClick={(e) => e.preventDefault()}>
@@ -118,7 +154,7 @@ export const Header = () => {
                 <UserOutlined />
                 <span>Логин</span>
               </Link>
-            )}
+            )} */}
             <Link
               to={pathname.FAVORITES}
               className="text-2xl flex flex-col items-center"
@@ -156,9 +192,17 @@ export const Header = () => {
         <div className={clsx(styles.header_nav)}>
           <Flex align="center" gap="small">
             <Dropdown menu={{ items: mappedCategories }} trigger={["click"]}>
-              <Space>
+              <Space className={clsx("cursor-pointer")}>
                 <TbCategoryFilled />
                 Категории
+              </Space>
+            </Dropdown>
+          </Flex>
+          <Flex align="center" gap="small">
+            <Dropdown menu={{ items: mappedBrands }} trigger={["click"]}>
+              <Space className={clsx("cursor-pointer")}>
+                <FaTags />
+                Бренды
               </Space>
             </Dropdown>
           </Flex>
@@ -210,7 +254,10 @@ export const Header = () => {
               Обучение
             </span>
           </Link>
-          <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
+          <Link
+            to={pathname.ALIGNERS}
+            onClick={() => onPage(pathname.ALIGNERS)}
+          >
             <span
               className={
                 page === pathname.STUDY ? styles.active_link : styles.link

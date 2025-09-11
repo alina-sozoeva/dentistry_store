@@ -8,7 +8,7 @@ import {
 } from "../../../../components";
 
 import { pathname } from "../../../../enums";
-import { CustomBreadcrumb, ModelsCard } from "../../../../common";
+import { CustomBreadcrumb, CustomButton, ModelsCard } from "../../../../common";
 import { fiveStep } from "../../../../stepData";
 
 import * as am_2000_img from "../../../../assets/images/am2000Plus";
@@ -17,12 +17,15 @@ import styles from "../AlltionPage.module.scss";
 import clsx from "clsx";
 import { models } from "../../../../data";
 import { Carousel } from "antd";
+import { useNavigate } from "react-router";
 
 const modelInfo = {
+  codeid: 345,
   subtitle: "Серия",
   title: "AM-2000",
   description: "Надежный старт для работы с увеличением",
   price: 12100,
+  category: "other",
   img_info: am_2000_img.info_2000_plus,
   img_white: am_2000_img.bel_2000_plus,
   img_black: am_2000_img.black_2000_plus,
@@ -37,6 +40,7 @@ const dop_text =
   "Регулировка фокусного расстояния осуществляется в зависимости от антропометрических данных оператора. Рабочая дистанция может составлять 250-430 мм или 200-300 мм – на выбор.";
 
 export const Am2000 = () => {
+  const navigate = useNavigate();
   const filtered = models.filter((item) => item.codeid !== 3);
 
   const fadeUp = {
@@ -126,6 +130,17 @@ export const Am2000 = () => {
                 variants={fadeUp}
               >
                 <ModelsCard item={item} />
+                <div className={clsx(styles.buy)}>
+                  <span
+                    onClick={() =>
+                      navigate(
+                        `/product/${modelInfo?.category}/${modelInfo?.codeid}`
+                      )
+                    }
+                  >
+                    Купить {item.nameid}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </Carousel>

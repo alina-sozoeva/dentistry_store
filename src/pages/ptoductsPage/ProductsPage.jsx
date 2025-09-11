@@ -13,7 +13,7 @@ import {
 } from "antd";
 
 import { ProductItem } from "../../common";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useSearchParams } from "react-router";
 import {
   useGetCategoryQuery,
@@ -32,33 +32,34 @@ export const ProductsPage = () => {
   const { data: categories } = useGetCategoryQuery();
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const category = searchParams.get("category");
-  const search = searchParams.get("search");
-  const brend = searchParams.get("brend");
+  const categoryParam = searchParams.get("category");
+  const searchParam = searchParams.get("search");
+  const brandParam = searchParams.get("brand");
   const pageFromUrl = Number(searchParams.get("page")) || 1;
 
   const [currentPage, setCurrentPage] = useState(pageFromUrl);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [selectedBrand, setSelectedBrand] = useState(null);
-  const [inputValue, setInputValue] = useState(search || "");
+  const [inputValue, setInputValue] = useState(searchParam || "");
 
-  const [obj, setObj] = useState({
+  const [filters, setFilters] = useState({
     categoryId: undefined,
     brandId: undefined,
     search: undefined,
   });
 
-  const numericCategory = category !== null ? Number(category) : undefined;
-  const numericBrend = brend !== null ? Number(brend) : undefined;
+  const numericCategory =
+    categoryParam !== null ? Number(categoryParam) : undefined;
+  const numericBrand = brandParam !== null ? Number(brandParam) : undefined;
 
   const {
     data: products,
     isLoading,
     isFetching,
   } = useGetProductsQuery({
-    code_sp_category: obj.categoryId,
-    code_sp_provider: obj.brandId,
-    nameid: obj.search || search || undefined,
+    code_sp_category: filters.categoryId,
+    code_sp_provider: filters.brandId,
+    nameid: filters.search || searchParam || undefined,
   });
 
   const startIndex = (currentPage - 1) * pageSize;
@@ -71,11 +72,11 @@ export const ProductsPage = () => {
 
     if (selectedCategory === value) {
       setSelectedCategory(null);
-      setObj((prev) => ({ ...prev, categoryId: undefined }));
+      setFilters((prev) => ({ ...prev, categoryId: undefined }));
       newSearchParams.delete("category");
     } else {
       setSelectedCategory(value);
-      setObj((prev) => ({ ...prev, categoryId: value }));
+      setFilters((prev) => ({ ...prev, categoryId: value }));
       newSearchParams.set("category", value);
     }
 
@@ -89,12 +90,12 @@ export const ProductsPage = () => {
 
     if (selectedBrand === value) {
       setSelectedBrand(null);
-      setObj((prev) => ({ ...prev, brandId: undefined }));
-      newSearchParams.delete("brend");
+      setFilters((prev) => ({ ...prev, brandId: undefined }));
+      newSearchParams.delete("brand");
     } else {
       setSelectedBrand(value);
-      setObj((prev) => ({ ...prev, brandId: value }));
-      newSearchParams.set("brend", value);
+      setFilters((prev) => ({ ...prev, brandId: value }));
+      newSearchParams.set("brand", value);
     }
 
     newSearchParams.set("page", "1");
@@ -104,7 +105,7 @@ export const ProductsPage = () => {
   const onSearch = (value) => {
     setCurrentPage(1);
     setInputValue(value);
-    setObj((prev) => ({ ...prev, search: value }));
+    setFilters((prev) => ({ ...prev, search: value }));
     const newSearchParams = new URLSearchParams(searchParams.toString());
     if (value) newSearchParams.set("search", value);
     else newSearchParams.delete("search");
@@ -114,15 +115,17 @@ export const ProductsPage = () => {
 
   const onDeleteSearchParams = () => {
     searchParams.delete("search");
-    searchParams.delete("brend");
+    searchParams.delete("brand");
     searchParams.delete("category");
     setSearchParams(searchParams);
     setInputValue("");
     setSelectedBrand(null);
     setSelectedCategory(null);
-    setObj((prev) => ({ ...prev, categoryId: undefined }));
-    setObj((prev) => ({ ...prev, brandId: undefined }));
-    setObj((prev) => ({ ...prev, search: undefined }));
+    setFilters({
+      categoryId: undefined,
+      brandId: undefined,
+      search: undefined,
+    });
   };
 
   useEffect(() => {
@@ -130,20 +133,26 @@ export const ProductsPage = () => {
 
     if (numericCategory) {
       setSelectedCategory(numericCategory);
-      setObj((prev) => ({ ...prev, categoryId: numericCategory || undefined }));
+      setFilters((prev) => ({ ...prev, categoryId: numericCategory }));
     }
-    if (numericBrend) {
-      setSelectedBrand(numericBrend);
-      setObj((prev) => ({ ...prev, brandId: numericBrend || undefined }));
+    if (numericBrand) {
+      setSelectedBrand(numericBrand);
+      setFilters((prev) => ({ ...prev, brandId: numericBrand }));
     }
-    if (search !== null && search !== inputValue) {
-      setInputValue(search);
-      setObj((prev) => ({ ...prev, search }));
+    if (searchParam !== null && searchParam !== inputValue) {
+      setInputValue(searchParam);
+      setFilters((prev) => ({ ...prev, search: searchParam }));
     }
 
     const pageFromUrl = Number(searchParams.get("page")) || 1;
     setCurrentPage(pageFromUrl);
-  }, [numericCategory, numericBrend, search, location.pathname, searchParams]);
+  }, [
+    numericCategory,
+    numericBrand,
+    searchParam,
+    location.pathname,
+    searchParams,
+  ]);
 
   const onPageChange = (page) => {
     setCurrentPage(page);
@@ -151,19 +160,8 @@ export const ProductsPage = () => {
     setSearchParams(searchParams);
   };
 
-  const filteredBrends = brands?.filter(
-    (item) =>
-      item.codeid === 5 ||
-      item.codeid === 6 ||
-      item.codeid === 4 ||
-      item.codeid === 3 ||
-      item.codeid === 10
-  );
-
-  console.log(products, "products");
-
   return (
-    <main className={clsx(styles.wrap, "")}>
+    <main className={clsx(styles.wrap)}>
       <Spin spinning={isLoading || isFetching}>
         <div className="mt-10 container">
           <Flex align="center" justify="space-between">
@@ -183,14 +181,14 @@ export const ProductsPage = () => {
 
           <Row gutter={16} className="py-6">
             <Col span={4}>
-              <aside className={clsx("")}>
+              <aside>
                 <Flex vertical gap={"small"}>
                   <Flex vertical gap={"middle"}>
                     <nav
                       className="bg-white px-3 py-2 relative max-w-[220px]"
                       aria-label="Категории товаров"
                     >
-                      <h4 className="text-blue pb-1 sticky ">Категории</h4>
+                      <h4 className="text-blue pb-1 sticky">Категории</h4>
                       <Flex
                         vertical
                         gap={"small"}
@@ -209,6 +207,7 @@ export const ProductsPage = () => {
                         ))}
                       </Flex>
                     </nav>
+
                     <nav
                       className="bg-white px-3 py-2 relative max-w-[220px]"
                       aria-label="Фильтр по брендам"
@@ -220,7 +219,7 @@ export const ProductsPage = () => {
                         gap={"small"}
                         style={{ overflowY: "auto" }}
                       >
-                        {filteredBrends?.map((item) => (
+                        {brands?.map((item) => (
                           <Checkbox
                             key={item.codeid}
                             value={item.codeid}
@@ -237,17 +236,18 @@ export const ProductsPage = () => {
               </aside>
             </Col>
 
-            <Col span={20} className="flex flex-col ">
+            <Col span={20} className="flex flex-col">
               <Input
                 placeholder="Поиск по наименованию товара"
                 className={clsx("mb-4")}
                 value={inputValue}
                 onChange={(e) => onSearch(e.target.value)}
               />
+
               {products?.products?.length === 0 ? (
                 <Flex
                   align="center"
-                  className={clsx("flex items-center justify-center")}
+                  className="flex items-center justify-center"
                 >
                   <Empty
                     description={<Typography.Text>Нет данных</Typography.Text>}
@@ -260,7 +260,7 @@ export const ProductsPage = () => {
               ) : (
                 <>
                   <section>
-                    <div className={`${styles.ptoducts}`}>
+                    <div className={styles.ptoducts}>
                       {currentItems?.map((item) => (
                         <ProductItem
                           key={item.codeid}
@@ -273,7 +273,7 @@ export const ProductsPage = () => {
 
                   <nav
                     aria-label="Пагинация"
-                    className={clsx("flex items-center justify-center")}
+                    className="flex items-center justify-center"
                   >
                     <Pagination
                       className="pt-4"

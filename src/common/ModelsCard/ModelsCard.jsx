@@ -40,6 +40,7 @@ export const ModelsCard = ({ item, onClick }) => {
             от {Number(item.price).toLocaleString()} $
           </span> */}
         </Flex>
+
         <button className={clsx(styles.btn)}>
           <ArrowRightOutlined rotate={-20} />
         </button>

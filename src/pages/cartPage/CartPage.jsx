@@ -52,7 +52,7 @@ export const CartPage = () => {
           >
             <button
               className={clsx(styles.btn)}
-              onClick={() => navigate(pathname.LOGIN)}
+              // onClick={() => navigate(pathname.LOGIN)}
             >
               Перейти к оформлению
             </button>

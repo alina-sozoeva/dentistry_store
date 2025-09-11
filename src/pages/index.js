@@ -9,3 +9,4 @@ export * from "./loginPage";
 export * from "./studyPage";
 export * from "./favoritesPage";
 export * from "./brandsPages";
+export * from "./alignersPage";

@@ -144,6 +144,7 @@ export const brandsItem = [
     title: "LargeV",
     img: brands.largev,
     background: "#f4f3ef",
+    // path: pathname.LARGEV,
   },
 ];
 

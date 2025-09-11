@@ -18,12 +18,15 @@ import styles from "../AlltionPage.module.scss";
 import clsx from "clsx";
 import { models } from "../../../../data";
 import { Carousel } from "antd";
+import { useNavigate } from "react-router";
 
 const modelInfo = {
+  codeid: 346,
   subtitle: "Серия",
   title: "AM-2000 PLUS",
   description: "Оптимальный баланс технологий и стоимости",
   price: 15700,
+  category: "other",
   img_info: am_2000_plus_img.info_2000_plus,
   img_white: am_2000_plus_img.bel_2000_plus,
   img_black: am_2000_plus_img.black_2000_plus,
@@ -40,6 +43,7 @@ const fadeUp = {
 };
 
 export const Am2000Plus = () => {
+  const navigate = useNavigate();
   const filtered = models.filter((item) => item.codeid !== 4);
 
   return (
@@ -133,6 +137,17 @@ export const Am2000Plus = () => {
                 variants={fadeUp}
               >
                 <ModelsCard item={item} />
+                <div className={clsx(styles.buy)}>
+                  <span
+                    onClick={() =>
+                      navigate(
+                        `/product/${modelInfo?.category}/${modelInfo?.codeid}`
+                      )
+                    }
+                  >
+                    Купить {item.nameid}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </Carousel>

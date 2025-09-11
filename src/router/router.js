@@ -50,6 +50,8 @@ export const router = createBrowserRouter([
       { path: pathname.GRAPHY, element: <Pages.GraphyPage /> },
       { path: pathname.PROMIS, element: <Pages.PromisPage /> },
       { path: pathname.DENTIS, element: <Pages.DentisPage /> },
+      { path: pathname.LARGEV, element: <Pages.LargevPage /> },
+      { path: pathname.ALIGNERS, element: <Pages.AlignersPage /> },
       { path: pathname.AM2000PLUS, element: <Pages.Am2000Plus /> },
       { path: pathname.AM2000, element: <Pages.Am2000 /> },
       { path: pathname.AM5000, element: <Pages.Am5000 /> },

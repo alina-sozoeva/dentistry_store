@@ -18,6 +18,7 @@ import styles from "../AlltionPage.module.scss";
 import clsx from "clsx";
 import { models } from "../../../../data";
 import { Carousel } from "antd";
+import { useNavigate } from "react-router";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -26,10 +27,12 @@ const fadeUp = {
 
 // AM-5000 пример
 const modelInfo5000 = {
+  codeid: 347,
   subtitle: "ALLTION",
   title: "AM-5000 VFR",
   description: "Больше возможностей для профессионалов",
   price: 19450,
+  category: "other",
   img_info: am_5000.info_5000,
   img_white: am_5000.bel_5000,
   img_black: am_5000.black_5000,
@@ -41,6 +44,7 @@ const v_text =
   "Регулировка фокусного расстояния (198-455 мм) в зависимости от антропометрических данных оператора. Микроскоп с вариообъективом сохраняет здоровье врача, исключая травмы шейных и поясничных отделов.";
 
 export const Am5000 = () => {
+  const navigate = useNavigate();
   const filtered = models.filter((item) => item.codeid !== 5);
 
   return (
@@ -134,6 +138,17 @@ export const Am5000 = () => {
                 variants={fadeUp}
               >
                 <ModelsCard item={item} />
+                <div className={clsx(styles.buy)}>
+                  <span
+                    onClick={() =>
+                      navigate(
+                        `/product/${modelInfo5000?.category}/${modelInfo5000?.codeid}`
+                      )
+                    }
+                  >
+                    Купить {item.nameid}
+                  </span>
+                </div>
               </motion.div>
             ))}
           </Carousel>

@@ -15,6 +15,8 @@ export const pathname = {
   GRAPHY: "/brands/graphy",
   DENTIS: "/brands/dentis",
   PROMIS: "/brands/promis",
+  LARGEV: "/brands/largev",
+  ALIGNERS: "/aligners",
   AM2000PLUS: "/brands/alltion/am-2000-plus",
   AM2000: "/brands/alltion/am-2000",
   AM5000: "/brands/alltion/am-5000",
