@@ -1,9 +1,7 @@
 import {
-  CaretDownOutlined,
   HeartOutlined,
   LogoutOutlined,
   ShoppingCartOutlined,
-  UserOutlined,
 } from "@ant-design/icons";
 import { Dropdown, Flex, Input, Space } from "antd";
 import { Link, useNavigate } from "react-router";
@@ -27,15 +25,48 @@ import styles from "./Header.module.scss";
 import logo from "../../assets/images/logo_without_bg_blue.png";
 import clsx from "clsx";
 
+const links = [
+  {
+    key: 1,
+    title: "Главная",
+    path: pathname.HOME,
+  },
+  {
+    key: 2,
+    title: "О нас",
+    path: pathname.ABOUT,
+  },
+  {
+    key: 3,
+    title: "Магазин",
+    path: pathname.PRODUCTS,
+  },
+  {
+    key: 4,
+    title: "Контакты",
+    path: pathname.CONTACT,
+  },
+  {
+    key: 5,
+    title: "Обучение",
+    path: pathname.STUDY,
+  },
+  {
+    key: 6,
+    title: "Элайнеры",
+    path: pathname.ALIGNERS,
+  },
+];
+
 export const Header = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+
   const [page, setPage] = useState("/");
   const [searchValue, setSearchValue] = useState("");
+  const [open, setOpen] = useState(false);
+
   const { data: categories } = useGetCategoryQuery();
   const { data: brands } = useGetProvidersQuery({});
-  const { user, removeUser } = useUserStore();
-  const [open, setOpen] = useState(false);
   const { cart } = useCartStore();
   const { favorites } = useFavoritesStore();
 
@@ -88,24 +119,6 @@ export const Header = () => {
     ),
   }));
 
-  const items = [
-    {
-      label: <p>{user?.login}</p>,
-      key: "0",
-    },
-    {
-      type: "divider",
-    },
-    {
-      label: (
-        <Space onClick={() => removeUser()}>
-          Выйти <LogoutOutlined rotate={270} />
-        </Space>
-      ),
-      key: "3",
-    },
-  ];
-
   return (
     <header className={styles.wrap}>
       <Flex vertical className={clsx(styles.header)}>
@@ -132,29 +145,6 @@ export const Header = () => {
           </Flex>
 
           <Flex gap={"large"} align="center" className={clsx("h-[50px]")}>
-            {/* {user ? (
-              <Flex>
-                <Dropdown menu={{ items }} trigger={["click"]}>
-                  <div onClick={(e) => e.preventDefault()}>
-                    <Space>
-                      <Flex vertical gap={4}>
-                        <p className={clsx(styles.user_info)}>{user?.login}</p>
-                      </Flex>
-                      <CaretDownOutlined />
-                    </Space>
-                  </div>
-                </Dropdown>
-              </Flex>
-            ) : (
-              <Link
-                to={pathname.LOGIN}
-                className={clsx("text-2xl flex flex-col gap-2 items-center")}
-                style={{ whiteSpace: "nowrap" }}
-              >
-                <UserOutlined />
-                <span>Логин</span>
-              </Link>
-            )} */}
             <Link
               to={pathname.FAVORITES}
               className="text-2xl flex flex-col items-center"
@@ -187,7 +177,6 @@ export const Header = () => {
         </Flex>
       </Flex>
 
-      {/* {location.pathname !== "/products" && ( */}
       <div className={clsx("container")}>
         <div className={clsx(styles.header_nav)}>
           <Flex align="center" gap="small">
@@ -206,74 +195,24 @@ export const Header = () => {
               </Space>
             </Dropdown>
           </Flex>
-          <Link to={pathname.HOME} onClick={() => onPage(pathname.HOME)}>
-            <span
-              className={
-                page === pathname.HOME ? styles.active_link : styles.link
-              }
-            >
-              Главная
-            </span>
-          </Link>
-          <Link to={pathname.ABOUT} onClick={() => onPage(pathname.ABOUT)}>
-            <span
-              className={
-                page === pathname.ABOUT ? styles.active_link : styles.link
-              }
-            >
-              О нас
-            </span>
-          </Link>
-          <Link
-            to={pathname.PRODUCTS}
-            onClick={() => onPage(pathname.PRODUCTS)}
-          >
-            <span
-              className={
-                page === pathname.PRODUCTS ? styles.active_link : styles.link
-              }
-            >
-              Магазин
-            </span>
-          </Link>
-          <Link to={pathname.CONTACT} onClick={() => onPage(pathname.CONTACT)}>
-            <span
-              className={
-                page === pathname.CONTACT ? styles.active_link : styles.link
-              }
-            >
-              Контакты
-            </span>
-          </Link>
-          <Link to={pathname.STUDY} onClick={() => onPage(pathname.STUDY)}>
-            <span
-              className={
-                page === pathname.STUDY ? styles.active_link : styles.link
-              }
-            >
-              Обучение
-            </span>
-          </Link>
-          <Link
-            to={pathname.ALIGNERS}
-            onClick={() => onPage(pathname.ALIGNERS)}
-          >
-            <span
-              className={
-                page === pathname.STUDY ? styles.active_link : styles.link
-              }
-            >
-              Элайнеры
-            </span>
-          </Link>
-          {user && (
-            <CustomButton onClick={() => setOpen(true)}>
-              Оставить отзыв
-            </CustomButton>
-          )}
+          {links.map((item) => (
+            <Link to={item.path} onClick={() => onPage(item.path)}>
+              <span
+                className={
+                  page === item.path ? styles.active_link : styles.link
+                }
+              >
+                {item.title}
+              </span>
+            </Link>
+          ))}
+
+          <CustomButton onClick={() => setOpen(true)}>
+            Оставить отзыв
+          </CustomButton>
         </div>
       </div>
-      {/* )} */}
+
       <ReviewModal open={open} onCancel={() => setOpen(false)} />
     </header>
   );

@@ -8,10 +8,11 @@ import { useReviewStore, useUserStore } from "../../store";
 import { v1 as uuidv1 } from "uuid";
 import dayjs from "dayjs";
 import { RatingStars } from "../../ui";
+import { toast } from "react-toastify";
 
 export const ReviewModal = ({ open, onCancel }) => {
   const [form] = useForm();
-  const { addReviews } = useReviewStore();
+
   const { user } = useUserStore();
 
   const onClose = () => {
@@ -20,14 +21,7 @@ export const ReviewModal = ({ open, onCancel }) => {
   };
 
   const onFinish = (values) => {
-    const newReviews = {
-      guid: uuidv1(),
-      nameid: user?.login,
-      comment: values.comment,
-      date: dayjs().format("DD.MM.YYYY"),
-      raiting: values.raiting,
-    };
-    addReviews(newReviews);
+    toast.success("Спасибо за Ваш отзыв!");
     form.resetFields();
     onCancel();
   };
@@ -74,6 +68,19 @@ export const ReviewModal = ({ open, onCancel }) => {
           ]}
         >
           <Input placeholder="Введите свое имя" />
+        </Form.Item>
+
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: "Это обязательное поле для заполнения!",
+            },
+          ]}
+        >
+          <Input placeholder="Введите свой email" />
         </Form.Item>
 
         <Form.Item
