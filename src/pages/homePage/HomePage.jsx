@@ -13,6 +13,7 @@ import {
   useGetCategoryQuery,
   useGetProductsQuery,
   useGetProvidersQuery,
+  useGetReviewsQuery,
   useReviewStore,
 } from "../../store";
 import { pathname } from "../../enums";
@@ -34,7 +35,12 @@ export const HomePage = () => {
   const { data: products, isLoading: isLoadingProducts } = useGetProductsQuery(
     {}
   );
-  const { reviews } = useReviewStore();
+  const { data: reviews } = useGetReviewsQuery();
+
+  const filteredReviews = reviews?.data?.filter(
+    (item) => item?.is_published === 1
+  );
+
   const { addToCart } = useCartStore();
 
   useEffect(() => {
@@ -211,7 +217,7 @@ export const HomePage = () => {
                 className={clsx(styles.carousel, styles.categories, "w-full")}
                 slidesToShow={3}
               >
-                {reviews?.map((review, index) => (
+                {filteredReviews?.map((review, index) => (
                   <div key={index} className={styles.reviews_one}>
                     <Flex align="center" justify="space-between">
                       <Flex align="center" gap="small">
