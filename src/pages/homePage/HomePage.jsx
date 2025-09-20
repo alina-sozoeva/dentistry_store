@@ -19,6 +19,7 @@ import { pathname } from "../../enums";
 import brends_no_foto from "../../assets/images/no_image.png";
 import { categoriesLocal, brandsItem } from "../../data";
 import { CustomCarousel } from "../../components";
+import DOMPurify from "dompurify";
 import dayjs from "dayjs";
 
 import * as cat_foto from "../../assets/images/categories";
@@ -309,9 +310,12 @@ export const HomePage = () => {
                     <span className={clsx("font-bold")}>Место проведения:</span>{" "}
                     {item.location}
                   </div>
-                  <span className={clsx("text-base line-clamp-3 mb-4")}>
-                    {item.description}
-                  </span>
+                  <span
+                    className={clsx("text-base line-clamp-3 mb-4")}
+                    dangerouslySetInnerHTML={{
+                      __html: DOMPurify.sanitize(item.description),
+                    }}
+                  />
                 </Flex>
               ))}
             </Carousel>

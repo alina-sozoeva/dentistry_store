@@ -4,6 +4,7 @@ import styles from "./StudyItem.module.scss";
 import clsx from "clsx";
 import dayjs from "dayjs";
 import "dayjs/locale/ru";
+import DOMPurify from "dompurify";
 
 export const StudyItem = ({ item }) => {
   return (
@@ -26,7 +27,11 @@ export const StudyItem = ({ item }) => {
           <span className={clsx("text-2xl font-bold")}>{item.title}</span>
 
           <Flex vertical gap="small">
-            <span>{item.description}</span>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(item.description),
+              }}
+            />
             {item.price && (
               <span>
                 <strong>Цена:</strong> {Number(item.price).toLocaleString()} сом

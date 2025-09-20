@@ -4,18 +4,15 @@ import { useState } from "react";
 import fon_alltion from "../../../assets/images/fon_alltion.jpg";
 import play from "../../../assets/images/play.svg";
 import yrs from "../../../assets/images/30yrs_banner-scaled.webp";
-import models_fon from "../../../assets/images/alltion/fon_models.jpg";
 
-import * as foto from "../../../assets/images/largev";
-
-import { models } from "../../../data";
 import { VideoModal } from "../../../components";
-import { ModelsCard } from "../../../common";
 
-import styles from "./LargevPage.module.scss";
-import clsx from "clsx";
 import { useNavigate } from "react-router";
 import { pathname } from "../../../enums";
+
+import * as foto from "../../../assets/images/largev";
+import styles from "./LargevPage.module.scss";
+import clsx from "clsx";
 
 export const LargevPage = () => {
   const navigate = useNavigate();
