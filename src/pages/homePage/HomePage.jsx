@@ -1,9 +1,8 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { CustomButton, ProductItem } from "../../common";
+import { ProductItem } from "../../common";
 import { Carousel, Flex, Spin, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { useEffect } from "react";
-import { edu } from "../../data";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
@@ -11,20 +10,20 @@ import { PiUserCircleFill } from "react-icons/pi";
 import {
   useCartStore,
   useGetCategoryQuery,
+  useGetEduQuery,
   useGetProductsQuery,
   useGetProvidersQuery,
   useGetReviewsQuery,
-  useReviewStore,
 } from "../../store";
 import { pathname } from "../../enums";
 import brends_no_foto from "../../assets/images/no_image.png";
-import * as cat_foto from "../../assets/images/categories";
 import { categoriesLocal, brandsItem } from "../../data";
+import { CustomCarousel } from "../../components";
+import dayjs from "dayjs";
 
+import * as cat_foto from "../../assets/images/categories";
 import styles from "./HomePage.module.scss";
 import clsx from "clsx";
-import dayjs from "dayjs";
-import { CustomCarousel } from "../../components";
 
 export const HomePage = () => {
   const navigate = useNavigate();
@@ -36,12 +35,11 @@ export const HomePage = () => {
     {}
   );
   const { data: reviews } = useGetReviewsQuery();
+  const { data: edu } = useGetEduQuery();
 
   const filteredReviews = reviews?.data?.filter(
     (item) => item?.is_published === 1
   );
-
-  const { addToCart } = useCartStore();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -62,10 +60,6 @@ export const HomePage = () => {
   };
 
   const dopBrends = [...(brands || []), { codeid: 2, nameid: "LargeV" }];
-
-  const addCart = (item) => {
-    addToCart(item);
-  };
 
   return (
     <Spin
@@ -218,20 +212,48 @@ export const HomePage = () => {
                 slidesToShow={3}
               >
                 {filteredReviews?.map((review, index) => (
-                  <div key={index} className={styles.reviews_one}>
-                    <Flex align="center" justify="space-between">
+                  <div
+                    key={index}
+                    className={clsx(
+                      styles.reviewCard,
+                      "p-4 rounded-2xl shadow-md bg-white mb-4"
+                    )}
+                  >
+                    <Flex
+                      align="center"
+                      justify="space-between"
+                      className="mb-2"
+                    >
                       <Flex align="center" gap="small">
-                        <PiUserCircleFill className={clsx("text-5xl")} />
+                        <PiUserCircleFill className="text-4xl text-gray-400" />
                         <Flex vertical>
-                          <span>{review.date}</span>
-                          <h3 className={clsx("font-bold")}>{review.nameid}</h3>
+                          <h3 className="font-semibold text-lg">
+                            {review.nameid}
+                          </h3>
+                          <span className="text-sm text-gray-500">
+                            {review.email}
+                          </span>
                         </Flex>
                       </Flex>
-                      <RatingStars value={review.raiting} readOnly />
+                      <RatingStars value={Number(review.rating)} readOnly />
                     </Flex>
-                    <p className={clsx("text-base line-clamp-4")}>
+
+                    <p
+                      className="text-base text-gray-700 mb-2 overflow-hidden"
+                      style={{
+                        display: "-webkit-box",
+                        WebkitLineClamp: 4,
+                        WebkitBoxOrient: "vertical",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                      }}
+                    >
                       {review.comment}
                     </p>
+
+                    <span className="text-sm text-gray-400">
+                      {dayjs(review.date_system).format("DD MMMM YYYY")}
+                    </span>
                   </div>
                 ))}
               </Carousel>
@@ -256,11 +278,14 @@ export const HomePage = () => {
               autoplay
               arrows
               className={clsx(styles.carousel, styles.edu_car)}
-              slidesToShow={edu.length > 3 ? 3 : edu.length}
+              slidesToShow={edu?.data?.length > 3 ? 3 : edu?.data?.length}
             >
-              {edu.slice(0, 3).map((item) => (
+              {edu?.data.slice(0, 3).map((item) => (
                 <Flex vertical key={item.key}>
-                  <img src={item.img} alt={item.img} />
+                  <img
+                    src={`https://api-jds-admin.ibm.kg${item.imgs[0].img_url}`}
+                    alt={item.img}
+                  />
                   <h3
                     className={clsx(
                       "font-bold h-[2.5em] leading-[1.2em] overflow-hidden my-4 text-2xl"
@@ -270,7 +295,15 @@ export const HomePage = () => {
                   </h3>
                   <div className={clsx("text-base")}>
                     <span className={clsx("font-bold")}>Дата проведения:</span>{" "}
-                    {item.date}
+                    {item?.start_date && item?.end_date && (
+                      <>
+                        {dayjs(item?.start_date).format("DD.MM.YYYY")} -{" "}
+                        {dayjs(item?.end_date).format("DD.MM.YYYY")}
+                      </>
+                    )}
+                    {item?.event_date && (
+                      <>{dayjs(item?.event_date).format("DD.MM.YYYY")}</>
+                    )}
                   </div>
                   <div className={clsx("text-base  mb-4")}>
                     <span className={clsx("font-bold")}>Место проведения:</span>{" "}

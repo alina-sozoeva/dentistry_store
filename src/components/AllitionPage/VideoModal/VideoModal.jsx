@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import styles from "./VideoModal.module.scss";
 import clsx from "clsx";
 
-export const VideoModal = ({ open, onCancel }) => {
+export const VideoModal = ({ open, onCancel, sourse }) => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -30,10 +30,7 @@ export const VideoModal = ({ open, onCancel }) => {
         footer={false}
       >
         <video ref={videoRef} loop autoPlay controls playsInline>
-          <source
-            src="https://alltion.ru/wp-content/uploads/2025/04/alltion2025v2.mp4"
-            type="video/mp4"
-          />
+          <source src={sourse} type="video/mp4" />
         </video>
       </Modal>
     </div>

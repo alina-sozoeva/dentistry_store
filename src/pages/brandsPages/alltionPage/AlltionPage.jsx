@@ -77,7 +77,13 @@ export const AlltionPage = () => {
           ))}
         </Row>
       </section>
-      <VideoModal open={open} onCancel={() => setOpen(false)} />
+      <VideoModal
+        open={open}
+        onCancel={() => setOpen(false)}
+        sourse={
+          "https://alltion.ru/wp-content/uploads/2025/04/alltion2025v2.mp4"
+        }
+      />
     </main>
   );
 };

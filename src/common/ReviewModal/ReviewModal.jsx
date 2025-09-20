@@ -27,7 +27,9 @@ export const ReviewModal = ({ open, onCancel }) => {
       comment: values.comment,
     });
 
-    toast.success("Спасибо за Ваш отзыв!");
+    toast.success(
+      "Спасибо за Ваш отзыв! Он будет опубликован после модерации."
+    );
     form.resetFields();
     onCancel();
   };
