@@ -63,6 +63,9 @@ export const LargevPage = () => {
             </Flex>
           </Col>
         </Row>
+        <div className={clsx(styles.models, "mt-12")}>
+          <img src={foto.smart3D} alt={foto.smart3D} />
+        </div>
         <div className={clsx(styles.model_info, "mt-6")}>
           <div className={clsx("container  ")}>
             <div className={clsx(styles.aboutUsPage)}>
@@ -97,6 +100,7 @@ export const LargevPage = () => {
               </p>
               <span>
                 <b>Ключевые особенности</b>
+                <br />
               </span>
               <span>
                 <b>Высочайшее качество изображения</b>

@@ -1,7 +1,9 @@
 import {
   HeartOutlined,
   LogoutOutlined,
+  PhoneFilled,
   ShoppingCartOutlined,
+  WhatsAppOutlined,
 } from "@ant-design/icons";
 import { Dropdown, Flex, Input, Space } from "antd";
 import { Link, useNavigate } from "react-router";
@@ -142,6 +144,10 @@ export const Header = () => {
               onPressEnter={handleSearch}
               className={clsx(styles.search_input)}
             />
+
+            <CustomButton onClick={() => setOpen(true)}>
+              Оставить отзыв
+            </CustomButton>
           </Flex>
 
           <Flex gap={"large"} align="center" className={clsx("h-[50px]")}>
@@ -179,6 +185,16 @@ export const Header = () => {
 
       <div className={clsx("container")}>
         <div className={clsx(styles.header_nav)}>
+          <a
+            href="https://api.whatsapp.com/send/?phone=996706414444&text&type=phone_number&app_absent=0"
+            target="_blank"
+            className={clsx("cursor-pointer flex gap-[10px] align-center")}
+            style={{ color: "#147abc" }}
+          >
+            <WhatsAppOutlined />
+            Связаться с нами
+          </a>
+
           <Flex align="center" gap="small">
             <Dropdown menu={{ items: mappedCategories }} trigger={["click"]}>
               <Space className={clsx("cursor-pointer")}>
@@ -206,10 +222,6 @@ export const Header = () => {
               </span>
             </Link>
           ))}
-
-          <CustomButton onClick={() => setOpen(true)}>
-            Оставить отзыв
-          </CustomButton>
         </div>
       </div>
 

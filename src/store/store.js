@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
+  bannersApi,
   categoryApi,
   educationApi,
   productsApi,
@@ -14,6 +15,7 @@ export const store = configureStore({
     [providersApi.reducerPath]: providersApi.reducer,
     [reviewsApi.reducerPath]: reviewsApi.reducer,
     [educationApi.reducerPath]: educationApi.reducer,
+    [bannersApi.reducerPath]: bannersApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
@@ -22,5 +24,6 @@ export const store = configureStore({
       providersApi.middleware,
       reviewsApi.middleware,
       educationApi.middleware,
+      bannersApi.middleware,
     ]),
 });

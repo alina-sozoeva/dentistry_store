@@ -9,7 +9,7 @@ import "dayjs/locale/ru";
 
 export const StudyModal = ({ open, onCancel, item }) => {
   return (
-    <Modal open={open} onCancel={onCancel} centered width={1000}>
+    <Modal open={open} onCancel={onCancel} centered width={1000} footer={false}>
       <Row gutter={24} align={"middle"}>
         <Col span={12}>
           <Carousel arrows autoplay>
