@@ -63,7 +63,7 @@ export const LargevPage = () => {
             </Flex>
           </Col>
         </Row>
-        <div className={clsx(" mt-6")}>
+        <div className={clsx(styles.model_info, "mt-6")}>
           <div className={clsx("container  ")}>
             <div className={clsx(styles.aboutUsPage)}>
               <h2 className={styles.title}>

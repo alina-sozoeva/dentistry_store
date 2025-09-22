@@ -1,14 +1,13 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { ProductItem } from "../../common";
-import { Carousel, Flex, Spin, Typography } from "antd";
+import { CustomButton, ProductItem } from "../../common";
+import { Carousel, Col, Flex, Row, Spin, Typography } from "antd";
 import { RatingStars } from "../../ui";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
 import { DoubleRightOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
 import {
-  useCartStore,
   useGetCategoryQuery,
   useGetEduQuery,
   useGetProductsQuery,
@@ -18,7 +17,7 @@ import {
 import { pathname } from "../../enums";
 import brends_no_foto from "../../assets/images/no_image.png";
 import { categoriesLocal, brandsItem } from "../../data";
-import { CustomCarousel } from "../../components";
+import { CustomCarousel, StudyModal } from "../../components";
 import DOMPurify from "dompurify";
 import dayjs from "dayjs";
 
@@ -29,6 +28,9 @@ import clsx from "clsx";
 export const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const [studyModal, setStudyModal] = useState(false);
+  const [itemStudy, setItemStudy] = useState();
+
   const { data: brands, isLoading: isLoadingBrends } = useGetProvidersQuery();
   const { data: categories, isLoading: isLoadingCategories } =
     useGetCategoryQuery();
@@ -61,6 +63,15 @@ export const HomePage = () => {
   };
 
   const dopBrends = [...(brands || []), { codeid: 2, nameid: "LargeV" }];
+
+  // const filteredEdu = edu?.data?.sort(
+  //   (a, b) => a?.date_system - b?.date_system
+  // );
+
+  const openStudy = (item) => {
+    setStudyModal(true);
+    setItemStudy(item);
+  };
 
   return (
     <Spin
@@ -268,25 +279,25 @@ export const HomePage = () => {
               <Typography.Title level={2} className={clsx("text-center mb-6")}>
                 Обучение
               </Typography.Title>
-              <span
+              {/* <span
                 className={clsx(styles.section_title)}
                 onClick={() => navigate(pathname.STUDY)}
               >
                 Узнать больше <DoubleRightOutlined />
-              </span>
+              </span> */}
             </Flex>
-            <Carousel
-              autoplay
-              arrows
-              className={clsx(styles.carousel, styles.edu_car)}
-              slidesToShow={edu?.data?.length > 3 ? 3 : edu?.data?.length}
-            >
-              {edu?.data.slice(0, 3).map((item) => (
-                <Flex vertical key={item.key}>
-                  <img
-                    src={`https://api-jds-admin.ibm.kg${item.imgs[0].img_url}`}
-                    alt={item.img}
-                  />
+
+            {edu?.data?.length === 0 ? (
+              <Flex align="center" justify="center">
+                Здесь скоро появится контент по обучению
+              </Flex>
+            ) : edu?.data?.length === 1 ? (
+              edu.data.map((item) => (
+                <Flex
+                  vertical
+                  key={item.key}
+                  className={clsx(styles.single_slide)}
+                >
                   <h3
                     className={clsx(
                       "font-bold h-[2.5em] leading-[1.2em] overflow-hidden my-4 text-2xl"
@@ -316,11 +327,74 @@ export const HomePage = () => {
                       __html: DOMPurify.sanitize(item.description),
                     }}
                   />
+                  <CustomButton onClick={() => openStudy(item)}>
+                    Подробнее
+                  </CustomButton>
                 </Flex>
-              ))}
-            </Carousel>
+              ))
+            ) : (
+              <Carousel
+                arrows={edu?.data?.length > 1}
+                dots={edu?.data?.length > 1}
+                slidesToShow={edu?.data?.length > 3 ? 3 : edu?.data?.length}
+                className={clsx(styles.carousel, styles.edu_car)}
+              >
+                {edu?.data?.map((item) => (
+                  <Flex vertical key={item.key}>
+                    {edu?.data?.length >= 3 && (
+                      <img
+                        src={`https://api-jds-admin.ibm.kg${item.imgs[0].img_url}`}
+                        alt={item.img}
+                      />
+                    )}
+
+                    <h3
+                      className={clsx(
+                        "font-bold h-[2.5em] leading-[1.2em] overflow-hidden my-4 text-2xl"
+                      )}
+                    >
+                      {item.title}
+                    </h3>
+                    <div className={clsx("text-base")}>
+                      <span className={clsx("font-bold")}>
+                        Дата проведения:
+                      </span>{" "}
+                      {item?.start_date && item?.end_date && (
+                        <>
+                          {dayjs(item?.start_date).format("DD.MM.YYYY")} -{" "}
+                          {dayjs(item?.end_date).format("DD.MM.YYYY")}
+                        </>
+                      )}
+                      {item?.event_date && (
+                        <>{dayjs(item?.event_date).format("DD.MM.YYYY")}</>
+                      )}
+                    </div>
+                    <div className={clsx("text-base  mb-4")}>
+                      <span className={clsx("font-bold")}>
+                        Место проведения:
+                      </span>{" "}
+                      {item.location}
+                    </div>
+                    <span
+                      className={clsx("text-base line-clamp-3 mb-4")}
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(item.description),
+                      }}
+                    />
+                    <CustomButton onClick={() => openStudy(item)}>
+                      Подробнее
+                    </CustomButton>
+                  </Flex>
+                ))}
+              </Carousel>
+            )}
           </Flex>
         </section>
+        <StudyModal
+          open={studyModal}
+          onCancel={() => setStudyModal(false)}
+          item={itemStudy}
+        />
       </main>
     </Spin>
   );

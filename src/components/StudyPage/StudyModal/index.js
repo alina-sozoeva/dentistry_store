@@ -1,2 +1,1 @@
-export * from "./StudyItem";
 export * from "./StudyModal";
