@@ -1,3 +1,9 @@
 export { default as header_largev } from "./page-header-largev.jpg";
 export { default as about_1 } from "./about-1.png";
 export { default as smart3D } from "./Smart3D-X.jpg";
+export { default as CT_CEPH_PAN } from "./CT-CEPH-PAN.png";
+export { default as about } from "./about-1.png";
+export { default as newAbout_1 } from "./newAbout-1.png";
+export { default as newAbout_2 } from "./newAbout-2.png";
+export { default as newAbout_3 } from "./newAbout-3.png";
+export { default as newAbout_4 } from "./newAbout-4.png";

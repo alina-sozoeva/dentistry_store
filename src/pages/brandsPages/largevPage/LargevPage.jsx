@@ -13,6 +13,7 @@ import { pathname } from "../../../enums";
 import * as foto from "../../../assets/images/largev";
 import styles from "./LargevPage.module.scss";
 import clsx from "clsx";
+import { ModelsCard } from "../../../common";
 
 export const LargevPage = () => {
   const navigate = useNavigate();
@@ -63,9 +64,11 @@ export const LargevPage = () => {
             </Flex>
           </Col>
         </Row>
+
         <div className={clsx(styles.models, "mt-12")}>
           <img src={foto.smart3D} alt={foto.smart3D} />
         </div>
+
         <div className={clsx(styles.model_info, "mt-6")}>
           <div className={clsx("container  ")}>
             <div className={clsx(styles.aboutUsPage)}>
@@ -183,14 +186,6 @@ export const LargevPage = () => {
             <div className={clsx(styles.prod_info)}></div>
           </div>
         </div>
-
-        {/* <Row gutter={24} className={clsx(styles.models, "mи-12")}>
-          {models.map((item) => (
-            <Col span={12} className={clsx("mt-4")}>
-              <ModelsCard item={item} />
-            </Col>
-          ))}
-        </Row> */}
       </section>
       <VideoModal
         open={open}

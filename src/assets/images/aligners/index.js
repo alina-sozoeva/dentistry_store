@@ -8,3 +8,6 @@ export { default as seven } from "./210521_2582.jpg";
 export { default as eigth } from "./210521_2603.jpg";
 export { default as nine } from "./210521_2609.jpg";
 export { default as ten } from "./210521_2635.jpg";
+export { default as risunok } from "./risunok6_2_2x.png";
+export { default as snapedit } from "./snapedit_1709557738296_2_1x.jpeg";
+export { default as risunok5_1x } from "./risunok5_1x.png";

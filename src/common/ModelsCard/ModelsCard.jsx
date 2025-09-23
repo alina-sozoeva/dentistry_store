@@ -8,7 +8,7 @@ import no_foto from "../../assets/images/no_image.png";
 import styles from "./ModelsCard.module.scss";
 import clsx from "clsx";
 
-export const ModelsCard = ({ item, onClick }) => {
+export const ModelsCard = ({ item, onClick, className }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
