@@ -1,8 +1,52 @@
 import clsx from "clsx";
 import styles from "./AlignersPage.module.scss";
-import { Flex } from "antd";
+import { Carousel, Flex } from "antd";
 import { useState } from "react";
 import { AddAppModal } from "../../components";
+import * as foto from "../../assets/images/aligners";
+
+const imgs = [
+  {
+    key: 1,
+    img: foto.one,
+  },
+  {
+    key: 2,
+    img: foto.two,
+  },
+  // {
+  //   key: 3,
+  //   img: foto.three,
+  // },
+  {
+    key: 4,
+    img: foto.fourty,
+  },
+  {
+    key: 5,
+    img: foto.fivety,
+  },
+  {
+    key: 6,
+    img: foto.six,
+  },
+  {
+    key: 7,
+    img: foto.seven,
+  },
+  {
+    key: 8,
+    img: foto.eigth,
+  },
+  {
+    key: 9,
+    img: foto.nine,
+  },
+  {
+    key: 10,
+    img: foto.ten,
+  },
+];
 
 export const AlignersPage = () => {
   const [open, setOpen] = useState(false);
@@ -18,7 +62,6 @@ export const AlignersPage = () => {
           элайнеры прямой 3D-печати, созданные с использованием инновационного
           материала с эффектом памяти формы.
         </p>
-
         <ul className={styles.list}>
           <li>
             <b>Преимущества перед традиционными элайнерами:</b>
@@ -51,12 +94,26 @@ export const AlignersPage = () => {
           Мы, <b>Jannat Dental Store (JDS)</b>, являемся официальным партнёром{" "}
           <b>Graphy</b> и обеспечиваем врачей оригинальными элайнерами с
           гарантией качества.Лаборатории по изготовлению элайнеров находятся в
-          г. Бишкек и г. Ош.
+          г. Бишкек и г. Ош.{" "}
+          <span className={clsx(styles.more)} onClick={() => setOpen(true)}>
+            Оставить заявку
+          </span>
         </p>
-        <div className={clsx(styles.more)}>
-          <p onClick={() => setOpen(true)}>Оставить заявку</p>
-        </div>
+        <span className={clsx("text-2xl text-blue")}>Медиа-контент</span>
+        <Carousel
+          autoplay
+          arrows
+          className={clsx(styles.carousel)}
+          slidesToShow={3}
+        >
+          {imgs.map((item) => (
+            <div key={item.key} className={clsx("pl-4")}>
+              <img src={item.img} alt={item?.original_name} />
+            </div>
+          ))}
+        </Carousel>
       </div>
+
       <AddAppModal open={open} onCancel={() => setOpen(false)} />
     </div>
   );

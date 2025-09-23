@@ -7,3 +7,4 @@ export * from "./fiveSteps";
 export * from "./sixSteps";
 export * from "./genModelImg";
 export * from "./largev";
+export * from "./aligners";

@@ -1,0 +1,10 @@
+export { default as one } from "./210521_2308.jpg";
+export { default as two } from "./210521_2363.jpg";
+export { default as three } from "./210521_2457.jpg";
+export { default as fourty } from "./210521_2486.jpg";
+export { default as fivety } from "./210521_2515.jpg";
+export { default as six } from "./210521_2518.jpg";
+export { default as seven } from "./210521_2582.jpg";
+export { default as eigth } from "./210521_2603.jpg";
+export { default as nine } from "./210521_2609.jpg";
+export { default as ten } from "./210521_2635.jpg";
