@@ -7,3 +7,5 @@ export { default as newAbout_1 } from "./newAbout-1.png";
 export { default as newAbout_2 } from "./newAbout-2.png";
 export { default as newAbout_3 } from "./newAbout-3.png";
 export { default as newAbout_4 } from "./newAbout-4.png";
+export { default as newAbout_5 } from "./newAbout-5.png";
+export { default as newAbout_6 } from "./newAbout-6.png";

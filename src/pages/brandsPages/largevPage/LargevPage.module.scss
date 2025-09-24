@@ -30,8 +30,7 @@
   }
 }
 
-.yrs,
-.models {
+.yrs {
   margin-bottom: 40px;
   position: relative;
 
@@ -40,8 +39,7 @@
   }
 }
 
-.yrs_info,
-.models_info {
+.yrs_info {
   position: absolute;
   bottom: 10px;
   left: 40px;
@@ -157,6 +155,14 @@
   color: #147abc;
 }
 
+.info_title {
+  margin-bottom: 24px;
+
+  font-size: 2.2rem;
+  font-weight: 200;
+  color: #147abc;
+}
+
 .sectionTitle {
   font-size: 1.3rem;
   font-weight: 600;
@@ -182,24 +188,15 @@
   transition: 0.3s;
   cursor: pointer;
   color: #147abc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
 
   &:hover {
     color: #147abc;
   }
 }
-
-// .prod {
-//   margin-bottom: 40px;
-//   position: relative;
-//   width: 100%;
-
-//   img {
-//     border-radius: 40px;
-//     height: 320px;
-//     width: 100%;
-//     object-fit: cover;
-//   }
-// }
 
 .prod_info {
   padding: 20px;
@@ -213,13 +210,148 @@
   }
 }
 
-.model_info {
-  background-color: white;
+.second_img {
   border-radius: 20px;
 }
 
-.model_img {
-  img {
-    // width: ;
+.second_title {
+  font-size: var(--spacing-large);
+  font-weight: 200;
+  color: var(--primary-color);
+
+  span {
+    font-weight: 200;
+    font-size: var(--spacing-large);
+    color: var(--primary-color);
   }
+}
+
+.second_subtitle {
+  font-size: var(--font-size-base);
+  font-weight: 200;
+}
+
+.second_descrip {
+  font-size: var(--font-size-lg);
+  font-weight: 200;
+}
+
+.second_img {
+  display: flex;
+  justify-content: end;
+
+  img {
+    border-radius: 24px;
+  }
+}
+
+.models {
+  margin-bottom: 40px;
+  position: relative;
+
+  img {
+    border-radius: 40px;
+  }
+}
+
+.models_info {
+  font-size: 28px;
+  color: #147abc;
+  font-weight: 200;
+  margin-top: 40px;
+}
+
+.info {
+  p {
+    font-size: 22px;
+    font-weight: 200;
+  }
+}
+
+@mixin series_general {
+  font-size: 32px;
+  font-weight: 200;
+}
+
+.series_name {
+  @include series_general;
+}
+
+.series {
+  @include series_general;
+  color: #147abc;
+}
+
+.descrip,
+.price {
+  font-size: 16px;
+  width: 450px;
+  font-weight: 200;
+}
+
+.card {
+  position: relative;
+  background-color: white;
+  border-radius: 36px;
+  padding: 20px 30px;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  z-index: 1;
+  transition: 0.6s;
+
+  &:hover {
+    padding: 45px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+
+    .fon {
+      left: 25px;
+    }
+
+    .btn {
+      background-color: #0f6390;
+
+      svg {
+        transform: rotate(0) !important;
+      }
+    }
+  }
+}
+
+.btn {
+  background-color: #147abc;
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  transition: 0.5s;
+
+  svg {
+    font-size: 24px;
+    transition: 0.5s;
+  }
+}
+
+.fon {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s;
+  z-index: -2;
+}
+
+.cluch_title {
+  font-size: var(--spacing-large);
+  font-weight: 200;
+  line-height: 1.2;
+
+  span {
+    font-weight: 200;
+    font-size: var(--spacing-large);
+    color: var(--primary-color);
+  }
+}
+
+.cluch_descrip {
+  font-size: var(--font-size-sm);
+  font-weight: 200;
 }

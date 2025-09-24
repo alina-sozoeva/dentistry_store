@@ -1,19 +1,45 @@
 import { Col, Flex, Row } from "antd";
 import { useState } from "react";
+import { VideoModal } from "../../../components";
+import { useNavigate } from "react-router";
+import { pathname } from "../../../enums";
 
 import fon_alltion from "../../../assets/images/fon_alltion.jpg";
 import play from "../../../assets/images/play.svg";
 import yrs from "../../../assets/images/30yrs_banner-scaled.webp";
-
-import { VideoModal } from "../../../components";
-
-import { useNavigate } from "react-router";
-import { pathname } from "../../../enums";
+import fon from "../../../assets/images/eq_card_bg.svg";
 
 import * as foto from "../../../assets/images/largev";
 import styles from "./LargevPage.module.scss";
 import clsx from "clsx";
-import { ModelsCard } from "../../../common";
+import { ArrowRightOutlined } from "@ant-design/icons";
+
+const arr = [
+  {
+    codeid: 1,
+    nameid: "Умная платформа сканирования",
+    nameid_sp_product_category:
+      "360° сканирование и 800 кадров: с уникальными алгоритмами реконструкции. Платформа QuartZ 4 гибкие режимы сканирования и многослойная фокусировка под форму зубной дуги.",
+  },
+  {
+    codeid: 2,
+    nameid: "Искусственный интеллект",
+    nameid_sp_product_category:
+      "Снижает дозу облучения, сохраняя высокую детализацию. Автоматическая маркировка нервного канала (AI+Nerve). Устранение металлических артефактов (T-MAR). Умное автофокусирование и 21-слойный искусственный панорамный режим (AI+PAN).",
+  },
+  {
+    codeid: 3,
+    nameid: "Удобство использования",
+    nameid_sp_product_category:
+      "6 лазеров позиционирования и X-образная опора— удобно для пациентов с ограниченной подвижностью. 10″ LED сенсорный экран, голосовые подсказки, короб для хранения4встроенных аксессуаров.",
+  },
+  {
+    codeid: 4,
+    nameid: "Программное обеспечение SmartVPro",
+    nameid_sp_product_category:
+      "Мультипланарный просмотр (аксиальный, сагиттальный, корональный), измерение плотности кости и моделирование имплантации. Автоматическая идентификация анатомических контрольных точек, отчетность, цефалометрическая аналитика. Диагностика ВНЧС, сегментация верхнечелюстной пазухи и дыхательных путей, оценка костного возраста.",
+  },
+];
 
 export const LargevPage = () => {
   const navigate = useNavigate();
@@ -65,123 +91,112 @@ export const LargevPage = () => {
           </Col>
         </Row>
 
-        <div className={clsx(styles.models, "mt-12")}>
-          <img src={foto.smart3D} alt={foto.smart3D} />
-        </div>
+        <h2 className={clsx(styles.title, "mt-10 ")}>
+          LargeV Smart 3D-X (Smart 3Dx) - Интеллектуальный 3-в-1 дентальный
+          томограф.
+        </h2>
 
         <div className={clsx(styles.model_info, "mt-6")}>
           <div className={clsx("container  ")}>
-            <div className={clsx(styles.aboutUsPage)}>
-              <h2 className={styles.title}>
-                LargeV Smart 3D-X (Smart 3Dx) — Интеллектуальный 3-в-1
-                дентальный томограф
-              </h2>
+            <Flex
+              justify="space-between"
+              className={clsx(styles.wrap, "gen_wrap ")}
+            >
+              <Row gutter={24} align="middle">
+                <Col span={12}>
+                  <Flex vertical>
+                    <span className={clsx(styles.info_title)}>
+                      LargeV Smart 3D-X (Smart 3Dx)
+                    </span>
+                    <span className={clsx(styles.descrip)}>
+                      Cовременный универсальный томограф высокой четкости,
+                      объединяющий функции: CBCT (конусно-лучевая КТ),
+                      Панорамной рентгенографии (PAN), Цефалометрии (опция),
+                      Сканирования модели (опция)
+                    </span>
+                  </Flex>
+                </Col>
+                <Col span={12}>
+                  <div className={clsx(styles.second_img)}>
+                    <img src={foto.CT_CEPH_PAN} alt={foto.CT_CEPH_PAN} />
+                  </div>
+                </Col>
+              </Row>
+            </Flex>
 
-              <p className={styles.paragraph}>
-                <b>LargeV Smart 3D-X</b> — современный универсальный томограф
-                высокой четкости, объединяющий функции:
+            <Flex vertical align="center" className={clsx("mb-10 mt-10")}>
+              <p className={clsx(styles.cluch_title, "mb-4")}>
+                <span>Ключевые особенности</span> высочайшее качество
+                изображения
               </p>
-              <ul className={styles.list}>
-                <li>
-                  <b>CBCT (конусно-лучевая КТ)</b>
-                </li>
-                <li>
-                  <b>Панорамной рентгенографии (PAN)</b>
-                </li>
-                <li>
-                  <b>Цефалометрии (опция)</b>
-                </li>
-                <li>
-                  <b>Сканирования модели (опция)</b>
-                </li>
-              </ul>
+              <span className={clsx(styles.cluch_descrip)}>
+                Минимальный размер вокселя до 0,05 мм, разрешение до 2,0 lp/mm —
+                идеально для диагностики пульпарных и эндодонтических патологий.
+              </span>
+            </Flex>
 
-              <p className={styles.paragraph}>
-                Модель удостоена международной премии iF Design за инновационный
-                дизайн и компактность — ей требуется всего около 5 м²
-                пространства.
-              </p>
-              <span>
-                <b>Ключевые особенности</b>
-                <br />
+            <img
+              src={foto.newAbout_2}
+              alt={foto.newAbout_2}
+              style={{ width: "100%", height: "500px", borderRadius: "24px" }}
+            />
+
+            <Flex vertical align="center" className={clsx("mb-4 mt-4")}>
+              <span className={clsx(styles.cluch_descrip)}>
+                Небольшое фокусное пятно (0,5 мм) для максимальной четкости
+                снимков.
               </span>
-              <span>
-                <b>Высочайшее качество изображения</b>
-              </span>
-              <ul className={styles.list}>
-                <li>
-                  Минимальный размер вокселя до 0,05 мм, разрешение до 2,0 lp/mm
-                  — идеально для диагностики пульпарных и эндодонтических
-                  патологий.
-                </li>
-                <li>
-                  <b>Небольшое фокусное пятно (0,5 мм)</b>для максимальной
-                  четкости снимков.
-                </li>
-              </ul>
-              <span>
-                <b>Умная платформа сканирования</b>
-              </span>
-              <ul className={styles.list}>
-                <li>
-                  <b>360° сканирование и 800 кадров:</b> с уникальными
-                  алгоритмами реконструкции.
-                </li>
-                <li>
-                  <b>Платформа QuartZ 4</b> гибкие режимы сканирования и
-                  многослойная фокусировка под форму зубной дуги.
-                </li>
-              </ul>
-              <span>
-                <b>Искусственный интеллект</b>
-              </span>
-              <ul className={styles.list}>
-                <li>Снижает дозу облучения, сохраняя высокую детализацию.</li>
-                <li>Автоматическая маркировка нервного канала (AI+Nerve).</li>
-                <li>Устранение металлических артефактов (T-MAR).</li>
-                <li>
-                  Умное автофокусирование и 21-слойный искусственный панорамный
-                  режим (AI+PAN).
-                </li>
-              </ul>
-              <span>
-                <b>Удобство использования</b>
-              </span>
-              <ul className={styles.list}>
-                <li>
-                  <b>6 лазеров позиционирования и X-образная опора</b> — удобно
-                  для пациентов с ограниченной подвижностью.
-                </li>
-                <li>
-                  <b>
-                    10″ LED сенсорный экран, голосовые подсказки, короб для
-                    хранения4
-                  </b>{" "}
-                  встроенных аксессуаров.
-                </li>
-              </ul>
-              <span>
-                <b>Программное обеспечение SmartVPro</b>
-              </span>
-              <ul className={styles.list}>
-                <li>
-                  Мультипланарный просмотр (аксиальный, сагиттальный,
-                  корональный), измерение плотности кости и моделирование
-                  имплантации.
-                </li>
-                <li>
-                  Автоматическая идентификация анатомических контрольных точек,
-                  отчетность, цефалометрическая аналитика.
-                </li>
-                <li>
-                  Диагностика ВНЧС, сегментация верхнечелюстной пазухи и
-                  дыхательных путей, оценка костного возраста.
-                </li>
-              </ul>
-              <span className={clsx(styles.more)} onClick={() => onBrandId()}>
-                <b>Узнайте больше</b>
-              </span>
-            </div>
+            </Flex>
+
+            <Flex className={clsx("gap-[60px]")}>
+              <img
+                src={foto.newAbout_5}
+                alt={foto.newAbout_5}
+                style={{ width: "100%", height: "500px", borderRadius: "24px" }}
+              />
+              <img
+                src={foto.newAbout_6}
+                alt={foto.newAbout_6}
+                style={{ width: "100%", height: "500px", borderRadius: "24px" }}
+              />
+            </Flex>
+
+            <Row gutter={24} className={clsx(styles.models, "mb-12 mt-10")}>
+              {arr.map((item) => (
+                <Col span={12} className={clsx("mt-4")}>
+                  <div className={clsx(styles.card)}>
+                    <Flex
+                      vertical
+                      justify="space-between"
+                      align="start"
+                      className={clsx("w-full h-full")}
+                    >
+                      <Flex vertical gap="middle">
+                        <Flex vertical>
+                          <span className={clsx(styles.series)}>
+                            {item.nameid}
+                          </span>
+                        </Flex>
+                        <span className={clsx(styles.descrip)}>
+                          {item.nameid_sp_product_category}
+                        </span>
+                      </Flex>
+
+                      <button className={clsx(styles.btn)}>
+                        <ArrowRightOutlined rotate={-20} />
+                      </button>
+                    </Flex>
+                    <div className={clsx(styles.fon)}>
+                      <img src={fon} alt={fon} />
+                    </div>
+                  </div>
+                </Col>
+              ))}
+            </Row>
+
+            <span className={clsx(styles.more)} onClick={() => onBrandId()}>
+              Узнайте больше
+            </span>
 
             <div className={clsx(styles.prod_info)}></div>
           </div>

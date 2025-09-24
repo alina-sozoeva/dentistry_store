@@ -1,13 +1,14 @@
-import clsx from "clsx";
-import styles from "./AlignersPage.module.scss";
 import { Carousel, Col, Flex, Row } from "antd";
 import { useState } from "react";
 import { AddAppModal, VideoModal } from "../../components";
-import * as foto from "../../assets/images/aligners";
-
 import { ArrowRightOutlined } from "@ant-design/icons";
+
 import fon from ".././../assets/images/eq_card_bg.svg";
 import play from "../../assets/images/play.svg";
+import * as foto from "../../assets/images/aligners";
+
+import clsx from "clsx";
+import styles from "./AlignersPage.module.scss";
 
 const imgs = [
   {
@@ -18,10 +19,6 @@ const imgs = [
     key: 2,
     img: foto.two,
   },
-  // {
-  //   key: 3,
-  //   img: foto.three,
-  // },
   {
     key: 4,
     img: foto.fourty,
@@ -110,18 +107,6 @@ export const AlignersPage = () => {
                 </div>
               </div>
             </div>
-
-            {/* <iframe
-              width="660"
-              height="380"
-              src="https://www.youtube.com/embed/8-Yu5wcozcw?si=4_uxjh2KHWOsV5Mi"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-              style={{ borderRadius: "20px" }}
-            ></iframe> */}
           </Col>
           <Col span={12}>
             <Flex vertical gap="middle" className={clsx(styles.info)}>
