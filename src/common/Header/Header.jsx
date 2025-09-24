@@ -116,6 +116,10 @@ export const Header = () => {
     ),
   }));
 
+  const goToStudy = () => {
+    navigate("/", { state: { scrollTo: "study" } });
+  };
+
   return (
     <header className={styles.wrap}>
       <Flex vertical className={clsx(styles.header)}>
@@ -206,17 +210,34 @@ export const Header = () => {
               </Space>
             </Dropdown>
           </Flex>
-          {links.map((item) => (
-            <Link to={item.path} onClick={() => onPage(item.path)}>
+          {links.map((item) =>
+            item?.key === 5 ? (
               <span
+                key={item.key}
+                onClick={goToStudy}
                 className={
                   page === item.path ? styles.active_link : styles.link
                 }
+                style={{ cursor: "pointer" }}
               >
                 {item.title}
               </span>
-            </Link>
-          ))}
+            ) : (
+              <Link
+                key={item.key}
+                to={item.path}
+                onClick={() => navigate(item.path)}
+              >
+                <span
+                  className={
+                    page === item.path ? styles.active_link : styles.link
+                  }
+                >
+                  {item.title}
+                </span>
+              </Link>
+            )
+          )}
         </div>
       </div>
 

@@ -72,6 +72,19 @@ export const HomePage = () => {
     setStudyModal(true);
     setItemStudy(item);
   };
+  useEffect(() => {
+    const scrollTo =
+      location.state?.scrollTo ||
+      new URLSearchParams(location.search).get("scrollTo");
+    if (scrollTo) {
+      const section = document.getElementById(scrollTo);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      }
+    }
+  }, [location]);
 
   return (
     <Spin
@@ -273,7 +286,7 @@ export const HomePage = () => {
           </div>
         </section>
 
-        <section className={clsx("container")} id="about">
+        <section className={clsx("container")} id="study">
           <Flex vertical gap="small" className={clsx(styles.edu, "mb-28")}>
             <Flex justify="space-between" align="center">
               <Typography.Title level={2} className={clsx("text-center mb-6")}>
