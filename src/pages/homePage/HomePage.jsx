@@ -62,7 +62,7 @@ export const HomePage = () => {
     navigate({ pathname: pathname.PRODUCTS, search: `?category=${codeid}` });
   };
 
-  const dopBrends = [...(brands || []), { codeid: 2, nameid: "LargeV" }];
+  const dopBrends = [...(brands || [])];
 
   // const filteredEdu = edu?.data?.sort(
   //   (a, b) => a?.date_system - b?.date_system

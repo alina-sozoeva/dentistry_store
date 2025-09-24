@@ -30,7 +30,7 @@ export const ProductItem = ({ item, currentPage }) => {
     removeFromFavorites(item.codeid);
   };
 
-  const findFav = favorites.find((fav) => fav.codeid === item.codeid);
+  const findFav = favorites?.find((fav) => fav?.codeid === item?.codeid);
 
   const imgParse = item?.files?.length ? JSON.parse(item.files[0]?.file) : null;
 
@@ -40,7 +40,7 @@ export const ProductItem = ({ item, currentPage }) => {
       vertical
       onClick={() =>
         navigate(
-          item.category && item.category !== "other"
+          item?.category && item?.category !== "other"
             ? `/product/${item?.category}?codeid=${item?.codeid}&page=${currentPage}`
             : `/product/${item?.category}/${item?.codeid}?page=${currentPage}`
         )

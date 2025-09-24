@@ -46,7 +46,7 @@ export const LargevPage = () => {
   const [open, setOpen] = useState(false);
 
   const onBrandId = () => {
-    navigate({ pathname: pathname.PRODUCTS });
+    navigate({ pathname: pathname.PRODUCTS, search: `?brand=${13}` });
   };
 
   return (

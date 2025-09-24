@@ -2,13 +2,16 @@ import { Empty, Flex, Typography } from "antd";
 import { useFavoritesStore } from "../../store";
 import { useNavigate } from "react-router";
 import { pathname } from "../../enums";
-import { ProductItem } from "../../components";
+
 import styles from "./FavoritesPage.module.scss";
 import clsx from "clsx";
+import { ProductItem } from "../../common";
 
 export const FavoritesPage = () => {
   const navigate = useNavigate();
   const { favorites } = useFavoritesStore();
+
+  console.log(favorites, "favorites");
 
   return (
     <main className={clsx(styles.cart_wrap, "mb-6 ")}>
@@ -36,7 +39,7 @@ export const FavoritesPage = () => {
           ) : (
             <div className={clsx("grid grid-cols-5 gap-2")}>
               {favorites?.map((item) => (
-                <ProductItem key={item.id} item={item} />
+                <ProductItem key={item?.guid} item={item} />
               ))}
             </div>
           )}

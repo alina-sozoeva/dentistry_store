@@ -215,7 +215,7 @@ export const ProductsPage = () => {
                       <h4 className="text-blue pb-1 sticky">Бренд</h4>
                       <Flex
                         vertical
-                        className="h-[150px]"
+                        className="h-[180px]"
                         gap={"small"}
                         style={{ overflowY: "auto" }}
                       >

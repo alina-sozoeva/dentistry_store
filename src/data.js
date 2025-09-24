@@ -141,7 +141,7 @@ export const brandsItem = [
   },
   {
     key: 8,
-    title: "LargeV",
+    title: "LargeV ",
     img: brands.largev,
     background: "#f4f3ef",
     path: pathname.LARGEV,

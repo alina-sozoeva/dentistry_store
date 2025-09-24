@@ -17,7 +17,8 @@ export const providersApi = createApi({
             item.codeid === 6 ||
             item.codeid === 4 ||
             item.codeid === 3 ||
-            item.codeid === 10
+            item.codeid === 10 ||
+            item.codeid === 13
         );
       },
       providesTags: ["ProvidersList"],
