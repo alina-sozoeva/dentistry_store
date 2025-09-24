@@ -2,11 +2,12 @@ import clsx from "clsx";
 import styles from "./AlignersPage.module.scss";
 import { Carousel, Col, Flex, Row } from "antd";
 import { useState } from "react";
-import { AddAppModal } from "../../components";
+import { AddAppModal, VideoModal } from "../../components";
 import * as foto from "../../assets/images/aligners";
-import { ModelsCard } from "../../common";
+
 import { ArrowRightOutlined } from "@ant-design/icons";
 import fon from ".././../assets/images/eq_card_bg.svg";
+import play from "../../assets/images/play.svg";
 
 const imgs = [
   {
@@ -80,6 +81,7 @@ export const models = [
 
 export const AlignersPage = () => {
   const [open, setOpen] = useState(false);
+  const [openVideo, setOpenVideo] = useState(false);
 
   return (
     <div className={clsx(" mt-6")}>
@@ -94,7 +96,22 @@ export const AlignersPage = () => {
 
         <Row gutter={24} align="middle" className="mb-16">
           <Col span={12}>
-            <iframe
+            <div className={clsx(styles.img)}>
+              <img src={foto.fourty} alt={foto.fourty} />
+              <div
+                className={clsx(styles.play_wrap)}
+                onClick={() => setOpenVideo(true)}
+              >
+                <div className={clsx(styles.play_btn)}>
+                  <img src={play} alt={play} />
+                </div>
+                <div className={clsx(styles.play_text)}>
+                  <span>Смотреть видео о компании</span>
+                </div>
+              </div>
+            </div>
+
+            {/* <iframe
               width="660"
               height="380"
               src="https://www.youtube.com/embed/8-Yu5wcozcw?si=4_uxjh2KHWOsV5Mi"
@@ -104,7 +121,7 @@ export const AlignersPage = () => {
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen
               style={{ borderRadius: "20px" }}
-            ></iframe>
+            ></iframe> */}
           </Col>
           <Col span={12}>
             <Flex vertical gap="middle" className={clsx(styles.info)}>
@@ -185,6 +202,12 @@ export const AlignersPage = () => {
       </div>
 
       <AddAppModal open={open} onCancel={() => setOpen(false)} />
+      <VideoModal
+        open={openVideo}
+        onCancel={() => setOpenVideo(false)}
+        sourse={"https://www.youtube.com/embed/8-Yu5wcozcw?si=4_uxjh2KHWOsV5Mi"}
+        isYuoTube={true}
+      />
     </div>
   );
 };
