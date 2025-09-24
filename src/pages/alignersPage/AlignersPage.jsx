@@ -131,9 +131,9 @@ export const AlignersPage = () => {
           </Col>
         </Row>
 
-        <span className={clsx(styles.models_info)}>
+        {/* <span className={clsx(styles.title)}>
           Преимущества перед традиционными элайнерами
-        </span>
+        </span> */}
 
         <Row gutter={24} className={clsx(styles.models, "mи-12")}>
           {models.map((item) => (

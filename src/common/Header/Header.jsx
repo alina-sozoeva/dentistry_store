@@ -1,7 +1,5 @@
 import {
   HeartOutlined,
-  LogoutOutlined,
-  PhoneFilled,
   ShoppingCartOutlined,
   WhatsAppOutlined,
 } from "@ant-design/icons";
@@ -11,7 +9,6 @@ import { useState } from "react";
 import { pathname } from "../../enums";
 import { TbCategoryFilled } from "react-icons/tb";
 import { useGetCategoryQuery } from "../../store/api/category.api";
-import { useLocation } from "react-router";
 
 import { CustomButton } from "../CustomButton";
 import { ReviewModal } from "../ReviewModal";
@@ -19,7 +16,6 @@ import {
   useCartStore,
   useFavoritesStore,
   useGetProvidersQuery,
-  useUserStore,
 } from "../../store";
 import { FaTags } from "react-icons/fa6";
 
@@ -51,7 +47,6 @@ const links = [
   {
     key: 5,
     title: "Обучение",
-    path: pathname.STUDY,
   },
   {
     key: 6,
