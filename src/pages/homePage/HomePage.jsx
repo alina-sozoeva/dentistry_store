@@ -231,57 +231,64 @@ export const HomePage = () => {
               <h2 className="text-3xl uppercase text-white mb-10">
                 Отзывы покупателей
               </h2>
-              <Carousel
-                arrows
-                className={clsx(styles.carousel, styles.categories, "w-full")}
-                slidesToShow={3}
-              >
-                {filteredReviews?.map((review, index) => (
-                  <div
-                    key={index}
-                    className={clsx(
-                      styles.reviewCard,
-                      "p-4 rounded-2xl shadow-md bg-white mb-4"
-                    )}
-                  >
-                    <Flex
-                      align="center"
-                      justify="space-between"
-                      className="mb-2"
+
+              {filteredReviews?.data?.length === 0 ? (
+                <Flex align="center" justify="center">
+                  Здесь скоро появится Ваши отзывы
+                </Flex>
+              ) : (
+                <Carousel
+                  arrows
+                  className={clsx(styles.carousel, styles.categories, "w-full")}
+                  slidesToShow={3}
+                >
+                  {filteredReviews?.map((review, index) => (
+                    <div
+                      key={index}
+                      className={clsx(
+                        styles.reviewCard,
+                        "p-4 rounded-2xl shadow-md bg-white mb-4"
+                      )}
                     >
-                      <Flex align="center" gap="small">
-                        <PiUserCircleFill className="text-4xl text-gray-400" />
-                        <Flex vertical>
-                          <h3 className="font-semibold text-lg">
-                            {review.nameid}
-                          </h3>
-                          <span className="text-sm text-gray-500">
-                            {review.email}
-                          </span>
+                      <Flex
+                        align="center"
+                        justify="space-between"
+                        className="mb-2"
+                      >
+                        <Flex align="center" gap="small">
+                          <PiUserCircleFill className="text-4xl text-gray-400" />
+                          <Flex vertical>
+                            <h3 className="font-semibold text-lg">
+                              {review.nameid}
+                            </h3>
+                            <span className="text-sm text-gray-500">
+                              {review.email}
+                            </span>
+                          </Flex>
                         </Flex>
+                        <RatingStars value={Number(review.rating)} readOnly />
                       </Flex>
-                      <RatingStars value={Number(review.rating)} readOnly />
-                    </Flex>
 
-                    <p
-                      className="text-base text-gray-700 mb-2 overflow-hidden"
-                      style={{
-                        display: "-webkit-box",
-                        WebkitLineClamp: 4,
-                        WebkitBoxOrient: "vertical",
-                        overflow: "hidden",
-                        textOverflow: "ellipsis",
-                      }}
-                    >
-                      {review.comment}
-                    </p>
+                      <p
+                        className="text-base text-gray-700 mb-2 overflow-hidden"
+                        style={{
+                          display: "-webkit-box",
+                          WebkitLineClamp: 4,
+                          WebkitBoxOrient: "vertical",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                        }}
+                      >
+                        {review.comment}
+                      </p>
 
-                    <span className="text-sm text-gray-400">
-                      {dayjs(review.date_system).format("DD MMMM YYYY")}
-                    </span>
-                  </div>
-                ))}
-              </Carousel>
+                      <span className="text-sm text-gray-400">
+                        {dayjs(review.date_system).format("DD MMMM YYYY")}
+                      </span>
+                    </div>
+                  ))}
+                </Carousel>
+              )}
             </Flex>
           </div>
         </section>
@@ -301,7 +308,11 @@ export const HomePage = () => {
             </Flex>
 
             {edu?.data?.length === 0 ? (
-              <Flex align="center" justify="center">
+              <Flex
+                align="center"
+                justify="center"
+                className={clsx("text-2xl")}
+              >
                 Здесь скоро появится контент по обучению
               </Flex>
             ) : edu?.data?.length === 1 ? (
