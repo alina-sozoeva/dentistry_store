@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { CustomButton, ProductItem } from "../../common";
-import { Carousel, Col, Flex, Row, Spin, Typography } from "antd";
+import { CustomButton, ProductItem, ReviewModal } from "../../common";
+import { Button, Carousel, Empty, Flex, Spin, Typography } from "antd";
 import { RatingStars } from "../../ui";
 import { useEffect, useState } from "react";
 import { BsFillBoxFill } from "react-icons/bs";
@@ -30,6 +30,7 @@ export const HomePage = () => {
   const location = useLocation();
   const [studyModal, setStudyModal] = useState(false);
   const [itemStudy, setItemStudy] = useState();
+  const [openReview, setOpenReview] = useState(false);
 
   const { data: brands, isLoading: isLoadingBrends } = useGetProvidersQuery();
   const { data: categories, isLoading: isLoadingCategories } =
@@ -226,15 +227,30 @@ export const HomePage = () => {
         </section>
 
         <section className={clsx(styles.reviews, "my-10")}>
-          <div className={clsx("container")}>
+          <div className="container">
             <Flex vertical justify="center">
-              <h2 className="text-3xl uppercase text-white mb-10">
+              <h2 className="text-3xl uppercase text-white mb-10 text-center">
                 Отзывы покупателей
               </h2>
 
-              {filteredReviews?.data?.length === 0 ? (
-                <Flex align="center" justify="center">
-                  Здесь скоро появится Ваши отзывы
+              {filteredReviews.length === 0 ? (
+                <Flex
+                  vertical
+                  align="center"
+                  justify="center"
+                  className="text-center text-white gap-4"
+                >
+                  <Empty description={false} />
+                  <p className="text-lg font-medium">
+                    Пока отзывов нет, но вы можете быть первым!
+                  </p>
+                  <Button
+                    variant="primary"
+                    className="mt-2 px-6 py-2"
+                    onClick={() => setOpenReview(true)}
+                  >
+                    Оставить отзыв
+                  </Button>
                 </Flex>
               ) : (
                 <Carousel
@@ -242,18 +258,18 @@ export const HomePage = () => {
                   className={clsx(styles.carousel, styles.categories, "w-full")}
                   slidesToShow={3}
                 >
-                  {filteredReviews?.map((review, index) => (
+                  {filteredReviews.map((review, index) => (
                     <div
                       key={index}
                       className={clsx(
                         styles.reviewCard,
-                        "p-4 rounded-2xl shadow-md bg-white mb-4"
+                        "p-6 rounded-2xl shadow-lg bg-white mb-4 hover:shadow-xl transition-shadow duration-300"
                       )}
                     >
                       <Flex
                         align="center"
                         justify="space-between"
-                        className="mb-2"
+                        className="mb-3"
                       >
                         <Flex align="center" gap="small">
                           <PiUserCircleFill className="text-4xl text-gray-400" />
@@ -270,7 +286,7 @@ export const HomePage = () => {
                       </Flex>
 
                       <p
-                        className="text-base text-gray-700 mb-2 overflow-hidden"
+                        className="text-gray-700 mb-3 text-base overflow-hidden"
                         style={{
                           display: "-webkit-box",
                           WebkitLineClamp: 4,
@@ -419,6 +435,7 @@ export const HomePage = () => {
           onCancel={() => setStudyModal(false)}
           item={itemStudy}
         />
+        <ReviewModal open={openReview} onCancel={() => setOpenReview(false)} />
       </main>
     </Spin>
   );

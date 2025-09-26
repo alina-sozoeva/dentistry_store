@@ -83,11 +83,11 @@ export const ProductItem = ({ item, currentPage }) => {
             {item?.description}
           </span>
         </Flex>
-        <Flex gap="small">
+        {/* <Flex gap="small">
           <span>
             <StarFilled style={{ color: "#f05423" }} /> 5.0
           </span>
-        </Flex>
+        </Flex> */}
         <button className={clsx(styles.btn)} onClick={(e) => onCart(e)}>
           Добавить в корзину
         </button>
