@@ -285,7 +285,7 @@
 .descrip,
 .price {
   font-size: 16px;
-  width: 450px;
+  min-width: 0;
   font-weight: 200;
 }
 
@@ -293,15 +293,16 @@
   position: relative;
   background-color: white;
   border-radius: 36px;
-  padding: 20px 30px;
+  padding: 20px;
   width: 100%;
+  min-width: 0;
   height: 400px;
   overflow: hidden;
   z-index: 1;
   transition: 0.6s;
 
   &:hover {
-    padding: 45px;
+    padding: 30px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 
     .fon {
@@ -363,6 +364,9 @@
 }
 
 @media (max-width: 992px) {
+  .card {
+    height: 300px;
+  }
   .info {
     padding-top: 10px;
     p {
@@ -372,14 +376,55 @@
 }
 
 @media (max-width: 768px) {
+  .card {
+    height: 300px;
+  }
+
+  .series {
+    font-size: 28px;
+  }
+
   .img_one,
   .yrs {
     display: none;
   }
+
+  .descrip {
+    width: 100%;
+  }
 }
 
 @media (max-width: 576px) {
+  .card {
+    height: 450px;
+  }
 }
 
 @media (max-width: 400px) {
+  .card {
+    height: 500px;
+  }
+
+  .title {
+    font-size: 32px;
+  }
+
+  .info {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .info_title,
+  .cluch_title {
+    font-size: 24px;
+  }
+
+  .cluch_descrip {
+    font-size: 15px;
+  }
+
+  .series {
+    font-size: 28px;
+  }
 }

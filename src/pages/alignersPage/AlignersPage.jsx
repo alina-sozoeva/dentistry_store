@@ -91,8 +91,8 @@ export const AlignersPage = () => {
           </div>
         </div>
 
-        <Row gutter={24} align="middle" className="mb-16">
-          <Col span={12}>
+        <Row gutter={24} align="middle" className="mb-16" wrap="wrap">
+          <Col xs={24} sm={24} md={12} lg={12}>
             <div className={clsx(styles.img)}>
               <img src={foto.fourty} alt={foto.fourty} />
               <div
@@ -108,7 +108,7 @@ export const AlignersPage = () => {
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={24} md={12} lg={12}>
             <Flex vertical gap="middle" className={clsx(styles.info)}>
               <p>
                 Элайнеры Graphy - это единственные в мире фотополимерные
@@ -135,9 +135,16 @@ export const AlignersPage = () => {
           Преимущества перед традиционными элайнерами
         </span> */}
 
-        <Row gutter={24} className={clsx(styles.models, "mи-12")}>
+        <Row gutter={24} className={clsx(styles.models, "mи-12")} wrap="wrap">
           {models.map((item) => (
-            <Col span={12} className={clsx("mt-4")}>
+            <Col 
+              key={item.codeid}
+              xs={24} 
+              sm={12} 
+              md={12} 
+              lg={12} 
+              className={clsx("mt-4")}
+            >
               <div className={clsx(styles.card)}>
                 <Flex
                   vertical
@@ -177,6 +184,13 @@ export const AlignersPage = () => {
           arrows
           className={clsx(styles.carousel)}
           slidesToShow={3}
+          responsive={[
+            { breakpoint: 1200, settings: { slidesToShow: 2 } },
+            { breakpoint: 992, settings: { slidesToShow: 2 } },
+            { breakpoint: 768, settings: { slidesToShow: 2 } },
+            { breakpoint: 576, settings: { slidesToShow: 2 } },
+            { breakpoint: 480, settings: { slidesToShow: 1 } },
+          ]}
         >
           {imgs.map((item) => (
             <div key={item.key} className={clsx("pl-4")}>

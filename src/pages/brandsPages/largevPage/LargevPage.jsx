@@ -55,8 +55,8 @@ export const LargevPage = () => {
         <div className={clsx(styles.yrs)}>
           <img src={foto.header_largev} alt={yrs} />
         </div>
-        <Row gutter={24} align="middle">
-          <Col span={12}>
+        <Row gutter={24} align="middle" wrap="wrap">
+          <Col xs={24} sm={24} md={12} lg={12}>
             <div className={clsx(styles.img)}>
               <img src={foto.about_1} alt={fon_alltion} />
               <div
@@ -72,7 +72,7 @@ export const LargevPage = () => {
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={24} md={12} lg={12}>
             <Flex vertical gap="middle" className={clsx(styles.info)}>
               <p>
                 Компания LargeV Instrument Corp., Ltd. была учреждена в 2011
@@ -102,8 +102,8 @@ export const LargevPage = () => {
               justify="space-between"
               className={clsx(styles.wrap, "gen_wrap ")}
             >
-              <Row gutter={24} align="middle">
-                <Col span={12}>
+              <Row gutter={24} align="middle" wrap="wrap">
+                <Col xs={24} sm={24} md={12} lg={12}>
                   <Flex vertical>
                     <span className={clsx(styles.info_title)}>
                       LargeV Smart 3D-X (Smart 3Dx)
@@ -116,7 +116,7 @@ export const LargevPage = () => {
                     </span>
                   </Flex>
                 </Col>
-                <Col span={12}>
+                <Col xs={24} sm={24} md={12} lg={12}>
                   <div className={clsx(styles.second_img)}>
                     <img src={foto.CT_CEPH_PAN} alt={foto.CT_CEPH_PAN} />
                   </div>
@@ -162,9 +162,21 @@ export const LargevPage = () => {
               />
             </Flex>
 
-            <Row gutter={24} className={clsx(styles.models, "mb-12 mt-10")}>
+            <Row
+              gutter={24}
+              className={clsx(styles.models, "mb-12 mt-10")}
+              wrap="wrap"
+            >
               {arr.map((item) => (
-                <Col span={12} className={clsx("mt-4")}>
+                <Col
+                  key={item.codeid}
+                  xs={24}
+                  sm={24}
+                  md={24}
+                  lg={12}
+                  xl={12}
+                  className={clsx("mt-4")}
+                >
                   <div className={clsx(styles.card)}>
                     <Flex
                       vertical

@@ -36,7 +36,7 @@
   position: relative;
 
   img {
-    border-radius: 40px;
+    border-radius: 30px;
   }
 }
 
@@ -168,7 +168,11 @@
 }
 
 @media (max-width: 576px) {
-  .yrs_info,
+  .yrs_info {
+    p {
+      font-size: 28px;
+    }
+  }
   .models_info {
     p {
       font-size: 32px;
@@ -183,4 +187,12 @@
 }
 
 @media (max-width: 400px) {
+  .yrs {
+    display: none;
+  }
+  .models_info {
+    p {
+      font-size: 26px;
+    }
+  }
 }

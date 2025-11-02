@@ -111,9 +111,16 @@ export const GraphyPage = () => {
           <p onClick={() => onBrandId()}>Продукция Graphy</p>
         </div>
 
-        <Row gutter={24} className={clsx(styles.models, "mb-12")}>
+        <Row gutter={24} className={clsx(styles.models, "mb-12")} wrap="wrap">
           {products?.products?.slice(0, 4).map((item) => (
-            <Col span={12} className={clsx("mt-4")}>
+            <Col 
+              key={item.codeid}
+              xs={24} 
+              sm={12} 
+              md={12} 
+              lg={12} 
+              className={clsx("mt-4")}
+            >
               <ModelsCard
                 item={item}
                 onClick={() =>

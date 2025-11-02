@@ -26,8 +26,8 @@ export const AlltionPage = () => {
             <span>От фундамента до мировой известности</span>
           </div>
         </div>
-        <Row gutter={24} align="middle">
-          <Col span={12}>
+        <Row gutter={24} align="middle" wrap="wrap">
+          <Col xs={24} sm={24} md={12} lg={12}>
             <div className={clsx(styles.img)}>
               <img src={fon_alltion} alt={fon_alltion} />
               <div
@@ -43,7 +43,7 @@ export const AlltionPage = () => {
               </div>
             </div>
           </Col>
-          <Col span={12}>
+          <Col xs={24} sm={24} md={12} lg={12}>
             <Flex vertical gap="middle" className={clsx(styles.info)}>
               <p>
                 История бренда ALLTION берет начало в 1995 году с города Учжоу.
@@ -69,9 +69,16 @@ export const AlltionPage = () => {
           </div>
         </div>
 
-        <Row gutter={24} className={clsx(styles.models, "mи-12")}>
+        <Row gutter={24} className={clsx(styles.models, "mи-12")} wrap="wrap">
           {models.map((item) => (
-            <Col span={12} className={clsx("mt-4")}>
+            <Col 
+              key={item.codeid}
+              xs={24} 
+              sm={12} 
+              md={12} 
+              lg={12} 
+              className={clsx("mt-4")}
+            >
               <ModelsCard item={item} />
             </Col>
           ))}
