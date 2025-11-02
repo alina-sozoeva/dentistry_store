@@ -9,3 +9,39 @@ ul li {
 ol li {
   list-style: none;
 }
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 8px 0;
+    
+    :global {
+      .ant-breadcrumb {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    padding: 6px 0;
+    
+    :global {
+      .ant-breadcrumb {
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap {
+    padding: 5px 0;
+    
+    :global {
+      .ant-breadcrumb {
+        font-size: 10px;
+      }
+    }
+  }
+}

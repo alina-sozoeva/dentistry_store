@@ -29,3 +29,81 @@
 .btn {
   cursor: pointer;
 }
+
+@media (max-width: 992px) {
+  .img {
+    width: 180px;
+
+    img {
+      height: 90px;
+    }
+  }
+
+  .wrap {
+    padding: 8px;
+  }
+
+  .dostavka {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    flex-direction: column;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .img {
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+
+    img {
+      height: 120px;
+      width: 100%;
+    }
+  }
+
+  .dostavka {
+    font-size: 10px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    padding: 10px;
+  }
+
+  .img {
+    max-width: 180px;
+
+    img {
+      height: 100px;
+    }
+  }
+
+  .dostavka {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap {
+    padding: 8px;
+  }
+
+  .img {
+    max-width: 150px;
+
+    img {
+      height: 80px;
+    }
+  }
+
+  .dostavka {
+    font-size: 8px;
+  }
+}

@@ -36,3 +36,47 @@
   );
   color: white;
 }
+
+@media (max-width: 768px) {
+  .btn {
+    padding: 6px 20px;
+    font-size: 12px;
+
+    svg {
+      font-size: 24px;
+      padding-right: 8px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    padding: 5px 16px;
+    font-size: 11px;
+
+    svg {
+      font-size: 20px;
+      padding-right: 6px;
+    }
+
+    span {
+      font-size: 11px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .btn {
+    padding: 4px 12px;
+    font-size: 10px;
+
+    svg {
+      font-size: 18px;
+      padding-right: 5px;
+    }
+
+    span {
+      font-size: 10px;
+    }
+  }
+}

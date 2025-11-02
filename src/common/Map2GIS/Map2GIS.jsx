@@ -20,7 +20,7 @@ export const Map2GIS = ({ marker }) => {
     <div
       ref={mapRef}
       id="map"
-      style={{ width: "100%", height: "500px", borderRadius: "8px" }}
+      style={{ width: "100%", height: "100%", borderRadius: "8px" }}
     />
   );
 };

@@ -41,3 +41,93 @@
     color: gold;
   }
 }
+
+@media (max-width: 768px) {
+  .cancel,
+  .confirm {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .star {
+    font-size: 24px;
+
+    svg {
+      font-size: 18px;
+    }
+  }
+
+  :global {
+    .ant-modal-content {
+      padding: 20px;
+    }
+
+    .ant-modal-title {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .cancel,
+  .confirm {
+    padding: 5px 8px;
+    font-size: 12px;
+  }
+
+  .star {
+    font-size: 20px;
+
+    svg {
+      font-size: 16px;
+    }
+  }
+
+  :global {
+    .ant-modal-content {
+      padding: 16px;
+    }
+
+    .ant-modal-title {
+      font-size: 16px;
+    }
+
+    .ant-input,
+    .ant-input-number,
+    .ant-textarea {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .cancel,
+  .confirm {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+
+  .star {
+    font-size: 18px;
+
+    svg {
+      font-size: 14px;
+    }
+  }
+
+  :global {
+    .ant-modal-content {
+      padding: 12px;
+    }
+
+    .ant-modal-title {
+      font-size: 14px;
+    }
+
+    .ant-input,
+    .ant-input-number,
+    .ant-textarea {
+      font-size: 12px;
+    }
+  }
+}

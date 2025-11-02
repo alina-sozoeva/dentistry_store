@@ -119,6 +119,13 @@ export const Am2000 = () => {
             arrows
             slidesToShow={2}
             className={clsx(styles.carousel, "mb-28")}
+            responsive={[
+              { breakpoint: 1200, settings: { slidesToShow: 2 } },
+              { breakpoint: 992, settings: { slidesToShow: 2 } },
+              { breakpoint: 768, settings: { slidesToShow: 2 } },
+              { breakpoint: 576, settings: { slidesToShow: 1 } },
+              { breakpoint: 480, settings: { slidesToShow: 1 } },
+            ]}
           >
             {filtered.map((item) => (
               <motion.div

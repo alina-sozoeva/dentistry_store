@@ -28,3 +28,74 @@
     color: #205375;
   }
 }
+
+@media (max-width: 1200px) {
+  .wrap {
+    :global {
+      .grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .wrap {
+    :global {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 16px;
+
+    :global {
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .ant-typography {
+        font-size: 20px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    padding: 12px;
+
+    :global {
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .ant-typography {
+        font-size: 18px !important;
+      }
+    }
+  }
+
+  .btn {
+    padding: 8px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap {
+    padding: 10px;
+
+    :global {
+      .ant-typography {
+        font-size: 16px !important;
+      }
+    }
+  }
+}

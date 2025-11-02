@@ -138,3 +138,49 @@
     background-color: #0072bc;
   }
 }
+
+@media (max-width: 1200px) {
+}
+
+@media (max-width: 992px) {
+  .yrs_info,
+  .models_info {
+    p {
+      font-size: 64px;
+    }
+  }
+
+  .info {
+    padding-top: 10px;
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .yrs_info,
+  .models_info {
+    p {
+      font-size: 52px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .yrs_info,
+  .models_info {
+    p {
+      font-size: 32px;
+    }
+  }
+
+  .info {
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+}

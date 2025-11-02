@@ -9,3 +9,24 @@
   margin: 20px 0;
   border-radius: 14px;
 }
+
+@media (max-width: 768px) {
+  .wrap {
+    padding: 24px 16px;
+    margin: 16px 0;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    padding: 20px 12px;
+    margin: 12px 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap {
+    padding: 16px 10px;
+    margin: 10px 0;
+  }
+}

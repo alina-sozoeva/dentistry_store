@@ -136,6 +136,7 @@ export const LargevPage = () => {
             </Flex>
 
             <img
+              className={clsx(styles.img_one)}
               src={foto.newAbout_2}
               alt={foto.newAbout_2}
               style={{ width: "100%", height: "500px", borderRadius: "24px" }}
@@ -148,7 +149,7 @@ export const LargevPage = () => {
               </span>
             </Flex>
 
-            <Flex className={clsx("gap-[60px]")}>
+            <Flex className={clsx(styles.img_two, "gap-[60px]")}>
               <img
                 src={foto.newAbout_5}
                 alt={foto.newAbout_5}

@@ -48,3 +48,92 @@
   @include btn;
   right: -15%;
 }
+
+@media (max-width: 992px) {
+  .title {
+    font-size: 28px;
+  }
+
+  .descrip {
+    font-size: 16px;
+  }
+
+  .btn_left,
+  .btn_rigth {
+    width: 45px;
+    height: 45px;
+    left: -10%;
+    right: -10%;
+
+    svg {
+      font-size: 20px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+
+  .descrip {
+    font-size: 14px;
+  }
+
+  .btn_left,
+  .btn_rigth {
+    width: 40px;
+    height: 40px;
+    left: -5%;
+    right: -5%;
+
+    svg {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .descrip {
+    font-size: 13px;
+  }
+
+  .btn_left,
+  .btn_rigth {
+    width: 35px;
+    height: 35px;
+    left: -2%;
+    right: -2%;
+
+    svg {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap {
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .descrip {
+    font-size: 12px;
+  }
+
+  .btn_left,
+  .btn_rigth {
+    width: 30px;
+    height: 30px;
+
+    svg {
+      font-size: 14px;
+    }
+  }
+}

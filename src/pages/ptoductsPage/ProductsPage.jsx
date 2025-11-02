@@ -8,6 +8,7 @@ import {
   Input,
   Pagination,
   Row,
+  Select,
   Spin,
   Typography,
 } from "antd";
@@ -102,6 +103,42 @@ export const ProductsPage = () => {
     setSearchParams(newSearchParams);
   };
 
+  const onSelectCategory = (value) => {
+    setCurrentPage(1);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      setSelectedCategory(value);
+      setFilters((prev) => ({ ...prev, categoryId: value }));
+      newSearchParams.set("category", value);
+    } else {
+      setSelectedCategory(null);
+      setFilters((prev) => ({ ...prev, categoryId: undefined }));
+      newSearchParams.delete("category");
+    }
+
+    newSearchParams.set("page", "1");
+    setSearchParams(newSearchParams);
+  };
+
+  const onSelectBrand = (value) => {
+    setCurrentPage(1);
+    const newSearchParams = new URLSearchParams(searchParams.toString());
+
+    if (value) {
+      setSelectedBrand(value);
+      setFilters((prev) => ({ ...prev, brandId: value }));
+      newSearchParams.set("brand", value);
+    } else {
+      setSelectedBrand(null);
+      setFilters((prev) => ({ ...prev, brandId: undefined }));
+      newSearchParams.delete("brand");
+    }
+
+    newSearchParams.set("page", "1");
+    setSearchParams(newSearchParams);
+  };
+
   const onSearch = (value) => {
     setCurrentPage(1);
     setInputValue(value);
@@ -180,7 +217,7 @@ export const ProductsPage = () => {
           </Flex>
 
           <Row gutter={16} className="py-6">
-            <Col span={4}>
+            <Col span={4} className={clsx(styles.filter, styles.desktopFilter)}>
               <aside>
                 <Flex vertical gap={"small"}>
                   <Flex vertical gap={"middle"}>
@@ -236,13 +273,44 @@ export const ProductsPage = () => {
               </aside>
             </Col>
 
-            <Col span={20} className="flex flex-col">
+            <Col span={20} className={clsx(styles.contentCol)}>
               <Input
                 placeholder="Поиск по наименованию товара"
-                className={clsx("mb-4")}
+                className={clsx("mb-4", styles.desktopSearchInput)}
                 value={inputValue}
                 onChange={(e) => onSearch(e.target.value)}
               />
+
+              <Flex gap="small" className={clsx(styles.mobileFilters)}>
+                <Input
+                  placeholder="Поиск по наименованию товара"
+                  className={clsx(styles.searchInput)}
+                  value={inputValue}
+                  onChange={(e) => onSearch(e.target.value)}
+                />
+                <Select
+                  placeholder="Категория"
+                  allowClear
+                  className={clsx(styles.selectFilter)}
+                  value={selectedCategory || undefined}
+                  onChange={onSelectCategory}
+                  options={categories?.map((item) => ({
+                    label: item.nameid,
+                    value: item.codeid,
+                  }))}
+                />
+                <Select
+                  placeholder="Бренд"
+                  allowClear
+                  className={clsx(styles.selectFilter)}
+                  value={selectedBrand || undefined}
+                  onChange={onSelectBrand}
+                  options={brands?.map((item) => ({
+                    label: item.nameid,
+                    value: item.codeid,
+                  }))}
+                />
+              </Flex>
 
               {products?.products?.length === 0 ? (
                 <Flex
@@ -260,7 +328,7 @@ export const ProductsPage = () => {
               ) : (
                 <>
                   <section>
-                    <div className={styles.ptoducts}>
+                    <div className={styles.products}>
                       {currentItems?.map((item) => (
                         <ProductItem
                           key={item.codeid}

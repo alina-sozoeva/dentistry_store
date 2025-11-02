@@ -94,12 +94,12 @@ export const ProductItemPage = () => {
           />
           <Title>О продукте</Title>
           <Flex vertical className={styles.card}>
-            <Flex gap={"large"}>
+            <Flex gap={"large"} className={styles.productContent}>
               <div className={clsx(styles.carousel_wrpa)}>
                 {findItem?.files?.length !== 0 ? (
                   <Carousel arrows autoplay className={clsx(styles.carousel)}>
                     {findItem?.files?.map((item) => (
-                      <div className={clsx(styles.carousel_item)}>
+                      <div key={item.file} className={clsx(styles.carousel_item)}>
                         <img
                           src={`${process.env.REACT_APP_URL}/${
                             imgParse(item.file).path
@@ -118,8 +118,8 @@ export const ProductItemPage = () => {
                 )}
               </div>
 
-              <Flex vertical>
-                <Flex gap="middle" justify="space-between">
+              <Flex vertical className={styles.productInfo}>
+                <Flex gap="middle" justify="space-between" className={styles.infoRow}>
                   <Flex vertical className={styles.about_product}>
                     <Flex vertical gap={"small"}>
                       <span>
@@ -166,7 +166,7 @@ export const ProductItemPage = () => {
                     </CustomButton>
                   </Flex>
                 </Flex>
-                <Flex vertical style={{ maxWidth: "500px" }}>
+                <Flex vertical className={styles.relatedSection}>
                   {filterCategory?.length && (
                     <>
                       <Title level={4}>Модели {category}</Title>
@@ -210,8 +210,8 @@ export const ProductItemPage = () => {
               <Paragraph>
                 <strong>Описание:</strong>
                 <Flex vertical>
-                  {splitCommet?.map((item) => (
-                    <span>{item}</span>
+                  {splitCommet?.map((item, index) => (
+                    <span key={index}>{item}</span>
                   ))}
                 </Flex>
               </Paragraph>

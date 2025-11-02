@@ -52,6 +52,47 @@ a {
   padding-top: 150px;
 }
 
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header_h {
+    padding-top: 120px;
+  }
+
+  .gen_wrap {
+    padding: 40px 24px;
+    border-radius: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 12px;
+  }
+
+  .header_h {
+    padding-top: 90px;
+  }
+
+  .gen_wrap {
+    padding: 30px 16px;
+    border-radius: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .container {
+    padding: 0 8px;
+  }
+
+  .gen_wrap {
+    padding: 24px 12px;
+    border-radius: 10px;
+  }
+}
+
 .screen_page {
   flex: 1;
   display: flex;

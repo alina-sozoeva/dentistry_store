@@ -55,3 +55,105 @@
     right: 0;
   }
 }
+
+@media (max-width: 992px) {
+  .wrap {
+    min-height: 300px;
+  }
+
+  .subtitle,
+  .title {
+    font-size: 32px;
+  }
+
+  .descrip {
+    font-size: 16px;
+  }
+
+  .bg_img {
+    width: 80%;
+    top: 0;
+    right: -30%;
+  }
+
+  .item_img {
+    width: 70%;
+    top: -40%;
+    right: -10%;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    min-height: 250px;
+  }
+
+  .subtitle,
+  .title {
+    font-size: 28px;
+  }
+
+  .descrip {
+    font-size: 14px;
+  }
+
+  .bg_img {
+    width: 90%;
+    top: 10%;
+    right: -40%;
+  }
+
+  .item_img {
+    width: 80%;
+    top: -30%;
+    right: -20%;
+  }
+}
+
+@media (max-width: 576px) {
+  .wrap {
+    min-height: 200px;
+  }
+
+  .subtitle,
+  .title {
+    font-size: 24px;
+  }
+
+  .descrip {
+    font-size: 13px;
+  }
+
+  .bg_img {
+    width: 100%;
+    top: 20%;
+    right: -50%;
+  }
+
+  .item_img {
+    width: 90%;
+    top: -40%;
+    right: -15%;
+  }
+}
+
+@media (max-width: 400px) {
+  .wrap {
+    min-height: 180px;
+  }
+
+  .subtitle,
+  .title {
+    font-size: 20px;
+  }
+
+  .descrip {
+    font-size: 12px;
+  }
+
+  .item_img {
+    width: 90%;
+    top: -35%;
+    right: -15%;
+  }
+}

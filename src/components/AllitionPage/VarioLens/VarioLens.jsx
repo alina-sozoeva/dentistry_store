@@ -32,7 +32,7 @@ export const VarioLens = ({ item, v_text, dop_text }) => {
     [arr, active]
   );
   return (
-    <>
+    <div className={styles.wrap}>
       <Flex className={clsx(styles.wrap_first, "mb-28")}>
         <div>
           <img
@@ -47,7 +47,7 @@ export const VarioLens = ({ item, v_text, dop_text }) => {
           <span className={clsx(styles.descrip)}>{dop_text}</span>
         </Flex>
       </Flex>
-      <Row className={clsx(styles.wrap_second, "mb-28")}>
+      <Row className={clsx(styles.wrap_second, "mb-28 gap-[5px]")}>
         <Col span={11} className={clsx()}>
           <Flex vertical>
             <p className={clsx(styles.second_title, "mb-6")}>
@@ -60,7 +60,7 @@ export const VarioLens = ({ item, v_text, dop_text }) => {
             </span>
           </Flex>
         </Col>
-        <Col span={11} offset={2}>
+        <Col span={11}>
           <Flex vertical className={clsx(styles.color)}>
             <div>
               <img className={clsx(styles.img)} src={gen.red} alt={gen.red} />
@@ -100,6 +100,6 @@ export const VarioLens = ({ item, v_text, dop_text }) => {
           </Flex>
         </div>
       </Flex>
-    </>
+    </div>
   );
 };

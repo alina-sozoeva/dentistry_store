@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { CustomButton, ProductItem, ReviewModal } from "../../common";
+import { ReviewModal } from "../../common";
 import {
   Button,
   Carousel,
@@ -14,19 +14,18 @@ import { RatingStars } from "../../ui";
 import { useEffect, useState } from "react";
 import { BsFillBoxFill } from "react-icons/bs";
 import { FaCheckCircle, FaStar } from "react-icons/fa";
-import { CalendarOutlined, DoubleRightOutlined } from "@ant-design/icons";
+import { CalendarOutlined } from "@ant-design/icons";
 import { PiUserCircleFill } from "react-icons/pi";
 import {
   useGetCategoryQuery,
   useGetEduQuery,
-  useGetProductsQuery,
   useGetProvidersQuery,
   useGetReviewsQuery,
 } from "../../store";
 import { pathname } from "../../enums";
 import brends_no_foto from "../../assets/images/no_image.png";
 import { categoriesLocal, brandsItem } from "../../data";
-import { CustomCarousel, StudyModal } from "../../components";
+import { CustomCarousel } from "../../components";
 import DOMPurify from "dompurify";
 import dayjs from "dayjs";
 
@@ -37,16 +36,12 @@ import clsx from "clsx";
 export const HomePage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [studyModal, setStudyModal] = useState(false);
-  const [itemStudy, setItemStudy] = useState();
   const [openReview, setOpenReview] = useState(false);
 
   const { data: brands, isLoading: isLoadingBrends } = useGetProvidersQuery();
   const { data: categories, isLoading: isLoadingCategories } =
     useGetCategoryQuery();
-  const { data: products, isLoading: isLoadingProducts } = useGetProductsQuery(
-    {}
-  );
+
   const { data: reviews } = useGetReviewsQuery();
   const { data: edu } = useGetEduQuery();
 
@@ -74,14 +69,6 @@ export const HomePage = () => {
 
   const dopBrends = [...(brands || [])];
 
-  // const filteredEdu = edu?.data?.sort(
-  //   (a, b) => a?.date_system - b?.date_system
-  // );
-
-  const openStudy = (item) => {
-    setStudyModal(true);
-    setItemStudy(item);
-  };
   useEffect(() => {
     const scrollTo =
       location.state?.scrollTo ||
@@ -98,7 +85,7 @@ export const HomePage = () => {
 
   return (
     <Spin
-      spinning={isLoadingBrends || isLoadingCategories || isLoadingProducts}
+      spinning={isLoadingBrends || isLoadingCategories}
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -108,7 +95,7 @@ export const HomePage = () => {
     >
       <main style={{ backgroundColor: "#f9f9f9" }}>
         <section className="container">
-          <Flex vertical className={clsx("mb-6")}>
+          <Flex vertical className={clsx(styles.rec, "mb-6")}>
             <CustomCarousel />
           </Flex>
         </section>
@@ -146,8 +133,15 @@ export const HomePage = () => {
 
             <Carousel
               arrows
-              className={clsx(styles.carousel, styles.categories, "w-full")}
+              className={clsx(styles.carousel, styles.categories)}
               slidesToShow={5}
+              responsive={[
+                { breakpoint: 1200, settings: { slidesToShow: 4 } },
+                { breakpoint: 992, settings: { slidesToShow: 3 } },
+                { breakpoint: 768, settings: { slidesToShow: 3 } },
+                { breakpoint: 576, settings: { slidesToShow: 2 } },
+                { breakpoint: 480, settings: { slidesToShow: 2 } },
+              ]}
             >
               {categories?.map((item) => {
                 const localCat = categoriesLocal.find(
@@ -184,6 +178,13 @@ export const HomePage = () => {
               arrows
               className={clsx(styles.carousel, styles.brands, "w-full")}
               slidesToShow={5}
+              responsive={[
+                { breakpoint: 1200, settings: { slidesToShow: 4 } },
+                { breakpoint: 992, settings: { slidesToShow: 3 } },
+                { breakpoint: 768, settings: { slidesToShow: 3 } },
+                { breakpoint: 576, settings: { slidesToShow: 2 } },
+                { breakpoint: 480, settings: { slidesToShow: 2 } },
+              ]}
             >
               {dopBrends?.map((item) => {
                 const localBrand = brandsItem.find(
@@ -341,9 +342,13 @@ export const HomePage = () => {
                 Здесь скоро появится контент по обучению
               </Flex>
             ) : (
-              edu.data.map((item) => (
-                <Row gutter={24} align={"middle"}>
-                  <Col span={8}>
+              edu?.data?.map((item) => (
+                <Row
+                  gutter={24}
+                  align={"middle"}
+                  className={clsx(styles.study)}
+                >
+                  <Col span={8} className={clsx(styles.study_car)}>
                     <Carousel arrows autoplay>
                       {item?.imgs.map((item) => (
                         <div className={clsx(styles.img, "mb-2")}>
@@ -356,12 +361,7 @@ export const HomePage = () => {
                     </Carousel>
                   </Col>
 
-                  <Col
-                    span={16}
-                    className={clsx(
-                      "flex flex-col align-center justify-center gap-[20px]"
-                    )}
-                  >
+                  <Col span={16} className={clsx(styles.study_car_info)}>
                     <span className={clsx("text-2xl font-bold")}>
                       {item?.title}
                     </span>
@@ -411,11 +411,7 @@ export const HomePage = () => {
             )}
           </Flex>
         </section>
-        <StudyModal
-          open={studyModal}
-          onCancel={() => setStudyModal(false)}
-          item={itemStudy}
-        />
+
         <ReviewModal open={openReview} onCancel={() => setOpenReview(false)} />
       </main>
     </Spin>

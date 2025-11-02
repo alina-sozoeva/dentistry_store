@@ -355,3 +355,31 @@
   font-size: var(--font-size-sm);
   font-weight: 200;
 }
+
+@media (max-width: 1200px) {
+  .img_two {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .info {
+    padding-top: 10px;
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .img_one,
+  .yrs {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+}
+
+@media (max-width: 400px) {
+}

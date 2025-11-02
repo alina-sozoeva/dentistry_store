@@ -74,3 +74,116 @@
   opacity: 0;
   transition: opacity 0.3s ease;
 }
+
+@media (max-width: 992px) {
+  .card {
+    width: 280px;
+    height: 160px;
+    padding: 18px;
+
+    h4 {
+      font-size: 16px;
+    }
+  }
+
+  .card_no {
+    width: 600px;
+    height: 160px;
+  }
+
+  .title {
+    margin-bottom: 60px;
+    font-size: 14px;
+  }
+
+  .lottie,
+  .lottie_noPlay {
+    height: 130px;
+    margin-bottom: -40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    width: 240px;
+    height: 150px;
+    padding: 16px;
+
+    h4 {
+      font-size: 14px;
+    }
+  }
+
+  .card_no {
+    width: 100%;
+    max-width: 500px;
+    height: 150px;
+  }
+
+  .title {
+    margin-bottom: 50px;
+    font-size: 13px;
+  }
+
+  .lottie,
+  .lottie_noPlay {
+    height: 120px;
+    margin-bottom: -35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .card {
+    width: 100%;
+    max-width: 220px;
+    height: 140px;
+    padding: 12px;
+
+    h4 {
+      font-size: 12px;
+    }
+  }
+
+  .card_no {
+    max-width: 100%;
+    height: 140px;
+  }
+
+  .title {
+    margin-bottom: 40px;
+    font-size: 12px;
+  }
+
+  .lottie,
+  .lottie_noPlay {
+    height: 110px;
+    margin-bottom: -30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    max-width: 180px;
+    height: 130px;
+    padding: 10px;
+
+    h4 {
+      font-size: 11px;
+    }
+  }
+
+  .card_no {
+    height: 130px;
+  }
+
+  .title {
+    margin-bottom: 35px;
+    font-size: 11px;
+  }
+
+  .lottie,
+  .lottie_noPlay {
+    height: 100px;
+    margin-bottom: -25px;
+  }
+}

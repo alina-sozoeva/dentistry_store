@@ -1,5 +1,5 @@
 import { Flex } from "antd";
-import { HeartFilled, HeartOutlined, StarFilled } from "@ant-design/icons";
+import { HeartFilled, HeartOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useCartStore, useFavoritesStore } from "../../store";
 

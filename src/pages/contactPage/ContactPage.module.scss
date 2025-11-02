@@ -41,3 +41,105 @@
     color: white;
   }
 }
+
+@media (max-width: 992px) {
+  .main {
+    gap: 60px;
+  }
+
+  .info {
+    width: 35%;
+  }
+
+  .map {
+    height: 450px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+
+  .info {
+    width: 100%;
+    order: 2;
+  }
+
+  .map {
+    width: 100%;
+    height: 400px;
+    order: 1;
+
+    iframe {
+      border-radius: 20px;
+    }
+  }
+
+  .media {
+    svg {
+      font-size: 36px;
+      padding: 8px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .main {
+    gap: 24px;
+  }
+
+  .info {
+    h1 {
+      font-size: 24px !important;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  .map {
+    height: 350px;
+
+    iframe {
+      border-radius: 16px;
+    }
+  }
+
+  .media {
+    svg {
+      font-size: 32px;
+      padding: 8px;
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .main {
+    gap: 20px;
+  }
+
+  .info {
+    h1 {
+      font-size: 20px !important;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  .map {
+    height: 300px;
+  }
+
+  .media {
+    svg {
+      font-size: 28px;
+      padding: 6px;
+    }
+  }
+}

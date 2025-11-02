@@ -2,10 +2,10 @@ import { Empty, Flex, Typography } from "antd";
 import { useFavoritesStore } from "../../store";
 import { useNavigate } from "react-router";
 import { pathname } from "../../enums";
+import { ProductItem } from "../../common";
 
 import styles from "./FavoritesPage.module.scss";
 import clsx from "clsx";
-import { ProductItem } from "../../common";
 
 export const FavoritesPage = () => {
   const navigate = useNavigate();

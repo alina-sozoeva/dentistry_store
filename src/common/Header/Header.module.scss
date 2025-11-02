@@ -28,12 +28,139 @@
   }
 }
 
+.header_top {
+  position: relative;
+}
+
+.logo_link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.burger_menu {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #147abc;
+  padding: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
 .header_nav {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 60px;
   padding: 12px 0;
+}
+
+.desktop_nav {
+  display: block;
+}
+
+.actions {
+  display: flex;
+}
+
+.action_link {
+  white-space: nowrap;
+}
+
+.action_text {
+  font-size: 12px;
+}
+
+.review_btn {
+  display: block;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+}
+
+.close_btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #147abc;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile_drawer {
+  :global {
+    .ant-drawer-header {
+      border-bottom: 1px solid #dee0e3;
+    }
+
+    .ant-drawer-body {
+      padding: 20px;
+    }
+  }
+}
+
+.mobile_menu {
+  padding: 0;
+}
+
+.mobile_search {
+  width: 100%;
+}
+
+.mobile_link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  color: #147abc;
+  text-decoration: none;
+  font-weight: 500;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #0d5a8a;
+  }
+
+  svg {
+    font-size: 18px;
+  }
+}
+
+.mobile_actions {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #dee0e3;
+}
+
+.mobile_action_link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  color: #147abc;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #f0f7fb;
+  }
+
+  svg {
+    font-size: 20px;
+  }
 }
 
 .logo {
@@ -78,10 +205,6 @@
     }
   }
 }
-
-// .search_input {
-//   margin-left: 60px;
-// }
 
 .link {
   position: relative;
@@ -150,35 +273,128 @@
   }
 }
 
-@media (max-width: 1400px) {
-  .search_input {
-    // width: 54rem;
-  }
-}
-
 @media (max-width: 1200px) {
-  .search_input {
-    // width: 42rem;
+  .header_top {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .desktop_nav {
+    width: 100%;
+    overflow-x: visible;
+    white-space: nowrap;
+  }
+
+  .header_nav {
+    gap: 40px;
   }
 }
 
-@media (max-width: 1024px) {
-  .search_input {
-    // width: 34rem;
+@media (max-width: 992px) {
+  .header_top {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .search {
+    flex: 1;
+  }
+
+  .review_btn {
+    display: none;
+  }
+
+  .header_nav {
+    gap: 20px;
   }
 }
 
-@media (max-width: 880px) {
-  .search_input {
-    // width: 28rem;
+@media (max-width: 850px) {
+  .desktop_nav {
+    display: none;
+  }
+
+  .burger_menu {
+    display: flex;
+    order: 2;
+  }
+
+  .review_btn {
+    display: none;
+  }
+
+  .search {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    margin-top: 8px;
+  }
+
+  .actions {
+    gap: 16px;
+
+    .action_text {
+      display: none;
+    }
   }
 }
 
 @media (max-width: 768px) {
+  .header_top {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+
+    gap: 12px;
+  }
+
+  .logo_link {
+    width: auto;
+    min-width: 100px;
+  }
+
+  .logo {
+    width: 80px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header_top {
+    justify-content: space-between;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+
+  .search,
+  .actions {
+    display: none;
+  }
+
+  .actions {
+    gap: 12px;
+  }
+
+  .search_input {
+    font-size: 12px !important;
+
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
 }
 
 @media (max-width: 400px) {
-}
+  .header_top {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+  }
 
-@media (max-width: 320px) {
+  .actions {
+    gap: 8px;
+  }
+
+  .cart {
+    svg {
+      font-size: 20px;
+    }
+  }
 }

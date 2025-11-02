@@ -18,33 +18,45 @@ export const Footer = () => {
           <b>Навигация по сайту</b>
         </h3>
       </div>
-      <Flex className="container" justify="space-between">
-        <div>
+      <Flex
+        wrap="wrap"
+        className="container"
+        justify="space-between"
+        gap={"middle"}
+      >
+        <div className={clsx(styles.logo_wrap)}>
           <Link to={pathname.HOME}>
             <img src={logo} alt={logo} className={clsx(styles.logo)} />
           </Link>
         </div>
-        <Flex vertical>
+        <Flex vertical gap="small">
           <Link to={pathname.HOME}>Главная</Link>
           <Link to={pathname.PRODUCTS}>Продукты</Link>
           <Link to={pathname.PRODUCTS}>Бренды</Link>
           <Link to={pathname.CART}>Корзина</Link>
-          <Link>Чекаут</Link>
-        </Flex>
-        <Flex vertical>
           <Link to={pathname.ABOUT}>О нас</Link>
           <Link to={pathname.CONTACT}>Контакты</Link>
-          <Link>Условия и положения</Link>
-          <Link>Политика конфиденциальности</Link>
-          <Link>Политика возврата</Link>
         </Flex>
-        <Flex vertical>
-          <Link>Войти и зарегистрироваться</Link>
+
+        <Flex vertical gap="small">
+          <Link>Условия и положения</Link>
           <Link to={pathname.PROFILE}>Настройки учетной записи</Link>
           <Link to={pathname.CART}>Мои заказы</Link>
-          <Link>Список пожеланий</Link>
+          <Link>Политика конфиденциальности</Link>
+          <Link>Политика возврата</Link>
+          <Flex gap={"small"} className={styles.media_not}>
+            <a href="https://www.instagram.com/jdstore.kg/" target="_blank">
+              <InstagramOutlined />
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=996706414444&text&type=phone_number&app_absent=0"
+              target="_blank"
+            >
+              <WhatsAppOutlined />
+            </a>
+          </Flex>
         </Flex>
-        <Flex vertical>
+        <Flex vertical gap="small" className={clsx(styles.foot_con)}>
           <span>КР, г. Бишкек, </span>
           <span>Октябрьский район,ул.</span>
           <span>улица Куйручук, 81/2</span>
